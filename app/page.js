@@ -30,29 +30,55 @@ export default function Home() {
         <div className="group rounded-2xl bg-gray-100 p-8 flex flex-col gap-6 overflow-hidden cursor-pointer">
 
           {/* Media Row */}
-          <div className="flex gap-4 items-end transition-all duration-500 group-hover:-translate-y-4">
+          <div className="flex items-end w-full transition-all duration-500 group-hover:-translate-y-4">
 
             {/* Static Image */}
             <img
               src="/Images/NN.png"
               alt="NutritionNest"
-              className="w-2/3 object-contain rounded-xl transition-all duration-500 group-hover:scale-105"
+              className="object-contain rounded-xl"
+              style={{ height: '875px', width: 'auto' }}
             />
 
-            {/* Video inside iPhone frame */}
-            <div className="relative w-1/3 flex items-center justify-center">
-              <video
-                src="/Images/NN-video.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-[85%] rounded-[2rem] object-cover"
-              />
+            {/* iPhone frame */}
+            <div style={{
+              position: 'relative',
+              flexShrink: 0,
+              height: '875px',
+              aspectRatio: '806/1586',
+              marginLeft: '-4px',
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: '4%',
+                left: '8.5%',
+                right: '8.5%',
+                bottom: '4.2%',
+                borderRadius: '11%/5.5%',
+                overflow: 'hidden',
+                zIndex: 1,
+              }}>
+                <video
+                  src="/Images/NN-video.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </div>
               <img
                 src="/Images/NN-iphone-frame.png"
                 alt="iPhone frame"
-                className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'fill',
+                  zIndex: 10,
+                  pointerEvents: 'none',
+                }}
               />
             </div>
 
