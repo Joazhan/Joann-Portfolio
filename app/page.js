@@ -86,7 +86,7 @@ export default function Home() {
 
           {/* Title & Description */}
           <div className="flex items-center gap-3">
-            <span className="text-lg font-medium text-black">NutritionNest</span>
+            <span style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>NutritionNest</span>
             <span className="text-sm text-gray-500">Log nutritional intake and monitor daily calories</span>
           </div>
 
@@ -95,7 +95,7 @@ export default function Home() {
         {/* Duetti */}
         <div className="rounded-2xl p-8 flex flex-col gap-8" style={{backgroundColor: '#d9f99d'}}>
           <div className="flex items-center gap-3">
-            <span className="text-lg font-medium">Duetti</span>
+            <span style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Duetti</span>
             <span className="text-sm text-gray-600">Insight-driven report that simplifies music industry data</span>
           </div>
         </div>
