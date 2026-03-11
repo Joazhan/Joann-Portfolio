@@ -1,4 +1,25 @@
+'use client'
+
+import { useEffect, useState, useRef } from 'react'
+
 export default function Home() {
+  const [navVisible, setNavVisible] = useState(true)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+        setNavVisible(false)
+      } else {
+        setNavVisible(true)
+      }
+      lastScrollY.current = currentScrollY
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <main className="min-h-screen bg-white" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
 
@@ -35,10 +56,24 @@ export default function Home() {
           transform: rotate(0deg);
           color: #fff;
         }
+        .nav-wrapper {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 100;
+          padding: 24px 80px 0;
+          transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .nav-wrapper.hidden {
+          opacity: 0;
+          transform: translateY(-20px);
+          pointer-events: none;
+        }
       `}</style>
 
-      {/* Navbar */}
-      <div className="pt-6">
+      {/* Navbar — fixed, fades on scroll */}
+      <div className={`nav-wrapper${navVisible ? '' : ' hidden'}`}>
         <nav className="flex items-center justify-between px-6 py-3 w-full"
           style={{
             backgroundColor: 'rgba(255, 255, 255, 0.6)',
@@ -58,6 +93,9 @@ export default function Home() {
           </div>
         </nav>
       </div>
+
+      {/* Spacer for fixed navbar */}
+      <div style={{ height: '96px' }} />
 
       {/* Hero */}
       <section className="flex justify-center pt-24 pb-16">
@@ -105,35 +143,13 @@ export default function Home() {
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
             style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
             <div style={{ position: 'relative', width: '73%', flexShrink: 0 }}>
-              <div style={{
-                position: 'absolute',
-                top: '2.2%',
-                left: '1.4%',
-                right: '1.4%',
-                bottom: '24.9%',
-                overflow: 'hidden',
-                zIndex: 1,
-              }}>
-                <video
-                  src="/Images/Duetti video.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
+              <div style={{ position: 'absolute', top: '2.2%', left: '1.4%', right: '1.4%', bottom: '24.9%', overflow: 'hidden', zIndex: 1 }}>
+                <video src="/Images/Duetti video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
-              <img
-                src="/Images/Apple Pro Display.png"
-                alt="Apple Pro Display"
-                style={{ position: 'relative', width: '100%', height: 'auto', display: 'block', zIndex: 10 }}
-              />
+              <img src="/Images/Apple Pro Display.png" alt="Apple Pro Display" style={{ position: 'relative', width: '100%', height: 'auto', display: 'block', zIndex: 10 }} />
             </div>
-            <img
-              src="/Images/Duetti iphone frame.png"
-              alt="Duetti iPhone"
-              style={{ width: '15%', height: 'auto', objectFit: 'contain', alignSelf: 'flex-end', position: 'relative', zIndex: 20 }}
-            />
+            <img src="/Images/Duetti iphone frame.png" alt="Duetti iPhone"
+              style={{ width: '15%', height: 'auto', objectFit: 'contain', alignSelf: 'flex-end', position: 'relative', zIndex: 20 }} />
           </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
@@ -154,13 +170,8 @@ export default function Home() {
         {/* Lasertaz */}
         <div className="group flex flex-col overflow-hidden cursor-pointer"
           style={{ backgroundColor: '#0a0a0a', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '100px', paddingRight: '100px', gap: '40px' }}>
-          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
-            style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-            <img
-              src="/Images/Lasertaz image.png"
-              alt="Lasertaz"
-              style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }}
-            />
+          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+            <img src="/Images/Lasertaz image.png" alt="Lasertaz" style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
           </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
@@ -181,13 +192,8 @@ export default function Home() {
         {/* Bookworm */}
         <div className="group flex flex-col overflow-hidden cursor-pointer"
           style={{ backgroundColor: '#184131', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '100px', paddingRight: '100px', gap: '40px' }}>
-          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
-            style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-            <img
-              src="/Images/bw_image.png"
-              alt="Bookworm"
-              style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }}
-            />
+          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+            <img src="/Images/bw_image.png" alt="Bookworm" style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
           </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
@@ -208,13 +214,8 @@ export default function Home() {
         {/* Raymond Hair Salon */}
         <div className="group flex flex-col overflow-hidden cursor-pointer"
           style={{ backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '100px', paddingRight: '100px', gap: '40px' }}>
-          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
-            style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-            <img
-              src="/Images/rhs_image.png"
-              alt="Raymond Hair Salon"
-              style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }}
-            />
+          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+            <img src="/Images/rhs_image.png" alt="Raymond Hair Salon" style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
           </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
@@ -233,6 +234,71 @@ export default function Home() {
         </div>
 
       </section>
+
+      {/* Concepts Section */}
+      <div style={{ marginTop: '80px', marginLeft: '-80px', marginRight: '-80px', backgroundColor: '#f3f4f6', padding: '80px 80px' }}>
+
+        {/* Section header */}
+        <div style={{ marginBottom: '40px' }}>
+          <h2 style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Concepts</h2>
+          <p style={{ fontSize: '14px', lineHeight: '20px', color: '#6b7280', maxWidth: '320px' }}>
+            I designed these projects after noticing gaps in existing products and wanting to see what a better solution could feel like, which led me to prototype ideas and explore them hands-on.
+          </p>
+        </div>
+
+        {/* Concepts Cards */}
+        <div className="flex flex-col" style={{ gap: '80px' }}>
+
+          {/* Kalshi */}
+          <div className="group flex flex-col overflow-hidden cursor-pointer"
+            style={{ backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '40px' }}>
+            <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
+              style={{ alignItems: 'flex-end', justifyContent: 'center', minHeight: '200px' }}>
+            </div>
+            <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
+              <div className="flex items-center gap-4">
+                <div style={{ width: '64px', height: '64px', borderRadius: '14px', backgroundColor: '#e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ fontSize: '24px', fontWeight: '700', color: '#212121' }}>K</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Kalshi</span>
+                  <span style={{ fontSize: '18px', lineHeight: '20px', color: '#6b7280' }}>2025 | Desktop extension</span>
+                </div>
+              </div>
+              <div className="arrow-btn">
+                <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          {/* Phia */}
+          <div className="group flex flex-col overflow-hidden cursor-pointer"
+            style={{ backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '40px' }}>
+            <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
+              style={{ alignItems: 'flex-end', justifyContent: 'center', minHeight: '200px' }}>
+            </div>
+            <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
+              <div className="flex items-center gap-4">
+                <div style={{ width: '64px', height: '64px', borderRadius: '14px', backgroundColor: '#e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span style={{ fontSize: '24px', fontWeight: '700', color: '#212121' }}>P</span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Phia</span>
+                  <span style={{ fontSize: '18px', lineHeight: '20px', color: '#6b7280' }}>2025 | Desktop extension | Redesign</span>
+                </div>
+              </div>
+              <div className="arrow-btn">
+                <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
       <div style={{ height: '80px' }} />
 
