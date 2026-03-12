@@ -72,7 +72,7 @@ export default function Home() {
         }
       `}</style>
 
-      {/* Navbar — fixed, fades on scroll */}
+      {/* Navbar */}
       <div className={`nav-wrapper${navVisible ? '' : ' hidden'}`}>
         <nav className="flex items-center justify-between px-6 py-3 w-full"
           style={{
@@ -191,9 +191,16 @@ export default function Home() {
 
         {/* Bookworm */}
         <div className="group flex flex-col overflow-hidden cursor-pointer"
-          style={{ backgroundColor: '#184131', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '100px', paddingRight: '100px', gap: '40px' }}>
-          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-            <img src="/Images/bw_image.png" alt="Bookworm" style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
+          style={{ backgroundColor: '#184131', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '80px' }}>
+          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', minHeight: '420px' }}>
+            <img src="/Images/bw_image.png" alt="Bookworm" className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
+            <div style={{ position: 'relative', flex: '1 1 0', marginLeft: '-4px', alignSelf: 'stretch' }}>
+              <div style={{ position: 'absolute', top: '4%', left: '8.5%', right: '8.5%', bottom: '4.2%', borderRadius: '11%/5.5%', overflow: 'hidden', zIndex: 1 }}>
+                <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+              <img src="/Images/bw_iphone_frame.png" alt="iPhone frame"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
+            </div>
           </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
@@ -237,8 +244,6 @@ export default function Home() {
 
       {/* Concepts Section */}
       <div style={{ marginTop: '80px', marginLeft: '-80px', marginRight: '-80px', backgroundColor: '#f3f4f6', padding: '80px 80px' }}>
-
-        {/* Section header */}
         <div style={{ marginBottom: '40px' }}>
           <h2 style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Concepts</h2>
           <p style={{ fontSize: '14px', lineHeight: '20px', color: '#6b7280', maxWidth: '320px' }}>
@@ -246,14 +251,14 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Concepts Cards */}
         <div className="flex flex-col" style={{ gap: '80px' }}>
 
           {/* Kalshi */}
           <div className="group flex flex-col overflow-hidden cursor-pointer"
             style={{ backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '40px' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
-              style={{ alignItems: 'flex-end', justifyContent: 'center', minHeight: '200px' }}>
+              style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+              <img src="/Images/kalshi_bento.png" alt="Kalshi" className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
             </div>
             <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
               <div className="flex items-center gap-4">
