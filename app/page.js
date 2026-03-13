@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Home() {
   const [navVisible, setNavVisible] = useState(true)
@@ -82,11 +84,11 @@ export default function Home() {
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
           }}>
-          <a href="/" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.02em', fontWeight: '500', color: 'black', textDecoration: 'none', whiteSpace: 'nowrap', cursor: 'pointer' }}>
+          <Link href="/" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.02em', fontWeight: '500', color: 'black', textDecoration: 'none', whiteSpace: 'nowrap', cursor: 'pointer' }}>
             Joann Zhang
-          </a>
+          </Link>
           <div className="flex items-center gap-6 flex-wrap justify-end">
-            <a href="/" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</a>
+            <Link href="/" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</Link>
             <a href="/about" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">About</a>
             <a href="#" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
             <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Contact</a>
@@ -112,18 +114,18 @@ export default function Home() {
         <div className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer"
           style={{ paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '80px', borderRadius: '32px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end' }}>
-            <img src="/Images/NN.png" alt="NutritionNest" className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
+            <Image src="/Images/NN.png" alt="NutritionNest" width={900} height={600} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
             <div style={{ position: 'relative', flex: '1 1 0', marginLeft: '-4px', alignSelf: 'stretch' }}>
               <div style={{ position: 'absolute', top: '4%', left: '8.5%', right: '8.5%', bottom: '4.2%', borderRadius: '11%/5.5%', overflow: 'hidden', zIndex: 1 }}>
                 <video src="/Images/NN-video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
-              <img src="/Images/NN-iphone-frame.png" alt="iPhone frame"
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
+              <Image src="/Images/NN-iphone-frame.png" alt="iPhone frame" fill
+                style={{ objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
             </div>
           </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
-              <img src="/Icons/NN icon.png" alt="NutritionNest icon" style={{ width: '64px', height: '64px', borderRadius: '14px' }} />
+              <Image src="/Icons/NN icon.png" alt="NutritionNest icon" width={64} height={64} style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
                 <span style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>NutritionNest</span>
                 <span style={{ fontSize: '18px', lineHeight: '20px', color: '#6b7280' }}>Log nutritional intake and monitor daily calories</span>
@@ -146,14 +148,14 @@ export default function Home() {
               <div style={{ position: 'absolute', top: '2.2%', left: '1.4%', right: '1.4%', bottom: '24.9%', overflow: 'hidden', zIndex: 1 }}>
                 <video src="/Images/Duetti video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
-              <img src="/Images/Apple Pro Display.png" alt="Apple Pro Display" style={{ position: 'relative', width: '100%', height: 'auto', display: 'block', zIndex: 10 }} />
+              <Image src="/Images/Apple Pro Display.png" alt="Apple Pro Display" width={1200} height={800} style={{ position: 'relative', width: '100%', height: 'auto', display: 'block', zIndex: 10 }} />
             </div>
-            <img src="/Images/Duetti iphone frame.png" alt="Duetti iPhone"
+            <Image src="/Images/Duetti iphone frame.png" alt="Duetti iPhone" width={400} height={600}
               style={{ width: '15%', height: 'auto', objectFit: 'contain', alignSelf: 'flex-end', position: 'relative', zIndex: 20 }} />
           </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
-              <img src="/Icons/Duetti icon.png" alt="Duetti icon" style={{ width: '64px', height: '64px', borderRadius: '14px' }} />
+              <Image src="/Icons/Duetti icon.png" alt="Duetti icon" width={64} height={64} style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
                 <span style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Duetti</span>
                 <span style={{ fontSize: '18px', lineHeight: '20px', color: '#4b5563' }}>Insight-driven report that simplifies music industry data</span>
@@ -171,11 +173,11 @@ export default function Home() {
         <div className="group flex flex-col overflow-hidden cursor-pointer"
           style={{ backgroundColor: '#0a0a0a', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '100px', paddingRight: '100px', gap: '40px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-            <img src="/Images/Lasertaz image.png" alt="Lasertaz" style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
+            <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
           </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
-              <img src="/Icons/Lasertaz icon.png" alt="Lasertaz icon" style={{ width: '64px', height: '64px', borderRadius: '14px' }} />
+              <Image src="/Icons/Lasertaz icon.png" alt="Lasertaz icon" width={64} height={64} style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
                 <span style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#ffffff' }}>Lasertaz</span>
                 <span style={{ fontSize: '18px', lineHeight: '20px', color: '#9ca3af' }}>Laser cutting service brand and product design</span>
@@ -193,18 +195,18 @@ export default function Home() {
         <div className="group flex flex-col overflow-hidden cursor-pointer"
           style={{ backgroundColor: '#184131', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '80px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', minHeight: '420px' }}>
-            <img src="/Images/bw_image.png" alt="Bookworm" className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
+            <Image src="/Images/bw_image.png" alt="Bookworm" width={900} height={600} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
             <div style={{ position: 'relative', flex: '1 1 0', marginLeft: '-4px', alignSelf: 'stretch' }}>
               <div style={{ position: 'absolute', top: '4%', left: '8.5%', right: '8.5%', bottom: '4.2%', borderRadius: '11%/5.5%', overflow: 'hidden', zIndex: 1 }}>
                 <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
-              <img src="/Images/bw_iphone_frame.png" alt="iPhone frame"
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
+              <Image src="/Images/bw_iphone_frame.png" alt="iPhone frame" fill
+                style={{ objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
             </div>
           </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
-              <img src="/Icons/Bookworm icon.png" alt="Bookworm icon" style={{ width: '64px', height: '64px', borderRadius: '14px' }} />
+              <Image src="/Icons/Bookworm icon.png" alt="Bookworm icon" width={64} height={64} style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
                 <span style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#ffffff' }}>Bookworm</span>
                 <span style={{ fontSize: '18px', lineHeight: '20px', color: '#9ca3af' }}>Reading tracker and book discovery app</span>
@@ -222,11 +224,11 @@ export default function Home() {
         <div className="group flex flex-col overflow-hidden cursor-pointer"
           style={{ backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '100px', paddingRight: '100px', gap: '40px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-            <img src="/Images/rhs_image.png" alt="Raymond Hair Salon" style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
+            <Image src="/Images/rhs_image.png" alt="Raymond Hair Salon" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
           </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
-              <img src="/Icons/RHS icon.png" alt="RHS icon" style={{ width: '64px', height: '64px', borderRadius: '14px' }} />
+              <Image src="/Icons/RHS icon.png" alt="RHS icon" width={64} height={64} style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
                 <span style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Raymond Hair Salon</span>
                 <span style={{ fontSize: '18px', lineHeight: '20px', color: '#6b7280' }}>Booking and brand experience redesign</span>
@@ -258,7 +260,7 @@ export default function Home() {
             style={{ backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '40px' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-              <img src="/Images/kalshi_bento.png" alt="Kalshi" className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
+              <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
             </div>
             <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
               <div className="flex items-center gap-4">
