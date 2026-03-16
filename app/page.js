@@ -96,7 +96,6 @@ export default function Home() {
         </nav>
       </div>
 
-      {/* Spacer for fixed navbar */}
       <div style={{ height: '96px' }} />
 
       {/* Hero */}
@@ -191,19 +190,19 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Bookworm */}
-        <div className="group flex flex-col overflow-hidden cursor-pointer"
-          style={{ backgroundColor: '#184131', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '80px' }}>
-          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', minHeight: '420px' }}>
-            <Image src="/Images/bw_image.png" alt="Bookworm" width={900} height={600} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
-            <div style={{ position: 'relative', flex: '1 1 0', marginLeft: '-4px', alignSelf: 'stretch' }}>
-              <div style={{ position: 'absolute', top: '4%', left: '8.5%', right: '8.5%', bottom: '4.2%', borderRadius: '11%/5.5%', overflow: 'hidden', zIndex: 1 }}>
-                <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
-              <Image src="/Images/bw_iphone_frame.png" alt="iPhone frame" fill
-                style={{ objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
-            </div>
-          </div>
+{/* Bookworm */}
+<div className="group flex flex-col overflow-hidden cursor-pointer"
+  style={{ backgroundColor: '#184131', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '80px' }}>
+  <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end' }}>
+    <Image src="/Images/bw_image.png" alt="Bookworm" width={900} height={600} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
+    <div style={{ position: 'relative', flex: '1 1 0', marginLeft: '-4px', alignSelf: 'stretch' }}>
+      <div style={{ position: 'absolute', top: '4%', left: '8.5%', right: '8.5%', bottom: '4.2%', borderRadius: '11%/5.5%', overflow: 'hidden', zIndex: 1 }}>
+        <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+      </div>
+      <Image src="/Images/bw_iphone_frame.png" alt="iPhone frame" fill
+        style={{ objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
+    </div>
+  </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
               <Image src="/Icons/Bookworm icon.png" alt="Bookworm icon" width={64} height={64} style={{ borderRadius: '14px' }} />
