@@ -96,6 +96,7 @@ export default function Home() {
         </nav>
       </div>
 
+      {/* Spacer for fixed navbar */}
       <div style={{ height: '96px' }} />
 
       {/* Hero */}
@@ -190,19 +191,22 @@ export default function Home() {
           </div>
         </div>
 
-{/* Bookworm */}
-<div className="group flex flex-col overflow-hidden cursor-pointer"
-  style={{ backgroundColor: '#184131', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '80px' }}>
-  <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end' }}>
-    <Image src="/Images/bw_image.png" alt="Bookworm" width={900} height={600} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
-    <div style={{ position: 'relative', flex: '1 1 0', marginLeft: '-4px', alignSelf: 'stretch' }}>
-      <div style={{ position: 'absolute', top: '4%', left: '8.5%', right: '8.5%', bottom: '4.2%', borderRadius: '11%/5.5%', overflow: 'hidden', zIndex: 1 }}>
-        <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-      </div>
-      <Image src="/Images/bw_iphone_frame.png" alt="iPhone frame" fill
-        style={{ objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
-    </div>
-  </div>
+        {/* Bookworm */}
+        <div className="group flex flex-col overflow-hidden cursor-pointer"
+          style={{ backgroundColor: '#184131', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '80px' }}>
+          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', minHeight: '460px' }}>
+            <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678} className="object-contain rounded-xl" style={{ width: '74.08%', height: 'auto' }} />
+            <div style={{ position: 'relative', flex: '1 1 0', alignSelf: 'flex-end', height: 0, paddingBottom: '46.52%' }}>
+              <div style={{ position: 'absolute', inset: 0 }}>
+                <div style={{ position: 'absolute', top: '2%', left: '10.3%', right: '10.3%', bottom: '2%', borderRadius: '11%/6.5%', overflow: 'hidden', zIndex: 1 }}>
+                  <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <Image src="/Images/bw_iphone_frame.png" alt="iPhone frame"
+                  width={814} height={1461}
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
+              </div>
+            </div>
+          </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
               <Image src="/Icons/Bookworm icon.png" alt="Bookworm icon" width={64} height={64} style={{ borderRadius: '14px' }} />
@@ -221,9 +225,19 @@ export default function Home() {
 
         {/* Raymond Hair Salon */}
         <div className="group flex flex-col overflow-hidden cursor-pointer"
-          style={{ backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '100px', paddingRight: '100px', gap: '40px' }}>
-          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-            <Image src="/Images/rhs_image.png" alt="Raymond Hair Salon" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
+          style={{ backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '40px' }}>
+          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', minHeight: '460px' }}>
+            <Image src="/Images/rhs_image.png" alt="Raymond Hair Salon" width={1910} height={1226} className="object-contain rounded-xl" style={{ width: '76.19%', height: 'auto' }} />
+            <div style={{ position: 'relative', flex: '1 1 0', alignSelf: 'flex-end', height: 0, paddingBottom: '48.89%' }}>
+              <div style={{ position: 'absolute', inset: 0 }}>
+                <div style={{ position: 'absolute', top: '2%', left: '4.7%', right: '4.7%', bottom: '2%', borderRadius: '11%/6.5%', overflow: 'hidden', zIndex: 1 }}>
+                  <video src="/Images/rhs_mp4.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <Image src="/Images/rhs_iphone_frame.png" alt="iPhone frame"
+                  width={678} height={1392}
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
+              </div>
+            </div>
           </div>
           <div className="flex items-center justify-between" style={{ padding: '16px 20px', marginBottom: '20px' }}>
             <div className="flex items-center gap-4">
