@@ -195,14 +195,14 @@ export default function Home() {
         <div className="group flex flex-col overflow-hidden cursor-pointer"
           style={{ backgroundColor: '#184131', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '80px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', minHeight: '460px' }}>
-            <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678} className="object-contain rounded-xl" style={{ width: '74.08%', height: 'auto' }} />
-            <div style={{ position: 'relative', flex: '1 1 0', alignSelf: 'flex-end', height: 0, paddingBottom: '46.52%' }}>
+            <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678} className="object-contain rounded-xl" style={{ width: '76.59%', height: 'auto' }} />
+            <div style={{ position: 'relative', flex: '1 1 0', alignSelf: 'flex-end', height: 0, paddingBottom: '48.06%' }}>
               <div style={{ position: 'absolute', inset: 0 }}>
-                <div style={{ position: 'absolute', top: '2%', left: '10.3%', right: '10.3%', bottom: '2%', borderRadius: '11%/6.5%', overflow: 'hidden', zIndex: 1 }}>
+                <div style={{ position: 'absolute', top: '2%', left: '4.7%', right: '4.7%', bottom: '2%', borderRadius: '10% 10% 6% 6% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
                   <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <Image src="/Images/bw_iphone_frame.png" alt="iPhone frame"
-                  width={814} height={1461}
+                  width={678} height={1392}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
               </div>
             </div>
@@ -227,13 +227,13 @@ export default function Home() {
         <div className="group flex flex-col overflow-hidden cursor-pointer"
           style={{ backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '60px', paddingBottom: '0px', paddingLeft: '20px', paddingRight: '20px', gap: '40px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', minHeight: '460px' }}>
-            <Image src="/Images/rhs_image.png" alt="Raymond Hair Salon" width={1910} height={1226} className="object-contain rounded-xl" style={{ width: '76.19%', height: 'auto' }} />
-            <div style={{ position: 'relative', flex: '1 1 0', alignSelf: 'flex-end', height: 0, paddingBottom: '48.89%' }}>
+            <Image src="/Images/rhs_image.png" alt="Raymond Hair Salon" width={955} height={617} className="object-contain rounded-xl" style={{ width: '76.06%', height: 'auto' }} />
+            <div style={{ position: 'relative', flex: '1 1 0', alignSelf: 'flex-end', height: 0, paddingBottom: '49.14%' }}>
               <div style={{ position: 'absolute', inset: 0 }}>
-                <div style={{ position: 'absolute', top: '2%', left: '4.7%', right: '4.7%', bottom: '2%', borderRadius: '11%/6.5%', overflow: 'hidden', zIndex: 1 }}>
+                <div style={{ position: 'absolute', top: '2%', left: '4.7%', right: '4.7%', bottom: '2%', borderRadius: '10% 10% 6% 6% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
                   <video src="/Images/rhs_mp4.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
-                <Image src="/Images/rhs_iphone_frame.png" alt="iPhone frame"
+                <Image src="/Images/bw_iphone_frame.png" alt="iPhone frame"
                   width={678} height={1392}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
               </div>
