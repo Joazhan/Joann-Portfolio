@@ -3,9 +3,50 @@
 import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRive } from '@rive-app/react-canvas'
+
+function RiveIntro({ onComplete }) {
+  const [slideUp, setSlideUp] = useState(false)
+  const [hidden, setHidden] = useState(false)
+
+  const { RiveComponent, rive } = useRive({
+    src: '/intro.riv',
+    autoplay: true,
+    onStop: () => {
+      setSlideUp(true)
+      setTimeout(() => setHidden(true), 800)
+      setTimeout(() => onComplete(), 800)
+    },
+  })
+
+  if (hidden) return null
+
+  return (
+    <div style={{
+      position: 'fixed',
+      inset: 0,
+      zIndex: 9999,
+      backgroundColor: 'white',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      transform: slideUp ? 'translateY(-100%)' : 'translateY(0)',
+      transition: 'transform 0.8s cubic-bezier(0.76, 0, 0.24, 1)',
+    }}>
+      <RiveComponent style={{ width: '100%', height: '100%' }} />
+    </div>
+  )
+}
 
 export default function Home() {
+  const [introComplete, setIntroComplete] = useState(false)
   const [navVisible, setNavVisible] = useState(true)
+
+  useEffect(() => {
+    if (sessionStorage.getItem('introPlayed') === 'true') {
+      setIntroComplete(true)
+    }
+  }, [])
   const lastScrollY = useRef(0)
 
   useEffect(() => {
@@ -23,6 +64,8 @@ export default function Home() {
   }, [])
 
   return (
+    <>
+    {!introComplete && <RiveIntro onComplete={() => { sessionStorage.setItem('introPlayed', 'true'); setIntroComplete(true) }} />}
     <main className="min-h-screen bg-white" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
 
       <style>{`
@@ -111,7 +154,7 @@ export default function Home() {
       <section className="flex flex-col" style={{ gap: '32px', marginLeft: '80px', marginRight: '80px' }}>
 
         {/* NutritionNest */}
-        <div className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer"
+        <Link href="/nn" className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer" style={{ textDecoration: 'none' }}
           style={{ paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end' }}>
             <Image src="/Images/NN.png" alt="NutritionNest" width={900} height={600} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
@@ -137,7 +180,7 @@ export default function Home() {
               </svg>
             </div>
           </div>
-        </div>
+        </Link>
 
         {/* Duetti */}
         <div className="group flex flex-col overflow-hidden cursor-pointer"
@@ -301,6 +344,13 @@ export default function Home() {
             style={{ backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ alignItems: 'flex-end', justifyContent: 'center', minHeight: '200px' }}>
+              <Image
+                src="/Images/Phia_cover.png"
+                alt="Phia cover"
+                width={800}
+                height={500}
+                style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+              />
             </div>
             <div className="flex items-center justify-between" style={{ padding: '12px 40px', marginBottom: '10px' }}>
               <div className="flex items-center gap-4">
@@ -326,5 +376,6 @@ export default function Home() {
       <div style={{ height: '80px' }} />
 
     </main>
+    </>
   )
 }

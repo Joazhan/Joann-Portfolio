@@ -84,30 +84,8 @@ export default function About() {
       {/* Main content */}
       <div className="flex flex-col items-center" style={{ paddingTop: '60px', paddingBottom: '120px' }}>
 
-        {/* Shapes above photo */}
-        <div style={{ position: 'relative', width: '300px', height: '120px' }}>
-          {/* Blue diamond - upper left-center */}
-          <div className="shape" style={{ top: '10px', left: '75px', width: '22px', height: '22px', backgroundColor: '#3B82F6', transform: 'rotate(45deg)', borderRadius: '3px' }} />
-          {/* Blue circle - upper right */}
-          <div className="shape" style={{ top: '5px', left: '185px', width: '22px', height: '22px', backgroundColor: '#3B82F6', borderRadius: '50%' }} />
-          {/* Cyan circle - left */}
-          <div className="shape" style={{ top: '55px', left: '18px', width: '18px', height: '18px', backgroundColor: '#67E8F9', borderRadius: '50%' }} />
-          {/* Green star - center */}
-          <div className="shape" style={{ top: '60px', left: '130px', width: '16px', height: '16px', backgroundColor: '#16A34A', clipPath: 'polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)' }} />
-          {/* Green triangle - right */}
-          <div className="shape" style={{ top: '55px', left: '218px', width: '0', height: '0', borderLeft: '10px solid transparent', borderRight: '10px solid transparent', borderBottom: '17px solid #22C55E' }} />
-          {/* Purple triangle - lower left */}
-          <div className="shape" style={{ top: '88px', left: '72px', width: '0', height: '0', borderLeft: '7px solid transparent', borderRight: '7px solid transparent', borderBottom: '12px solid #A855F7' }} />
-          {/* Red dot - lower center */}
-          <div className="shape" style={{ top: '90px', left: '148px', width: '11px', height: '11px', backgroundColor: '#EF4444', borderRadius: '50%' }} />
-          {/* Pink star - lower right */}
-          <div className="shape" style={{ top: '95px', left: '218px', width: '14px', height: '14px', backgroundColor: '#EC4899', clipPath: 'polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)' }} />
-          {/* Orange star - lower far left */}
-          <div className="shape" style={{ top: '95px', left: '10px', width: '14px', height: '14px', backgroundColor: '#F97316', clipPath: 'polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)' }} />
-        </div>
-
-        {/* Circular photo */}
-        <div style={{ width: '240px', height: '240px', borderRadius: '50%', overflow: 'hidden', marginBottom: '32px' }}>
+        {/* Circular photo with shapes overlaid on top portion */}
+        <div style={{ position: 'relative', width: '240px', height: '240px', borderRadius: '50%', overflow: 'hidden', marginBottom: '32px' }}>
           <Image
             src="/Images/profile_image.png"
             alt="Joann Zhang"
