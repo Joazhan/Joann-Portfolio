@@ -73,6 +73,17 @@ export default function Lasertaz() {
           text-align: center;
           border: 1px solid #2a2a2a;
         }
+        @media (max-width: 767px) {
+          .nav-wrapper { padding: 12px 16px 0 !important; }
+          section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+          footer { padding: 32px 20px !important; }
+          .page-hero { padding-top: 88px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
+          .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .two-col-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          h1 { font-size: 36px !important; line-height: 44px !important; }
+          h2, h3 { font-size: 26px !important; line-height: 34px !important; }
+        }
       `}</style>
 
       {/* Navbar */}
@@ -91,14 +102,14 @@ export default function Lasertaz() {
           <div className="flex items-center gap-6">
             <Link href="/" style={{ fontSize: '14px', lineHeight: '18px', color: '#9ca3af' }} className="hover:text-white">Work</Link>
             <Link href="/about" style={{ fontSize: '14px', lineHeight: '18px', color: '#9ca3af' }} className="hover:text-white">About</Link>
-            <a href="#" style={{ fontSize: '14px', lineHeight: '18px', color: '#9ca3af' }} className="hover:text-white">Resume</a>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', lineHeight: '18px', color: '#9ca3af' }} className="hover:text-white">Resume</a>
             <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '18px', color: '#9ca3af' }} className="hover:text-white" target="_blank" rel="noopener noreferrer">Contact</a>
           </div>
         </nav>
       </div>
 
       {/* Hero */}
-      <div style={{ paddingTop: '120px', paddingBottom: '0px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '80px', paddingRight: '80px' }}>
+      <div className="page-hero" style={{ paddingTop: '120px', paddingBottom: '0px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '80px', paddingRight: '80px' }}>
         <Image
           src="/Images/Lasertaz image.png"
           alt="Lasertaz app screens"
@@ -110,7 +121,7 @@ export default function Lasertaz() {
 
       {/* Title + Overview + Sidebar */}
       <section style={{ padding: '80px 40px' }}>
-        <div className="content-wide" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start' }}>
+        <div className="content-wide overview-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div>
               <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '600', letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '16px' }}>
@@ -231,7 +242,7 @@ export default function Lasertaz() {
           <p style={{ fontSize: '16px', fontWeight: '500', color: '#ffffff', marginBottom: '8px' }}>Get in touch!</p>
           <div className="flex gap-4" style={{ marginBottom: '24px' }}>
             <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', color: '#9ca3af' }} className="hover:text-white">Email ↗</a>
-            <a href="#" style={{ fontSize: '14px', color: '#9ca3af' }} className="hover:text-white">Resume ↗</a>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: '#9ca3af' }} className="hover:text-white">Resume ↗</a>
           </div>
           <p style={{ fontSize: '13px', color: '#6b7280' }}>© Joann Zhang</p>
         </div>

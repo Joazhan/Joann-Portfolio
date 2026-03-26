@@ -2,6 +2,7 @@ import { Geist } from "next/font/google";
 import "./globals.css";
 import { Agentation } from "agentation";
 import CustomCursor from "./components/CustomCursor";
+import ChatWidget from "./components/ChatWidget";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
       <body className={geist.className}>
         <CustomCursor />
         {children}
+        <ChatWidget />
         {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
     </html>

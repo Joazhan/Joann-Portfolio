@@ -87,6 +87,17 @@ export default function RHS() {
           font-style: italic;
           text-align: center;
         }
+        @media (max-width: 767px) {
+          .nav-wrapper { padding: 12px 16px 0 !important; }
+          section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+          footer { padding: 32px 20px !important; }
+          .page-hero { padding-top: 88px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
+          .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .two-col-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          h1 { font-size: 36px !important; line-height: 44px !important; }
+          h2, h3 { font-size: 26px !important; line-height: 34px !important; }
+        }
       `}</style>
 
       {/* Navbar */}
@@ -105,14 +116,14 @@ export default function RHS() {
           <div className="flex items-center gap-6">
             <Link href="/" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</Link>
             <Link href="/about" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">About</Link>
-            <a href="#" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
             <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
           </div>
         </nav>
       </div>
 
       {/* Hero */}
-      <div style={{ backgroundColor: '#f1f5f9', paddingTop: '120px', paddingBottom: '0px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '48px', paddingRight: '48px' }}>
+      <div className="page-hero" style={{ backgroundColor: '#f1f5f9', paddingTop: '120px', paddingBottom: '0px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '48px', paddingRight: '48px' }}>
         <Image
           src="/Images/rhs_image (3).png"
           alt="Raymond Hair Salon app screens"
@@ -124,7 +135,7 @@ export default function RHS() {
 
       {/* Title + Overview + Sidebar */}
       <section style={{ padding: '80px 40px' }}>
-        <div className="content-wide" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start' }}>
+        <div className="content-wide overview-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div>
               <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '600', letterSpacing: '-0.02em', color: '#212121', marginBottom: '16px' }}>
@@ -176,7 +187,7 @@ export default function RHS() {
           <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             My solution for this challenge is to build an application that allows Raymond to interact with his customers while automating scheduling while creating a platform for him to better serve his target audience.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
             {[
               { title: 'Simple to Use', desc: 'Approachable design that any age group can pick up and use immediately.' },
               { title: 'Streamlined Booking', desc: 'Clear scheduling flow with minimal steps from selection to confirmation.' },
@@ -290,7 +301,7 @@ export default function RHS() {
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '40px' }}>
             Clear flows, cohesive experience
           </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '48px' }}>
+          <div className="two-col-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '48px' }}>
             <div className="feature-card">
               <p style={{ fontSize: '15px', fontWeight: '600', color: '#212121', marginBottom: '8px' }}>Appointment Selection</p>
               <p style={{ fontSize: '14px', lineHeight: '22px', color: '#6b7280' }}>Clear and straightforward view of available date and time.</p>
@@ -348,7 +359,7 @@ export default function RHS() {
           <p style={{ fontSize: '16px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
           <div className="flex gap-4" style={{ marginBottom: '24px' }}>
             <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
-            <a href="#" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
           </div>
           <p style={{ fontSize: '13px', color: '#9ca3af' }}>© Joann Zhang</p>
         </div>

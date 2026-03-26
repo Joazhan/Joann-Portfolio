@@ -79,6 +79,17 @@ export default function NutritionNest() {
           font-size: 14px;
           color: #374151;
         }
+        @media (max-width: 767px) {
+          .nav-wrapper { padding: 12px 16px 0 !important; }
+          section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+          footer { padding: 32px 20px !important; }
+          .page-hero { padding-top: 88px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
+          .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .two-col-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          h1 { font-size: 36px !important; line-height: 44px !important; }
+          h2, h3 { font-size: 26px !important; line-height: 34px !important; }
+        }
       `}</style>
 
       {/* Navbar */}
@@ -97,14 +108,14 @@ export default function NutritionNest() {
           <div className="flex items-center gap-6">
             <Link href="/" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</Link>
             <Link href="/about" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">About</Link>
-            <a href="#" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
             <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
           </div>
         </nav>
       </div>
 
       {/* Hero — phone mockups */}
-      <div style={{ backgroundColor: '#f2f4f6', paddingTop: '120px', paddingBottom: '0px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden' }}>
+      <div className="page-hero" style={{ backgroundColor: '#f2f4f6', paddingTop: '120px', paddingBottom: '0px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden' }}>
         <Image
           src="/Images/NN.png"
           alt="NutritionNest app screens"
@@ -116,7 +127,7 @@ export default function NutritionNest() {
 
       {/* Title + Overview + sidebar — all in one grid */}
       <section style={{ padding: '80px 40px' }}>
-        <div className="content-wide" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start' }}>
+        <div className="content-wide overview-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div>
               <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '600', letterSpacing: '-0.02em', color: '#212121', marginBottom: '16px' }}>
@@ -226,7 +237,7 @@ export default function NutritionNest() {
           </p>
           <a href="#" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none', display: 'inline-block', marginBottom: '48px' }} className="hover:text-black">View affinity map ↗</a>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '40px', marginBottom: '48px' }}>
+          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '40px', marginBottom: '48px' }}>
             <div style={{ textAlign: 'center' }}>
               <p style={{ fontSize: '48px', fontWeight: '700', color: '#212121', letterSpacing: '-0.02em', marginBottom: '8px' }}>70%</p>
               <p style={{ fontSize: '14px', color: '#6b7280' }}>Prefers MyFitnessPal</p>
@@ -257,7 +268,7 @@ export default function NutritionNest() {
           <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '48px' }}>
             Based on our feedback from users, we learned that users struggled to stay motivated with meal logs due to the lack of personalization. Our proposed solution is to focus on features that consisted of customization, engagement, and AI personalization.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
             {[
               { title: 'Customizable', desc: 'Personalized experiences tailored to individual goals and preferences.' },
               { title: 'Engaging', desc: 'Drive motivation and consistency through meaningful interaction.' },
@@ -334,7 +345,7 @@ export default function NutritionNest() {
             <a href="#" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View design file ↗</a>
             <a href="#" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View prototype ↗</a>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '24px', marginBottom: '60px' }}>
+          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '24px', marginBottom: '60px' }}>
             {[
               { title: 'Customizable', desc: 'Personalized experiences tailored to individual goals and preferences.' },
               { title: 'Engaging', desc: 'Drive motivation and consistency through meaningful interaction.' },
@@ -379,7 +390,7 @@ export default function NutritionNest() {
           <p style={{ fontSize: '16px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
           <div className="flex gap-4" style={{ marginBottom: '24px' }}>
             <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
-            <a href="#" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
           </div>
           <p style={{ fontSize: '13px', color: '#9ca3af' }}>© Joann Zhang</p>
         </div>

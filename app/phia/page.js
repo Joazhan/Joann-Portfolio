@@ -73,6 +73,17 @@ export default function Phia() {
           text-align: center;
           border: 1px solid #e5e7eb;
         }
+        @media (max-width: 767px) {
+          .nav-wrapper { padding: 12px 16px 0 !important; }
+          section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+          footer { padding: 32px 20px !important; }
+          .page-hero { padding-top: 88px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
+          .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .two-col-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          h1 { font-size: 36px !important; line-height: 44px !important; }
+          h2, h3 { font-size: 26px !important; line-height: 34px !important; }
+        }
       `}</style>
 
       {/* Navbar */}
@@ -91,14 +102,14 @@ export default function Phia() {
           <div className="flex items-center gap-6">
             <Link href="/" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">Work</Link>
             <Link href="/about" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">About</Link>
-            <a href="#" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">Resume</a>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">Resume</a>
             <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
           </div>
         </nav>
       </div>
 
       {/* Hero */}
-      <section style={{ paddingTop: '120px', paddingBottom: '80px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
+      <section className="page-hero" style={{ paddingTop: '120px', paddingBottom: '80px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
         <div className="content-wide">
           <p className={`section-label ${syne.className}`} style={{ marginBottom: '16px' }}>Concept · Redesign</p>
           <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '600', letterSpacing: '-0.02em', color: '#212121', marginBottom: '16px' }}>
@@ -133,7 +144,7 @@ export default function Phia() {
 
       {/* Overview */}
       <section style={{ padding: '80px 40px' }}>
-        <div className="content-wide" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start' }}>
+        <div className="content-wide overview-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start' }}>
           <div>
             <p className={`section-label ${syne.className}`}>Overview</p>
             <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -236,7 +247,7 @@ export default function Phia() {
           <p style={{ fontSize: '16px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
           <div className="flex gap-4" style={{ marginBottom: '24px' }}>
             <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
-            <a href="#" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
           </div>
           <p style={{ fontSize: '13px', color: '#9ca3af' }}>© Joann Zhang</p>
         </div>
