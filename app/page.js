@@ -1,26 +1,31 @@
 'use client'
-
 import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRive } from '@rive-app/react-canvas'
-
 function RiveIntro({ onComplete }) {
   const [slideUp, setSlideUp] = useState(false)
   const [hidden, setHidden] = useState(false)
-
   const { RiveComponent, rive } = useRive({
     src: '/intro.riv',
     autoplay: true,
     onStop: () => {
       setSlideUp(true)
-      setTimeout(() => setHidden(true), 800)
-      setTimeout(() => onComplete(), 800)
+      setTimeout(() => setHidden(true), 500)
+      setTimeout(() => onComplete(), 500)
     },
   })
-
+  useEffect(() => {
+    if (!rive) return
+    try {
+      if (typeof rive.setSpeed === 'function') rive.setSpeed(3)
+      else if (typeof rive.playbackSpeed !== 'undefined') rive.playbackSpeed = 3
+      else if (rive.animator?.animations?.length) {
+        rive.animator.animations.forEach(a => { if (a.instance) a.instance.speed = 3 })
+      }
+    } catch (e) {}
+  }, [rive])
   if (hidden) return null
-
   return (
     <div style={{
       position: 'fixed',
@@ -30,25 +35,23 @@ function RiveIntro({ onComplete }) {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      paddingBottom: '15%',
       transform: slideUp ? 'translateY(-100%)' : 'translateY(0)',
-      transition: 'transform 0.8s cubic-bezier(0.76, 0, 0.24, 1)',
+      transition: 'transform 0.5s cubic-bezier(0.76, 0, 0.24, 1)',
     }}>
-      <RiveComponent style={{ width: '100%', height: '100%' }} />
+      <RiveComponent style={{ width: '90vw', height: '90vh' }} />
     </div>
   )
 }
-
 export default function Home() {
   const [introComplete, setIntroComplete] = useState(false)
   const [navVisible, setNavVisible] = useState(true)
-
   useEffect(() => {
     if (sessionStorage.getItem('introPlayed') === 'true') {
       setIntroComplete(true)
     }
   }, [])
   const lastScrollY = useRef(0)
-
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
@@ -62,12 +65,10 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
   return (
     <>
     {!introComplete && <RiveIntro onComplete={() => { sessionStorage.setItem('introPlayed', 'true'); setIntroComplete(true) }} />}
-    <main className="min-h-screen bg-white" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
-
+    <main className="min-h-screen bg-white" style={{ paddingLeft: '80px', paddingRight: '80px', cursor: 'none' }}>
       <style>{`
         .arrow-btn {
           width: 44px;
@@ -116,7 +117,6 @@ export default function Home() {
           pointer-events: none;
         }
       `}</style>
-
       {/* Navbar */}
       <div className={`nav-wrapper${navVisible ? '' : ' hidden'}`}>
         <nav className="flex items-center justify-between px-6 py-3 w-full"
@@ -138,10 +138,8 @@ export default function Home() {
           </div>
         </nav>
       </div>
-
       {/* Spacer for fixed navbar */}
       <div style={{ height: '96px' }} />
-
       {/* Hero */}
       <section className="flex justify-center pt-16 pb-10">
         <p style={{ fontSize: '28px', lineHeight: '36px', letterSpacing: '-0.03em', color: 'black', maxWidth: '1000px', width: '100%', textAlign: 'left' }}>
@@ -149,13 +147,11 @@ export default function Home() {
           <span className="text-gray-400">focused on creating clear, high-quality experiences.</span>
         </p>
       </section>
-
       {/* Project Cards */}
       <section className="flex flex-col" style={{ gap: '32px', marginLeft: '80px', marginRight: '80px' }}>
-
         {/* NutritionNest */}
-        <Link href="/nn" className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer" style={{ textDecoration: 'none' }}
-          style={{ paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
+        <Link href="/nn" className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer"
+          style={{ textDecoration: 'none', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end' }}>
             <Image src="/Images/NN.png" alt="NutritionNest" width={900} height={600} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
             <div style={{ position: 'relative', flex: '1 1 0', marginLeft: '-4px', alignSelf: 'stretch' }}>
@@ -181,10 +177,9 @@ export default function Home() {
             </div>
           </div>
         </Link>
-
         {/* Duetti */}
-        <div className="group flex flex-col overflow-hidden cursor-pointer"
-          style={{ backgroundColor: '#d9f99d', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+        <Link href="/duetti" className="group flex flex-col overflow-hidden cursor-pointer"
+          style={{ textDecoration: 'none', backgroundColor: '#d9f99d', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
             style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
             <div style={{ position: 'relative', width: '73%', flexShrink: 0 }}>
@@ -210,11 +205,10 @@ export default function Home() {
               </svg>
             </div>
           </div>
-        </div>
-
+        </Link>
         {/* Lasertaz */}
-        <div className="group flex flex-col overflow-hidden cursor-pointer"
-          style={{ backgroundColor: '#0a0a0a', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '80px', paddingRight: '80px', gap: '10px' }}>
+        <Link href="/lasertaz" className="group flex flex-col overflow-hidden cursor-pointer"
+          style={{ textDecoration: 'none', backgroundColor: '#0a0a0a', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '80px', paddingRight: '80px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
             <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
           </div>
@@ -232,14 +226,16 @@ export default function Home() {
               </svg>
             </div>
           </div>
-        </div>
-
+        </Link>
         {/* Bookworm */}
-        <div className="group flex flex-col overflow-hidden cursor-pointer"
-          style={{ backgroundColor: '#184131', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
+        <Link href="/bookworm" className="group flex flex-col overflow-hidden cursor-pointer"
+          style={{ textDecoration: 'none', backgroundColor: '#184131', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '24px', paddingRight: '24px', gap: '20px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', minHeight: '144px' }}>
-            <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678} className="object-contain rounded-xl" style={{ width: '76.59%', height: 'auto' }} />
-            <div style={{ position: 'relative', flex: '1 1 0', alignSelf: 'flex-end', height: 0, paddingBottom: '48.06%' }}>
+            <div style={{ flex: '0 0 75%', height: 0, paddingBottom: '48.09%', position: 'relative', overflow: 'hidden', borderRadius: '12px' }}>
+              <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678}
+                style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: 'auto' }} />
+            </div>
+            <div style={{ position: 'relative', flex: '0 0 25%', alignSelf: 'flex-end', height: 0, paddingBottom: '48.09%' }}>
               <div style={{ position: 'absolute', inset: 0 }}>
                 <div style={{ position: 'absolute', top: '2%', left: '4.7%', right: '4.7%', bottom: '2%', borderRadius: '10% 10% 6% 6% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
                   <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -264,20 +260,19 @@ export default function Home() {
               </svg>
             </div>
           </div>
-        </div>
-
+        </Link>
         {/* Raymond Hair Salon */}
-        <div className="group flex flex-col overflow-hidden cursor-pointer"
-          style={{ backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
-          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', minHeight: '144px' }}>
-            <Image src="/Images/rhs_image.png" alt="Raymond Hair Salon" width={955} height={617} className="object-contain rounded-xl" style={{ width: '76.06%', height: 'auto' }} />
-            <div style={{ position: 'relative', flex: '1 1 0', alignSelf: 'flex-end', height: 0, paddingBottom: '49.14%' }}>
+        <Link href="/rhs" className="group flex flex-col overflow-hidden cursor-pointer"
+          style={{ textDecoration: 'none', backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
+            <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} className="object-contain rounded-xl" style={{ width: '76.06%', height: 'auto' }} />
+            <div style={{ position: 'relative', flex: '1 1 0', alignSelf: 'flex-start', height: 0, paddingBottom: '48.4%', marginTop: '1.5%' }}>
               <div style={{ position: 'absolute', inset: 0 }}>
-                <div style={{ position: 'absolute', top: '2%', left: '4.7%', right: '4.7%', bottom: '2%', borderRadius: '10% 10% 6% 6% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
+                <div style={{ position: 'absolute', top: '2%', left: '7%', right: '4%', bottom: '2%', borderRadius: '4% 4% 4% 4% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
                   <video src="/Images/rhs_mp4.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
-                <Image src="/Images/bw_iphone_frame.png" alt="iPhone frame"
-                  width={678} height={1392}
+                <Image src="/Images/rhs_iphone_frame.png" alt="iPhone frame"
+                  width={750} height={1392}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
               </div>
             </div>
@@ -296,10 +291,8 @@ export default function Home() {
               </svg>
             </div>
           </div>
-        </div>
-
+        </Link>
       </section>
-
       {/* Concepts Section */}
       <div style={{ marginTop: '80px', marginLeft: '-80px', marginRight: '-80px', backgroundColor: '#f3f4f6', padding: '80px 80px' }}>
         <div style={{ marginBottom: '40px', marginLeft: '80px', marginRight: '80px' }}>
@@ -311,12 +304,10 @@ export default function Home() {
             This led me to prototype ideas and explore them hands-on.
           </p>
         </div>
-
         <div className="flex flex-col" style={{ gap: '20px', marginLeft: '80px', marginRight: '80px' }}>
-
           {/* Kalshi */}
-          <div className="group flex flex-col overflow-hidden cursor-pointer"
-            style={{ backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          <Link href="/kalshi" className="group flex flex-col overflow-hidden cursor-pointer"
+            style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
               <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
@@ -337,22 +328,21 @@ export default function Home() {
                 </svg>
               </div>
             </div>
-          </div>
-
+          </Link>
           {/* Phia */}
-          <div className="group flex flex-col overflow-hidden cursor-pointer"
-            style={{ backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
-            <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
-              style={{ alignItems: 'flex-end', justifyContent: 'center', minHeight: '200px' }}>
+          <Link href="/phia" className="group flex flex-col overflow-hidden cursor-pointer"
+            style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+            <div className="w-full transition-all duration-500 group-hover:-translate-y-4"
+              style={{ overflow: 'hidden', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.1)' }}>
               <Image
                 src="/Images/Phia_cover.png"
                 alt="Phia cover"
-                width={800}
-                height={500}
-                style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+                width={1400}
+                height={800}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
               />
             </div>
-            <div className="flex items-center justify-between" style={{ padding: '12px 40px', marginBottom: '10px' }}>
+            <div className="flex items-center justify-between" style={{ padding: '12px 48px', marginBottom: '10px' }}>
               <div className="flex items-center gap-4">
                 <div style={{ width: '64px', height: '64px', borderRadius: '14px', backgroundColor: '#e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <span style={{ fontSize: '24px', fontWeight: '700', color: '#212121' }}>P</span>
@@ -368,13 +358,10 @@ export default function Home() {
                 </svg>
               </div>
             </div>
-          </div>
-
+          </Link>
         </div>
       </div>
-
       <div style={{ height: '80px' }} />
-
     </main>
     </>
   )
