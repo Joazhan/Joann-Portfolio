@@ -372,7 +372,7 @@ export default function Home() {
             This led me to prototype ideas and explore them hands-on.
           </p>
         </div>
-        <div className="flex flex-col" style={{ gap: '20px' }}>
+        <div className="flex flex-col" style={{ gap: '20px', marginLeft: '80px', marginRight: '80px' }}>
           {/* Kalshi */}
           <Link href="/kalshi" className="group flex flex-col overflow-hidden cursor-pointer project-card"
             style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
@@ -382,9 +382,7 @@ export default function Home() {
             </div>
             <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
               <div className="flex items-center gap-4">
-                <div className="card-icon" style={{ width: '64px', height: '64px', borderRadius: '14px', backgroundColor: '#e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span style={{ fontSize: '24px', fontWeight: '700', color: '#212121' }}>K</span>
-                </div>
+                <Image src="/Icons/Kalshi_icon.png" alt="Kalshi icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-1">
                   <span className="card-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Kalshi</span>
                   <span className="card-desc" style={{ fontSize: '18px', lineHeight: '20px', color: '#6b7280' }}>2025 | Desktop extension</span>
@@ -412,9 +410,7 @@ export default function Home() {
             </div>
             <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
               <div className="flex items-center gap-4">
-                <div className="card-icon" style={{ width: '64px', height: '64px', borderRadius: '14px', backgroundColor: '#e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span style={{ fontSize: '24px', fontWeight: '700', color: '#212121' }}>P</span>
-                </div>
+                <Image src="/Icons/Phia_icon.png" alt="Phia icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-1">
                   <span className="card-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Phia</span>
                   <span className="card-desc" style={{ fontSize: '18px', lineHeight: '20px', color: '#6b7280' }}>2025 | Desktop extension | Redesign</span>

@@ -108,8 +108,25 @@ export default function Phia() {
         </nav>
       </div>
 
-      {/* Hero */}
-      <section className="page-hero" style={{ paddingTop: '120px', paddingBottom: '80px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
+      {/* Cover image — full width in Apple Pro Display frame */}
+      <section style={{ paddingTop: '120px', paddingBottom: '0px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
+        <div style={{ position: 'relative' }}>
+          <div style={{ position: 'absolute', top: '2.2%', left: '1.4%', right: '1.4%', bottom: '24.9%', overflow: 'hidden', zIndex: 1 }}>
+            <Image
+              src="/Images/Phia_cover.png"
+              alt="Phia browser extension"
+              width={1400}
+              height={800}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          </div>
+          <Image src="/Images/Apple Pro Display.png" alt="Apple Pro Display" width={1200} height={800}
+            style={{ position: 'relative', width: '100%', height: 'auto', display: 'block', zIndex: 10 }} />
+        </div>
+      </section>
+
+      {/* Hero text — below image */}
+      <section className="page-hero" style={{ paddingTop: '80px', paddingBottom: '80px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
         <div className="content-wide">
           <p className={`section-label ${syne.className}`} style={{ marginBottom: '16px' }}>Concept · Redesign</p>
           <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '600', letterSpacing: '-0.02em', color: '#212121', marginBottom: '16px' }}>
@@ -126,19 +143,6 @@ export default function Phia() {
               View design file ↗
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* Cover image */}
-      <section style={{ padding: '0px 80px 80px', backgroundColor: '#f8fafc' }}>
-        <div className="content-wide">
-          <Image
-            src="/Images/Phia_cover.png"
-            alt="Phia browser extension"
-            width={1400}
-            height={800}
-            style={{ width: '100%', height: 'auto', borderRadius: '20px', border: '1px solid rgba(0,0,0,0.06)' }}
-          />
         </div>
       </section>
 
