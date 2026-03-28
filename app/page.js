@@ -66,11 +66,13 @@ export default function Home() {
         }
       }
       lastScrollY.current = currentScrollY
-      // Shape parallax
+      // Shape parallax + fade
       if (heroRef.current) {
+        const opacity = Math.max(0, 1 - currentScrollY / 300)
         heroRef.current.querySelectorAll('[data-parallax]').forEach(el => {
           const speed = parseFloat(el.dataset.parallax)
           el.style.transform = `translateY(${currentScrollY * speed}px)`
+          el.style.opacity = opacity
         })
       }
       // NN card parallax
@@ -126,7 +128,7 @@ export default function Home() {
           top: 0;
           left: 0;
           right: 0;
-          z-index: 100;
+          z-index: 200;
           padding: 24px 80px 0;
           transition: opacity 0.4s ease, transform 0.4s ease;
         }
@@ -177,34 +179,34 @@ export default function Home() {
       {/* Spacer for fixed navbar */}
       <div style={{ height: '96px' }} />
       {/* Hero */}
-      <section ref={heroRef} className="hero-section" style={{ position: 'relative', overflow: 'visible', margin: '0 -80px', padding: '64px 80px 60px' }}>
-        {/* Floating shapes — all corners 10px radius, 60% iOS smooth bezier */}
-        {/* Green right-pointing triangle — top left */}
+      <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, overflow: 'hidden', margin: '0 -80px', padding: '120px 80px 60px' }}>
+        {/* Floating shapes */}
+        {/* Green sharp triangle — top left */}
         <svg data-parallax="0.28" className="hero-shape" style={{ position: 'absolute', top: '12%', left: '3.5%', pointerEvents: 'none' }} width="100" height="100" viewBox="0 0 100 100">
-          <path d="M 0,15 C 0,6 5.37,2.69 13.41,6.71 L 86.59,43.29 C 94.63,47.31 94.63,52.69 86.59,56.71 L 13.41,93.29 C 5.37,97.31 0,94 0,85 Z" fill="#22c55e"/>
+          <path d="M 0 0 L 100 50 L 0 100 Z" fill="#22c55e"/>
         </svg>
-        {/* Orange star — top center */}
-        <svg data-parallax="0.42" className="hero-shape" style={{ position: 'absolute', top: '-10px', left: '42%', pointerEvents: 'none' }} width="80" height="80" viewBox="0 0 100 100">
-          <path d="M 39,35 L 42.50,23.85 C 47.00,9.54 53.00,9.54 57.50,23.85 L 61,35 L 72.56,34.79 C 87.56,34.65 89.41,40.35 77.19,49.04 L 68,57 L 71.44,66.75 C 76.20,80.97 71.36,84.51 59.33,75.55 L 50,70 L 40.69,75.55 C 28.65,84.49 23.75,80.94 28.58,66.75 L 32,57 L 22.83,49.04 C 10.59,40.35 12.45,34.61 27.45,34.80 Z" fill="#f97316"/>
+        {/* Orange organic star — top center */}
+        <svg data-parallax="0.42" className="hero-shape" style={{ position: 'absolute', top: '8px', left: '42%', pointerEvents: 'none' }} width="90" height="86" viewBox="0 0 189 181">
+          <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="#f97316"/>
         </svg>
         {/* Green circle — top right */}
         <div data-parallax="0.18" className="hero-shape" style={{ position: 'absolute', top: '5px', right: '13%', width: '68px', height: '68px', borderRadius: '50%', backgroundColor: '#22c55e', pointerEvents: 'none' }} />
         {/* Red circle — far right edge */}
-        <div data-parallax="0.32" className="hero-shape" style={{ position: 'absolute', top: '30%', right: '-18px', width: '54px', height: '54px', borderRadius: '50%', backgroundColor: '#ef4444', pointerEvents: 'none' }} />
-        {/* Purple right-pointing triangle — lower right */}
+        <div data-parallax="0.32" className="hero-shape" style={{ position: 'absolute', top: '30%', right: '0px', width: '54px', height: '54px', borderRadius: '50%', backgroundColor: '#ef4444', pointerEvents: 'none' }} />
+        {/* Purple sharp triangle — lower right */}
         <svg data-parallax="0.22" className="hero-shape" style={{ position: 'absolute', bottom: '8%', right: '5%', pointerEvents: 'none' }} width="88" height="88" viewBox="0 0 100 100">
-          <path d="M 0,15 C 0,6 5.37,2.69 13.41,6.71 L 86.59,43.29 C 94.63,47.31 94.63,52.69 86.59,56.71 L 13.41,93.29 C 5.37,97.31 0,94 0,85 Z" fill="#818cf8"/>
+          <path d="M 0 0 L 100 50 L 0 100 Z" fill="#818cf8"/>
         </svg>
-        {/* Pink star — bottom left */}
-        <svg data-parallax="0.36" className="hero-shape" style={{ position: 'absolute', bottom: '-5px', left: '6%', pointerEvents: 'none' }} width="92" height="92" viewBox="0 0 100 100">
-          <path d="M 39,35 L 42.50,23.85 C 47.00,9.54 53.00,9.54 57.50,23.85 L 61,35 L 72.56,34.79 C 87.56,34.65 89.41,40.35 77.19,49.04 L 68,57 L 71.44,66.75 C 76.20,80.97 71.36,84.51 59.33,75.55 L 50,70 L 40.69,75.55 C 28.65,84.49 23.75,80.94 28.58,66.75 L 32,57 L 22.83,49.04 C 10.59,40.35 12.45,34.61 27.45,34.80 Z" fill="#f472b6"/>
+        {/* Pink organic star — bottom left */}
+        <svg data-parallax="0.36" className="hero-shape" style={{ position: 'absolute', bottom: '0px', left: '6%', pointerEvents: 'none' }} width="96" height="92" viewBox="0 0 189 181">
+          <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="#f472b6"/>
         </svg>
-        {/* Blue star — bottom center-right */}
-        <svg data-parallax="0.38" className="hero-shape" style={{ position: 'absolute', bottom: '-5px', left: '57%', pointerEvents: 'none' }} width="64" height="64" viewBox="0 0 100 100">
-          <path d="M 39,35 L 42.50,23.85 C 47.00,9.54 53.00,9.54 57.50,23.85 L 61,35 L 72.56,34.79 C 87.56,34.65 89.41,40.35 77.19,49.04 L 68,57 L 71.44,66.75 C 76.20,80.97 71.36,84.51 59.33,75.55 L 50,70 L 40.69,75.55 C 28.65,84.49 23.75,80.94 28.58,66.75 L 32,57 L 22.83,49.04 C 10.59,40.35 12.45,34.61 27.45,34.80 Z" fill="#3b82f6"/>
+        {/* Blue organic star — bottom center-right */}
+        <svg data-parallax="0.38" className="hero-shape" style={{ position: 'absolute', bottom: '0px', left: '57%', pointerEvents: 'none' }} width="68" height="65" viewBox="0 0 189 181">
+          <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="#3b82f6"/>
         </svg>
         {/* Hero text */}
-        <div className="flex justify-center" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
+        <div className="flex justify-center" style={{ position: 'relative', zIndex: 1, paddingTop: '40px', paddingBottom: '40px' }}>
           <p className="hero-text-p" style={{ fontSize: '28px', lineHeight: '36px', letterSpacing: '-0.03em', color: 'black', maxWidth: '1000px', width: '100%', textAlign: 'left' }}>
             SF-based product designer rooted in both visual design and product thinking,{" "}
             <span className="text-gray-400">focused on creating clear, high-quality experiences.</span>
@@ -212,7 +214,7 @@ export default function Home() {
         </div>
       </section>
       {/* Project Cards */}
-      <section className="flex flex-col cards-section" style={{ gap: '32px', marginLeft: '80px', marginRight: '80px' }}>
+      <section className="flex flex-col cards-section" style={{ position: 'relative', zIndex: 1, gap: '32px', marginLeft: '80px', marginRight: '80px' }}>
         {/* NutritionNest */}
         <Link href="/nn" className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer project-card"
           style={{ textDecoration: 'none', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
@@ -430,7 +432,7 @@ export default function Home() {
       {/* Footer */}
       <footer style={{ padding: '4px 0 40px', marginTop: '80px' }}>
         <p style={{ fontSize: '16px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
-        <div className="flex gap-4" style={{ marginBottom: '24px' }}>
+        <div className="flex gap-4" style={{ marginBottom: '8px' }}>
           <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
           <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
         </div>

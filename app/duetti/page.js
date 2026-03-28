@@ -108,15 +108,8 @@ export default function Duetti() {
       </div>
 
       {/* Hero */}
-      <div className="page-hero" style={{ backgroundColor: '#d9f99d', paddingTop: '120px', paddingBottom: '0px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', gap: '16px', paddingLeft: '80px', paddingRight: '80px' }}>
-        <div style={{ position: 'relative', width: '73%', flexShrink: 0 }}>
-          <div style={{ position: 'absolute', top: '2.2%', left: '1.4%', right: '1.4%', bottom: '24.9%', overflow: 'hidden', zIndex: 1 }}>
-            <video src="/Images/Duetti video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-          </div>
-          <Image src="/Images/Apple Pro Display.png" alt="Duetti on desktop" width={1200} height={800} style={{ position: 'relative', width: '100%', height: 'auto', display: 'block', zIndex: 10 }} />
-        </div>
-        <Image src="/Images/Duetti iphone frame.png" alt="Duetti on iPhone" width={400} height={600}
-          style={{ width: '15%', height: 'auto', objectFit: 'contain', alignSelf: 'flex-end', position: 'relative', zIndex: 20 }} />
+      <div className="page-hero" style={{ position: 'relative', backgroundColor: '#d9f99d', height: '90vh', overflow: 'hidden' }}>
+        <video src="/Images/Duetti video.mp4" autoPlay loop muted playsInline style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
       </div>
 
       {/* Title + Overview + Sidebar */}
@@ -156,10 +149,10 @@ export default function Duetti() {
             <div>
               <p className={`section-label ${syne.className}`}>Links</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <a href="https://report.duetti.co" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">Live now ↗</a>
+                <a href="https://report.duetti.co/#1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">Live now ↗</a>
                 <a href="https://www.prnewswire.com/news-releases/duettis-2024-music-economics-report-finds-industry-wide-per-stream-rates-for-independent-artists-are-finally-stabilizing-following-years-of-decline-302358211.html" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">PR Newswire article ↗</a>
-                <a href="https://appleworld.today/2025/01/duetti-report-says-that-apple-music-payouts-for-artists-remain-strong/" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">appleworld.today article ↗</a>
-                <a href="https://www.instagram.com/duetti_music/p/DFK8w4_sVOY/?img_index=6" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">Duetti IG post ↗</a>
+                <a href="https://appleworld.today/2025/01/duetti-report-says-that-apple-music-payouts-for-artists-remain-strong/?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">appleworld.today article ↗</a>
+                <a href="https://www.instagram.com/duetti.co/p/DFK8w4_sVOY/" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">Duetti IG post ↗</a>
               </div>
             </div>
           </div>
@@ -331,7 +324,7 @@ export default function Duetti() {
       <footer style={{ padding: '40px 40px', borderTop: '1px solid #e5e7eb' }}>
         <div style={{ maxWidth: '1920px', margin: '0 auto' }}>
           <p style={{ fontSize: '16px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
-          <div className="flex gap-4" style={{ marginBottom: '24px' }}>
+          <div className="flex gap-4" style={{ marginBottom: '8px' }}>
             <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
             <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
           </div>

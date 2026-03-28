@@ -268,7 +268,7 @@ export default function Kalshi() {
       <footer style={{ padding: '40px 40px', borderTop: '1px solid #e5e7eb' }}>
         <div style={{ maxWidth: '1920px', margin: '0 auto' }}>
           <p style={{ fontSize: '16px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
-          <div className="flex gap-4" style={{ marginBottom: '24px' }}>
+          <div className="flex gap-4" style={{ marginBottom: '8px' }}>
             <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
             <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
           </div>
