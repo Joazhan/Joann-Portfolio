@@ -78,9 +78,6 @@ export default function Kalshi() {
           section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
           .page-hero { padding-top: 88px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
-          .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
-          .two-col-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
           h1 { font-size: 36px !important; line-height: 44px !important; }
           h2, h3 { font-size: 26px !important; line-height: 34px !important; }
         }
@@ -108,164 +105,90 @@ export default function Kalshi() {
         </nav>
       </div>
 
+      {/* Bento overview image */}
+      <section style={{ paddingTop: '120px', paddingBottom: '40px', paddingLeft: '80px', paddingRight: '80px', backgroundImage: 'url(/Kalshi/background_image.png)', backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
+        <div className="content-wide" style={{ maxWidth: '1380px' }}>
+          <Image
+            src="/Images/kalshi_bento.png"
+            alt="Kalshi browser extension overview"
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '20px' }}
+          />
+        </div>
+      </section>
+
       {/* Hero */}
-      <section className="page-hero" style={{ paddingTop: '120px', paddingBottom: '80px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
-        <div className="content-wide">
-          <p className={`section-label ${syne.className}`} style={{ marginBottom: '16px' }}>Concept</p>
-          <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '600', letterSpacing: '-0.02em', color: '#212121', marginBottom: '16px' }}>
+      <section className="page-hero" style={{ paddingTop: '64px', paddingBottom: '80px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
+        <div className="content-wide" style={{ maxWidth: '1380px' }}>
+          <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121', marginBottom: '16px' }}>
             Kalshi Browser Extension
           </h1>
           <p style={{ fontSize: '20px', lineHeight: '32px', color: '#6b7280', maxWidth: '600px', marginBottom: '40px' }}>
             I explored how Kalshi could live directly in everyday browsing, letting users check market odds and place trades without leaving the page they&apos;re on.
           </p>
-          <div className="flex gap-6">
-            <a href="#" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', borderBottom: '1px solid #212121', paddingBottom: '2px' }} className="hover:opacity-60">
-              Figma Prototype ↗
+          <div className="flex flex-col gap-3">
+            <a href="https://www.figma.com/proto/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=CBHfNuU3QerPsGQt-0&scaling=scale-down&content-scaling=fixed&page-id=2%3A2&starting-point-node-id=106%3A1982" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
+              View Figma Prototype ↗
             </a>
-            <a href="#" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', borderBottom: '1px solid #212121', paddingBottom: '2px' }} className="hover:opacity-60">
-              Design File ↗
+            <a href="https://www.figma.com/design/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=IJKBuGVOfeqFv0v1-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
+              View Design File ↗
             </a>
-            <a href="#" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', borderBottom: '1px solid #212121', paddingBottom: '2px' }} className="hover:opacity-60">
-              GitHub ↗
+            <a href="https://github.com/Joazhan/kalshi-extension" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
+              View GitHub ↗
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Bento overview image */}
-      <section style={{ padding: '0px 80px 80px', backgroundColor: '#f8fafc' }}>
-        <div className="content-wide">
-          <Image
-            src="/Images/kalshi_bento.png"
-            alt="Kalshi browser extension overview"
-            width={1200}
-            height={800}
-            style={{ width: '100%', height: 'auto', borderRadius: '20px' }}
-          />
-        </div>
-      </section>
-
-      {/* Overview */}
-      <section style={{ padding: '80px 40px' }}>
-        <div className="content-wide overview-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start' }}>
-          <div>
-            <p className={`section-label ${syne.className}`}>Overview</p>
-            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-              Bringing prediction markets to your browser
-            </h2>
-            <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262' }}>
-              Kalshi is a regulated prediction market platform where users can trade on real-world outcomes. While the web app works well for focused sessions, I noticed an opportunity to meet users where they already are — reading news, watching sports, or checking market data.
-            </p>
-            <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginTop: '16px' }}>
-              This concept explores a lightweight Chrome extension that surfaces relevant Kalshi markets contextually, lets users check odds at a glance, and place trades quickly — all without leaving their current tab.
-            </p>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '28px', paddingTop: '40px' }}>
-            <div>
-              <p className={`section-label ${syne.className}`}>Type</p>
-              <p style={{ fontSize: '15px', color: '#626262', lineHeight: '1.8' }}>Concept Project</p>
-            </div>
-            <div>
-              <p className={`section-label ${syne.className}`}>Year</p>
-              <p style={{ fontSize: '15px', color: '#626262' }}>2025</p>
-            </div>
-            <div>
-              <p className={`section-label ${syne.className}`}>Platform</p>
-              <p style={{ fontSize: '15px', color: '#626262' }}>Chrome Extension</p>
-            </div>
-            <div>
-              <p className={`section-label ${syne.className}`}>Role</p>
-              <p style={{ fontSize: '15px', color: '#626262', lineHeight: '1.8' }}>Product Design<br />Prototyping<br />Front-end Development</p>
-            </div>
           </div>
         </div>
       </section>
 
       {/* Desktop Extension Landing Screen */}
-      <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px' }}>
-        <div className="content">
-          <p className={`section-label ${syne.className}`}>Desktop Extension</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-            Landing screen
-          </h2>
-          <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '48px' }}>
-            The extension landing screen gives users a clean entry point into their markets. It surfaces trending events, portfolio balance, and quick-access positions — all within a compact 400px panel designed to feel native to the browser chrome.
-          </p>
-
-          <div className="img-placeholder" style={{ minHeight: '360px', marginBottom: '16px' }}>
+      <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px 40px' }}>
+        <div className="content" style={{ maxWidth: '1400px' }}>
+          <div className="img-placeholder" style={{ minHeight: '360px', marginBottom: '12px' }}>
             [ Image: Desktop extension landing screen — market overview, trending events, portfolio summary ]
           </div>
-          <p style={{ fontSize: '14px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
-            The landing screen surfaces key market data and the user&apos;s portfolio at a glance without requiring a full context switch.
+          <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px', marginBottom: '4px' }}>
+            Landing screen
+          </p>
+          <p style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
+            This widget surfaces live trade activity, making it easy for anyone to join with zero friction. This expands when users hover to show market details, and with one click, they can open a full panel to explore or join trades instantly.
           </p>
         </div>
       </section>
 
       {/* Extension Pop-up Flow */}
-      <section style={{ padding: '80px 40px' }}>
-        <div className="content">
-          <p className={`section-label ${syne.className}`}>Interaction Design</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-            Extension pop-up — 3-step flow
-          </h2>
-          <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '48px' }}>
-            The trading flow is condensed into three focused steps: browse a market, set your position and amount, then confirm. Each step lives in the same panel, keeping the experience fast and low-friction even for first-time traders.
-          </p>
-
-          <div className="img-placeholder" style={{ minHeight: '360px', marginBottom: '16px' }}>
+      <section style={{ padding: '80px 40px 40px' }}>
+        <div className="content" style={{ maxWidth: '1400px' }}>
+          <div className="img-placeholder" style={{ minHeight: '360px', marginBottom: '12px' }}>
             [ Image: 3-step extension pop-up flow — browse market → set position → confirm trade ]
           </div>
-          <p style={{ fontSize: '14px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
-            The 3-step flow reduces cognitive load by showing only what&apos;s needed at each stage, with a persistent summary bar before confirmation.
+          <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px', marginBottom: '4px' }}>
+            Extension pop-up — 3-step flow
+          </p>
+          <p style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
+            This extension brings Kalshi into everyday browsing, letting users check odds and place trades right where their interest starts.
           </p>
         </div>
       </section>
 
       {/* How I built it */}
-      <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px' }}>
-        <div className="content">
-          <p className={`section-label ${syne.className}`}>Development</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-            How I built the extension
-          </h2>
-          <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '24px' }}>
-            I built the extension prototype in React using the Chrome Extensions Manifest V3 architecture. The popup is a standard React app bundled with Vite, communicating with background service workers to fetch market data from Kalshi&apos;s public API.
-          </p>
-          <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '48px' }}>
-            This hands-on build gave me real insight into the constraints of the extension environment — limited viewport, no persistent state, strict CSP rules — and directly shaped the design decisions around information density and interaction patterns.
-          </p>
-
-          <div className="img-placeholder" style={{ minHeight: '320px', marginBottom: '16px' }}>
+      <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px 40px' }}>
+        <div className="content" style={{ maxWidth: '1400px' }}>
+          <div className="img-placeholder" style={{ minHeight: '320px', marginBottom: '12px' }}>
             [ Image: Extension architecture diagram or code/component structure ]
           </div>
-          <p style={{ fontSize: '14px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
-            The extension uses Manifest V3 with a React + Vite popup, service worker for API calls, and content scripts for contextual market surfacing.
+          <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px', marginBottom: '4px' }}>
+            How I built the extension
           </p>
-        </div>
-      </section>
-
-      {/* Introspective */}
-      <section style={{ padding: '80px 40px' }}>
-        <div className="content">
-          <p className={`section-label ${syne.className}`}>Introspective</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-            Learnings
-          </h2>
-          <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '24px' }}>
-            This project pushed me to think about design from both ends — as a designer crafting the visual system, and as a developer experiencing the constraints firsthand. Building what I designed revealed real edge cases that wouldn&apos;t have surfaced through mockups alone.
+          <p style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
+            I worked with Claude to build a Chrome extension for Kalshi, open-sourced on GitHub. Users can browse markets, track predictions, and place trades without leaving their current tab. Its now live! https://joazhan.github.io/kalshi-extension/
           </p>
-          <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '32px' }}>
-            Working within the browser extension format was an interesting constraint. Every pixel matters when your canvas is 400px wide, which forced me to prioritize ruthlessly and lean into progressive disclosure patterns rather than trying to surface everything at once.
-          </p>
-          <a href="#" target="_blank" rel="noopener noreferrer" style={{ fontSize: '17px', fontWeight: '600', color: '#212121', textDecoration: 'none', borderBottom: '1px solid #212121', paddingBottom: '2px' }} className="hover:opacity-60">
-            View prototype ↗
-          </a>
         </div>
       </section>
 
       {/* Footer */}
-      <footer style={{ padding: '40px 40px', borderTop: '1px solid #e5e7eb' }}>
+      <footer style={{ padding: '40px 40px' }}>
         <div style={{ maxWidth: '1920px', margin: '0 auto' }}>
           <p style={{ fontSize: '16px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
           <div className="flex gap-4" style={{ marginBottom: '8px' }}>

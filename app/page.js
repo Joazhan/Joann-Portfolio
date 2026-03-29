@@ -93,35 +93,35 @@ export default function Home() {
       <style>{`
         .arrow-btn {
           width: 44px;
-          height: 60px;
+          height: 56px;
           border-radius: 999px;
           border: 1px solid rgba(0,0,0,0.2);
           background: transparent;
           display: flex;
           align-items: center;
           justify-content: center;
-          transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+          transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
           flex-shrink: 0;
-          transform: rotate(15deg);
+          transform: rotate(45deg);
         }
         .arrow-icon {
           width: 16px;
           height: 16px;
-          transition: transform 0.35s ease, color 0.35s ease;
-          transform: rotate(-60deg);
+          transition: transform 0.3s ease, color 0.3s ease;
+          transform: rotate(-45deg);
           color: #888;
         }
         .group:hover .arrow-btn {
-          background: #fff !important;
-          border-color: rgba(0,0,0,0.15) !important;
-          width: 80px;
-          height: 44px;
+          background: #000 !important;
+          border-color: #000 !important;
+          width: 52px;
+          height: 52px;
+          border-radius: 50%;
           transform: rotate(0deg);
-          padding: 0 24px;
         }
         .group:hover .arrow-icon {
           transform: rotate(0deg);
-          color: #000 !important;
+          color: #fff !important;
         }
         .nav-wrapper {
           position: fixed;
@@ -214,7 +214,7 @@ export default function Home() {
         </div>
       </section>
       {/* Project Cards */}
-      <section className="flex flex-col cards-section" style={{ position: 'relative', zIndex: 1, gap: '32px', marginLeft: '80px', marginRight: '80px' }}>
+      <section className="flex flex-col cards-section" style={{ position: 'relative', zIndex: 1, gap: '80px', marginLeft: '80px', marginRight: '80px' }}>
         {/* NutritionNest */}
         <Link href="/nn" className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer project-card"
           style={{ textDecoration: 'none', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
@@ -334,15 +334,13 @@ export default function Home() {
           style={{ textDecoration: 'none', backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
             <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} className="object-contain rounded-xl" style={{ width: '76.06%', height: 'auto' }} />
-            <div style={{ position: 'relative', flex: '1 1 0', alignSelf: 'flex-start', height: 0, paddingBottom: '48.4%', marginTop: '1.5%' }}>
-              <div style={{ position: 'absolute', inset: 0 }}>
-                <div style={{ position: 'absolute', top: '2%', left: '7%', right: '4%', bottom: '2%', borderRadius: '4% 4% 4% 4% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
-                  <video src="/Images/rhs_mp4.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-                <Image src="/Images/rhs_iphone_frame.png" alt="iPhone frame"
-                  width={750} height={1392}
-                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
+            <div style={{ position: 'relative', flex: '1 1 0', alignSelf: 'flex-start', marginTop: '1.5%' }}>
+              <div style={{ position: 'absolute', top: '2%', left: '5%', right: '5%', bottom: '2%', borderRadius: '4% 4% 4% 4% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
+                <video src="/Images/rhs_mp4.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
+              <Image src="/Images/rhs_iphone_frame.png" alt="iPhone frame"
+                width={750} height={1392}
+                style={{ width: '100%', height: 'auto', display: 'block', position: 'relative', zIndex: 10, pointerEvents: 'none' }} />
             </div>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
@@ -362,7 +360,7 @@ export default function Home() {
         </Link>
       </section>
       {/* Concepts Section */}
-      <div className="concepts-section" style={{ marginTop: '80px', marginLeft: '-80px', marginRight: '-80px', backgroundColor: '#f3f4f6', padding: '80px 80px' }}>
+      <div className="concepts-section" style={{ marginTop: '80px', marginLeft: '-80px', marginRight: '-80px', backgroundColor: '#f3f4f6', padding: '80px 160px' }}>
         <div style={{ marginBottom: '40px' }}>
           <h2 className="concepts-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.6px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Concepts</h2>
           <p className="concepts-desc" style={{ fontSize: '20px', lineHeight: '28px', letterSpacing: '-0.6px', color: '#6b7280', marginBottom: '4px' }}>
@@ -372,7 +370,7 @@ export default function Home() {
             This led me to prototype ideas and explore them hands-on.
           </p>
         </div>
-        <div className="flex flex-col" style={{ gap: '20px', marginLeft: '80px', marginRight: '80px' }}>
+        <div className="flex flex-col" style={{ gap: '80px' }}>
           {/* Kalshi */}
           <Link href="/kalshi" className="group flex flex-col overflow-hidden cursor-pointer project-card"
             style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>

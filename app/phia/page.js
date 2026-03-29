@@ -66,23 +66,25 @@ export default function Phia() {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 60px 40px;
           color: #9ca3af;
           font-size: 14px;
           font-style: italic;
           text-align: center;
           border: 1px solid #e5e7eb;
         }
+        .three-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 16px;
+        }
         @media (max-width: 767px) {
           .nav-wrapper { padding: 12px 16px 0 !important; }
           section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
           .page-hero { padding-top: 88px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
-          .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
-          .two-col-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
           h1 { font-size: 36px !important; line-height: 44px !important; }
           h2, h3 { font-size: 26px !important; line-height: 34px !important; }
+          .three-cards-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
 
@@ -108,145 +110,89 @@ export default function Phia() {
         </nav>
       </div>
 
-      {/* Cover image — full width in Apple Pro Display frame */}
-      <section style={{ paddingTop: '120px', paddingBottom: '0px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
-        <div style={{ position: 'relative' }}>
-          <div style={{ position: 'absolute', top: '2.2%', left: '1.4%', right: '1.4%', bottom: '24.9%', overflow: 'hidden', zIndex: 1 }}>
-            <Image
-              src="/Images/Phia_cover.png"
-              alt="Phia browser extension"
-              width={1400}
-              height={800}
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-          </div>
-          <Image src="/Images/Apple Pro Display.png" alt="Apple Pro Display" width={1200} height={800}
-            style={{ position: 'relative', width: '100%', height: 'auto', display: 'block', zIndex: 10 }} />
+      {/* Cover image */}
+      <section style={{ paddingTop: '120px', paddingBottom: '40px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#F2F2F2', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
+        <div className="content-wide" style={{ maxWidth: '1380px' }}>
+          <Image
+            src="/Phia/Hero_image.png"
+            alt="Phia hero"
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '16px' }}
+          />
         </div>
       </section>
 
-      {/* Hero text — below image */}
-      <section className="page-hero" style={{ paddingTop: '80px', paddingBottom: '80px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
+      {/* Title block */}
+      <section className="page-hero" style={{ paddingTop: '64px', paddingBottom: '80px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
         <div className="content-wide">
-          <p className={`section-label ${syne.className}`} style={{ marginBottom: '16px' }}>Concept · Redesign</p>
-          <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '600', letterSpacing: '-0.02em', color: '#212121', marginBottom: '16px' }}>
+          <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121', marginBottom: '16px' }}>
             Phia Browser Extension
           </h1>
           <p style={{ fontSize: '20px', lineHeight: '32px', color: '#6b7280', maxWidth: '600px', marginBottom: '40px' }}>
             I redesigned this existing extension after finding it hard to scan prices and alternatives while shopping. The updated layout focuses on clarity, reducing drop-off rates, and higher purchase rates.
           </p>
-          <div className="flex gap-6">
-            <a href="#" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', borderBottom: '1px solid #212121', paddingBottom: '2px' }} className="hover:opacity-60">
+          <div className="flex flex-col gap-3">
+            <a href="https://www.figma.com/proto/vH2Yqx2XS9U90KCoaga1Lz/Phia-Extension-Redesign?node-id=2054-1861&t=AaDjhaBeozJ4YHBW-0&scaling=scale-down&content-scaling=fixed&page-id=22%3A7&starting-point-node-id=2054%3A1861" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
               View prototype ↗
             </a>
-            <a href="#" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', borderBottom: '1px solid #212121', paddingBottom: '2px' }} className="hover:opacity-60">
+            <a href="https://www.figma.com/design/vH2Yqx2XS9U90KCoaga1Lz/Phia-Extension-Redesign?node-id=22-7&p=f&t=AaDjhaBeozJ4YHBW-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
               View design file ↗
             </a>
           </div>
         </div>
       </section>
 
-      {/* Overview */}
-      <section style={{ padding: '80px 40px' }}>
-        <div className="content-wide overview-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start' }}>
-          <div>
-            <p className={`section-label ${syne.className}`}>Overview</p>
-            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-              Shopping assistance, redesigned for clarity
-            </h2>
-            <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262' }}>
-              Phia is a browser extension designed to help shoppers find better prices and sustainable alternatives while browsing. The original extension had a cluttered layout that made it difficult to quickly scan options and compare products.
-            </p>
-            <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginTop: '16px' }}>
-              This redesign strips back the noise — surfacing the most relevant pricing information upfront, reducing friction in the decision-making process, and making the value proposition immediately clear at the moment a user is ready to purchase.
-            </p>
-          </div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '28px', paddingTop: '40px' }}>
-            <div>
-              <p className={`section-label ${syne.className}`}>Type</p>
-              <p style={{ fontSize: '15px', color: '#626262', lineHeight: '1.8' }}>Concept · Redesign</p>
-            </div>
-            <div>
-              <p className={`section-label ${syne.className}`}>Year</p>
-              <p style={{ fontSize: '15px', color: '#626262' }}>2025</p>
-            </div>
-            <div>
-              <p className={`section-label ${syne.className}`}>Platform</p>
-              <p style={{ fontSize: '15px', color: '#626262' }}>Desktop Extension</p>
-            </div>
-            <div>
-              <p className={`section-label ${syne.className}`}>Role</p>
-              <p style={{ fontSize: '15px', color: '#626262', lineHeight: '1.8' }}>Product Design<br />Interaction Design</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Extension Tab */}
       <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px' }}>
-        <div className="content">
+        <div className="content-wide" style={{ maxWidth: '1400px' }}>
           <p className={`section-label ${syne.className}`}>Extension Tab</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
+          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '48px' }}>
             A lower price, front and center
           </h2>
-          <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '48px' }}>
-            &ldquo;Let us provide a lower price&rdquo; shows the lowest and sustainable item, which gives users a sense of value. This creates a small &ldquo;win&rdquo; moment that feels helpful and trustworthy. I would A/B test a few versions of the tag to see which phrasing feels the most natural and motivating.
-          </p>
 
-          <div className="img-placeholder" style={{ minHeight: '400px', marginBottom: '16px' }}>
-            [ Image: Extension tab — redesigned layout showing lower price suggestion and alternatives ]
+          <div style={{ marginBottom: '-32px' }}>
+            <Image
+              src="/Phia/Extension_container.png"
+              alt="Extension tab states"
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '16px' }}
+            />
           </div>
-          <p style={{ fontSize: '14px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
-            The extension tab surfaces the best available price at the exact moment a user is considering a purchase.
+          <p style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '80px', paddingRight: '80px' }}>
+            &ldquo;Let us provide a lower price&rdquo; shows the lowest and sustainable item, which gives users a sense of value. This creates a small &lsquo;win&rsquo; moment that feels helpful and trustworthy. I would A/B test a few versions of the tag to see which phrasing feels the most natural and motivating.
           </p>
         </div>
       </section>
 
-      {/* Design decisions */}
+      {/* Secondhand Price Extension */}
       <section style={{ padding: '80px 40px' }}>
-        <div className="content">
-          <p className={`section-label ${syne.className}`}>Design Decisions</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-            Reducing friction at the point of decision
+        <div className="content-wide" style={{ maxWidth: '1400px' }}>
+          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '48px' }}>
+            Secondhand Price Extension
           </h2>
-          <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '24px' }}>
-            The original Phia extension required too many taps to get to a useful answer. Users who encountered friction at the moment of purchase intent were likely to close the extension and abandon their cart entirely.
-          </p>
-          <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '48px' }}>
-            The redesign applies a clear visual hierarchy — leading with the best price comparison, followed by sustainable alternatives, with secondary details de-emphasized. This structure matches the mental model of a shopper who already has intent and just needs a quick confidence boost.
-          </p>
 
-          <div className="img-placeholder" style={{ minHeight: '360px', marginBottom: '16px' }}>
-            [ Image: Before/after comparison or design decision breakdown ]
+          <div style={{ marginBottom: '32px', marginLeft: '8px', marginRight: '8px', borderRadius: '16px 16px 10px 10px', overflow: 'hidden' }}>
+            <Image
+              src="/Phia/Browser_container1.png"
+              alt="Secondhand price extension"
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
           </div>
-          <p style={{ fontSize: '14px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
-            Visual hierarchy improvements guide users to the key action in fewer steps.
+          <p style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '80px', paddingRight: '80px' }}>
+            Extension tab uses clearer hierarchy and trust cues to drive action, while users can recognize key savings without scanning through clutter. The verified seller badge builds confidence in lesser-known resellers.
           </p>
-        </div>
-      </section>
-
-      {/* Introspective */}
-      <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px' }}>
-        <div className="content">
-          <p className={`section-label ${syne.className}`}>Introspective</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-            Learnings
-          </h2>
-          <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '24px' }}>
-            Redesigning an existing product is a different challenge from building from scratch — I had to understand what the original was trying to do, respect what was working, and make a case for what to change. The constraints of the extension format (limited real estate, passive discovery) shaped every layout decision.
-          </p>
-          <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '32px' }}>
-            Testing copy variations would be a key next step. The language around price framing (&ldquo;lower price&rdquo; vs &ldquo;best deal&rdquo; vs &ldquo;save X%&rdquo;) has an outsized effect on conversion, and small wording changes can dramatically shift how trustworthy or pushy the experience feels.
-          </p>
-          <a href="#" target="_blank" rel="noopener noreferrer" style={{ fontSize: '17px', fontWeight: '600', color: '#212121', textDecoration: 'none', borderBottom: '1px solid #212121', paddingBottom: '2px' }} className="hover:opacity-60">
-            View prototype ↗
-          </a>
         </div>
       </section>
 
       {/* Footer */}
-      <footer style={{ padding: '40px 40px', borderTop: '1px solid #e5e7eb' }}>
+      <footer style={{ padding: '40px 40px' }}>
         <div style={{ maxWidth: '1920px', margin: '0 auto' }}>
           <p style={{ fontSize: '16px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
           <div className="flex gap-4" style={{ marginBottom: '8px' }}>

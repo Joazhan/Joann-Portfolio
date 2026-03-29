@@ -161,9 +161,9 @@ export default function NutritionNest() {
             <div>
               <p className={`section-label ${syne.className}`}>Links</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <a href="#" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View prototype ↗</a>
-                <a href="#" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View design file ↗</a>
-                <a href="#" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View affinity map ↗</a>
+                <a href="https://figma.com/proto/X7n6zDv38NCC1RPuXzmc7A/NutritionNest-App--v3-?node-id=7267-49023&p=f&t=HunrmP0wBwIdWoYc-0&scaling=scale-down&content-scaling=fixed&page-id=5802%3A73243&starting-point-node-id=7267%3A49023&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View prototype ↗</a>
+                <a href="https://www.figma.com/design/X7n6zDv38NCC1RPuXzmc7A/NutritionNest-App--v3-?node-id=262-218&p=f&t=HunrmP0wBwIdWoYc-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View design file ↗</a>
+                <a href="https://figma.com/board/4X9oG3D4vhHr7mBYZd7M5y/NutritionNest-competitive-analaysis?t=pfoHjXtM4MEpUhAp-1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View affinity map ↗</a>
               </div>
             </div>
           </div>
@@ -268,13 +268,13 @@ export default function NutritionNest() {
           <p style={{ fontSize: '17px', lineHeight: '28px', color: '#626262', marginBottom: '48px' }}>
             Based on our feedback from users, we learned that users struggled to stay motivated with meal logs due to the lack of personalization. Our proposed solution is to focus on features that consisted of customization, engagement, and AI personalization.
           </p>
-          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px' }}>
             {[
               { title: 'Customizable', desc: 'Personalized experiences tailored to individual goals and preferences.' },
               { title: 'Engaging', desc: 'Drive motivation and consistency through meaningful interaction.' },
               { title: 'AI Personalized', desc: 'Deliver guidance powered by AI insights.' },
             ].map(({ title, desc }) => (
-              <div key={title} style={{ backgroundColor: '#f9fafb', borderRadius: '16px', padding: '24px', border: '1px solid rgba(0,0,0,0.1)' }}>
+              <div key={title} style={{ backgroundColor: '#f9fafb', borderRadius: '16px', padding: '32px', border: '1px solid rgba(0,0,0,0.1)' }}>
                 <p style={{ fontSize: '16px', fontWeight: '600', color: '#212121', marginBottom: '8px' }}>{title}</p>
                 <p style={{ fontSize: '14px', lineHeight: '22px', color: '#6b7280' }}>{desc}</p>
               </div>
@@ -342,8 +342,8 @@ export default function NutritionNest() {
             The final design circles back to its core mission providing a customizable and engaging design approach. From onboarding to finding recipes and restaurants, everything adapts to their preferences. NED cards keep users engaged with quick, AI-powered tips and calorie adjustments that fit their daily needs.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '48px' }}>
-            <a href="#" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View design file ↗</a>
-            <a href="#" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View prototype ↗</a>
+            <a href="https://figma.com/proto/X7n6zDv38NCC1RPuXzmc7A/NutritionNest-App--v3-?node-id=7267-49023&p=f&t=HunrmP0wBwIdWoYc-0&scaling=scale-down&content-scaling=fixed&page-id=5802%3A73243&starting-point-node-id=7267%3A49023&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View design file ↗</a>
+            <a href="https://figma.com/proto/X7n6zDv38NCC1RPuXzmc7A/NutritionNest-App--v3-?node-id=7267-49023&p=f&t=HunrmP0wBwIdWoYc-0&scaling=scale-down&content-scaling=fixed&page-id=5802%3A73243&starting-point-node-id=7267%3A49023&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View prototype ↗</a>
           </div>
           <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '24px', marginBottom: '60px' }}>
             {[
@@ -351,7 +351,7 @@ export default function NutritionNest() {
               { title: 'Engaging', desc: 'Drive motivation and consistency through meaningful interaction.' },
               { title: 'AI Personalized', desc: 'Deliver guidance powered by AI insights.' },
             ].map(({ title, desc }) => (
-              <div key={title} style={{ backgroundColor: '#f9fafb', borderRadius: '16px', padding: '24px' }}>
+              <div key={title} style={{ backgroundColor: '#f9fafb', borderRadius: '16px', padding: '32px' }}>
                 <p style={{ fontSize: '16px', fontWeight: '600', color: '#212121', marginBottom: '8px' }}>{title}</p>
                 <p style={{ fontSize: '14px', lineHeight: '22px', color: '#6b7280' }}>{desc}</p>
               </div>
