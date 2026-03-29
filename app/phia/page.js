@@ -102,10 +102,10 @@ export default function Phia() {
             Joann Zhang
           </Link>
           <div className="flex items-center gap-6">
-            <Link href="/" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">Work</Link>
-            <Link href="/about" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">About</Link>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">Resume</a>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
+            <Link href="/" style={{ fontSize: '16px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">Work</Link>
+            <Link href="/about" style={{ fontSize: '16px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">About</Link>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">Resume</a>
+            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
           </div>
         </nav>
       </div>
@@ -134,10 +134,10 @@ export default function Phia() {
             I redesigned this existing extension after finding it hard to scan prices and alternatives while shopping. The updated layout focuses on clarity, reducing drop-off rates, and higher purchase rates.
           </p>
           <div className="flex flex-col gap-3">
-            <a href="https://www.figma.com/proto/vH2Yqx2XS9U90KCoaga1Lz/Phia-Extension-Redesign?node-id=2054-1861&t=AaDjhaBeozJ4YHBW-0&scaling=scale-down&content-scaling=fixed&page-id=22%3A7&starting-point-node-id=2054%3A1861" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
+            <a href="https://www.figma.com/proto/vH2Yqx2XS9U90KCoaga1Lz/Phia-Extension-Redesign?node-id=2054-1861&t=AaDjhaBeozJ4YHBW-0&scaling=scale-down&content-scaling=fixed&page-id=22%3A7&starting-point-node-id=2054%3A1861" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
               View prototype ↗
             </a>
-            <a href="https://www.figma.com/design/vH2Yqx2XS9U90KCoaga1Lz/Phia-Extension-Redesign?node-id=22-7&p=f&t=AaDjhaBeozJ4YHBW-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
+            <a href="https://www.figma.com/design/vH2Yqx2XS9U90KCoaga1Lz/Phia-Extension-Redesign?node-id=22-7&p=f&t=AaDjhaBeozJ4YHBW-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
               View design file ↗
             </a>
           </div>
@@ -152,7 +152,7 @@ export default function Phia() {
             A lower price, front and center
           </h2>
 
-          <div style={{ marginBottom: '-32px' }}>
+          <div style={{ marginBottom: '-52px' }}>
             <Image
               src="/Phia/Extension_container.png"
               alt="Extension tab states"
@@ -162,7 +162,7 @@ export default function Phia() {
               style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '16px' }}
             />
           </div>
-          <p style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '80px', paddingRight: '80px' }}>
+          <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', paddingLeft: '80px', paddingRight: '80px' }}>
             &ldquo;Let us provide a lower price&rdquo; shows the lowest and sustainable item, which gives users a sense of value. This creates a small &lsquo;win&rsquo; moment that feels helpful and trustworthy. I would A/B test a few versions of the tag to see which phrasing feels the most natural and motivating.
           </p>
         </div>
@@ -185,7 +185,7 @@ export default function Phia() {
               style={{ width: '100%', height: 'auto', display: 'block' }}
             />
           </div>
-          <p style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '80px', paddingRight: '80px' }}>
+          <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', paddingLeft: '80px', paddingRight: '80px' }}>
             Extension tab uses clearer hierarchy and trust cues to drive action, while users can recognize key savings without scanning through clutter. The verified seller badge builds confidence in lesser-known resellers.
           </p>
         </div>
@@ -194,12 +194,12 @@ export default function Phia() {
       {/* Footer */}
       <footer style={{ padding: '40px 40px' }}>
         <div style={{ maxWidth: '1920px', margin: '0 auto' }}>
-          <p style={{ fontSize: '16px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
+          <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
           <div className="flex gap-4" style={{ marginBottom: '8px' }}>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
+            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '18px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '18px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
           </div>
-          <p style={{ fontSize: '13px', color: '#9ca3af' }}>© Joann Zhang</p>
+          <p style={{ fontSize: '18px', color: '#9ca3af' }}>© Joann Zhang</p>
         </div>
       </footer>
 

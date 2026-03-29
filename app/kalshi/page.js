@@ -97,10 +97,10 @@ export default function Kalshi() {
             Joann Zhang
           </Link>
           <div className="flex items-center gap-6">
-            <Link href="/" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">Work</Link>
-            <Link href="/about" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">About</Link>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">Resume</a>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
+            <Link href="/" style={{ fontSize: '16px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">Work</Link>
+            <Link href="/about" style={{ fontSize: '16px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">About</Link>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black">Resume</a>
+            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', lineHeight: '18px', color: '#6b7280' }} className="hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
           </div>
         </nav>
       </div>
@@ -129,13 +129,13 @@ export default function Kalshi() {
             I explored how Kalshi could live directly in everyday browsing, letting users check market odds and place trades without leaving the page they&apos;re on.
           </p>
           <div className="flex flex-col gap-3">
-            <a href="https://www.figma.com/proto/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=CBHfNuU3QerPsGQt-0&scaling=scale-down&content-scaling=fixed&page-id=2%3A2&starting-point-node-id=106%3A1982" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
+            <a href="https://www.figma.com/proto/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=CBHfNuU3QerPsGQt-0&scaling=scale-down&content-scaling=fixed&page-id=2%3A2&starting-point-node-id=106%3A1982" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
               View Figma Prototype ↗
             </a>
-            <a href="https://www.figma.com/design/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=IJKBuGVOfeqFv0v1-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
+            <a href="https://www.figma.com/design/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=IJKBuGVOfeqFv0v1-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
               View Design File ↗
             </a>
-            <a href="https://github.com/Joazhan/kalshi-extension" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
+            <a href="https://github.com/Joazhan/kalshi-extension" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
               View GitHub ↗
             </a>
           </div>
@@ -151,7 +151,7 @@ export default function Kalshi() {
           <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px', marginBottom: '4px' }}>
             Landing screen
           </p>
-          <p style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
+          <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
             This widget surfaces live trade activity, making it easy for anyone to join with zero friction. This expands when users hover to show market details, and with one click, they can open a full panel to explore or join trades instantly.
           </p>
         </div>
@@ -166,7 +166,7 @@ export default function Kalshi() {
           <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px', marginBottom: '4px' }}>
             Extension pop-up — 3-step flow
           </p>
-          <p style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
+          <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
             This extension brings Kalshi into everyday browsing, letting users check odds and place trades right where their interest starts.
           </p>
         </div>
@@ -181,7 +181,7 @@ export default function Kalshi() {
           <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px', marginBottom: '4px' }}>
             How I built the extension
           </p>
-          <p style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
+          <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
             I worked with Claude to build a Chrome extension for Kalshi, open-sourced on GitHub. Users can browse markets, track predictions, and place trades without leaving their current tab. Its now live! https://joazhan.github.io/kalshi-extension/
           </p>
         </div>
@@ -190,12 +190,12 @@ export default function Kalshi() {
       {/* Footer */}
       <footer style={{ padding: '40px 40px' }}>
         <div style={{ maxWidth: '1920px', margin: '0 auto' }}>
-          <p style={{ fontSize: '16px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
+          <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
           <div className="flex gap-4" style={{ marginBottom: '8px' }}>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
+            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '18px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
           </div>
-          <p style={{ fontSize: '13px', color: '#9ca3af' }}>© Joann Zhang</p>
+          <p style={{ fontSize: '18px', color: '#9ca3af' }}>© Joann Zhang</p>
         </div>
       </footer>
 

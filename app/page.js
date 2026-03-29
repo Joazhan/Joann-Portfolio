@@ -169,10 +169,10 @@ export default function Home() {
             Joann Zhang
           </Link>
           <div className="flex items-center gap-6 flex-wrap justify-end">
-            <Link href="/" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</Link>
-            <Link href="/about" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">About</Link>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
+            <Link href="/" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</Link>
+            <Link href="/about" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">About</Link>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
+            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
           </div>
         </nav>
       </div>
@@ -217,7 +217,7 @@ export default function Home() {
       <section className="flex flex-col cards-section" style={{ position: 'relative', zIndex: 1, gap: '80px', marginLeft: '80px', marginRight: '80px' }}>
         {/* NutritionNest */}
         <Link href="/nn" className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer project-card"
-          style={{ textDecoration: 'none', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
+          style={{ textDecoration: 'none', paddingTop: '20px', paddingBottom: '20px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
           <div ref={nnImagesWrapRef} style={{ willChange: 'transform', overflow: 'visible' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end' }}>
               <Image src="/Images/NN.png" alt="NutritionNest" width={900} height={600} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
@@ -234,8 +234,8 @@ export default function Home() {
             <div className="flex items-center gap-4">
               <Image src="/Icons/NN icon.png" alt="NutritionNest icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
-                <span className="card-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>NutritionNest</span>
-                <span className="card-desc" style={{ fontSize: '18px', lineHeight: '20px', color: '#6b7280' }}>Log nutritional intake and monitor daily calories</span>
+                <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>NutritionNest</span>
+                <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>Log nutritional intake and monitor daily calories</span>
               </div>
             </div>
             <div className="arrow-btn">
@@ -247,7 +247,7 @@ export default function Home() {
         </Link>
         {/* Duetti */}
         <Link href="/duetti" className="group flex flex-col overflow-hidden cursor-pointer project-card"
-          style={{ textDecoration: 'none', backgroundColor: '#d9f99d', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          style={{ textDecoration: 'none', backgroundColor: '#d9f99d', borderRadius: '32px', paddingTop: '20px', paddingBottom: '20px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
             style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
             <div style={{ position: 'relative', width: '73%', flexShrink: 0 }}>
@@ -263,8 +263,8 @@ export default function Home() {
             <div className="flex items-center gap-4">
               <Image src="/Icons/Duetti icon.png" alt="Duetti icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
-                <span className="card-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Duetti</span>
-                <span className="card-desc" style={{ fontSize: '18px', lineHeight: '20px', color: '#4b5563' }}>Insight-driven report that simplifies music industry data for artists through visual storytelling</span>
+                <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Duetti</span>
+                <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#4b5563' }}>Insight-driven report that simplifies music industry data for artists through visual storytelling</span>
               </div>
             </div>
             <div className="arrow-btn">
@@ -284,8 +284,8 @@ export default function Home() {
             <div className="flex items-center gap-4">
               <Image src="/Icons/Lasertaz icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
-                <span className="card-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#ffffff' }}>Lasertaz</span>
-                <span className="card-desc" style={{ fontSize: '18px', lineHeight: '20px', color: '#9ca3af' }}>Help independent landlords manage their rental properties</span>
+                <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#ffffff' }}>Lasertaz</span>
+                <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#9ca3af' }}>Help independent landlords manage their rental properties</span>
               </div>
             </div>
             <div className="arrow-btn" style={{ borderColor: 'rgba(255,255,255,0.2)' }}>
@@ -297,7 +297,7 @@ export default function Home() {
         </Link>
         {/* Bookworm */}
         <Link href="/bookworm" className="group flex flex-col overflow-hidden cursor-pointer project-card"
-          style={{ textDecoration: 'none', backgroundColor: '#184131', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
+          style={{ textDecoration: 'none', backgroundColor: '#184131', borderRadius: '32px', paddingTop: '20px', paddingBottom: '20px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', minHeight: '144px' }}>
             <div style={{ flex: '0 0 75%', height: 0, paddingBottom: '48.09%', position: 'relative', overflow: 'hidden', borderRadius: '12px' }}>
               <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678}
@@ -318,8 +318,8 @@ export default function Home() {
             <div className="flex items-center gap-4">
               <Image src="/Icons/Bookworm icon.png" alt="Bookworm icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
-                <span className="card-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#ffffff' }}>Bookworm</span>
-                <span className="card-desc" style={{ fontSize: '18px', lineHeight: '20px', color: '#9ca3af' }}>E-Commerce platform for books and related content</span>
+                <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#ffffff' }}>Bookworm</span>
+                <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#9ca3af' }}>E-Commerce platform for books and related content</span>
               </div>
             </div>
             <div className="arrow-btn" style={{ borderColor: 'rgba(255,255,255,0.2)' }}>
@@ -331,24 +331,24 @@ export default function Home() {
         </Link>
         {/* Raymond Hair Salon */}
         <Link href="/rhs" className="group flex flex-col overflow-hidden cursor-pointer project-card"
-          style={{ textDecoration: 'none', backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          style={{ textDecoration: 'none', backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '20px', paddingBottom: '20px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
-            <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} className="object-contain rounded-xl" style={{ width: '76.06%', height: 'auto' }} />
-            <div style={{ position: 'relative', flex: '1 1 0', alignSelf: 'flex-start', marginTop: '1.5%' }}>
-              <div style={{ position: 'absolute', top: '2%', left: '5%', right: '5%', bottom: '2%', borderRadius: '4% 4% 4% 4% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
-                <video src="/Images/rhs_mp4.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
+            <div style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1392', alignSelf: 'flex-start', marginTop: '1.5%' }}>
+              <div style={{ position: 'absolute', top: '2%', left: '3.5%', right: '3.5%', bottom: '2%', borderRadius: '6% / 4%', overflow: 'hidden', zIndex: 1, backgroundColor: '#ffffff' }}>
+                <video src="/Images/rhs_video1.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <Image src="/Images/rhs_iphone_frame.png" alt="iPhone frame"
-                width={750} height={1392}
-                style={{ width: '100%', height: 'auto', display: 'block', position: 'relative', zIndex: 10, pointerEvents: 'none' }} />
+                fill
+                style={{ objectFit: 'contain', zIndex: 10, pointerEvents: 'none' }} />
             </div>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
             <div className="flex items-center gap-4">
               <Image src="/Icons/RHS icon.png" alt="RHS icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
-                <span className="card-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Raymond Hair Salon</span>
-                <span className="card-desc" style={{ fontSize: '18px', lineHeight: '20px', color: '#6b7280' }}>Scheduling made effortless with online booking</span>
+                <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Raymond Hair Salon</span>
+                <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>Scheduling made effortless with online booking</span>
               </div>
             </div>
             <div className="arrow-btn">
@@ -382,8 +382,8 @@ export default function Home() {
               <div className="flex items-center gap-4">
                 <Image src="/Icons/Kalshi_icon.png" alt="Kalshi icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-1">
-                  <span className="card-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Kalshi</span>
-                  <span className="card-desc" style={{ fontSize: '18px', lineHeight: '20px', color: '#6b7280' }}>2025 | Desktop extension</span>
+                  <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Kalshi</span>
+                  <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>2025 | Desktop extension</span>
                 </div>
               </div>
               <div className="arrow-btn">
@@ -410,8 +410,8 @@ export default function Home() {
               <div className="flex items-center gap-4">
                 <Image src="/Icons/Phia_icon.png" alt="Phia icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-1">
-                  <span className="card-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Phia</span>
-                  <span className="card-desc" style={{ fontSize: '18px', lineHeight: '20px', color: '#6b7280' }}>2025 | Desktop extension | Redesign</span>
+                  <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Phia</span>
+                  <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>2025 | Desktop extension | Redesign</span>
                 </div>
               </div>
               <div className="arrow-btn">
@@ -424,13 +424,13 @@ export default function Home() {
         </div>
       </div>
       {/* Footer */}
-      <footer style={{ padding: '4px 0 40px', marginTop: '80px' }}>
-        <p style={{ fontSize: '16px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
+      <footer style={{ padding: '4px 0 40px', marginTop: '40px' }}>
+        <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
         <div className="flex gap-4" style={{ marginBottom: '8px' }}>
-          <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
-          <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
+          <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '18px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
+          <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '18px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
         </div>
-        <p style={{ fontSize: '13px', color: '#9ca3af' }}>© Joann Zhang</p>
+        <p style={{ fontSize: '18px', color: '#9ca3af' }}>© Joann Zhang</p>
       </footer>
     </main>
     </>
