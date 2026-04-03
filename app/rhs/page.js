@@ -123,7 +123,7 @@ export default function RHS() {
       </div>
 
       {/* Hero */}
-      <div className="page-hero" style={{ backgroundColor: '#f1f5f9', paddingTop: '120px', paddingBottom: '0px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '48px', paddingRight: '48px' }}>
+      <div className="page-hero" style={{ backgroundColor: '#f1f5f9', paddingTop: '120px', paddingBottom: '60px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', paddingLeft: '48px', paddingRight: '48px' }}>
         <Image
           src="/Images/rhs_image (3).png"
           alt="Raymond Hair Salon app screens"

@@ -217,7 +217,7 @@ export default function Home() {
       <section className="flex flex-col cards-section" style={{ position: 'relative', zIndex: 1, gap: '80px', marginLeft: '80px', marginRight: '80px' }}>
         {/* NutritionNest */}
         <Link href="/nn" className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer project-card"
-          style={{ textDecoration: 'none', paddingTop: '20px', paddingBottom: '20px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
+          style={{ textDecoration: 'none', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
           <div ref={nnImagesWrapRef} style={{ willChange: 'transform', overflow: 'visible' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end' }}>
               <Image src="/Images/NN.png" alt="NutritionNest" width={900} height={600} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
@@ -247,7 +247,7 @@ export default function Home() {
         </Link>
         {/* Duetti */}
         <Link href="/duetti" className="group flex flex-col overflow-hidden cursor-pointer project-card"
-          style={{ textDecoration: 'none', backgroundColor: '#d9f99d', borderRadius: '32px', paddingTop: '20px', paddingBottom: '20px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          style={{ textDecoration: 'none', backgroundColor: '#d9f99d', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
             style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
             <div style={{ position: 'relative', width: '73%', flexShrink: 0 }}>
@@ -276,7 +276,7 @@ export default function Home() {
         </Link>
         {/* Lasertaz */}
         <Link href="/lasertaz" className="group flex flex-col overflow-hidden cursor-pointer project-card"
-          style={{ textDecoration: 'none', backgroundColor: '#0a0a0a', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          style={{ textDecoration: 'none', backgroundColor: '#0a0a0a', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
             <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
           </div>
@@ -297,19 +297,19 @@ export default function Home() {
         </Link>
         {/* Bookworm */}
         <Link href="/bookworm" className="group flex flex-col overflow-hidden cursor-pointer project-card"
-          style={{ textDecoration: 'none', backgroundColor: '#184131', borderRadius: '32px', paddingTop: '20px', paddingBottom: '20px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
-          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', minHeight: '144px' }}>
-            <div style={{ flex: '0 0 75%', height: 0, paddingBottom: '48.09%', position: 'relative', overflow: 'hidden', borderRadius: '12px' }}>
+          style={{ textDecoration: 'none', backgroundColor: '#184131', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
+          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
+            <div style={{ flex: '0 0 75%', overflow: 'hidden', borderRadius: '12px' }}>
               <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678}
-                style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: 'auto' }} />
+                style={{ width: '100%', height: 'auto', display: 'block' }} />
             </div>
-            <div style={{ position: 'relative', flex: '0 0 25%', alignSelf: 'flex-end', height: 0, paddingBottom: '48.09%' }}>
+            <div style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1420', alignSelf: 'flex-start', marginTop: '0%' }}>
               <div style={{ position: 'absolute', inset: 0 }}>
-                <div style={{ position: 'absolute', top: '2%', left: '4.7%', right: '4.7%', bottom: '2%', borderRadius: '10% 10% 6% 6% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
+                <div style={{ position: 'absolute', top: '1.6%', left: '9%', right: '9%', bottom: '2%', borderRadius: '10% 10% 6% 6% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
                   <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <Image src="/Images/bw_iphone_frame.png" alt="iPhone frame"
-                  width={678} height={1392}
+                  width={678} height={1390}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
               </div>
             </div>
@@ -331,11 +331,11 @@ export default function Home() {
         </Link>
         {/* Raymond Hair Salon */}
         <Link href="/rhs" className="group flex flex-col overflow-hidden cursor-pointer project-card"
-          style={{ textDecoration: 'none', backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '20px', paddingBottom: '20px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          style={{ textDecoration: 'none', backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
             <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
-            <div style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1392', alignSelf: 'flex-start', marginTop: '1.5%' }}>
-              <div style={{ position: 'absolute', top: '2%', left: '3.5%', right: '3.5%', bottom: '2%', borderRadius: '6% / 4%', overflow: 'hidden', zIndex: 1, backgroundColor: '#ffffff' }}>
+            <div style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1430', alignSelf: 'flex-start', marginTop: '1.5%' }}>
+              <div style={{ position: 'absolute', top: '2%', left: '9%', right: '9%', bottom: '2%', borderRadius: '6% / 4%', overflow: 'hidden', zIndex: 1, backgroundColor: '#ffffff' }}>
                 <video src="/Images/rhs_video1.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <Image src="/Images/rhs_iphone_frame.png" alt="iPhone frame"
@@ -373,7 +373,7 @@ export default function Home() {
         <div className="flex flex-col" style={{ gap: '80px' }}>
           {/* Kalshi */}
           <Link href="/kalshi" className="group flex flex-col overflow-hidden cursor-pointer project-card"
-            style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+            style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
               <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
@@ -395,7 +395,7 @@ export default function Home() {
           </Link>
           {/* Phia */}
           <Link href="/phia" className="group flex flex-col overflow-hidden cursor-pointer project-card"
-            style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '32px', paddingBottom: '0px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+            style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
             <div className="w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ overflow: 'hidden', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.1)' }}>
               <Image
