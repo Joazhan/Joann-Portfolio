@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Syne } from 'next/font/google'
+import AnimatedFooter from '@/app/components/AnimatedFooter'
 
 const syne = Syne({ subsets: ['latin'], weight: ['600'] })
 
@@ -59,6 +60,7 @@ export default function NutritionNest() {
           font-size: 14px;
           line-height: 20px;
           font-weight: 600;
+          letter-spacing: 0.4px;
           color: #9ca3af;
           text-transform: uppercase;
           margin-bottom: 5px;
@@ -110,22 +112,22 @@ export default function NutritionNest() {
             Joann Zhang
           </Link>
           <div className="flex items-center gap-6">
-            <Link href="/" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</Link>
-            <Link href="/about" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">About</Link>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
+            <Link href="/" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</Link>
+            <Link href="/about" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">About</Link>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
+            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
           </div>
         </nav>
       </div>
 
       {/* Hero — phone mockups */}
-      <div className="page-hero" style={{ backgroundColor: '#f2f4f6', paddingTop: '120px', paddingBottom: '0px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden' }}>
+      <div className="page-hero" style={{ backgroundColor: '#f2f4f6', paddingTop: '80px', paddingBottom: '0px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.1)' }}>
         <Image
           src="/Images/NN.png"
           alt="NutritionNest app screens"
           width={1200}
           height={700}
-          style={{ width: '80%', maxWidth: '1100px', height: 'auto', objectFit: 'contain' }}
+          style={{ width: '85%', maxWidth: '1200px', height: 'auto', objectFit: 'contain', paddingBottom: '20px' }}
         />
       </div>
 
@@ -191,7 +193,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Challenge */}
-      <section style={{ backgroundColor: '#f9fafb', padding: '120px 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '120px 40px' }}>
         <div className="content">
           <p className={`section-label ${syne.className}`}>Challenge</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -229,7 +231,7 @@ export default function NutritionNest() {
             </div>
           </div>
 
-          <div style={{ backgroundColor: '#f9fafb', borderRadius: '16px', padding: '24px' }}>
+          <div style={{ backgroundColor: 'rgb(242, 244, 246)', borderRadius: '16px', padding: '24px' }}>
             <p style={{ fontSize: '12px', letterSpacing: '0.08em', color: '#9ca3af', marginBottom: '16px', fontWeight: '600', textTransform: 'uppercase' }}>30+ responses</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div className="quote-card">"I need more accountability to keep my workout schedule going."</div>
@@ -240,7 +242,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Competitive Analysis — stats grid removed, paragraph becomes caption */}
-      <section style={{ backgroundColor: '#f9fafb', padding: '120px 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '120px 40px' }}>
         <div className="content-img">
           <p className={`section-label ${syne.className}`}>Competitive Analysis</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -249,7 +251,7 @@ export default function NutritionNest() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '12px' }}>
             I began looking into most commonly used nutrition apps to understand similar and different product offerings. Each app offers meal logging, journal, and recipes as commonly used features. User profiles use broad averages from their own data, which can make the guidance feel generic or inaccurate.
           </p>
-          <a href="#" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none', display: 'inline-block', marginBottom: '48px' }} className="hover:text-black">View affinity map ↗</a>
+          <a href="#" style={{ fontSize: '15px', fontWeight: '600', color: '#626262', textDecoration: 'none', display: 'inline-block', marginBottom: '48px' }} className="hover:text-black">View affinity map ↗</a>
 
           <div style={{ margin: '0 -80px' }}>
             <Image src="/NN/affinity_map_image.avif" alt="User research affinity map" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', marginBottom: '16px', border: '1px solid rgba(0,0,0,0.1)' }} />
@@ -282,9 +284,9 @@ export default function NutritionNest() {
               { title: 'Engaging', desc: 'Drive motivation and consistency through meaningful interaction.' },
               { title: 'AI Personalized', desc: 'Deliver guidance powered by AI insights.' },
             ].map(({ title, desc }) => (
-              <div key={title} style={{ backgroundColor: '#f9fafb', borderRadius: '16px', padding: '32px', border: '1px solid rgba(0,0,0,0.1)' }}>
+              <div key={title} style={{ backgroundColor: 'rgb(242, 244, 246)', borderRadius: '16px', padding: '32px', border: '1px solid rgba(0,0,0,0.1)' }}>
                 <p style={{ fontSize: '18px', fontWeight: '600', color: '#212121', marginBottom: '8px' }}>{title}</p>
-                <p style={{ fontSize: '16px', lineHeight: '24px', color: '#6b7280' }}>{desc}</p>
+                <p style={{ fontSize: '18px', lineHeight: '28px', color: '#6b7280' }}>{desc}</p>
               </div>
             ))}
           </div>
@@ -292,7 +294,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Exploration — new section */}
-      <section style={{ backgroundColor: '#f9fafb', padding: '120px 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '120px 40px' }}>
         <div className="content-img">
           <p className={`section-label ${syne.className}`}>Exploration</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -330,7 +332,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Low Fidelity — updated caption text, centered */}
-      <section style={{ backgroundColor: '#f9fafb', padding: '120px 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '120px 40px' }}>
         <div className="content-img">
           <p className={`section-label ${syne.className}`}>Low Fidelity</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -339,7 +341,7 @@ export default function NutritionNest() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '32px' }}>
             I shared early low-fidelity designs with the team, and while they liked the overall flow, they pointed out a couple of important issues. The floating action button made the interface feel cluttered, and AI wasn't being used to its full potential — it was just a basic chatbot. Because of that, the app came across as just another meal-logging tool.
           </p>
-          <div style={{ margin: '0 -80px' }}>
+          <div style={{ margin: '0 -200px' }}>
             <Image src="/NN/second_iteration_image.png" alt="Low fidelity wireframes" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '100px', paddingRight: '100px' }}>
@@ -358,7 +360,7 @@ export default function NutritionNest() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '32px' }}>
             We made the chatbot feel more human by renaming it to 'NED,' adding NED cards throughout the app for better support, and giving NED its own tab for easier access. The design was a hit and got the green light to move forward!
           </p>
-          <div style={{ margin: '0 -80px' }}>
+          <div style={{ margin: '0 -200px' }}>
             <Image src="/NN/final_iteration_image1.webp" alt="Final iteration detail" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '100px', paddingRight: '100px' }}>
@@ -368,7 +370,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Solution — NN.png removed, NED_image added, final_iteration_image removed, design system stacked */}
-      <section style={{ backgroundColor: '#f9fafb', padding: '120px 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '120px 40px' }}>
         <div className="content-img">
           <p className={`section-label ${syne.className}`}>Solution</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -387,7 +389,7 @@ export default function NutritionNest() {
               { title: 'Engaging', desc: 'Drive motivation and consistency through meaningful interaction.' },
               { title: 'AI Personalized', desc: 'Deliver guidance powered by AI insights.' },
             ].map(({ title, desc }) => (
-              <div key={title} style={{ backgroundColor: 'white', borderRadius: '16px', padding: '32px' }}>
+              <div key={title} style={{ backgroundColor: '#f2f4f6', borderRadius: '16px', padding: '32px', border: '1px solid rgba(0,0,0,0.08)' }}>
                 <p style={{ fontSize: '16px', fontWeight: '600', color: '#212121', marginBottom: '8px' }}>{title}</p>
                 <p style={{ fontSize: '14px', lineHeight: '22px', color: '#6b7280' }}>{desc}</p>
               </div>
@@ -430,17 +432,7 @@ export default function NutritionNest() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ padding: '40px 40px' }}>
-        <div style={{ maxWidth: '1920px', margin: '0 auto' }}>
-          <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
-          <div className="flex gap-4" style={{ marginBottom: '8px' }}>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '18px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
-          </div>
-          <p style={{ fontSize: '18px', color: '#9ca3af' }}>© Joann Zhang</p>
-        </div>
-      </footer>
+      <AnimatedFooter />
 
     </main>
   )

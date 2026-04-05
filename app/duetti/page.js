@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Syne } from 'next/font/google'
+import AnimatedFooter from '@/app/components/AnimatedFooter'
 
 const syne = Syne({ subsets: ['latin'], weight: ['600'] })
 
@@ -52,8 +53,8 @@ export default function Duetti() {
           margin: 0 auto;
         }
         .section-label {
-          font-size: 11px;
-          letter-spacing: 0.1em;
+          font-size: 14px;
+          letter-spacing: 0.5px;
           font-weight: 600;
           color: #9ca3af;
           text-transform: uppercase;
@@ -99,10 +100,10 @@ export default function Duetti() {
             Joann Zhang
           </Link>
           <div className="flex items-center gap-6">
-            <Link href="/" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</Link>
-            <Link href="/about" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">About</Link>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '18px' }} className="text-gray-500 hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
+            <Link href="/" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</Link>
+            <Link href="/about" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">About</Link>
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
+            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
           </div>
         </nav>
       </div>
@@ -161,8 +162,8 @@ export default function Duetti() {
 
       {/* Existing Report Screenshots */}
       <section style={{ padding: '0 40px 80px', borderBottom: '1px solid #e5e7eb' }}>
-        <div style={{ maxWidth: '960px', margin: '0 auto' }}>
-          <Image src="/Duetti/previous_econ_report_image.avif" alt="Duetti 2023 economic report" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <Image src="/Duetti/Image Gallery.png" alt="Duetti 2023 economic report" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', marginTop: '16px' }}>
             Duetti's 2023 economic report. We needed to change their data visualization and enhance the design polish while keeping their current design language.
           </p>
@@ -195,7 +196,9 @@ export default function Duetti() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             The Duetti brand has a distinct and ownable look, using an incredibly punchy, almost neon green paired with a darker forest green in all of their designs. The typeface using Maax Unicase and Nunito Sans is also striking with quirky, heavy letterforms. Overall, the Duetti brand looks modern and trendy.
           </p>
-          <Image src="/Duetti/inspo_image.avif" alt="Duetti social media branding covers" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -350px', marginBottom: '16px' }}>
+            <Image src="/Duetti/inspo_image.avif" alt="Duetti social media branding covers" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
             Here are some sample covers from Duetti's past social media branding using bold, high-contrast style. The design brings in artist cover photos to connect with target audience, while combining other vibrant colors to make data feel dynamic and engaging. I extracted from their fonts, color styles, and overall design direction to shape the look of our report's data visualization.
           </p>
@@ -212,7 +215,9 @@ export default function Duetti() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             Most of the content was already written, so my job is to present the copy and visualize the data to be visually arresting and highly consumable. I brought the content to life with colors, visuals, and layout. Since this will be a slideshow-style experience, we're focusing on clarity and readability for a smooth, scrollable transition.
           </p>
-          <Image src="/Duetti/wireframe_image.avif" alt="Wireframes grid" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -280px', marginBottom: '16px' }}>
+            <Image src="/Duetti/wireframe_image.avif" alt="Wireframes grid" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
             This is a map of our early wireframes with title case and body copy. We tested a few data visuals to get a good look with what our design should look like for web and desktop, but I was responsible for bringing our design to life.
           </p>
@@ -229,15 +234,21 @@ export default function Duetti() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             I explored different approaches and landed on this in our mid-fidelity stage, but it still felt flat, missing the nuanced and robust feel we were aiming for. While the team refined the copy, I fine-tuned the data visuals for accuracy and established our font and color system to create a more cohesive and efficient workflow.
           </p>
-          <Image src="/Duetti/first_iteration_image.avif" alt="Mid-fidelity overview grid" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -280px', marginBottom: '16px' }}>
+            <Image src="/Duetti/first_iteration_image.avif" alt="Mid-fidelity overview grid" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', marginBottom: '48px' }}>
             Here's a look at our first iteration with graphs and colors in place. I set up the font and color system to keep things consistent across data visuals and screens. We also tweaked the mobile text to cut down on the need for the 'More' button, so key info is easier to catch at a glance. Along the way, we mocked up a new menu button to make navigation smoother. My lead Product Designer jumped in to bring screens to life with artist photos and illustrations.
           </p>
-          <Image src="/Duetti/first_iteration_yellow_image.avif" alt="Mid-fi yellow genre chart" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -280px', marginBottom: '16px' }}>
+            <Image src="/Duetti/first_iteration_yellow_image.avif" alt="Mid-fi yellow genre chart" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', marginBottom: '48px' }}>
             This is a closer look at one of the graphs I designed to show how streaming preferences vary by genre. This version felt too cluttered and hard to read against the yellow background and green frame, making it tough to distinguish elements. We ended up cutting out this slide due to content changes, but it was something to keep in mind for future iterations.
           </p>
-          <Image src="/Duetti/first_iteration_pink_image.avif" alt="Mid-fi pink slide" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -280px', marginBottom: '16px' }}>
+            <Image src="/Duetti/first_iteration_pink_image.avif" alt="Mid-fi pink slide" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
             This design was bold and attention-grabbing, but overall felt tight and the high-contrast pink and lime green colors were too distracting where it overpowered texts and data points. We also swapped out the pill-shaped dropdown since it didn't quite fit the aesthetic and needed a color adjustment to feel more in tune with the slide.
           </p>
@@ -254,21 +265,27 @@ export default function Duetti() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             For the next review, we focused on the details and adding polish to make this report sing. We focused on adding texture through rich geometry and photography, and evoking a playful vibe with slightly off-kilter layouts. After refining the data visuals for clarity and accuracy, we got the green light and moved forward with the developer handoff.
           </p>
-          <Image src="/Duetti/final_design_image.avif" alt="Final design grid" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -280px', marginBottom: '16px' }}>
+            <Image src="/Duetti/final_design_image.avif" alt="Final design grid" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', marginBottom: '48px' }}>
             We fine-tuned our fonts and colors to make the data visuals feel more balanced. Some colors weren't reading well, so we adjusted the color styles for better clarity. I suggested a wine red for slide four to improve contrast with the lime green — it was approved and helped the design feel more polished and cohesive. Our lead PD added new illustrations and photos that really brought everything to life.
           </p>
-          <Image src="/Duetti/final_consumer_image.avif" alt="Spotify Discovery Mode chart" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -280px', marginBottom: '16px' }}>
+            <Image src="/Duetti/final_consumer_image.avif" alt="Spotify Discovery Mode chart" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', marginBottom: '48px' }}>
             This is a closer look at one of the charts I designed, using bold neon orange and pink to highlight the contrast between Spotify's rising consumer prices and declining artist payouts. Our lead designer created a geometric background that adds visual interest without overpowering the graph. I also replaced the pill-shaped dropdown with a green vibrant rectangular one for a more unified look. The result came out cleaner and more digestible without losing impact.
           </p>
-          <Image src="/Duetti/final_discovery_image.avif" alt="Spotify consumer prices vs payout rates" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -280px', marginBottom: '16px' }}>
+            <Image src="/Duetti/final_discovery_image.avif" alt="Spotify consumer prices vs payout rates" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', marginBottom: '48px' }}>
             I designed this graph to highlight the rise in Discovery Mode adoption. The smooth curve and evenly spaced data points guide our eyes naturally, while gradients add slight depth without clutter. The bright yellow markers stand out against the dark green background, highlighting key data without distraction.
           </p>
 
           {/* Color + Typography */}
-          <div className="two-col-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+          <div className="two-col-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '24px', margin: '0 -280px' }}>
             <Image src="/Duetti/color_image.avif" alt="Color library" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
             <Image src="/Duetti/typography_image.avif" alt="Typography guide" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
           </div>
@@ -298,17 +315,7 @@ export default function Duetti() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ padding: '40px 40px', borderTop: '1px solid #e5e7eb' }}>
-        <div style={{ maxWidth: '1920px', margin: '0 auto' }}>
-          <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
-          <div className="flex gap-4" style={{ marginBottom: '8px' }}>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '18px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
-          </div>
-          <p style={{ fontSize: '18px', color: '#9ca3af' }}>© Joann Zhang</p>
-        </div>
-      </footer>
+      <AnimatedFooter />
 
     </main>
   )

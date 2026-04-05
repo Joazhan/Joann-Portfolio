@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Syne } from 'next/font/google'
+import AnimatedFooter from '@/app/components/AnimatedFooter'
 
 const syne = Syne({ subsets: ['latin'], weight: ['600'] })
 
@@ -52,8 +53,9 @@ export default function Bookworm() {
           margin: 0 auto;
         }
         .section-label {
-          font-size: 11px;
-          letter-spacing: 0.1em;
+          font-size: 14px;
+          line-height: 20px;
+          letter-spacing: 0.5px;
           font-weight: 600;
           color: #9ca3af;
           text-transform: uppercase;
@@ -123,13 +125,13 @@ export default function Bookworm() {
       </div>
 
       {/* Hero */}
-      <div className="page-hero" style={{ paddingTop: '120px', paddingBottom: '0px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '24px', paddingRight: '24px' }}>
+      <div className="page-hero" style={{ paddingTop: '120px', paddingBottom: '40px', backgroundColor: '#0C3D29', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '24px', paddingRight: '24px' }}>
         <Image
           src="/Images/bw_image.png"
           alt="Bookworm app screens"
           width={1080}
           height={678}
-          style={{ width: '100%', maxWidth: '1100px', height: 'auto', objectFit: 'contain', borderRadius: '12px' }}
+          style={{ width: '100%', maxWidth: '1300px', height: 'auto', objectFit: 'contain', borderRadius: '12px' }}
         />
       </div>
 
@@ -191,7 +193,9 @@ export default function Bookworm() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '32px' }}>
             I conducted 10 interviews between the ages of 20 and 35 of 50% book readers and 50% non-book readers to understand current app usage and uncover gaps in user interest. Users find the entertainment value of current book apps lacking, making it challenging for both groups to stay engaged.
           </p>
-          <Image src="/Bookworm/user_research_image.avif" alt="User research" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '24px', display: 'block' }} />
+          <div style={{ margin: '0 -200px', marginBottom: '24px' }}>
+            <Image src="/Bookworm/user_research_image.avif" alt="User research" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <div className="quote-card">
             "Users frustrated with current book apps due to lack of personalized features, and limited interactive elements."
           </div>
@@ -211,7 +215,9 @@ export default function Bookworm() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '24px' }}>
             Platforms here focuses only on ebooks, paperbacks, and audiobooks, there's a many opportunity to tap into other types of book-related content.
           </p>
-          <Image src="/Bookworm/competitor_image.png" alt="Competitive analysis" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -200px' }}>
+            <Image src="/Bookworm/competitor_image.png" alt="Competitive analysis" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
         </div>
       </section>
 
@@ -225,7 +231,7 @@ export default function Bookworm() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             I decided to structure my design to emphasize three specific focal points, each tailored to address the distinct needs and preferences of my target audience, based on user research and competitive analysis insights.
           </p>
-          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', margin: '0 -200px' }}>
             {[
               { title: 'Unique Product Offering', desc: 'Attract new users with a product that redefines expectations' },
               { title: 'Simple Navigation', desc: 'Intuitive experience for effortless user discovery' },
@@ -250,7 +256,9 @@ export default function Bookworm() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             I began outlining my skeleton for a high-level view of the key features to prioritize, such as home/discover, bookmarks, and book details. This approach helps pinpoint impactful areas for product placement and provides a clear reference to stay focused and targeted when making final decisions.
           </p>
-          <Image src="/Bookworm/user_flow_1_image.png" alt="End-to-end user journey map" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -200px', marginBottom: '16px' }}>
+            <Image src="/Bookworm/user_flow_1_image.png" alt="End-to-end user journey map" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
             Holistic view of Bookworm's user journey map to pinpoint optimal areas for product placement.
           </p>
@@ -267,7 +275,9 @@ export default function Bookworm() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             I decided to hone in on the book details flow and created Bookworm+, a premium subscription service offering early access to pre-orders, exclusive author chats, pop-up events, interviews, and signed digital NFTs. This strategy will drive significant growth for authors and elevate Bookworm's revenue.
           </p>
-          <Image src="/Bookworm/user_flow_image_2.png" alt="Task-focused book details flow" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -200px', marginBottom: '16px' }}>
+            <Image src="/Bookworm/user_flow_image_2.png" alt="Task-focused book details flow" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
             Focused book details flow from the newly integrated Bookworm+ subscription model with premium offerings.
           </p>
@@ -285,7 +295,9 @@ export default function Bookworm() {
             I began brainstorming different design directions to get an overview of which areas I needed to prioritize such as high-traffic user touchpoints and optimal moments for upselling. This approach helped me generate a wide range of ideas without limiting myself to a specific design structure.
           </p>
           <a href="https://figma.com/design/LZBaZ24kza0HWJEOnYf225/Bookworm-Mobile-App?node-id=945-1701&p=f&t=QAGHlZLogb2qChUb-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none', display: 'inline-block', marginBottom: '40px' }} className="hover:text-black">View design file ↗</a>
-          <Image src="/Bookworm/exploration_image.png" alt="Early exploration concepts" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -200px', marginBottom: '16px' }}>
+            <Image src="/Bookworm/exploration_image.png" alt="Early exploration concepts" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
             Quick look of early exploration process from discovering concept, ideas, and UI to guide the trajectory of Bookworm's app layout.
           </p>
@@ -302,7 +314,9 @@ export default function Bookworm() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             I landed on these low-fidelity screens cause it felt the most organized and compelling when presenting Bookworm+. This wireframe helped layout what the basic visual model will look like before implementing final touch-ups.
           </p>
-          <Image src="/Bookworm/wireframe_image.png" alt="Low-fidelity wireframes" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -200px', marginBottom: '16px' }}>
+            <Image src="/Bookworm/wireframe_image.png" alt="Low-fidelity wireframes" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: 'none' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
             Quick look of early exploration process from discovering concept, ideas, and UI to guide the trajectory of Bookworm's app layout.
           </p>
@@ -334,17 +348,21 @@ export default function Bookworm() {
             ))}
           </div>
 
-          <Image src="/Bookworm/final_design_image.png" alt="Final design screens" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -200px', marginBottom: '16px' }}>
+            <Image src="/Bookworm/final_design_image.png" alt="Final design screens" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', marginBottom: '48px' }}>
             Polished design highlights Bookworm's seamless flow, connecting authors and users through a compelling subscription offering.
           </p>
 
-          <Image src="/Bookworm/Design System (3) 1.png" alt="Component library preview" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -200px', marginBottom: '16px' }}>
+            <Image src="/Bookworm/Design System (3) 1.png" alt="Component library preview" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', marginBottom: '48px' }}>
             Preview of the component library for quick and efficient design updates to simplify any design changes easier down the line.
           </p>
 
-          <div className="two-col-stack" style={{ display: 'stack', gridTemplateStack: '1fr 1fr', gap: '24px' }}>
+          <div className="two-col-stack" style={{ display: 'stack', gridTemplateStack: '1fr 1fr', gap: '24px', margin: '0 -200px' }}>
             <div>
               <Image src="/Bookworm/color_image.png" alt="Color palette" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
               <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', textAlign: 'center', fontStyle: 'italic' }}>
@@ -378,17 +396,7 @@ export default function Bookworm() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ padding: '40px 40px', borderTop: '1px solid #e5e7eb' }}>
-        <div style={{ maxWidth: '1920px', margin: '0 auto' }}>
-          <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
-          <div className="flex gap-4" style={{ marginBottom: '8px' }}>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '18px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
-          </div>
-          <p style={{ fontSize: '18px', color: '#6b7280' }}>© Joann Zhang</p>
-        </div>
-      </footer>
+      <AnimatedFooter />
 
     </main>
   )
