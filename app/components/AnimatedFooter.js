@@ -15,7 +15,7 @@ export default function AnimatedFooter() {
     <footer style={{
       position: 'relative',
       overflow: 'hidden',
-      minHeight: '280px',
+      minHeight: '420px',
       backgroundColor: '#FCFCFC',
       backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.1) 2px, transparent 2px)',
       backgroundSize: '28px 28px',
@@ -30,7 +30,7 @@ export default function AnimatedFooter() {
           </div>
         </div>
       ))}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 1, padding: '32px 40px' }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 1, padding: '32px 0' }}>
         <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px' }}>
           <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', color: '#6b7280', textDecoration: 'none' }} className="hover:text-black">Email ↗</a>
