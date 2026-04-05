@@ -96,25 +96,6 @@ export default function Home() {
           0%, 100% { opacity: 0; transform: scale(0.6); }
           45%, 55% { opacity: 1; transform: scale(1); }
         }
-        .footer-sparkle {
-          position: absolute;
-          animation: sparkle-fade ease-in-out infinite;
-          pointer-events: none;
-        }
-        .sparkle-cluster {
-          position: relative;
-          width: 84px;
-          height: 84px;
-        }
-        .sparkle-cluster span {
-          position: absolute;
-          width: 4px;
-          height: 4px;
-          border-radius: 50%;
-          transform: translate(-2px, -2px);
-          background: rgba(0,0,0,0.7);
-          box-shadow: 0 0 6px 2px rgba(0,0,0,0.3), 0 0 18px 5px rgba(0,0,0,0.1);
-        }
         .arrow-btn {
           width: 44px;
           height: 56px;
