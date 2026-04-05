@@ -212,7 +212,7 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '24px' }}>
             I analyzed two direct and two indirect scheduling apps to evaluate their features. Their focus on functionality over design led to readability issues, missing information, and difficulty locating features.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', alignItems: 'center' }}>
             <Image src="/RHS/competitor_image (1).png" alt="Competitor analysis" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
             <Image src="/RHS/pricing_image.avif" alt="Competitor pricing" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
           </div>
