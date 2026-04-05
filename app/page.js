@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRive } from '@rive-app/react-canvas'
+import AnimatedFooter from '@/app/components/AnimatedFooter'
 function RiveIntro({ onComplete }) {
   const [slideUp, setSlideUp] = useState(false)
   const [hidden, setHidden] = useState(false)
@@ -89,8 +90,31 @@ export default function Home() {
   return (
     <>
     {!introComplete && <RiveIntro onComplete={() => { sessionStorage.setItem('introPlayed', 'true'); setIntroComplete(true) }} />}
-    <main className="min-h-screen bg-white portfolio-main" style={{ paddingLeft: '80px', paddingRight: '80px', cursor: 'none' }}>
+    <main className="min-h-screen portfolio-main" style={{ paddingLeft: '80px', paddingRight: '80px', cursor: 'none', backgroundColor: '#fbfbfb' }}>
       <style>{`
+        @keyframes sparkle-fade {
+          0%, 100% { opacity: 0; transform: scale(0.6); }
+          45%, 55% { opacity: 1; transform: scale(1); }
+        }
+        .footer-sparkle {
+          position: absolute;
+          animation: sparkle-fade ease-in-out infinite;
+          pointer-events: none;
+        }
+        .sparkle-cluster {
+          position: relative;
+          width: 84px;
+          height: 84px;
+        }
+        .sparkle-cluster span {
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          transform: translate(-2px, -2px);
+          background: rgba(0,0,0,0.7);
+          box-shadow: 0 0 6px 2px rgba(0,0,0,0.3), 0 0 18px 5px rgba(0,0,0,0.1);
+        }
         .arrow-btn {
           width: 44px;
           height: 56px;
@@ -300,7 +324,7 @@ export default function Home() {
           style={{ textDecoration: 'none', backgroundColor: '#184131', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
             <div style={{ flex: '0 0 75%', overflow: 'hidden', borderRadius: '12px' }}>
-              <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678}
+              <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678} quality={100}
                 style={{ width: '100%', height: 'auto', display: 'block' }} />
             </div>
             <div style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1420', alignSelf: 'flex-start', marginTop: '0%' }}>
@@ -333,7 +357,7 @@ export default function Home() {
         <Link href="/rhs" className="group flex flex-col overflow-hidden cursor-pointer project-card"
           style={{ textDecoration: 'none', backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
-            <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
+            <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} quality={100} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
             <div style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1430', alignSelf: 'flex-start', marginTop: '1.5%' }}>
               <div style={{ position: 'absolute', top: '2%', left: '9%', right: '9%', bottom: '2%', borderRadius: '6% / 4%', overflow: 'hidden', zIndex: 1, backgroundColor: '#ffffff' }}>
                 <video src="/Images/rhs_video1.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -423,15 +447,7 @@ export default function Home() {
           </Link>
         </div>
       </div>
-      {/* Footer */}
-      <footer style={{ padding: '4px 0 40px', marginTop: '40px' }}>
-        <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
-        <div className="flex gap-4" style={{ marginBottom: '8px' }}>
-          <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '18px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
-          <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '18px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
-        </div>
-        <p style={{ fontSize: '18px', color: '#9ca3af' }}>© Joann Zhang</p>
-      </footer>
+      <AnimatedFooter />
     </main>
     </>
   )
