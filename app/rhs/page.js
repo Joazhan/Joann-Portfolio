@@ -177,6 +177,16 @@ export default function RHS() {
         </div>
       </section>
 
+      {/* Competitor Pricing + User Journey Map */}
+      <section style={{ padding: '80px 40px', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', alignItems: 'start', maxWidth: '1400px', width: '100%' }}>
+          <Image src="/RHS/store_image.avif" alt="User journey map" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
+          <div style={{ aspectRatio: '1024 / 683', overflow: 'hidden' }}>
+            <Image src="/RHS/pricing_image.avif" alt="Competitor pricing" width={0} height={0} sizes="50vw" style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'top left', borderRadius: '0px', display: 'block' }} />
+          </div>
+        </div>
+      </section>
+
       {/* Solution */}
       <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px' }}>
         <div className="content">
@@ -187,7 +197,7 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             My solution for this challenge is to build an application that allows Raymond to interact with his customers while automating scheduling while creating a platform for him to better serve his target audience.
           </p>
-          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px' }}>
+          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', margin: '0 -200px' }}>
             {[
               { title: 'Simple to Use', desc: 'Approachable design that any age group can pick up and use immediately.' },
               { title: 'Streamlined Booking', desc: 'Clear scheduling flow with minimal steps from selection to confirmation.' },
@@ -212,9 +222,8 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '24px' }}>
             I analyzed two direct and two indirect scheduling apps to evaluate their features. Their focus on functionality over design led to readability issues, missing information, and difficulty locating features.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-            <Image src="/RHS/competitor_image (1).png" alt="Competitor analysis" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
-            <Image src="/RHS/pricing_image.avif" alt="Competitor pricing" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
+          <div style={{ margin: '0 -200px' }}>
+            <Image src="/RHS/competitor_image (1).png" alt="Competitor analysis" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
           </div>
         </div>
       </section>
@@ -243,10 +252,9 @@ export default function RHS() {
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
             Four sub-pages, focused on what matters most
           </h2>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
+          <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262' }}>
             The homepage is built around four essential sub-pages designed to focus on the features users visit most frequently. The contact information page received the most interest, as users liked the streamlined experience to connect with the barber directly.
           </p>
-          <Image src="/RHS/store_image.avif" alt="User journey map" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
         </div>
       </section>
 
@@ -263,11 +271,10 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             My objective was to allow users who are less hands-on with technology to easily pick up the app and begin using it. I conducted the Crazy 8's exercise, allowing me to brainstorm ideas and filter which designs suit the business. I concluded that the last frame was the most user-friendly, and provided 4 basic functionalities: Service, Location & Hours, Contact, and Book Appointment.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
-            <Image src="/RHS/paper_wireframe_image (1).png" alt="Paper wireframe 1" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
-            <Image src="/RHS/paper_wireframe_2_image (1).png" alt="Paper wireframe 2" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '0 -200px', marginBottom: '16px' }}>
+            <Image src="/RHS/paper_wireframe_image (1).png" alt="Paper wireframe 1" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+            <Image src="/RHS/paper_wireframe_2_image (1).png" alt="Paper wireframe 2" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
           </div>
-          <Image src="/RHS/paper_wireframe_3_image.png" alt="Paper wireframe 3" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
             Screenshots of paper wireframe flow for the front page of the design
           </p>
@@ -287,9 +294,9 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             My focus on prioritizing a modern and sleek visual design disregarded the basic needs of providing a good user experience for older customers. I found that a few designs were not WCAG-friendly and contained inconsistent design patterns — the search bar was ultimately removed for lower development cost and mobile optimization.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
-            <Image src="/RHS/first_iteration_image_1.png" alt="First iteration screens" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
-            <Image src="/RHS/first_iteration_iamge (1).png" alt="First iteration screens 2" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '0 -200px', marginBottom: '16px' }}>
+            <Image src="/RHS/first_iteration_image_1.png" alt="First iteration screens" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+            <Image src="/RHS/first_iteration_iamge (1).png" alt="First iteration screens 2" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
           </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: '#6b7280', fontStyle: 'italic', textAlign: 'center' }}>
             Design features oversized buttons that disrupt font alignment, inconsistent frame sizes, insufficient color contrast for older users, and unclear disabled buttons that leave users uncertain.
@@ -306,15 +313,15 @@ export default function RHS() {
           </h2>
           <div className="two-col-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '48px' }}>
             <div className="feature-card">
-              <p style={{ fontSize: '18px', fontWeight: '600', color: '#212121', marginBottom: '8px' }}>Appointment Selection</p>
-              <p style={{ fontSize: '16px', lineHeight: '24px', color: '#6b7280' }}>Clear and straightforward view of available date and time.</p>
+              <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '600', color: '#212121', marginBottom: '8px' }}>Appointment Selection</p>
+              <p style={{ fontSize: '14px', lineHeight: '20px', color: '#6b7280' }}>Clear and straightforward view of available date and time.</p>
             </div>
             <div className="feature-card">
-              <p style={{ fontSize: '15px', fontWeight: '600', color: '#212121', marginBottom: '8px' }}>Confirmation Flow</p>
-              <p style={{ fontSize: '14px', lineHeight: '22px', color: '#6b7280' }}>Cohesive flow with easy personal information entry and options to add to calendar, cancel, or reschedule.</p>
+              <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '600', color: '#212121', marginBottom: '8px' }}>Confirmation Flow</p>
+              <p style={{ fontSize: '14px', lineHeight: '20px', color: '#6b7280' }}>Cohesive flow with easy personal information entry and options to add to calendar, cancel, or reschedule.</p>
             </div>
           </div>
-          <div style={{ display: 'grid', gridTemplateGrid: '1fr 1fr 1fr', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', margin: '0 -200px' }}>
             <Image src="/RHS/final_design_1.png" alt="Final design 1" width={0} height={0} sizes="33vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
             <Image src="/RHS/final_design_2.png" alt="Final design 2" width={0} height={0} sizes="33vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
             <Image src="/RHS/final_design_3.png" alt="Final design 3" width={0} height={0} sizes="33vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
@@ -335,7 +342,9 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             The incorporation of Google's API features ensures a seamless means for users to receive timely reminders of upcoming appointments, thereby mitigating potential conflicts and miscommunications between the business owner and users.
           </p>
-          <Image src="/RHS/final_design_full_image.png" alt="Final design screens" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -200px' }}>
+            <Image src="/RHS/final_design_full_image.png" alt="Final design screens" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
         </div>
       </section>
 
@@ -357,7 +366,7 @@ export default function RHS() {
       </section>
 
       {/* Footer */}
-      <footer style={{ padding: '40px 40px', borderTop: '1px solid #e5e7eb' }}>
+      <footer style={{ padding: '40px 40px' }}>
         <div style={{ maxWidth: '1920px', margin: '0 auto' }}>
           <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
           <div className="flex gap-4" style={{ marginBottom: '8px' }}>
