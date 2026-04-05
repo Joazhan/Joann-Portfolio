@@ -36,7 +36,7 @@ export default function AnimatedFooter() {
           </div>
         </div>
       ))}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 1, padding: '32px 0' }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 1, padding: '32px 0', paddingLeft: '80px' }}>
         <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px' }}>
           <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', color: '#6b7280', textDecoration: 'none' }} className="hover:text-black">Email ↗</a>
