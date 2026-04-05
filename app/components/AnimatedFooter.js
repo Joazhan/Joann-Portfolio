@@ -1,19 +1,11 @@
 'use client'
 
 const clusters = [
-  { left: '3%',  top: '190px', dur: '3.2s', delay: '0s',   dots: [[0,0],[28,0]] },
-  { left: '9%',  top: '110px', dur: '2.8s', delay: '1.4s', dots: [[0,0],[28,0],[0,28]] },
-  { left: '18%', top: '200px', dur: '3.6s', delay: '0.7s', dots: [[0,0],[28,0],[28,28]] },
-  { left: '27%', top: '60px',  dur: '2.5s', delay: '2.1s', dots: [[0,0],[28,0],[0,28],[28,28]] },
-  { left: '35%', top: '260px', dur: '3.9s', delay: '0.3s', dots: [[0,0],[28,0]] },
-  { left: '43%', top: '155px', dur: '2.7s', delay: '3.2s', dots: [[0,0],[28,0],[28,28]] },
-  { left: '52%', top: '80px',  dur: '3.4s', delay: '1.8s', dots: [[0,0],[28,28],[56,0]] },
-  { left: '60%', top: '230px', dur: '2.9s', delay: '0.9s', dots: [[0,0],[28,0],[0,28]] },
-  { left: '68%', top: '120px', dur: '3.1s', delay: '2.6s', dots: [[0,0],[28,0],[28,28],[0,28]] },
-  { left: '76%', top: '50px',  dur: '2.6s', delay: '4.0s', dots: [[0,0],[28,0]] },
-  { left: '83%', top: '190px', dur: '3.7s', delay: '1.1s', dots: [[0,0],[28,0],[28,28]] },
-  { left: '91%', top: '270px', dur: '2.4s', delay: '3.5s', dots: [[0,0],[0,28],[28,28]] },
-  { left: '96%', top: '100px', dur: '3.3s', delay: '0.5s', dots: [[0,0],[28,0],[56,28]] },
+  { left: '3%',  top: '238px', dur: '3.2s', delay: '0s',   dots: [[0,0],[28,0]] },
+  { left: '9%',  top: '155px', dur: '2.8s', delay: '1.4s', dots: [[0,0],[0,28],[0,56]] },
+  { left: '18%', top: '234px', dur: '3.6s', delay: '0.7s', dots: [[0,0],[28,0],[28,28]] },
+  { left: '42%', top: '190px', dur: '2.7s', delay: '3.2s', dots: [[0,0],[28,28]] },
+  { left: '61%', top: '238px', dur: '3.1s', delay: '2.6s', dots: [[0,0],[28,0],[0,28],[28,28]] },
 ]
 
 export default function AnimatedFooter() {
