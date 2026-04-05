@@ -181,7 +181,7 @@ export default function RHS() {
       <section style={{ padding: '80px 40px', display: 'flex', justifyContent: 'center' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', alignItems: 'start', maxWidth: '1400px', width: '100%' }}>
           <Image src="/RHS/store_image.avif" alt="User journey map" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
-          <Image src="/RHS/pricing_image.avif" alt="Competitor pricing" width={0} height={0} sizes="50vw" style={{ width: '100%', maxHeight: '400px', objectFit: 'cover', objectPosition: 'top', borderRadius: '0px', display: 'block' }} />
+          <Image src="/RHS/pricing_image.avif" alt="Competitor pricing" width={0} height={0} sizes="50vw" style={{ width: 'auto', maxHeight: '400px', borderRadius: '0px', display: 'block' }} />
         </div>
       </section>
 
