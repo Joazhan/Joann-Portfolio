@@ -129,13 +129,13 @@ export default function Kalshi() {
             I explored how Kalshi could live directly in everyday browsing, letting users check market odds and place trades without leaving the page they&apos;re on.
           </p>
           <div className="flex flex-col gap-3">
-            <a href="https://www.figma.com/proto/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=CBHfNuU3QerPsGQt-0&scaling=scale-down&content-scaling=fixed&page-id=2%3A2&starting-point-node-id=106%3A1982" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
+            <a href="https://www.figma.com/proto/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=CBHfNuU3QerPsGQt-0&scaling=scale-down&content-scaling=fixed&page-id=2%3A2&starting-point-node-id=106%3A1982" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content', opacity: '0.7', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity='1'} onMouseLeave={e => e.currentTarget.style.opacity='0.7'}>
               View Figma Prototype ↗
             </a>
-            <a href="https://www.figma.com/design/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=IJKBuGVOfeqFv0v1-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
+            <a href="https://www.figma.com/design/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=IJKBuGVOfeqFv0v1-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content', opacity: '0.7', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity='1'} onMouseLeave={e => e.currentTarget.style.opacity='0.7'}>
               View Design File ↗
             </a>
-            <a href="https://github.com/Joazhan/kalshi-extension" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
+            <a href="https://github.com/Joazhan/kalshi-extension" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content', opacity: '0.7', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity='1'} onMouseLeave={e => e.currentTarget.style.opacity='0.7'}>
               View GitHub ↗
             </a>
           </div>
@@ -144,10 +144,8 @@ export default function Kalshi() {
 
       {/* Desktop Extension Landing Screen */}
       <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px 40px' }}>
-        <div className="content" style={{ maxWidth: '1400px' }}>
-          <div className="img-placeholder" style={{ minHeight: '360px', marginBottom: '12px' }}>
-            [ Image: Desktop extension landing screen — market overview, trending events, portfolio summary ]
-          </div>
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <Image src="/Kalshi/Browser Container 1.png" alt="Kalshi extension landing screen" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px', marginBottom: '12px' }} />
           <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px', marginBottom: '4px' }}>
             Landing screen
           </p>
@@ -159,30 +157,13 @@ export default function Kalshi() {
 
       {/* Extension Pop-up Flow */}
       <section style={{ padding: '80px 40px 40px' }}>
-        <div className="content" style={{ maxWidth: '1400px' }}>
-          <div className="img-placeholder" style={{ minHeight: '360px', marginBottom: '12px' }}>
-            [ Image: 3-step extension pop-up flow — browse market → set position → confirm trade ]
-          </div>
+        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <Image src="/Kalshi/Browser Container.png" alt="Kalshi extension popup 3-step flow" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px', marginBottom: '12px' }} />
           <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px', marginBottom: '4px' }}>
             Extension pop-up — 3-step flow
           </p>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
             This extension brings Kalshi into everyday browsing, letting users check odds and place trades right where their interest starts.
-          </p>
-        </div>
-      </section>
-
-      {/* How I built it */}
-      <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px 40px' }}>
-        <div className="content" style={{ maxWidth: '1400px' }}>
-          <div className="img-placeholder" style={{ minHeight: '320px', marginBottom: '12px' }}>
-            [ Image: Extension architecture diagram or code/component structure ]
-          </div>
-          <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px', marginBottom: '4px' }}>
-            How I built the extension
-          </p>
-          <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
-            I worked with Claude to build a Chrome extension for Kalshi, open-sourced on GitHub. Users can browse markets, track predictions, and place trades without leaving their current tab. Its now live! https://joazhan.github.io/kalshi-extension/
           </p>
         </div>
       </section>
