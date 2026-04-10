@@ -185,22 +185,30 @@ export default function Lasertaz() {
             With a clear foundation in place, I began creating our new UI components for our redesigned app so they're aligned with our updated visual direction. I aligned with my PD Lead to identify our foundational elements like colors, typography, and spacing. From there, I built out key patterns such as buttons, input fields, and modals that were cohesive and scalable across the app.
           </p>
 
-          <Image src="/Lasertaz/system_overview_image.png" alt="Design system overview" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -120px', marginBottom: '16px' }}>
+            <Image src="/Lasertaz/system_overview_image.png" alt="Design system overview" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(255,255,255,0.1)', paddingBottom: '16px' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '20px', color: '#6b7280', fontStyle: 'italic', textAlign: 'center', marginBottom: '48px' }}>
             An overview of the design system I helped create, organizing core UI components like buttons, inputs, modals, and icons for consistency and scalability. I collaborated with my PD lead to define component standards, while the custom illustrations on the right were created by our visual designers to align with the app's concept and branding.
           </p>
 
-          <Image src="/Lasertaz/buttons_image.png" alt="Button components" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -120px', marginBottom: '16px' }}>
+            <Image src="/Lasertaz/buttons_image.png" alt="Button components" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '20px', color: '#6b7280', fontStyle: 'italic', textAlign: 'center', marginBottom: '48px' }}>
             A closer look at the button components I defined as part of our design system. I designed different states (default, disabled, focused) and variants to support diverse use cases across the app. This helped us stay consistent early on and align on spacing, styles, and interaction patterns.
           </p>
 
-          <Image src="/Lasertaz/input_fields_image.png" alt="Input fields" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -120px', marginBottom: '16px' }}>
+            <Image src="/Lasertaz/input_fields_image.png" alt="Input fields" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '20px', color: '#6b7280', fontStyle: 'italic', textAlign: 'center', marginBottom: '48px' }}>
             I laid out different input fields to make sure everything felt intuitive and consistent across the app. We spent time making sure the spacing, text hierarchy, and contrast all worked well together, especially for things like validation and accessibility. It also helped the team stay aligned since we had all the edge cases visualized and documented early on.
           </p>
 
-          <Image src="/Lasertaz/components_image.png" alt="List-based components" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block' }} />
+          <div style={{ margin: '0 -120px', marginBottom: '16px' }}>
+            <Image src="/Lasertaz/components_image.png" alt="List-based components" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
           <p style={{ fontSize: '16px', lineHeight: '20px', color: '#6b7280', fontStyle: 'italic', textAlign: 'center' }}>
             List-based components supported key user flows like selecting payment methods, choosing contacts, and making quick decisions using checkboxes or radio buttons. The goal was to make each action feel simple and intuitive, while still being functional and accessible across different screens.
           </p>
