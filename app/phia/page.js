@@ -163,6 +163,7 @@ export default function Phia() {
               style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '16px' }}
             />
           </div>
+          <p style={{ fontSize: '18px', fontWeight: '600', color: '#212121', textAlign: 'center', marginBottom: '8px' }}>Extension tab</p>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', paddingLeft: '80px', paddingRight: '80px' }}>
             &ldquo;Let us provide a lower price&rdquo; shows the lowest and sustainable item, which gives users a sense of value. This creates a small &lsquo;win&rsquo; moment that feels helpful and trustworthy. I would A/B test a few versions of the tag to see which phrasing feels the most natural and motivating.
           </p>
@@ -186,6 +187,7 @@ export default function Phia() {
               style={{ width: '100%', height: 'auto', display: 'block' }}
             />
           </div>
+          <p style={{ fontSize: '18px', fontWeight: '600', color: '#212121', textAlign: 'center', marginBottom: '8px' }}>Secondhand Price Extension</p>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', paddingLeft: '80px', paddingRight: '80px' }}>
             Extension tab uses clearer hierarchy and trust cues to drive action, while users can recognize key savings without scanning through clutter. The verified seller badge builds confidence in lesser-known resellers.
           </p>
