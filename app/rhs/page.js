@@ -180,7 +180,7 @@ export default function RHS() {
 
       {/* Competitor Pricing + User Journey Map */}
       <section style={{ padding: '80px 40px', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', maxWidth: '900px', width: '100%', alignItems: 'center' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', maxWidth: '700px', width: '100%', alignItems: 'start' }}>
           <Image src="/RHS/store_image.avif" alt="User journey map" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
           <Image src="/RHS/pricing_image.avif" alt="Competitor pricing" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
         </div>
