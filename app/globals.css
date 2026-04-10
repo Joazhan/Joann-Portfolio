@@ -53,5 +53,9 @@ html, body, *, *::before, *::after {
   background: #000000;
   z-index: 2;
   transform: translate(-4px, -4px);
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.15), 0 0 8px 3px rgba(0,0,0,0.12);
+  box-shadow:
+    0 0 4px 2px rgba(0,0,0,0.6),
+    0 0 12px 6px rgba(0,0,0,0.3),
+    0 0 24px 12px rgba(0,0,0,0.15),
+    0 0 40px 20px rgba(0,0,0,0.06);
 }
