@@ -91,7 +91,7 @@ export default function About() {
             alt="Joann Zhang"
             width={360}
             height={360}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 50%' }}
           />
         </div>
 
