@@ -321,9 +321,9 @@ export default function RHS() {
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '0 -200px' }}>
-            <Image src="/RHS/final_design_1.png" alt="Final design 1" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
-            <Image src="/RHS/final_design_2.png" alt="Final design 2" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
-            <Image src="/RHS/final_design_3.png" alt="Final design 3" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+            <Image src="/RHS/final_design_1.png" alt="Final design 1" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
+            <Image src="/RHS/final_design_2.png" alt="Final design 2" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
+            <Image src="/RHS/final_design_3.png" alt="Final design 3" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
         </div>
       </section>
