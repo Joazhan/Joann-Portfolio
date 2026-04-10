@@ -106,7 +106,7 @@ export default function RHS() {
         <nav className="flex items-center justify-between px-6 py-3 w-full"
           style={{
             backgroundColor: 'rgba(255,255,255,0.6)',
-            border: '1px solid rgba(0,0,0,0.1)',
+            border: '1px solid rgba(0,0,0,0.05)',
             borderRadius: '32px',
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
@@ -321,9 +321,9 @@ export default function RHS() {
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '0 -200px' }}>
-            <Image src="/RHS/final_design_1.png" alt="Final design 1" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
-            <Image src="/RHS/final_design_2.png" alt="Final design 2" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
-            <Image src="/RHS/final_design_3.png" alt="Final design 3" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
+            <Image src="/RHS/final_design_1.png" alt="Final design 1" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.05)' }} />
+            <Image src="/RHS/final_design_2.png" alt="Final design 2" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.05)' }} />
+            <Image src="/RHS/final_design_3.png" alt="Final design 3" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.05)' }} />
           </div>
         </div>
       </section>
