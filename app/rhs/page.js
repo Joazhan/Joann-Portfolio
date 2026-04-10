@@ -180,9 +180,9 @@ export default function RHS() {
 
       {/* Competitor Pricing + User Journey Map */}
       <section style={{ padding: '80px 40px', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', maxWidth: '900px', width: '100%' }}>
-          <Image src="/RHS/store_image.avif" alt="User journey map" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
-          <Image src="/RHS/pricing_image.avif" alt="Competitor pricing" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', maxWidth: '900px', width: '100%' }}>
+          <Image src="/RHS/store_image.avif" alt="User journey map" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
+          <Image src="/RHS/pricing_image.avif" alt="Competitor pricing" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
         </div>
       </section>
 
@@ -270,9 +270,9 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             My objective was to allow users who are less hands-on with technology to easily pick up the app and begin using it. I conducted the Crazy 8's exercise, allowing me to brainstorm ideas and filter which designs suit the business. I concluded that the last frame was the most user-friendly, and provided 4 basic functionalities: Service, Location & Hours, Contact, and Book Appointment.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0', margin: '0 -200px', marginBottom: '16px' }}>
-            <Image src="/RHS/paper_wireframe_image (1).png" alt="Paper wireframe 1" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
-            <Image src="/RHS/paper_wireframe_2_image (1).png" alt="Paper wireframe 2" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0', margin: '0 -200px', marginBottom: '16px' }}>
+            <Image src="/RHS/paper_wireframe_image (1).png" alt="Paper wireframe 1" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
+            <Image src="/RHS/paper_wireframe_2_image (1).png" alt="Paper wireframe 2" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
           </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
             Screenshots of paper wireframe flow for the front page of the design
@@ -293,9 +293,9 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             My focus on prioritizing a modern and sleek visual design disregarded the basic needs of providing a good user experience for older customers. I found that a few designs were not WCAG-friendly and contained inconsistent design patterns — the search bar was ultimately removed for lower development cost and mobile optimization.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', margin: '0 -200px', marginBottom: '16px' }}>
-            <Image src="/RHS/first_iteration_image_1.png" alt="First iteration screens" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
-            <Image src="/RHS/first_iteration_iamge (1).png" alt="First iteration screens 2" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '0 -200px', marginBottom: '16px' }}>
+            <Image src="/RHS/first_iteration_image_1.png" alt="First iteration screens" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+            <Image src="/RHS/first_iteration_iamge (1).png" alt="First iteration screens 2" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
           </div>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: '#6b7280', fontStyle: 'italic', textAlign: 'center' }}>
             Design features oversized buttons that disrupt font alignment, inconsistent frame sizes, insufficient color contrast for older users, and unclear disabled buttons that leave users uncertain.
