@@ -1,12 +1,13 @@
 'use client'
 
-// All positions are 14 + n*28 to align exactly with the 28px background dot grid
+// All positions are multiples of 28px to align exactly with the background dot grid
+// background dots land at x=0,28,56,84... y=0,28,56,84...
 const clusters = [
-  { left: '14px',  top: '154px', dots: [[0,0],[28,0],[0,28]] },
-  { left: '210px', top: '126px', dots: [[28,0],[0,28],[28,28],[56,28],[28,56]] },
-  { left: '434px', top: '210px', dots: [[0,0],[28,0],[0,28]] },
-  { left: '658px', top: '154px', dots: [[28,0],[0,28],[28,28],[56,28],[28,56]] },
-  { left: '882px', top: '238px', dots: [[0,0],[28,0],[0,28]] },
+  { left: '56px',   top: '196px', dots: [[0,0],[28,0],[0,28]] },
+  { left: '280px',  top: '140px', dots: [[28,0],[0,28],[28,28],[56,28]] },
+  { left: '560px',  top: '224px', dots: [[0,0],[28,0],[0,28]] },
+  { left: '784px',  top: '168px', dots: [[28,0],[0,28],[28,28],[56,28]] },
+  { left: '1064px', top: '252px', dots: [[0,0],[28,0],[0,28]] },
 ]
 
 export default function AnimatedFooter() {
