@@ -9,8 +9,9 @@ const clusters = [
   { left: '61%', top: '230px', dur: '3.1s', delay: '2.6s', shape: 'triangle' },
 ]
 
-const triangleDots = [[14,0],[0,24],[28,24]]
-const starDots = [[14,0],[28,10],[22,28],[6,28],[0,10],[14,14]]
+// dots spaced at 28px to align with background grid
+const triangleDots = [[14,0],[0,28],[28,28]]
+const starDots = [[14,0],[28,14],[14,28],[0,14]]
 
 export default function AnimatedFooter() {
   return (
