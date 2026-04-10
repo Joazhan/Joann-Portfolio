@@ -47,12 +47,12 @@ html, body, *, *::before, *::after {
 
 .sparkle-cluster span {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #141414;
   z-index: 2;
-  transform: translate(-4px, -4px);
+  transform: translate(-3px, -3px);
   box-shadow:
     0 0 4px 2px rgba(0,0,0,0.4),
     0 0 10px 4px rgba(0,0,0,0.12),
