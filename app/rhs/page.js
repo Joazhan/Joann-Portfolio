@@ -320,10 +320,10 @@ export default function RHS() {
               <p style={{ fontSize: '14px', lineHeight: '20px', color: '#6b7280' }}>Cohesive flow with easy personal information entry and options to add to calendar, cancel, or reschedule.</p>
             </div>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', margin: '0 -200px' }}>
-            <Image src="/RHS/final_design_1.png" alt="Final design 1" width={0} height={0} sizes="33vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
-            <Image src="/RHS/final_design_2.png" alt="Final design 2" width={0} height={0} sizes="33vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
-            <Image src="/RHS/final_design_3.png" alt="Final design 3" width={0} height={0} sizes="33vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '0 -200px' }}>
+            <Image src="/RHS/final_design_1.png" alt="Final design 1" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+            <Image src="/RHS/final_design_2.png" alt="Final design 2" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+            <Image src="/RHS/final_design_3.png" alt="Final design 3" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
           </div>
         </div>
       </section>
