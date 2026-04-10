@@ -37,7 +37,6 @@ html, body, *, *::before, *::after {
 
 .footer-sparkle {
   position: absolute;
-  animation: footerFloat linear infinite;
 }
 
 .sparkle-cluster {
