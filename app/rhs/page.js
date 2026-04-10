@@ -274,7 +274,7 @@ export default function RHS() {
             <Image src="/RHS/paper_wireframe_image (1).png" alt="Paper wireframe 1" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
             <Image src="/RHS/paper_wireframe_2_image (1).png" alt="Paper wireframe 2" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
           </div>
-          <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
+          <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', marginBottom: '12px' }}>
             Screenshots of paper wireframe flow for the front page of the design
           </p>
         </div>
