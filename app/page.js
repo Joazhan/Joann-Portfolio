@@ -237,7 +237,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
             <div className="flex items-center gap-4">
-              <Image src="/Icons/NN icon.png" alt="NutritionNest icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
+              <Image src="/Icons/NN_icon.png" alt="NutritionNest icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
                 <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>NutritionNest</span>
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>Log nutritional intake and monitor daily calories</span>
@@ -266,7 +266,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
             <div className="flex items-center gap-4">
-              <Image src="/Icons/Duetti icon.png" alt="Duetti icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
+              <Image src="/Icons/Duetti_icon.png" alt="Duetti icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
                 <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Duetti</span>
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#4b5563' }}>Insight-driven report that simplifies music industry data for artists through visual storytelling</span>
@@ -287,7 +287,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
             <div className="flex items-center gap-4">
-              <Image src="/Icons/Lasertaz icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
+              <Image src="/Icons/Lasertaz_icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
                 <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#ffffff' }}>Lasertaz</span>
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#9ca3af' }}>Help independent landlords manage their rental properties</span>
@@ -350,7 +350,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
             <div className="flex items-center gap-4">
-              <Image src="/Icons/RHS icon.png" alt="RHS icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
+              <Image src="/Icons/RHS_icon.png" alt="RHS icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
                 <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Raymond Hair Salon</span>
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>Scheduling made effortless with online booking</span>
