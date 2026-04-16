@@ -151,6 +151,7 @@ export default function Home() {
           .hero-text-p { font-size: 20px !important; line-height: 28px !important; }
           .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 16px !important; }
           .project-card { padding-left: 20px !important; padding-right: 20px !important; padding-top: 24px !important; border-radius: 20px !important; }
+          .card-bottom-container { margin: 0 -20px -20px -20px !important; }
           .card-label-row { padding: 16px 0 !important; }
           .card-title { font-size: 20px !important; line-height: 26px !important; }
           .card-desc { font-size: 13px !important; line-height: 18px !important; }
@@ -235,7 +236,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px' }}>
+          <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4">
               <Image src="/Icons/NN_icon.png" alt="NutritionNest icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
@@ -248,6 +250,7 @@ export default function Home() {
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
               </svg>
             </div>
+          </div>
           </div>
         </Link>
         {/* Duetti */}
@@ -264,7 +267,8 @@ export default function Home() {
             <Image src="/Images/Duetti iphone frame.png" alt="Duetti iPhone" width={400} height={600}
               style={{ width: '15%', height: 'auto', objectFit: 'contain', alignSelf: 'flex-end', position: 'relative', zIndex: 20 }} />
           </div>
-          <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px' }}>
+          <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4">
               <Image src="/Icons/Duetti_icon.png" alt="Duetti icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
@@ -278,6 +282,7 @@ export default function Home() {
               </svg>
             </div>
           </div>
+          </div>
         </Link>
         {/* Lasertaz */}
         <Link href="/lasertaz" className="group flex flex-col overflow-hidden cursor-pointer project-card"
@@ -285,7 +290,8 @@ export default function Home() {
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
             <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
           </div>
-          <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px' }}>
+          <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4">
               <Image src="/Icons/Lasertaz_icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
@@ -298,6 +304,7 @@ export default function Home() {
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
               </svg>
             </div>
+          </div>
           </div>
         </Link>
         {/* Bookworm */}
@@ -319,7 +326,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px' }}>
+          <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4">
               <Image src="/Icons/Bookworm_icon.png" alt="Bookworm icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
@@ -332,6 +340,7 @@ export default function Home() {
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
               </svg>
             </div>
+          </div>
           </div>
         </Link>
         {/* Raymond Hair Salon */}
@@ -348,7 +357,8 @@ export default function Home() {
                 style={{ objectFit: 'contain', zIndex: 10, pointerEvents: 'none' }} />
             </div>
           </div>
-          <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px' }}>
+          <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4">
               <Image src="/Icons/RHS_icon.png" alt="RHS icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
@@ -361,6 +371,7 @@ export default function Home() {
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
               </svg>
             </div>
+          </div>
           </div>
         </Link>
       </section>
@@ -383,7 +394,8 @@ export default function Home() {
               style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
               <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
             </div>
-            <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
+            <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px' }}>
+          <div className="flex items-center justify-between card-label-row">
               <div className="flex items-center gap-4">
                 <Image src="/Icons/Kalshi_icon.png" alt="Kalshi icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-1">
@@ -411,7 +423,8 @@ export default function Home() {
                 style={{ width: '100%', height: 'auto', display: 'block' }}
               />
             </div>
-            <div className="flex items-center justify-between card-label-row" style={{ padding: '20px 40px', marginBottom: '10px' }}>
+            <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px' }}>
+          <div className="flex items-center justify-between card-label-row">
               <div className="flex items-center gap-4">
                 <Image src="/Icons/Phia_icon.png" alt="Phia icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-1">
