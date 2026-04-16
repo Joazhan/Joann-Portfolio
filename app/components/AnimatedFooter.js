@@ -21,6 +21,17 @@ export default function AnimatedFooter() {
       backgroundSize: '28px 28px',
       backgroundPosition: '-14px -14px',
     }}>
+      {/* Gradient fade from page background into dotted pattern */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '80px',
+        background: 'linear-gradient(to bottom, #FCFCFC 0%, transparent 100%)',
+        zIndex: 2,
+        pointerEvents: 'none',
+      }} />
       {clusters.map((sp, i) => (
         <div key={i} className="footer-sparkle" style={{ left: sp.left, top: sp.top }}>
           <div className="sparkle-cluster">
@@ -30,7 +41,7 @@ export default function AnimatedFooter() {
           </div>
         </div>
       ))}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 1, padding: '32px 0', paddingLeft: '80px' }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 3, padding: '72px 0 32px', paddingLeft: '80px' }}>
         <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px' }}>
           <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', color: '#6b7280', textDecoration: 'none' }} className="hover:text-black">Email ↗</a>
