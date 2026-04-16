@@ -290,7 +290,7 @@ export default function Home() {
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
             <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(255,255,255,0.05)' }}>
           <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4">
               <Image src="/Icons/Lasertaz_icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
@@ -326,7 +326,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(255,255,255,0.05)' }}>
           <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4">
               <Image src="/Icons/Bookworm_icon.png" alt="Bookworm icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
