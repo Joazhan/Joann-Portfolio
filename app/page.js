@@ -236,7 +236,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px 80px', backgroundColor: 'rgba(0,0,0,0.2)' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
           <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4">
               <Image src="/Icons/NN_icon.png" alt="NutritionNest icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
@@ -267,7 +267,7 @@ export default function Home() {
             <Image src="/Images/Duetti iphone frame.png" alt="Duetti iPhone" width={400} height={600}
               style={{ width: '15%', height: 'auto', objectFit: 'contain', alignSelf: 'flex-end', position: 'relative', zIndex: 20 }} />
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px 80px', backgroundColor: 'rgba(0,0,0,0.2)' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
           <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4">
               <Image src="/Icons/Duetti_icon.png" alt="Duetti icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
@@ -290,7 +290,7 @@ export default function Home() {
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
             <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px 80px', backgroundColor: 'rgba(0,0,0,0.2)' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
           <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4">
               <Image src="/Icons/Lasertaz_icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
@@ -326,7 +326,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px 80px', backgroundColor: 'rgba(0,0,0,0.2)' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
           <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4">
               <Image src="/Icons/Bookworm_icon.png" alt="Bookworm icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
@@ -357,7 +357,7 @@ export default function Home() {
                 style={{ objectFit: 'contain', zIndex: 10, pointerEvents: 'none' }} />
             </div>
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px 80px', backgroundColor: 'rgba(0,0,0,0.2)' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
           <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4">
               <Image src="/Icons/RHS_icon.png" alt="RHS icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
@@ -389,12 +389,12 @@ export default function Home() {
         <div className="flex flex-col" style={{ gap: '80px' }}>
           {/* Kalshi */}
           <Link href="/kalshi" className="group flex flex-col overflow-hidden cursor-pointer project-card"
-            style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+            style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px', border: '1px solid rgba(0,0,0,0.1)' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
               <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
             </div>
-            <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px 80px', backgroundColor: 'rgba(0,0,0,0.2)' }}>
+            <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
           <div className="flex items-center justify-between card-label-row">
               <div className="flex items-center gap-4">
                 <Image src="/Icons/Kalshi_icon.png" alt="Kalshi icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
@@ -413,7 +413,7 @@ export default function Home() {
           </Link>
           {/* Phia */}
           <Link href="/phia" className="group flex flex-col overflow-hidden cursor-pointer project-card"
-            style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+            style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px', border: '1px solid rgba(0,0,0,0.1)' }}>
             <div className="w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ overflow: 'hidden', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.1)' }}>
               <Image
@@ -424,7 +424,7 @@ export default function Home() {
                 style={{ width: '100%', height: 'auto', display: 'block' }}
               />
             </div>
-            <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '20px 80px', backgroundColor: 'rgba(0,0,0,0.2)' }}>
+            <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
           <div className="flex items-center justify-between card-label-row">
               <div className="flex items-center gap-4">
                 <Image src="/Icons/Phia_icon.png" alt="Phia icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
