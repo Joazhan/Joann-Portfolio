@@ -85,12 +85,12 @@ export default function About() {
       <div className="flex flex-col items-center" style={{ paddingTop: '60px', paddingBottom: '120px' }}>
 
         {/* Circular photo with shapes overlaid on top portion */}
-        <div style={{ position: 'relative', width: '360px', height: '360px', borderRadius: '50%', overflow: 'hidden', marginBottom: '32px' }}>
+        <div style={{ position: 'relative', width: '300px', height: '300px', borderRadius: '50%', overflow: 'hidden', marginBottom: '32px' }}>
           <Image
             src="/Images/0ab9379a-605b-4366-9201-5c53c654f369.jpeg"
             alt="Joann Zhang"
-            width={360}
-            height={360}
+            width={300}
+            height={300}
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 60%', transform: 'scale(1.2)' }}
           />
         </div>
