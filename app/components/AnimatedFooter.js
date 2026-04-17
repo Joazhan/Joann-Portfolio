@@ -27,7 +27,7 @@ export default function AnimatedFooter() {
         top: 0,
         left: 0,
         right: 0,
-        height: '200px',
+        height: '300px',
         background: 'linear-gradient(to bottom, #FCFCFC 40%, transparent 100%)',
         zIndex: 2,
         pointerEvents: 'none',
