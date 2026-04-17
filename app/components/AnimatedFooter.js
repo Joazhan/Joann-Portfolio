@@ -1,43 +1,78 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
 
-// Dots sit on the 28px background grid (centers at multiples of 28px).
-// x/y here = center of dot. Rendered as left: x-r, top: y-r where r = size/2.
+// Dots sit on the 28px background grid. x/y = top-left corner of dot (center - r).
+// d(id, col, row, colorIndex, size) — col/row are grid coordinates
 const COLORS = ['#86efac','#fdba74','#93c5fd','#c4b5fd','#fca5a5','#fde68a','#f9a8d4','#99f6e4']
-const G = 28 // grid unit
+const G = 28
 
-// helper: grid dot at (col, row) with color index c and size s
 const d = (id, col, row, c, s = 14) => ({
   id, x: col * G - s / 2, y: row * G - s / 2, w: s, h: s, color: COLORS[c % COLORS.length]
 })
 
 const INITIAL_SHAPES = [
-  // row 21 (y=588) — very bottom, densest
-  d(1,  1,  21, 0), d(2,  4,  21, 2), d(3,  7,  21, 5), d(4,  10, 21, 1),
-  d(5,  13, 21, 6), d(6,  16, 21, 3), d(7,  19, 21, 4), d(8,  22, 21, 7),
-  d(9,  25, 21, 0), d(10, 28, 21, 2), d(11, 31, 21, 5), d(12, 34, 21, 6),
-  d(13, 37, 21, 1), d(14, 40, 21, 3), d(15, 43, 21, 4), d(16, 46, 21, 7),
-  d(17, 49, 21, 0), d(18, 52, 21, 2), d(19, 55, 21, 5), d(20, 58, 21, 1),
-  d(21, 61, 21, 6), d(22, 64, 21, 3), d(23, 67, 21, 4),
+  // ── Shape 1: GREEN right-pointing triangle (col 2–4, rows 17–21) ──
+  // base col
+  d(1,  2, 17, 0), d(2,  2, 18, 0), d(3,  2, 19, 0), d(4,  2, 20, 0), d(5,  2, 21, 0),
+  // middle col
+  d(6,  3, 18, 0), d(7,  3, 19, 0), d(8,  3, 20, 0),
+  // tip
+  d(9,  4, 19, 0),
 
-  // row 20 (y=560) — slightly sparser
-  d(24, 2,  20, 3), d(25, 6,  20, 7), d(26, 11, 20, 0), d(27, 15, 20, 5),
-  d(28, 20, 20, 2), d(29, 24, 20, 6), d(30, 29, 20, 1), d(31, 33, 20, 4),
-  d(32, 38, 20, 7), d(33, 42, 20, 3), d(34, 47, 20, 0), d(35, 51, 20, 6),
-  d(36, 56, 20, 2), d(37, 60, 20, 5), d(38, 65, 20, 1),
+  // ── Shape 2: ORANGE organic star (center col 13, rows 17–21) ──
+  d(10, 13, 17, 1, 12),                                                   // top spike
+  d(11, 12, 18, 1), d(12, 13, 18, 1), d(13, 14, 18, 1),                  // upper body
+  d(14, 11, 19, 1, 11), d(15, 12, 19, 1), d(16, 13, 19, 1),              // wide middle
+  d(17, 14, 19, 1), d(18, 15, 19, 1, 11),                                 // wide middle right
+  d(19, 12, 20, 1), d(20, 13, 20, 1), d(21, 14, 20, 1),                  // lower body
+  d(22, 11, 21, 1, 11), d(23, 13, 21, 1), d(24, 15, 21, 1, 11),          // bottom spikes
 
-  // row 19 (y=532) — more spread
-  d(39, 3,  19, 6, 12), d(40, 9,  19, 2, 12), d(41, 17, 19, 4, 12),
-  d(42, 26, 19, 7, 12), d(43, 35, 19, 1, 12), d(44, 44, 19, 5, 12),
-  d(45, 53, 19, 3, 12), d(46, 62, 19, 0, 12),
+  // ── Shape 3: TEAL circle (center col 22, rows 17–21) ──
+  d(25, 22, 17, 7, 11),
+  d(26, 21, 18, 7), d(27, 22, 18, 7), d(28, 23, 18, 7),
+  d(29, 20, 19, 7), d(30, 21, 19, 7), d(31, 22, 19, 7), d(32, 23, 19, 7), d(33, 24, 19, 7),
+  d(34, 21, 20, 7), d(35, 22, 20, 7), d(36, 23, 20, 7),
+  d(37, 22, 21, 7, 11),
 
-  // row 18 (y=504) — sparse
-  d(47, 5,  18, 1, 10), d(48, 14, 18, 5, 10), d(49, 23, 18, 3, 10),
-  d(50, 36, 18, 6, 10), d(51, 48, 18, 2, 10), d(52, 59, 18, 4, 10),
+  // ── Shape 4: RED circle (center col 31, rows 18–21, slightly lower) ──
+  d(38, 31, 18, 4, 11),
+  d(39, 30, 19, 4), d(40, 31, 19, 4), d(41, 32, 19, 4),
+  d(42, 29, 20, 4), d(43, 30, 20, 4), d(44, 31, 20, 4), d(45, 32, 20, 4), d(46, 33, 20, 4),
+  d(47, 30, 21, 4), d(48, 31, 21, 4), d(49, 32, 21, 4),
 
-  // row 17 (y=476) — a few scattered
-  d(53, 8,  17, 4,  9), d(54, 27, 17, 0,  9),
-  d(55, 45, 17, 7,  9), d(56, 63, 17, 3,  9),
+  // ── Shape 5: PURPLE right-pointing triangle (col 39–41, rows 18–21, shifted down) ──
+  d(50, 39, 18, 3), d(51, 39, 19, 3), d(52, 39, 20, 3), d(53, 39, 21, 3),
+  d(54, 40, 19, 3), d(55, 40, 20, 3),
+  d(56, 41, 19, 3, 11),
+
+  // ── Shape 6: PINK organic star (center col 51, rows 17–21) ──
+  d(57, 51, 17, 6, 11),                                                    // top spike
+  d(58, 49, 18, 6, 11), d(59, 50, 18, 6), d(60, 51, 18, 6),              // upper
+  d(61, 52, 18, 6), d(62, 53, 18, 6, 11),                                 // upper right
+  d(63, 50, 19, 6), d(64, 51, 19, 6), d(65, 52, 19, 6),                  // center
+  d(66, 49, 20, 6, 11), d(67, 50, 20, 6), d(68, 51, 20, 6),              // lower
+  d(69, 52, 20, 6), d(70, 53, 20, 6, 11),                                 // lower right
+  d(71, 50, 21, 6), d(72, 51, 21, 6), d(73, 52, 21, 6),                  // bottom
+
+  // ── Shape 7: BLUE organic star (center col 62, rows 17–21) ──
+  d(74, 62, 17, 2, 11),                                                    // top spike
+  d(75, 60, 18, 2, 11), d(76, 61, 18, 2), d(77, 62, 18, 2),              // upper
+  d(78, 63, 18, 2), d(79, 64, 18, 2, 11),                                 // upper right
+  d(80, 61, 19, 2), d(81, 62, 19, 2), d(82, 63, 19, 2),                  // center
+  d(83, 60, 20, 2, 11), d(84, 61, 20, 2), d(85, 62, 20, 2),              // lower
+  d(86, 63, 20, 2), d(87, 64, 20, 2, 11),                                 // lower right
+  d(88, 61, 21, 2), d(89, 62, 21, 2), d(90, 63, 21, 2),                  // bottom
+
+  // ── Scattered fill dots between shapes ──
+  d(91,  6, 21, 5, 10), d(92,  7, 21, 1, 10), d(93,  8, 21, 5, 10),
+  d(94, 17, 21, 0, 10), d(95, 18, 21, 7, 10),
+  d(96, 26, 21, 3, 10), d(97, 27, 21, 4, 10),
+  d(98, 35, 21, 6, 10), d(99, 36, 21, 1, 10),
+  d(100,43, 21, 7, 10), d(101,44, 21, 2, 10), d(102,45, 21, 0, 10),
+  d(103,55, 21, 3, 10), d(104,56, 21, 6, 10),
+  d(105,65, 21, 1, 10), d(106,66, 21, 4, 10),
+  d(107, 5, 20, 7, 10), d(108,16, 20, 4, 10), d(109,25, 20, 6, 10),
+  d(110,37, 20, 0, 10), d(111,47, 20, 5, 10),
 ]
 
 export default function AnimatedFooter() {
@@ -102,7 +137,7 @@ export default function AnimatedFooter() {
         pointerEvents: 'none',
       }} />
 
-      {/* Colored dots on the grid */}
+      {/* Dot shapes */}
       {shapes.map(shape => (
         <div
           key={shape.id}
@@ -118,7 +153,7 @@ export default function AnimatedFooter() {
             zIndex: shape.z,
             pointerEvents: 'all',
             userSelect: 'none',
-            boxShadow: `0 0 6px 2px ${shape.color}88`,
+            boxShadow: `0 0 5px 1px ${shape.color}66`,
           }}
         />
       ))}
