@@ -28,36 +28,36 @@ export default function AnimatedFooter() {
 
       {/* Hero shapes scattered in the footer */}
 
-      {/* Green triangle — left */}
-      <svg style={{ position: 'absolute', top: '340px', left: '4%', pointerEvents: 'none' }} width="100" height="100" viewBox="0 0 100 100">
+      {/* Green triangle — bottom left, slightly tilted, resting on floor */}
+      <svg style={{ position: 'absolute', bottom: '-10px', left: '3%', pointerEvents: 'none', transform: 'rotate(-15deg)' }} width="100" height="100" viewBox="0 0 100 100">
         <path d="M 0 0 L 100 50 L 0 100 Z" fill="#22c55e"/>
       </svg>
 
-      {/* Orange organic star — left-center */}
-      <svg style={{ position: 'absolute', top: '380px', left: '22%', pointerEvents: 'none' }} width="90" height="86" viewBox="0 0 189 181">
-        <path d={STAR_PATH} fill="#f97316"/>
-      </svg>
-
-      {/* Green circle — center-left */}
-      <div style={{ position: 'absolute', top: '320px', left: '42%', width: '68px', height: '68px', borderRadius: '50%', backgroundColor: '#22c55e', pointerEvents: 'none' }} />
-
-      {/* Red circle — right */}
-      <div style={{ position: 'absolute', top: '360px', right: '6%', width: '54px', height: '54px', borderRadius: '50%', backgroundColor: '#ef4444', pointerEvents: 'none' }} />
-
-      {/* Purple triangle — bottom right */}
-      <svg style={{ position: 'absolute', bottom: '80px', right: '18%', pointerEvents: 'none' }} width="88" height="88" viewBox="0 0 100 100">
-        <path d="M 0 0 L 100 50 L 0 100 Z" fill="#818cf8"/>
-      </svg>
-
-      {/* Pink organic star — bottom left */}
-      <svg style={{ position: 'absolute', bottom: '60px', left: '8%', pointerEvents: 'none' }} width="96" height="92" viewBox="0 0 189 181">
+      {/* Pink organic star — bottom left-center, partially cut off */}
+      <svg style={{ position: 'absolute', bottom: '-20px', left: '14%', pointerEvents: 'none', transform: 'rotate(12deg)' }} width="96" height="92" viewBox="0 0 189 181">
         <path d={STAR_PATH} fill="#f472b6"/>
       </svg>
 
+      {/* Orange organic star — bottom center-left */}
+      <svg style={{ position: 'absolute', bottom: '-8px', left: '30%', pointerEvents: 'none', transform: 'rotate(-8deg)' }} width="90" height="86" viewBox="0 0 189 181">
+        <path d={STAR_PATH} fill="#f97316"/>
+      </svg>
+
+      {/* Green circle — bottom center, sitting on floor */}
+      <div style={{ position: 'absolute', bottom: '-14px', left: '46%', width: '68px', height: '68px', borderRadius: '50%', backgroundColor: '#22c55e', pointerEvents: 'none' }} />
+
       {/* Blue organic star — bottom center-right */}
-      <svg style={{ position: 'absolute', bottom: '50px', left: '58%', pointerEvents: 'none' }} width="68" height="65" viewBox="0 0 189 181">
+      <svg style={{ position: 'absolute', bottom: '-16px', left: '57%', pointerEvents: 'none', transform: 'rotate(10deg)' }} width="68" height="65" viewBox="0 0 189 181">
         <path d={STAR_PATH} fill="#3b82f6"/>
       </svg>
+
+      {/* Purple triangle — bottom right-center, leaning */}
+      <svg style={{ position: 'absolute', bottom: '-6px', right: '16%', pointerEvents: 'none', transform: 'rotate(20deg)' }} width="88" height="88" viewBox="0 0 100 100">
+        <path d="M 0 0 L 100 50 L 0 100 Z" fill="#818cf8"/>
+      </svg>
+
+      {/* Red circle — bottom far right */}
+      <div style={{ position: 'absolute', bottom: '-10px', right: '4%', width: '54px', height: '54px', borderRadius: '50%', backgroundColor: '#ef4444', pointerEvents: 'none' }} />
 
       {/* Footer content */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 3, padding: '72px 0 32px', paddingLeft: '80px' }}>
