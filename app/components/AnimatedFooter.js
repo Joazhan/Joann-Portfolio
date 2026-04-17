@@ -59,6 +59,40 @@ export default function AnimatedFooter() {
       {/* Red circle — bottom far right */}
       <div style={{ position: 'absolute', bottom: '-10px', right: '4%', width: '54px', height: '54px', borderRadius: '50%', backgroundColor: '#ef4444', pointerEvents: 'none' }} />
 
+      {/* Extra shapes to fill gaps */}
+
+      {/* Yellow circle — between green triangle and pink star */}
+      <div style={{ position: 'absolute', bottom: '-6px', left: '8%', width: '44px', height: '44px', borderRadius: '50%', backgroundColor: '#facc15', pointerEvents: 'none' }} />
+
+      {/* Teal organic star — between orange star and green circle */}
+      <svg style={{ position: 'absolute', bottom: '-12px', left: '38%', pointerEvents: 'none', transform: 'rotate(-18deg)' }} width="72" height="68" viewBox="0 0 189 181">
+        <path d={STAR_PATH} fill="#2dd4bf"/>
+      </svg>
+
+      {/* Red organic star — between green circle and blue star */}
+      <svg style={{ position: 'absolute', bottom: '-10px', left: '51%', pointerEvents: 'none', transform: 'rotate(6deg)' }} width="60" height="57" viewBox="0 0 189 181">
+        <path d={STAR_PATH} fill="#ef4444"/>
+      </svg>
+
+      {/* Orange circle — between blue star and purple triangle */}
+      <div style={{ position: 'absolute', bottom: '-8px', right: '26%', width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#f97316', pointerEvents: 'none' }} />
+
+      {/* Green triangle (small) — between purple triangle and red circle */}
+      <svg style={{ position: 'absolute', bottom: '-4px', right: '10%', pointerEvents: 'none', transform: 'rotate(-22deg)' }} width="70" height="70" viewBox="0 0 100 100">
+        <path d="M 0 0 L 100 50 L 0 100 Z" fill="#22c55e"/>
+      </svg>
+
+      {/* Purple circle — far left edge */}
+      <div style={{ position: 'absolute', bottom: '-12px', left: '0%', width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#818cf8', pointerEvents: 'none' }} />
+
+      {/* Blue triangle — far right, peeking */}
+      <svg style={{ position: 'absolute', bottom: '-8px', right: '0%', pointerEvents: 'none', transform: 'rotate(12deg)' }} width="80" height="80" viewBox="0 0 100 100">
+        <path d="M 0 0 L 100 50 L 0 100 Z" fill="#3b82f6"/>
+      </svg>
+
+      {/* Pink circle — center gap */}
+      <div style={{ position: 'absolute', bottom: '-8px', left: '22%', width: '36px', height: '36px', borderRadius: '50%', backgroundColor: '#f472b6', pointerEvents: 'none' }} />
+
       {/* Footer content */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 3, padding: '72px 0 32px', paddingLeft: '80px' }}>
         <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Get in touch!</p>
