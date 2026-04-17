@@ -6,7 +6,7 @@ import { useState, useRef, useEffect } from 'react'
 const COLORS = ['#86efac','#fdba74','#93c5fd','#c4b5fd','#fca5a5','#fde68a','#f9a8d4','#99f6e4']
 const G = 28
 
-const d = (id, col, row, c, s = 14) => ({
+const d = (id, col, row, c, s = 8) => ({
   id, x: col * G - s / 2, y: row * G - s / 2, w: s, h: s, color: COLORS[c % COLORS.length]
 })
 
