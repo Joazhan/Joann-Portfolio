@@ -9,6 +9,10 @@ const G = 28
 const d = (id, col, row, c, s = 8) => ({
   id, x: col * G - s / 2, y: row * G - s / 2, w: s, h: s, color: COLORS[c % COLORS.length]
 })
+// Star helper: cx/cy = pixel center of the star, dc/dr = offset in 14px units
+const ds = (id, cx, cy, dc, dr, c, s = 8) => ({
+  id, x: cx + dc * 14 - s / 2, y: cy + dr * 14 - s / 2, w: s, h: s, color: COLORS[c % COLORS.length]
+})
 
 const INITIAL_SHAPES = [
   // ── Shape 1: GREEN right-pointing triangle (col 2–4, rows 17–21) ──
@@ -19,13 +23,12 @@ const INITIAL_SHAPES = [
   // tip
   d(9,  4, 19, 0),
 
-  // ── Shape 2: ORANGE organic star (center col 13, rows 17–21) ──
-  d(10, 13, 17, 1),                                                        // top spike
-  d(11, 12, 18, 1), d(12, 13, 18, 1), d(13, 14, 18, 1),                  // upper body
-  d(14, 11, 19, 1), d(15, 12, 19, 1), d(16, 13, 19, 1),                  // wide middle
-  d(17, 14, 19, 1), d(18, 15, 19, 1),                                     // wide middle right
-  d(19, 12, 20, 1), d(20, 13, 20, 1), d(21, 14, 20, 1),                  // lower body
-  d(22, 11, 21, 1), d(23, 13, 21, 1), d(24, 15, 21, 1),                  // bottom spikes
+  // ── Shape 2: ORANGE organic star — center (364, 532), 14px spacing ──
+  ds(10, 364, 532,  0, -2, 1),                                            // top spike
+  ds(11, 364, 532, -1, -1, 1), ds(12, 364, 532, 0, -1, 1), ds(13, 364, 532, 1, -1, 1),
+  ds(14, 364, 532, -2,  0, 1), ds(15, 364, 532, -1,  0, 1), ds(16, 364, 532, 0,  0, 1), ds(17, 364, 532, 1, 0, 1), ds(18, 364, 532, 2, 0, 1),
+  ds(19, 364, 532, -1,  1, 1), ds(20, 364, 532,  0,  1, 1), ds(21, 364, 532, 1,  1, 1),
+  ds(22, 364, 532, -2,  2, 1), ds(23, 364, 532,  0,  2, 1), ds(24, 364, 532, 2,  2, 1),
 
   // ── Shape 3: TEAL circle (center col 22, rows 17–21) ──
   d(25, 22, 17, 7),
@@ -47,22 +50,21 @@ const INITIAL_SHAPES = [
   d(54, 40, 19, 3), d(55, 40, 20, 3),
   d(56, 41, 19, 3),
 
-  // ── Shape 6: PINK organic star (center col 51, rows 17–21) ──
-  d(57, 51, 17, 6),                                                        // top spike
-  d(58, 49, 18, 6), d(59, 50, 18, 6), d(60, 51, 18, 6),                  // upper
-  d(61, 52, 18, 6), d(62, 53, 18, 6),                                     // upper right
-  d(63, 50, 19, 6), d(64, 51, 19, 6), d(65, 52, 19, 6),                  // center
-  d(66, 49, 20, 6), d(67, 50, 20, 6), d(68, 51, 20, 6),                  // lower
-  d(69, 52, 20, 6), d(70, 53, 20, 6),                                     // lower right
-  d(71, 50, 21, 6), d(72, 51, 21, 6), d(73, 52, 21, 6),                  // bottom
+  // ── Shape 6: PINK organic star — center (1428, 532), 14px spacing ──
+  ds(57, 1428, 532,  0, -2, 6),
+  ds(58, 1428, 532, -1, -1, 6), ds(59, 1428, 532, 0, -1, 6), ds(60, 1428, 532, 1, -1, 6),
+  ds(61, 1428, 532, -2,  0, 6), ds(62, 1428, 532, -1,  0, 6), ds(63, 1428, 532, 0,  0, 6), ds(64, 1428, 532, 1, 0, 6), ds(65, 1428, 532, 2, 0, 6),
+  ds(66, 1428, 532, -1,  1, 6), ds(67, 1428, 532,  0,  1, 6), ds(68, 1428, 532, 1,  1, 6),
+  ds(69, 1428, 532, -2,  2, 6), ds(70, 1428, 532, -1,  2, 6), ds(71, 1428, 532, 0,  2, 6), ds(72, 1428, 532, 1,  2, 6), ds(73, 1428, 532, 2,  2, 6),
 
-  // ── Shape 7: BLUE 6-pointed star (center col 62, rows 16–21) ──
-  d(74, 62, 16, 2),                                                        // top spike tip
-  d(75, 60, 17, 2), d(76, 62, 17, 2), d(77, 64, 17, 2),                  // upper diagonals + top spike base
-  d(78, 61, 18, 2), d(79, 62, 18, 2), d(80, 63, 18, 2),                  // core upper
-  d(81, 60, 19, 2), d(82, 61, 19, 2), d(83, 62, 19, 2), d(84, 63, 19, 2), d(85, 64, 19, 2), // core mid + left/right spikes
-  d(86, 61, 20, 2), d(87, 62, 20, 2), d(88, 63, 20, 2),                  // core lower
-  d(89, 60, 21, 2), d(90, 64, 21, 2),                                     // lower diagonal spikes
+  // ── Shape 7: BLUE 6-pointed star — center (1736, 532), 14px spacing ──
+  ds(74, 1736, 532,  0, -3, 2),                                           // top tip
+  ds(75, 1736, 532,  0, -2, 2),                                           // top spike
+  ds(76, 1736, 532, -1, -1, 2), ds(77, 1736, 532, 0, -1, 2), ds(78, 1736, 532, 1, -1, 2),
+  ds(79, 1736, 532, -3,  0, 2), ds(80, 1736, 532, -2,  0, 2), ds(81, 1736, 532, -1,  0, 2), ds(82, 1736, 532, 0, 0, 2), ds(83, 1736, 532, 1, 0, 2), ds(84, 1736, 532, 2, 0, 2), ds(85, 1736, 532, 3, 0, 2),
+  ds(86, 1736, 532, -1,  1, 2), ds(87, 1736, 532,  0,  1, 2), ds(88, 1736, 532, 1,  1, 2),
+  ds(89, 1736, 532,  0,  2, 2),                                           // bottom spike
+  ds(90, 1736, 532,  0,  3, 2),                                           // bottom tip
 
   // ── Scattered fill dots between shapes ──
   d(91,  6, 21, 5), d(92,  7, 21, 1), d(93,  8, 21, 5),
