@@ -15,7 +15,7 @@ export default function AnimatedFooter() {
     <footer style={{
       position: 'relative',
       overflow: 'hidden',
-      minHeight: '420px',
+      minHeight: '600px',
       backgroundColor: '#FCFCFC',
       backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.1) 2px, transparent 2px)',
       backgroundSize: '28px 28px',
