@@ -22,29 +22,6 @@ const INITIAL_SHAPES = [
   { id: 34, type: 'star',     color: '#ef4444', w: 148, h: 140, x: 1690, y: 444, r: -14 },
   { id: 35, type: 'circle',   color: '#22c55e', w: 155, h: 155, x: 1820, y: 450, r: 0   },
 
-  // medium
-  { id: 11, type: 'star',     color: '#818cf8', w: 80,  h: 76,  x: 50,   y: 510, r: -6  },
-  { id: 12, type: 'circle',   color: '#ef4444', w: 72,  h: 72,  x: 220,  y: 495, r: 0   },
-  { id: 13, type: 'triangle', color: '#facc15', w: 78,  h: 78,  x: 415,  y: 505, r: 25  },
-  { id: 14, type: 'star',     color: '#3b82f6', w: 75,  h: 71,  x: 625,  y: 498, r: -14 },
-  { id: 15, type: 'circle',   color: '#f472b6', w: 82,  h: 82,  x: 840,  y: 510, r: 0   },
-  { id: 16, type: 'triangle', color: '#22c55e', w: 76,  h: 76,  x: 1055, y: 500, r: -8  },
-  { id: 17, type: 'star',     color: '#2dd4bf', w: 78,  h: 74,  x: 1265, y: 506, r: 18  },
-  { id: 18, type: 'circle',   color: '#818cf8', w: 74,  h: 74,  x: 1475, y: 496, r: 0   },
-  { id: 19, type: 'triangle', color: '#f97316', w: 80,  h: 80,  x: 1680, y: 504, r: -22 },
-  { id: 20, type: 'star',     color: '#ef4444', w: 76,  h: 72,  x: 1874, y: 498, r: 6   },
-
-  // small
-  { id: 21, type: 'circle',   color: '#facc15', w: 36,  h: 36,  x: 160,  y: 535, r: 0   },
-  { id: 22, type: 'star',     color: '#22c55e', w: 42,  h: 40,  x: 355,  y: 528, r: 20  },
-  { id: 23, type: 'circle',   color: '#f97316', w: 32,  h: 32,  x: 470,  y: 540, r: 0   },
-  { id: 24, type: 'triangle', color: '#3b82f6', w: 40,  h: 40,  x: 578,  y: 530, r: -18 },
-  { id: 25, type: 'circle',   color: '#f472b6', w: 38,  h: 38,  x: 790,  y: 542, r: 0   },
-  { id: 26, type: 'star',     color: '#818cf8', w: 44,  h: 42,  x: 1010, y: 535, r: -5  },
-  { id: 27, type: 'circle',   color: '#2dd4bf', w: 34,  h: 34,  x: 1210, y: 540, r: 0   },
-  { id: 28, type: 'triangle', color: '#ef4444', w: 40,  h: 40,  x: 1425, y: 532, r: 15  },
-  { id: 29, type: 'circle',   color: '#facc15', w: 36,  h: 36,  x: 1640, y: 540, r: 0   },
-  { id: 30, type: 'star',     color: '#22c55e', w: 42,  h: 40,  x: 1840, y: 532, r: -10 },
 ]
 
 export default function AnimatedFooter() {
