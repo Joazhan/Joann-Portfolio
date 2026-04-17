@@ -56,14 +56,13 @@ const INITIAL_SHAPES = [
   d(69, 52, 20, 6), d(70, 53, 20, 6),                                     // lower right
   d(71, 50, 21, 6), d(72, 51, 21, 6), d(73, 52, 21, 6),                  // bottom
 
-  // ── Shape 7: BLUE organic star (center col 62, rows 17–21) ──
-  d(74, 62, 17, 2),                                                        // top spike
-  d(75, 60, 18, 2), d(76, 61, 18, 2), d(77, 62, 18, 2),                  // upper
-  d(78, 63, 18, 2), d(79, 64, 18, 2),                                     // upper right
-  d(80, 61, 19, 2), d(81, 62, 19, 2), d(82, 63, 19, 2),                  // center
-  d(83, 60, 20, 2), d(84, 61, 20, 2), d(85, 62, 20, 2),                  // lower
-  d(86, 63, 20, 2), d(87, 64, 20, 2),                                     // lower right
-  d(88, 61, 21, 2), d(89, 62, 21, 2), d(90, 63, 21, 2),                  // bottom
+  // ── Shape 7: BLUE 6-pointed star (center col 62, rows 16–21) ──
+  d(74, 62, 16, 2),                                                        // top spike tip
+  d(75, 60, 17, 2), d(76, 62, 17, 2), d(77, 64, 17, 2),                  // upper diagonals + top spike base
+  d(78, 61, 18, 2), d(79, 62, 18, 2), d(80, 63, 18, 2),                  // core upper
+  d(81, 60, 19, 2), d(82, 61, 19, 2), d(83, 62, 19, 2), d(84, 63, 19, 2), d(85, 64, 19, 2), // core mid + left/right spikes
+  d(86, 61, 20, 2), d(87, 62, 20, 2), d(88, 63, 20, 2),                  // core lower
+  d(89, 60, 21, 2), d(90, 64, 21, 2),                                     // lower diagonal spikes
 
   // ── Scattered fill dots between shapes ──
   d(91,  6, 21, 5), d(92,  7, 21, 1), d(93,  8, 21, 5),
