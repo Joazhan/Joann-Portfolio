@@ -9,13 +9,17 @@ const INITIAL_SHAPES = [
   { id: 1,  type: 'triangle', color: '#22c55e', w: 155, h: 155, x: 0,    y: 448, r: -12 },
   { id: 2,  type: 'star',     color: '#f97316', w: 150, h: 143, x: 130,  y: 438, r: 8   },
   { id: 3,  type: 'circle',   color: '#3b82f6', w: 155, h: 155, x: 260,  y: 452, r: 0   },
+  { id: 4,  type: 'triangle', color: '#818cf8', w: 152, h: 152, x: 390,  y: 440, r: 20  },
   { id: 5,  type: 'star',     color: '#ef4444', w: 148, h: 140, x: 520,  y: 435, r: -10 },
   { id: 6,  type: 'circle',   color: '#22c55e', w: 155, h: 155, x: 650,  y: 450, r: 0   },
   { id: 7,  type: 'triangle', color: '#f472b6', w: 150, h: 150, x: 780,  y: 438, r: -18 },
   { id: 8,  type: 'star',     color: '#facc15', w: 152, h: 145, x: 910,  y: 442, r: 14  },
+  { id: 9,  type: 'circle',   color: '#f97316', w: 155, h: 155, x: 1040, y: 452, r: 0   },
   { id: 10, type: 'triangle', color: '#2dd4bf', w: 148, h: 148, x: 1170, y: 438, r: 10  },
   { id: 31, type: 'star',     color: '#818cf8', w: 152, h: 145, x: 1300, y: 445, r: -8  },
   { id: 32, type: 'circle',   color: '#f472b6', w: 155, h: 155, x: 1430, y: 450, r: 0   },
+  { id: 33, type: 'triangle', color: '#facc15', w: 150, h: 150, x: 1560, y: 440, r: 16  },
+  { id: 34, type: 'star',     color: '#ef4444', w: 148, h: 140, x: 1690, y: 444, r: -14 },
   { id: 35, type: 'circle',   color: '#22c55e', w: 155, h: 155, x: 1820, y: 450, r: 0   },
 
 ]
