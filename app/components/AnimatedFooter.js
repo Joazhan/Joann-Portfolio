@@ -1,101 +1,72 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
 
-// Dots sit on the 28px background grid. x/y = top-left corner of dot (center - r).
-// d(id, col, row, colorIndex, size) — col/row are grid coordinates
-const COLORS = ['#86efac','#fdba74','#93c5fd','#c4b5fd','#fca5a5','#fde68a','#f9a8d4','#99f6e4']
-const G = 28
-
-const d = (id, col, row, c, s = 8) => ({
-  id, x: col * G - s / 2, y: row * G - s / 2, w: s, h: s, color: COLORS[c % COLORS.length]
-})
+const STAR_PATH = "M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z"
 
 const INITIAL_SHAPES = [
-  // ── Shape 1: GREEN right-pointing triangle (col 2–4, rows 17–21) ──
-  // base col
-  d(1,  2, 17, 0), d(2,  2, 18, 0), d(3,  2, 19, 0), d(4,  2, 20, 0), d(5,  2, 21, 0),
-  // middle col
-  d(6,  3, 18, 0), d(7,  3, 19, 0), d(8,  3, 20, 0),
-  // tip
-  d(9,  4, 19, 0),
-
-  // ── Shape 2: ORANGE organic star (center col 13, rows 17–21) ──
-  d(10, 13, 17, 1),                                                        // top spike
-  d(11, 12, 18, 1), d(12, 13, 18, 1), d(13, 14, 18, 1),                  // upper body
-  d(14, 11, 19, 1), d(15, 12, 19, 1), d(16, 13, 19, 1),                  // wide middle
-  d(17, 14, 19, 1), d(18, 15, 19, 1),                                     // wide middle right
-  d(19, 12, 20, 1), d(20, 13, 20, 1), d(21, 14, 20, 1),                  // lower body
-  d(22, 11, 21, 1), d(23, 13, 21, 1), d(24, 15, 21, 1),                  // bottom spikes
-
-  // ── Shape 3: TEAL circle (center col 22, rows 17–21) ──
-  d(25, 22, 17, 7),
-  d(26, 21, 18, 7), d(27, 22, 18, 7), d(28, 23, 18, 7),
-  d(29, 20, 19, 7), d(30, 21, 19, 7), d(31, 22, 19, 7), d(32, 23, 19, 7), d(33, 24, 19, 7),
-  d(34, 21, 20, 7), d(35, 22, 20, 7), d(36, 23, 20, 7),
-  d(37, 22, 21, 7),
-
-  // ── Shape 4: RED right-pointing triangle (col 29–32, rows 17–21) ──
-  // base col
-  d(38, 29, 17, 4), d(39, 29, 18, 4), d(40, 29, 19, 4), d(41, 29, 20, 4), d(42, 29, 21, 4),
-  // middle col
-  d(43, 30, 18, 4), d(44, 30, 19, 4), d(45, 30, 20, 4),
-  // tip
-  d(46, 31, 19, 4),
-
-  // ── Shape 5: PURPLE right-pointing triangle (col 39–41, rows 18–21, shifted down) ──
-  d(50, 39, 18, 3), d(51, 39, 19, 3), d(52, 39, 20, 3), d(53, 39, 21, 3),
-  d(54, 40, 19, 3), d(55, 40, 20, 3),
-  d(56, 41, 19, 3),
-
-  // ── Shape 6: PINK organic star (center col 51, rows 17–21) ──
-  d(57, 51, 17, 6),                                                        // top spike
-  d(58, 49, 18, 6), d(59, 50, 18, 6), d(60, 51, 18, 6),                  // upper
-  d(61, 52, 18, 6), d(62, 53, 18, 6),                                     // upper right
-  d(63, 50, 19, 6), d(64, 51, 19, 6), d(65, 52, 19, 6),                  // center
-  d(66, 49, 20, 6), d(67, 50, 20, 6), d(68, 51, 20, 6),                  // lower
-  d(69, 52, 20, 6), d(70, 53, 20, 6),                                     // lower right
-  d(71, 50, 21, 6), d(72, 51, 21, 6), d(73, 52, 21, 6),                  // bottom
-
-  // ── Shape 7: BLUE organic star (center col 62, rows 17–21) ──
-  d(74, 62, 17, 2),                                                        // top spike
-  d(75, 60, 18, 2), d(76, 61, 18, 2), d(77, 62, 18, 2),                  // upper
-  d(78, 63, 18, 2), d(79, 64, 18, 2),                                     // upper right
-  d(80, 61, 19, 2), d(81, 62, 19, 2), d(82, 63, 19, 2),                  // center
-  d(83, 60, 20, 2), d(84, 61, 20, 2), d(85, 62, 20, 2),                  // lower
-  d(86, 63, 20, 2), d(87, 64, 20, 2),                                     // lower right
-  d(88, 61, 21, 2), d(89, 62, 21, 2), d(90, 63, 21, 2),                  // bottom
-
-  // ── Scattered fill dots between shapes ──
-  d(91,  6, 21, 5), d(92,  7, 21, 1), d(93,  8, 21, 5),
-  d(94, 17, 21, 0), d(95, 18, 21, 7),
-  d(96, 26, 21, 3), d(97, 27, 21, 4),
-  d(98, 35, 21, 6), d(99, 36, 21, 1),
-  d(100,43, 21, 7), d(101,44, 21, 2), d(102,45, 21, 0),
-  d(103,55, 21, 3), d(104,56, 21, 6),
-  d(105,65, 21, 1), d(106,66, 21, 4),
-  d(107, 5, 20, 7), d(108,16, 20, 4), d(109,25, 20, 6),
-  d(110,37, 20, 0), d(111,47, 20, 5),
-
-  // ── Row 16 ──
-  d(112,  3, 16, 5), d(113,  9, 16, 2), d(114, 14, 16, 0),
-  d(115, 19, 16, 7), d(116, 24, 16, 4), d(117, 28, 16, 1),
-  d(118, 33, 16, 6), d(119, 38, 16, 3), d(120, 43, 16, 0),
-  d(121, 48, 16, 5), d(122, 53, 16, 2), d(123, 58, 16, 7),
-  d(124, 63, 16, 4), d(125, 67, 16, 1),
-
-  // ── Row 15 ──
-  d(126,  5, 15, 3), d(127, 12, 15, 6), d(128, 20, 15, 1),
-  d(129, 30, 15, 4), d(130, 40, 15, 7), d(131, 50, 15, 0),
-  d(132, 60, 15, 5), d(133, 66, 15, 2),
-
-  // ── Row 14 ──
-  d(134,  8, 14, 2), d(135, 22, 14, 5), d(136, 37, 14, 1),
-  d(137, 52, 14, 6), d(138, 64, 14, 3),
-
-  // ── Row 13 ──
-  d(139, 15, 13, 7), d(140, 32, 13, 0), d(141, 47, 13, 4),
-  d(142, 61, 13, 2),
+  { id: 1,  type: 'triangle', color: '#86efac', size: 84,  x:  30, y: 460, rot:   0 },
+  { id: 2,  type: 'star',     color: '#fdba74', size: 80,  x: 145, y: 435, rot:  18 },
+  { id: 3,  type: 'circle',   color: '#99f6e4', size: 64,  x: 275, y: 468, rot:   0 },
+  { id: 4,  type: 'circle',   color: '#fca5a5', size: 58,  x: 365, y: 450, rot:   0 },
+  { id: 5,  type: 'triangle', color: '#c4b5fd', size: 76,  x: 455, y: 458, rot: -14 },
+  { id: 6,  type: 'star',     color: '#f9a8d4', size: 72,  x: 580, y: 425, rot:  26 },
+  { id: 7,  type: 'star',     color: '#93c5fd', size: 68,  x: 710, y: 448, rot:  -8 },
+  { id: 8,  type: 'triangle', color: '#fde68a', size: 62,  x: 840, y: 462, rot:  12 },
+  { id: 9,  type: 'circle',   color: '#86efac', size: 52,  x: 945, y: 472, rot:   0 },
+  { id: 10, type: 'star',     color: '#fdba74', size: 58,  x:1040, y: 442, rot: -22 },
+  { id: 11, type: 'triangle', color: '#fca5a5', size: 56,  x:1150, y: 455, rot:   8 },
+  { id: 12, type: 'star',     color: '#c4b5fd', size: 64,  x:1250, y: 430, rot:  15 },
 ]
+
+function Shape({ shape, onMouseDown }) {
+  const { type, color, size, rot } = shape
+  const style = {
+    position: 'absolute',
+    left: shape.x,
+    top: shape.y,
+    width: size,
+    height: size,
+    transform: `rotate(${rot}deg)`,
+    cursor: 'grab',
+    userSelect: 'none',
+    zIndex: shape.z,
+    pointerEvents: 'all',
+  }
+
+  if (type === 'circle') {
+    return (
+      <div
+        onMouseDown={onMouseDown}
+        style={{ ...style, borderRadius: '50%', backgroundColor: color }}
+      />
+    )
+  }
+
+  if (type === 'triangle') {
+    return (
+      <svg
+        onMouseDown={onMouseDown}
+        style={style}
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M 0 0 L 100 50 L 0 100 Z" fill={color} />
+      </svg>
+    )
+  }
+
+  // star
+  return (
+    <svg
+      onMouseDown={onMouseDown}
+      style={style}
+      viewBox="0 0 189 181"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d={STAR_PATH} fill={color} />
+    </svg>
+  )
+}
 
 export default function AnimatedFooter() {
   const [shapes, setShapes] = useState(() =>
@@ -159,24 +130,12 @@ export default function AnimatedFooter() {
         pointerEvents: 'none',
       }} />
 
-      {/* Dot shapes */}
+      {/* Shapes */}
       {shapes.map(shape => (
-        <div
+        <Shape
           key={shape.id}
+          shape={shape}
           onMouseDown={e => onMouseDown(e, shape.id)}
-          style={{
-            position: 'absolute',
-            left: shape.x,
-            top: shape.y,
-            width: shape.w,
-            height: shape.h,
-            borderRadius: '50%',
-            backgroundColor: shape.color,
-            zIndex: shape.z,
-            pointerEvents: 'all',
-            userSelect: 'none',
-            boxShadow: `0 0 5px 1px ${shape.color}66`,
-          }}
         />
       ))}
 
