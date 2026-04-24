@@ -1,5 +1,6 @@
 'use client'
 import { useState, useRef, useEffect } from 'react'
+import { flushSync } from 'react-dom'
 
 // Dots sit on the 28px background grid. x/y = top-left corner of dot (center - r).
 // d(id, col, row, colorIndex, size) — col/row are grid coordinates
@@ -194,11 +195,13 @@ export default function AnimatedFooter() {
     if (!footerRef.current) return
     const rect = footerRef.current.getBoundingClientRect()
     const shape = shapes.find(s => s.id === id)
-    // Piano bounce on red triangle (ids 38–46) — no ripple rings
+    // Piano bounce on red triangle (ids 38–46) — flushSync for instant response
     if (id >= 38 && id <= 46) {
       if (triangleTimer.current) clearTimeout(triangleTimer.current)
-      setTrianglePlayKey(k => k + 1)
-      setTrianglePlaying(true)
+      flushSync(() => {
+        setTrianglePlayKey(k => k + 1)
+        setTrianglePlaying(true)
+      })
       triangleTimer.current = setTimeout(() => setTrianglePlaying(false), 900)
     }
     const newZ = topZ
@@ -252,7 +255,7 @@ export default function AnimatedFooter() {
       {shapes.map(shape => {
         const isRedTriangle = shape.id >= 38 && shape.id <= 46
         const pianoAnim = isRedTriangle && trianglePlaying
-          ? `piano-bounce 0.45s ease-in-out ${pianoLayer(shape.id) * 130}ms forwards`
+          ? `piano-bounce 0.6s cubic-bezier(0.34, 1.4, 0.64, 1) ${pianoLayer(shape.id) * 120}ms forwards`
           : null
         const pixAnim = shape.id < 200 && dragging.current?.id !== shape.id
           ? `pix-${shape.dir} ${getDuration(shape.id)}s steps(5) ${getDelay(shape.id)}s infinite`
