@@ -145,8 +145,18 @@ export default function AnimatedFooter() {
   const [topZ, setTopZ] = useState(INITIAL_SHAPES.length + 1)
   const [ripples, setRipples] = useState([])
   const rippleCounter = useRef(0)
+  const [trianglePlayKey, setTrianglePlayKey] = useState(0)
+  const [trianglePlaying, setTrianglePlaying] = useState(false)
+  const triangleTimer = useRef(null)
   const footerRef = useRef(null)
   const dragging = useRef(null)
+
+  // Layer distance from tip — controls piano bounce delay
+  const pianoLayer = (id) => {
+    if (id === 46) return 0           // tip (innermost)
+    if (id >= 43 && id <= 45) return 1 // middle ring
+    return 2                           // outer ring (ids 38–42)
+  }
 
   const triggerRipple = ({ cx, cy, color, startSize = 6 }) => {
     // Three rings staggered to feel like a water drop expanding outward
@@ -185,12 +195,18 @@ export default function AnimatedFooter() {
     if (!footerRef.current) return
     const rect = footerRef.current.getBoundingClientRect()
     const shape = shapes.find(s => s.id === id)
-    // Water-drop ripple on red triangle (ids 38–46) — originates from cluster centre
+    // Piano bounce + water-drop ripple on red triangle (ids 38–46)
     if (id >= 38 && id <= 46) {
+      // Ripple from cluster centre
       const redDots = shapes.filter(s => s.id >= 38 && s.id <= 46)
       const cx = redDots.reduce((sum, s) => sum + s.x + s.w / 2, 0) / redDots.length
       const cy = redDots.reduce((sum, s) => sum + s.y + s.h / 2, 0) / redDots.length
       triggerRipple({ cx, cy, color: COLORS[4], startSize: 64 })
+      // Piano bounce — restart by incrementing key
+      if (triangleTimer.current) clearTimeout(triangleTimer.current)
+      setTrianglePlayKey(k => k + 1)
+      setTrianglePlaying(true)
+      triangleTimer.current = setTimeout(() => setTrianglePlaying(false), 900)
     }
     const newZ = topZ
     setTopZ(z => z + 1)
@@ -213,6 +229,13 @@ export default function AnimatedFooter() {
         0%   { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
         100% { transform: translate(-50%,-50%) scale(5); opacity: 0;   }
       }
+      @keyframes piano-bounce {
+        0%   { transform: translateY(0);     }
+        30%  { transform: translateY(-10px); }
+        60%  { transform: translateY(4px);   }
+        80%  { transform: translateY(-2px);  }
+        100% { transform: translateY(0);     }
+      }
     `}</style>
     <footer ref={footerRef} style={{
       position: 'relative',
@@ -233,30 +256,37 @@ export default function AnimatedFooter() {
       }} />
 
       {/* Dot shapes */}
-      {shapes.map(shape => (
-        <div
-          key={shape.id}
-          data-dir={shape.dir}
-          data-sid={shape.id}
-          onMouseDown={e => onMouseDown(e, shape.id)}
-          style={{
-            position: 'absolute',
-            left: shape.x,
-            top: shape.y,
-            width: shape.w,
-            height: shape.h,
-            borderRadius: '50%',
-            backgroundColor: shape.color,
-            zIndex: shape.id >= 1000 ? 1 : shape.z,
-            pointerEvents: 'all',
-            userSelect: 'none',
-            boxShadow: shape.id >= 200 ? 'none' : `0 0 5px 1px ${shape.color}66`,
-            animation: shape.id >= 200 || dragging.current?.id === shape.id
-              ? 'none'
-              : `pix-${shape.dir} ${getDuration(shape.id)}s steps(5) ${getDelay(shape.id)}s infinite`,
-          }}
-        />
-      ))}
+      {shapes.map(shape => {
+        const isRedTriangle = shape.id >= 38 && shape.id <= 46
+        const pianoAnim = isRedTriangle && trianglePlaying
+          ? `piano-bounce 0.45s ease-in-out ${pianoLayer(shape.id) * 130}ms forwards`
+          : 'none'
+        const pixAnim = !isRedTriangle && shape.id < 200 && dragging.current?.id !== shape.id
+          ? `pix-${shape.dir} ${getDuration(shape.id)}s steps(5) ${getDelay(shape.id)}s infinite`
+          : 'none'
+        return (
+          <div
+            key={isRedTriangle ? `${shape.id}-${trianglePlayKey}` : shape.id}
+            data-dir={shape.dir}
+            data-sid={shape.id}
+            onMouseDown={e => onMouseDown(e, shape.id)}
+            style={{
+              position: 'absolute',
+              left: shape.x,
+              top: shape.y,
+              width: shape.w,
+              height: shape.h,
+              borderRadius: '50%',
+              backgroundColor: shape.color,
+              zIndex: shape.id >= 1000 ? 1 : shape.z,
+              pointerEvents: 'all',
+              userSelect: 'none',
+              boxShadow: shape.id >= 200 ? 'none' : `0 0 5px 1px ${shape.color}66`,
+              animation: isRedTriangle ? pianoAnim : pixAnim,
+            }}
+          />
+        )
+      })}
 
       {/* Water-drop ripples */}
       {ripples.map(r => (
