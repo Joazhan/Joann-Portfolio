@@ -151,11 +151,10 @@ export default function AnimatedFooter() {
   const footerRef = useRef(null)
   const dragging = useRef(null)
 
-  // Layer distance from tip — controls piano bounce delay
+  // Layer distance from triangle centre (id 44, dc=-1 dr=0) — controls piano bounce delay
   const pianoLayer = (id) => {
-    if (id === 46) return 0           // tip (innermost)
-    if (id >= 43 && id <= 45) return 1 // middle ring
-    return 2                           // outer ring (ids 38–42)
+    const layers = { 44: 0, 43: 1, 45: 1, 46: 1, 40: 1, 39: 2, 41: 2, 38: 3, 42: 3 }
+    return layers[id] ?? 0
   }
 
   const triggerRipple = ({ cx, cy, color, startSize = 6 }) => {
@@ -195,14 +194,8 @@ export default function AnimatedFooter() {
     if (!footerRef.current) return
     const rect = footerRef.current.getBoundingClientRect()
     const shape = shapes.find(s => s.id === id)
-    // Piano bounce + water-drop ripple on red triangle (ids 38–46)
+    // Piano bounce on red triangle (ids 38–46) — no ripple rings
     if (id >= 38 && id <= 46) {
-      // Ripple from cluster centre
-      const redDots = shapes.filter(s => s.id >= 38 && s.id <= 46)
-      const cx = redDots.reduce((sum, s) => sum + s.x + s.w / 2, 0) / redDots.length
-      const cy = redDots.reduce((sum, s) => sum + s.y + s.h / 2, 0) / redDots.length
-      triggerRipple({ cx, cy, color: COLORS[4], startSize: 64 })
-      // Piano bounce — restart by incrementing key
       if (triangleTimer.current) clearTimeout(triangleTimer.current)
       setTrianglePlayKey(k => k + 1)
       setTrianglePlaying(true)
@@ -260,8 +253,8 @@ export default function AnimatedFooter() {
         const isRedTriangle = shape.id >= 38 && shape.id <= 46
         const pianoAnim = isRedTriangle && trianglePlaying
           ? `piano-bounce 0.45s ease-in-out ${pianoLayer(shape.id) * 130}ms forwards`
-          : 'none'
-        const pixAnim = !isRedTriangle && shape.id < 200 && dragging.current?.id !== shape.id
+          : null
+        const pixAnim = shape.id < 200 && dragging.current?.id !== shape.id
           ? `pix-${shape.dir} ${getDuration(shape.id)}s steps(5) ${getDelay(shape.id)}s infinite`
           : 'none'
         return (
@@ -282,7 +275,7 @@ export default function AnimatedFooter() {
               pointerEvents: 'all',
               userSelect: 'none',
               boxShadow: shape.id >= 200 ? 'none' : `0 0 5px 1px ${shape.color}66`,
-              animation: isRedTriangle ? pianoAnim : pixAnim,
+              animation: pianoAnim ?? pixAnim,
             }}
           />
         )
