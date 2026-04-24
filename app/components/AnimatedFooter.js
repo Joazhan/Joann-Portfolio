@@ -104,14 +104,14 @@ const INITIAL_SHAPES = [
   d(139, 15, 13, 7), d(140, 32, 13, 0), d(141, 47, 13, 4),
   d(142, 61, 13, 2),
 
-  // ── Grey background: horizontal rows on 28px grid (21 rows) ──
-  ...[...Array(21)].flatMap((_, r) => [...Array(68)].map((_, c) => d(1000 + r * 68 + c, c + 1, r + 1, 8, 4))),
-
-  // ── Grey background: 4 vertical columns spanning full height ──
-  ...[...Array(21)].map((_, i) => d(3000 + i, 12, i + 1, 8, 4)),
-  ...[...Array(21)].map((_, i) => d(3022 + i, 28, i + 1, 8, 4)),
-  ...[...Array(21)].map((_, i) => d(3044 + i, 46, i + 1, 8, 4)),
-  ...[...Array(21)].map((_, i) => d(3066 + i, 62, i + 1, 8, 4)),
+  // ── Grey background: uniform 22px grid (18px visible gap) ──
+  ...[...Array(28)].flatMap((_, r) => [...Array(87)].map((_, c) => ({
+    id: 1000 + r * 87 + c,
+    x: (c + 1) * 22 - 2,
+    y: (r + 1) * 22 - 2,
+    w: 4, h: 4,
+    color: COLORS[8],
+  }))),
 ]
 
 export default function AnimatedFooter() {
@@ -223,7 +223,7 @@ export default function AnimatedFooter() {
             height: shape.h,
             borderRadius: '50%',
             backgroundColor: shape.color,
-            zIndex: shape.z,
+            zIndex: shape.id >= 1000 ? 1 : shape.z,
             pointerEvents: 'all',
             userSelect: 'none',
             boxShadow: shape.id >= 200 ? 'none' : `0 0 5px 1px ${shape.color}66`,
