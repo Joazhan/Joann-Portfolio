@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 
 // Dots sit on the 28px background grid. x/y = top-left corner of dot (center - r).
 // d(id, col, row, colorIndex, size) — col/row are grid coordinates
-const COLORS = ['#86efac','#fdba74','#93c5fd','#c4b5fd','#fca5a5','#fde68a','#f9a8d4','#99f6e4','rgba(0,0,0,0.1)']
+const COLORS = ['#86efac','#fdba74','#93c5fd','#c4b5fd','#fca5a5','#fde68a','#f9a8d4','#99f6e4','#E3E3E3']
 const G = 28
 
 const d = (id, col, row, c, s = 8) => ({
