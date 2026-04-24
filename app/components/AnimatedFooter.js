@@ -152,10 +152,12 @@ export default function AnimatedFooter() {
   const footerRef = useRef(null)
   const dragging = useRef(null)
 
-  // Layer distance from triangle centre (id 44, dc=-1 dr=0) — controls piano bounce delay
+  // Piano layers — middle column first, then tip + outer edges
   const pianoLayer = (id) => {
-    const layers = { 44: 0, 43: 1, 45: 1, 46: 1, 40: 1, 39: 2, 41: 2, 38: 3, 42: 3 }
-    return layers[id] ?? 0
+    if (id >= 43 && id <= 45) return 0   // middle column (dc=-1): bounces first
+    if (id === 46 || id === 40) return 1  // tip + outer centre
+    if (id === 39 || id === 41) return 2  // outer upper/lower mid
+    return 3                              // outer corners (38, 42)
   }
 
   const triggerRipple = ({ cx, cy, color, startSize = 6 }) => {
