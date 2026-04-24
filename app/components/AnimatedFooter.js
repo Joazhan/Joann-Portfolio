@@ -104,21 +104,14 @@ const INITIAL_SHAPES = [
   d(139, 15, 13, 7), d(140, 32, 13, 0), d(141, 47, 13, 4),
   d(142, 61, 13, 2),
 
-  // ── Grey background: horizontal rows spanning full width ──
-  ...[...Array(68)].map((_, i) => d(200 + i,  i + 1,  2, 8, 4)),
-  ...[...Array(68)].map((_, i) => d(270 + i,  i + 1,  5, 8, 4)),
-  ...[...Array(68)].map((_, i) => d(340 + i,  i + 1,  8, 8, 4)),
-  ...[...Array(68)].map((_, i) => d(500 + i,  i + 1, 10, 8, 4)),
-  ...[...Array(68)].map((_, i) => d(570 + i,  i + 1, 13, 8, 4)),
-  ...[...Array(68)].map((_, i) => d(640 + i,  i + 1, 15, 8, 4)),
-  ...[...Array(68)].map((_, i) => d(710 + i,  i + 1, 18, 8, 4)),
-  ...[...Array(68)].map((_, i) => d(780 + i,  i + 1, 20, 8, 4)),
+  // ── Grey background: horizontal rows spanning full width (all 21 rows) ──
+  ...[...Array(21)].flatMap((_, r) => [...Array(68)].map((_, c) => d(1000 + r * 68 + c, c + 1, r + 1, 8, 4))),
 
   // ── Grey background: 4 vertical columns spanning full height ──
-  ...[...Array(21)].map((_, i) => d(410 + i, 12, i + 1, 8, 4)),
-  ...[...Array(21)].map((_, i) => d(432 + i, 28, i + 1, 8, 4)),
-  ...[...Array(21)].map((_, i) => d(454 + i, 46, i + 1, 8, 4)),
-  ...[...Array(21)].map((_, i) => d(476 + i, 62, i + 1, 8, 4)),
+  ...[...Array(21)].map((_, i) => d(3000 + i, 12, i + 1, 8, 4)),
+  ...[...Array(21)].map((_, i) => d(3022 + i, 28, i + 1, 8, 4)),
+  ...[...Array(21)].map((_, i) => d(3044 + i, 46, i + 1, 8, 4)),
+  ...[...Array(21)].map((_, i) => d(3066 + i, 62, i + 1, 8, 4)),
 ]
 
 export default function AnimatedFooter() {
