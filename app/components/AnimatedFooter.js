@@ -107,10 +107,28 @@ const INITIAL_SHAPES = [
   // ── Grey background: horizontal rows on 28px grid (21 rows) ──
   ...[...Array(21)].flatMap((_, r) => [...Array(68)].map((_, c) => d(1000 + r * 68 + c, c + 1, r + 1, 8, 4))),
 
-  // ── Extra grey rows at 14px mid-grid offsets (all 20 gaps) ──
+  // ── Mid-y rows: 14px vertical offsets between 28px grid rows ──
   ...[...Array(20)].flatMap((_, r) => [...Array(68)].map((_, c) => ({
     id: 4000 + r * 68 + c,
     x: (c + 1) * G - 2,
+    y: (2 * r + 1) * 14 - 2,
+    w: 4, h: 4,
+    color: COLORS[8],
+  }))),
+
+  // ── Mid-x dots: 14px horizontal offsets between dots in every row ──
+  // On 28px grid rows:
+  ...[...Array(21)].flatMap((_, r) => [...Array(68)].map((_, c) => ({
+    id: 5000 + r * 68 + c,
+    x: (c + 1) * G - 2 - G / 2,
+    y: (r + 1) * G - 2,
+    w: 4, h: 4,
+    color: COLORS[8],
+  }))),
+  // On 14px mid-rows:
+  ...[...Array(20)].flatMap((_, r) => [...Array(68)].map((_, c) => ({
+    id: 6000 + r * 68 + c,
+    x: (c + 1) * G - 2 - G / 2,
     y: (2 * r + 1) * 14 - 2,
     w: 4, h: 4,
     color: COLORS[8],
