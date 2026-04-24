@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 
 // Dots sit on the 28px background grid. x/y = top-left corner of dot (center - r).
 // d(id, col, row, colorIndex, size) — col/row are grid coordinates
-const COLORS = ['#86efac','#fdba74','#93c5fd','#c4b5fd','#fca5a5','#fde68a','#f9a8d4','#99f6e4','#E3E3E3']
+const COLORS = ['#86efac','#fdba74','#93c5fd','#c4b5fd','#fca5a5','#fde68a','#f9a8d4','#99f6e4','#EFEFEF']
 const G = 28
 
 const d = (id, col, row, c, s = 8) => ({
@@ -195,7 +195,7 @@ export default function AnimatedFooter() {
       overflow: 'hidden',
       minHeight: '600px',
       backgroundColor: '#FCFCFC',
-      backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.1) 2px, transparent 2px)',
+      backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.05) 2px, transparent 2px)',
       backgroundSize: '22px 22px',
       backgroundPosition: '-11px -11px',
     }}>
