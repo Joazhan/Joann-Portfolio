@@ -190,21 +190,22 @@ export default function AnimatedFooter() {
     }
   }, [])
 
+  const triggerPiano = () => {
+    if (triangleTimer.current) clearTimeout(triangleTimer.current)
+    flushSync(() => {
+      setTrianglePlayKey(k => k + 1)
+      setTrianglePlaying(true)
+    })
+    triangleTimer.current = setTimeout(() => setTrianglePlaying(false), 900)
+  }
+
   const onMouseDown = (e, id) => {
     e.preventDefault()
     e.stopPropagation()
     if (!footerRef.current) return
     const rect = footerRef.current.getBoundingClientRect()
     const shape = shapes.find(s => s.id === id)
-    // Piano bounce on red triangle (ids 38–46) — flushSync for instant response
-    if (id >= 38 && id <= 46) {
-      if (triangleTimer.current) clearTimeout(triangleTimer.current)
-      flushSync(() => {
-        setTrianglePlayKey(k => k + 1)
-        setTrianglePlaying(true)
-      })
-      triangleTimer.current = setTimeout(() => setTrianglePlaying(false), 900)
-    }
+    if (id >= 38 && id <= 46) triggerPiano()
     const newZ = topZ
     setTopZ(z => z + 1)
     setShapes(prev => prev.map(s => s.id === id ? { ...s, z: newZ } : s))
@@ -251,6 +252,28 @@ export default function AnimatedFooter() {
         zIndex: topZ + 1,
         pointerEvents: 'none',
       }} />
+
+      {/* Red triangle hitbox — covers the gaps between dots */}
+      {(() => {
+        const tri = shapes.filter(s => s.id >= 38 && s.id <= 46)
+        const left   = Math.min(...tri.map(s => s.x)) - 6
+        const top    = Math.min(...tri.map(s => s.y)) - 6
+        const right  = Math.max(...tri.map(s => s.x + s.w)) + 6
+        const bottom = Math.max(...tri.map(s => s.y + s.h)) + 6
+        return (
+          <div
+            onMouseDown={e => { e.preventDefault(); triggerPiano() }}
+            style={{
+              position: 'absolute',
+              left, top,
+              width: right - left,
+              height: bottom - top,
+              zIndex: 10,
+              cursor: 'pointer',
+            }}
+          />
+        )
+      })()}
 
       {/* Dot shapes */}
       {shapes.map(shape => {
