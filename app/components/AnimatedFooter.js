@@ -109,10 +109,30 @@ export default function AnimatedFooter() {
   const [shapes, setShapes] = useState(() =>
     INITIAL_SHAPES.map((s, i) => ({ ...s, z: i + 1, dir: getDir(s.id) }))
   )
-  // Staggered durations so shapes don't move in lockstep
+  // Shape clusters: all dots in the same group share identical duration + delay
+  // so they're always at the same animation phase and move as one unit.
+  // Scattered dots (id > 90) keep individual timing.
   const DURATIONS = [2.0, 2.4, 1.8, 2.6, 2.2, 1.6, 2.8, 2.1, 2.5, 1.9]
-  const getDuration = (id) => DURATIONS[id % DURATIONS.length]
-  const getDelay    = (id) => -((id * 0.37) % 2.6) // negative = start mid-cycle
+  const getDuration = (id) => {
+    if (id <=  9) return 2.0   // green triangle
+    if (id <= 24) return 2.4   // orange star
+    if (id <= 37) return 1.8   // teal circle
+    if (id <= 46) return 2.6   // red triangle
+    if (id <= 56) return 2.2   // purple triangle
+    if (id <= 73) return 2.0   // pink star
+    if (id <= 90) return 2.8   // blue star
+    return DURATIONS[id % DURATIONS.length]
+  }
+  const getDelay = (id) => {
+    if (id <=  9) return  0
+    if (id <= 24) return -0.8
+    if (id <= 37) return -0.4
+    if (id <= 46) return -1.2
+    if (id <= 56) return -0.6
+    if (id <= 73) return -1.0
+    if (id <= 90) return -0.2
+    return -((id * 0.37) % 2.6)
+  }
   const [topZ, setTopZ] = useState(INITIAL_SHAPES.length + 1)
   const footerRef = useRef(null)
   const dragging = useRef(null)
