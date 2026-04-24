@@ -107,12 +107,19 @@ const INITIAL_SHAPES = [
   // ── Grey background: horizontal rows on 28px grid (21 rows) ──
   ...[...Array(21)].flatMap((_, r) => [...Array(68)].map((_, c) => d(1000 + r * 68 + c, c + 1, r + 1, 8, 4))),
 
+  // ── 2 extra horizontal rows (between rows 7–8 and 14–15) ──
+  ...[...Array(68)].map((_, c) => ({ id: 7000 + c, x: (c + 1) * G - 2, y: 208, w: 4, h: 4, color: COLORS[8] })),
+  ...[...Array(68)].map((_, c) => ({ id: 7068 + c, x: (c + 1) * G - 2, y: 404, w: 4, h: 4, color: COLORS[8] })),
 
   // ── Grey background: 4 vertical columns spanning full height ──
   ...[...Array(21)].map((_, i) => d(3000 + i, 12, i + 1, 8, 4)),
   ...[...Array(21)].map((_, i) => d(3022 + i, 28, i + 1, 8, 4)),
   ...[...Array(21)].map((_, i) => d(3044 + i, 46, i + 1, 8, 4)),
   ...[...Array(21)].map((_, i) => d(3066 + i, 62, i + 1, 8, 4)),
+
+  // ── 2 extra vertical columns (between cols 12–28 and 46–62) ──
+  ...[...Array(21)].map((_, i) => ({ id: 7200 + i, x: 628,  y: (i + 1) * G - 2, w: 4, h: 4, color: COLORS[8] })),
+  ...[...Array(21)].map((_, i) => ({ id: 7221 + i, x: 1244, y: (i + 1) * G - 2, w: 4, h: 4, color: COLORS[8] })),
 ]
 
 export default function AnimatedFooter() {
