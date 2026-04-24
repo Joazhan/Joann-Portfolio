@@ -171,12 +171,13 @@ export default function AnimatedFooter() {
 
   useEffect(() => {
     const handleMove = (e) => {
-      if (!dragging.current || !footerRef.current) return
+      const drag = dragging.current
+      if (!drag || !footerRef.current) return
       const rect = footerRef.current.getBoundingClientRect()
-      const x = e.clientX - rect.left - dragging.current.offsetX
-      const y = e.clientY - rect.top - dragging.current.offsetY
+      const x = e.clientX - rect.left - drag.offsetX
+      const y = e.clientY - rect.top - drag.offsetY
       setShapes(prev =>
-        prev.map(s => s.id === dragging.current.id ? { ...s, x, y } : s)
+        prev.map(s => s.id === drag.id ? { ...s, x, y } : s)
       )
     }
     const handleUp = () => { dragging.current = null }
