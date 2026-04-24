@@ -143,8 +143,23 @@ export default function AnimatedFooter() {
     return -((id * 0.37) % 2.6)
   }
   const [topZ, setTopZ] = useState(INITIAL_SHAPES.length + 1)
+  const [ripples, setRipples] = useState([])
+  const rippleCounter = useRef(0)
   const footerRef = useRef(null)
   const dragging = useRef(null)
+
+  const triggerRipple = (shape) => {
+    const cx = shape.x + shape.w / 2
+    const cy = shape.y + shape.h / 2
+    // Three rings with staggered delays for a water-drop feel
+    ;[0, 180, 360].forEach(delay => {
+      const key = rippleCounter.current++
+      setTimeout(() => {
+        setRipples(prev => [...prev, { key, cx, cy, color: shape.color }])
+        setTimeout(() => setRipples(prev => prev.filter(r => r.key !== key)), 900)
+      }, delay)
+    })
+  }
 
   useEffect(() => {
     const handleMove = (e) => {
@@ -172,6 +187,8 @@ export default function AnimatedFooter() {
     if (!footerRef.current) return
     const rect = footerRef.current.getBoundingClientRect()
     const shape = shapes.find(s => s.id === id)
+    // Water-drop ripple on red triangle (ids 38–46)
+    if (id >= 38 && id <= 46) triggerRipple(shape)
     const newZ = topZ
     setTopZ(z => z + 1)
     setShapes(prev => prev.map(s => s.id === id ? { ...s, z: newZ } : s))
@@ -189,6 +206,10 @@ export default function AnimatedFooter() {
       @keyframes pix-down  { 0%,100%{transform:translateY(0)}  50%{transform:translateY(14px)}  }
       @keyframes pix-left  { 0%,100%{transform:translateX(0)}  50%{transform:translateX(-14px)} }
       @keyframes pix-right { 0%,100%{transform:translateX(0)}  50%{transform:translateX(14px)}  }
+      @keyframes water-drop {
+        0%   { transform: translate(-50%,-50%) scale(1);  opacity: 0.7; }
+        100% { transform: translate(-50%,-50%) scale(14); opacity: 0;   }
+      }
     `}</style>
     <footer ref={footerRef} style={{
       position: 'relative',
@@ -232,6 +253,22 @@ export default function AnimatedFooter() {
               : `pix-${shape.dir} ${getDuration(shape.id)}s steps(5) ${getDelay(shape.id)}s infinite`,
           }}
         />
+      ))}
+
+      {/* Water-drop ripples */}
+      {ripples.map(r => (
+        <div key={r.key} style={{
+          position: 'absolute',
+          left: r.cx,
+          top: r.cy,
+          width: 6,
+          height: 6,
+          borderRadius: '50%',
+          border: `1.5px solid ${r.color}`,
+          pointerEvents: 'none',
+          zIndex: topZ + 3,
+          animation: 'water-drop 0.85s ease-out forwards',
+        }} />
       ))}
 
       {/* Footer content */}
