@@ -223,11 +223,11 @@ export default function AnimatedFooter() {
         100% { transform: translate(-50%,-50%) scale(5); opacity: 0;   }
       }
       @keyframes piano-bounce {
-        0%   { transform: translateY(0);     }
-        30%  { transform: translateY(-10px); }
-        60%  { transform: translateY(4px);   }
-        80%  { transform: translateY(-2px);  }
-        100% { transform: translateY(0);     }
+        0%   { transform: translateY(0);     box-shadow: 0 0 5px 1px #fca5a566; }
+        30%  { transform: translateY(-10px); box-shadow: 0 0 18px 7px #fca5a5cc; }
+        60%  { transform: translateY(4px);   box-shadow: 0 0 10px 3px #fca5a599; }
+        80%  { transform: translateY(-2px);  box-shadow: 0 0 7px 2px #fca5a577;  }
+        100% { transform: translateY(0);     box-shadow: 0 0 5px 1px #fca5a566; }
       }
     `}</style>
     <footer ref={footerRef} style={{
