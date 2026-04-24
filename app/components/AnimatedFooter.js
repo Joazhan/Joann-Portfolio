@@ -6,11 +6,11 @@ import { useState, useRef, useEffect } from 'react'
 const COLORS = ['#86efac','#fdba74','#93c5fd','#c4b5fd','#fca5a5','#fde68a','#f9a8d4','#99f6e4','#EFEFEF']
 const G = 28
 
-const d = (id, col, row, c, s = 5) => ({
+const d = (id, col, row, c, s = 6) => ({
   id, x: col * G - s / 2, y: row * G - s / 2, w: s, h: s, color: COLORS[c % COLORS.length]
 })
 // Star helper: cx/cy = pixel center of the star, dc/dr = offset in 14px units
-const ds = (id, cx, cy, dc, dr, c, s = 5) => ({
+const ds = (id, cx, cy, dc, dr, c, s = 6) => ({
   id, x: cx + dc * 14 - s / 2, y: cy + dr * 14 - s / 2, w: s, h: s, color: COLORS[c % COLORS.length]
 })
 
