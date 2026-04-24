@@ -14,7 +14,7 @@ const ds = (id, cx, cy, dc, dr, c, s = 8) => ({
   id, x: cx + dc * 14 - s / 2, y: cy + dr * 14 - s / 2, w: s, h: s, color: COLORS[c % COLORS.length]
 })
 
-// Direction each shape cluster drifts when hovering
+// Direction each shape cluster drifts automatically
 function getDir(id) {
   if (id <=  9) return 'up'      // green triangle
   if (id <= 24) return 'right'   // orange star
@@ -109,6 +109,10 @@ export default function AnimatedFooter() {
   const [shapes, setShapes] = useState(() =>
     INITIAL_SHAPES.map((s, i) => ({ ...s, z: i + 1, dir: getDir(s.id) }))
   )
+  // Staggered durations so shapes don't move in lockstep
+  const DURATIONS = [2.0, 2.4, 1.8, 2.6, 2.2, 1.6, 2.8, 2.1, 2.5, 1.9]
+  const getDuration = (id) => DURATIONS[id % DURATIONS.length]
+  const getDelay    = (id) => -((id * 0.37) % 2.6) // negative = start mid-cycle
   const [topZ, setTopZ] = useState(INITIAL_SHAPES.length + 1)
   const footerRef = useRef(null)
   const dragging = useRef(null)
@@ -127,38 +131,9 @@ export default function AnimatedFooter() {
     window.addEventListener('mousemove', handleMove)
     window.addEventListener('mouseup', handleUp)
 
-    const applyHoverOffsets = (e) => {
-      if (!footerRef.current) return
-      const rect = footerRef.current.getBoundingClientRect()
-      const cx = (e.clientX - rect.left - rect.width  / 2) / rect.width   // –0.5 → +0.5
-      const cy = (e.clientY - rect.top  - rect.height / 2) / rect.height
-      const dist = Math.min(Math.sqrt(cx * cx + cy * cy) * 2.5, 1)
-      const MAX = 26
-      footerRef.current.querySelectorAll('[data-dir]').forEach(el => {
-        if (dragging.current && el.dataset.sid === String(dragging.current.id)) return
-        const dir = el.dataset.dir
-        const tx = dir === 'right' ? dist * MAX : dir === 'left' ? -dist * MAX : 0
-        const ty = dir === 'down'  ? dist * MAX : dir === 'up'   ? -dist * MAX : 0
-        el.style.transform = `translate(${tx}px, ${ty}px)`
-      })
-    }
-
-    const clearHoverOffsets = () => {
-      if (!footerRef.current) return
-      footerRef.current.querySelectorAll('[data-dir]').forEach(el => {
-        el.style.transform = 'translate(0px, 0px)'
-      })
-    }
-
-    const footer = footerRef.current
-    footer?.addEventListener('mousemove', applyHoverOffsets)
-    footer?.addEventListener('mouseleave', clearHoverOffsets)
-
     return () => {
       window.removeEventListener('mousemove', handleMove)
       window.removeEventListener('mouseup', handleUp)
-      footer?.removeEventListener('mousemove', applyHoverOffsets)
-      footer?.removeEventListener('mouseleave', clearHoverOffsets)
     }
   }, [])
 
@@ -179,6 +154,12 @@ export default function AnimatedFooter() {
   }
 
   return (
+    <style>{`
+      @keyframes pix-up    { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-14px)} }
+      @keyframes pix-down  { 0%,100%{transform:translateY(0)}  50%{transform:translateY(14px)}  }
+      @keyframes pix-left  { 0%,100%{transform:translateX(0)}  50%{transform:translateX(-14px)} }
+      @keyframes pix-right { 0%,100%{transform:translateX(0)}  50%{transform:translateX(14px)}  }
+    `}</style>
     <footer ref={footerRef} style={{
       position: 'relative',
       overflow: 'hidden',
@@ -216,7 +197,9 @@ export default function AnimatedFooter() {
             pointerEvents: 'all',
             userSelect: 'none',
             boxShadow: `0 0 5px 1px ${shape.color}66`,
-            transition: 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            animation: dragging.current?.id === shape.id
+              ? 'none'
+              : `pix-${shape.dir} ${getDuration(shape.id)}s steps(5) ${getDelay(shape.id)}s infinite`,
           }}
         />
       ))}
