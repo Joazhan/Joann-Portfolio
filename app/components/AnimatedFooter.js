@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 
 // Dots sit on the 28px background grid. x/y = top-left corner of dot (center - r).
 // d(id, col, row, colorIndex, size) — col/row are grid coordinates
-const COLORS = ['#86efac','#fdba74','#93c5fd','#c4b5fd','#fca5a5','#fde68a','#f9a8d4','#99f6e4']
+const COLORS = ['#86efac','#fdba74','#93c5fd','#c4b5fd','#fca5a5','#fde68a','#f9a8d4','#99f6e4','#c4c4c4']
 const G = 28
 
 const d = (id, col, row, c, s = 8) => ({
@@ -103,6 +103,17 @@ const INITIAL_SHAPES = [
   // ── Row 13 ──
   d(139, 15, 13, 7), d(140, 32, 13, 0), d(141, 47, 13, 4),
   d(142, 61, 13, 2),
+
+  // ── Grey background: 3 horizontal rows spanning full width ──
+  ...[...Array(68)].map((_, i) => d(200 + i,       i + 1,  5, 8, 6)),
+  ...[...Array(68)].map((_, i) => d(270 + i,       i + 1, 10, 8, 6)),
+  ...[...Array(68)].map((_, i) => d(340 + i,       i + 1, 15, 8, 6)),
+
+  // ── Grey background: 4 vertical columns spanning full height ──
+  ...[...Array(21)].map((_, i) => d(410 + i, 12, i + 1, 8, 6)),
+  ...[...Array(21)].map((_, i) => d(432 + i, 28, i + 1, 8, 6)),
+  ...[...Array(21)].map((_, i) => d(454 + i, 46, i + 1, 8, 6)),
+  ...[...Array(21)].map((_, i) => d(476 + i, 62, i + 1, 8, 6)),
 ]
 
 export default function AnimatedFooter() {
@@ -217,8 +228,8 @@ export default function AnimatedFooter() {
             zIndex: shape.z,
             pointerEvents: 'all',
             userSelect: 'none',
-            boxShadow: `0 0 5px 1px ${shape.color}66`,
-            animation: dragging.current?.id === shape.id
+            boxShadow: shape.id >= 200 ? 'none' : `0 0 5px 1px ${shape.color}66`,
+            animation: shape.id >= 200 || dragging.current?.id === shape.id
               ? 'none'
               : `pix-${shape.dir} ${getDuration(shape.id)}s steps(5) ${getDelay(shape.id)}s infinite`,
           }}
