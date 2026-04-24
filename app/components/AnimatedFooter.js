@@ -154,6 +154,7 @@ export default function AnimatedFooter() {
   }
 
   return (
+    <>
     <style>{`
       @keyframes pix-up    { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-14px)} }
       @keyframes pix-down  { 0%,100%{transform:translateY(0)}  50%{transform:translateY(14px)}  }
@@ -214,5 +215,6 @@ export default function AnimatedFooter() {
         <p style={{ fontSize: '16px', color: '#9ca3af', pointerEvents: 'all' }}>© Joann Zhang</p>
       </div>
     </footer>
+    </>
   )
 }
