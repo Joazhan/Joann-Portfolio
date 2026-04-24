@@ -104,11 +104,11 @@ const INITIAL_SHAPES = [
   d(139, 15, 13, 7), d(140, 32, 13, 0), d(141, 47, 13, 4),
   d(142, 61, 13, 2),
 
-  // ── Grey background: uniform 22px grid (18px visible gap) ──
-  ...[...Array(28)].flatMap((_, r) => [...Array(87)].map((_, c) => ({
-    id: 1000 + r * 87 + c,
-    x: (c + 1) * 22 - 2,
-    y: (r + 1) * 22 - 2,
+  // ── Grey background: aligned to CSS background dot positions (14 + n×28) ──
+  ...[...Array(21)].flatMap((_, r) => [...Array(68)].map((_, c) => ({
+    id: 1000 + r * 68 + c,
+    x: G / 2 + c * G - 2,
+    y: G / 2 + r * G - 2,
     w: 4, h: 4,
     color: COLORS[8],
   }))),
