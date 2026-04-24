@@ -148,15 +148,13 @@ export default function AnimatedFooter() {
   const footerRef = useRef(null)
   const dragging = useRef(null)
 
-  const triggerRipple = (shape) => {
-    const cx = shape.x + shape.w / 2
-    const cy = shape.y + shape.h / 2
-    // Three rings with staggered delays for a water-drop feel
-    ;[0, 180, 360].forEach(delay => {
+  const triggerRipple = ({ cx, cy, color, startSize = 6 }) => {
+    // Three rings staggered to feel like a water drop expanding outward
+    ;[0, 200, 400].forEach(delay => {
       const key = rippleCounter.current++
       setTimeout(() => {
-        setRipples(prev => [...prev, { key, cx, cy, color: shape.color }])
-        setTimeout(() => setRipples(prev => prev.filter(r => r.key !== key)), 900)
+        setRipples(prev => [...prev, { key, cx, cy, color, startSize }])
+        setTimeout(() => setRipples(prev => prev.filter(r => r.key !== key)), 1000)
       }, delay)
     })
   }
@@ -187,8 +185,13 @@ export default function AnimatedFooter() {
     if (!footerRef.current) return
     const rect = footerRef.current.getBoundingClientRect()
     const shape = shapes.find(s => s.id === id)
-    // Water-drop ripple on red triangle (ids 38–46)
-    if (id >= 38 && id <= 46) triggerRipple(shape)
+    // Water-drop ripple on red triangle (ids 38–46) — originates from cluster centre
+    if (id >= 38 && id <= 46) {
+      const redDots = shapes.filter(s => s.id >= 38 && s.id <= 46)
+      const cx = redDots.reduce((sum, s) => sum + s.x + s.w / 2, 0) / redDots.length
+      const cy = redDots.reduce((sum, s) => sum + s.y + s.h / 2, 0) / redDots.length
+      triggerRipple({ cx, cy, color: COLORS[4], startSize: 64 })
+    }
     const newZ = topZ
     setTopZ(z => z + 1)
     setShapes(prev => prev.map(s => s.id === id ? { ...s, z: newZ } : s))
@@ -207,8 +210,8 @@ export default function AnimatedFooter() {
       @keyframes pix-left  { 0%,100%{transform:translateX(0)}  50%{transform:translateX(-14px)} }
       @keyframes pix-right { 0%,100%{transform:translateX(0)}  50%{transform:translateX(14px)}  }
       @keyframes water-drop {
-        0%   { transform: translate(-50%,-50%) scale(1);  opacity: 0.7; }
-        100% { transform: translate(-50%,-50%) scale(14); opacity: 0;   }
+        0%   { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
+        100% { transform: translate(-50%,-50%) scale(5); opacity: 0;   }
       }
     `}</style>
     <footer ref={footerRef} style={{
@@ -261,13 +264,13 @@ export default function AnimatedFooter() {
           position: 'absolute',
           left: r.cx,
           top: r.cy,
-          width: 6,
-          height: 6,
+          width: r.startSize,
+          height: r.startSize,
           borderRadius: '50%',
           border: `1.5px solid ${r.color}`,
           pointerEvents: 'none',
           zIndex: topZ + 3,
-          animation: 'water-drop 0.85s ease-out forwards',
+          animation: 'water-drop 0.9s ease-out forwards',
         }} />
       ))}
 
