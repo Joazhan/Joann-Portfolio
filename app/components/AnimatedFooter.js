@@ -104,8 +104,17 @@ const INITIAL_SHAPES = [
   d(139, 15, 13, 7), d(140, 32, 13, 0), d(141, 47, 13, 4),
   d(142, 61, 13, 2),
 
-  // ── Grey background: horizontal rows spanning full width (all 21 rows) ──
+  // ── Grey background: horizontal rows on 28px grid (21 rows) ──
   ...[...Array(21)].flatMap((_, r) => [...Array(68)].map((_, c) => d(1000 + r * 68 + c, c + 1, r + 1, 8, 4))),
+
+  // ── Extra grey rows at 14px mid-grid offsets (10 rows, halves vertical spacing) ──
+  ...[...Array(10)].flatMap((_, r) => [...Array(68)].map((_, c) => ({
+    id: 4000 + r * 68 + c,
+    x: (c + 1) * G - 2,
+    y: (2 * r + 1) * 14 - 2,
+    w: 4, h: 4,
+    color: COLORS[8],
+  }))),
 
   // ── Grey background: 4 vertical columns spanning full height ──
   ...[...Array(21)].map((_, i) => d(3000 + i, 12, i + 1, 8, 4)),
