@@ -104,11 +104,11 @@ const INITIAL_SHAPES = [
   d(139, 15, 13, 7), d(140, 32, 13, 0), d(141, 47, 13, 4),
   d(142, 61, 13, 2),
 
-  // ── Grey background: aligned to CSS background dot positions (14 + n×28) ──
-  ...[...Array(21)].flatMap((_, r) => [...Array(68)].map((_, c) => ({
-    id: 1000 + r * 68 + c,
-    x: G / 2 + c * G - 2,
-    y: G / 2 + r * G - 2,
+  // ── Grey background: aligned to CSS background dot positions (11 + n×22) ──
+  ...[...Array(27)].flatMap((_, r) => [...Array(86)].map((_, c) => ({
+    id: 1000 + r * 86 + c,
+    x: 11 + c * 22 - 2,
+    y: 11 + r * 22 - 2,
     w: 4, h: 4,
     color: COLORS[8],
   }))),
@@ -196,8 +196,8 @@ export default function AnimatedFooter() {
       minHeight: '600px',
       backgroundColor: '#FCFCFC',
       backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.1) 2px, transparent 2px)',
-      backgroundSize: '28px 28px',
-      backgroundPosition: '-14px -14px',
+      backgroundSize: '22px 22px',
+      backgroundPosition: '-11px -11px',
     }}>
       {/* Gradient fade */}
       <div style={{
