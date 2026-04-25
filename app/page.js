@@ -127,7 +127,7 @@ export default function Home() {
           .hero-text-p { font-size: 20px !important; line-height: 28px !important; }
           .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 40px !important; }
           .nn-desktop-img { display: none !important; }
-          .nn-phone { flex: unset !important; margin-left: 0 !important; width: 60% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
+          .nn-phone { flex: unset !important; margin-left: 0 !important; width: 46% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
           .project-card { position: relative !important; padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 20px !important; }
           .card-bottom-container { margin: 0 -16px -20px -16px !important; padding: 20px 16px !important; }
           .card-label-row { padding: 16px 0 !important; }
