@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Image from 'next/image'
 import { Syne } from 'next/font/google'
@@ -135,7 +135,7 @@ export default function NutritionNest() {
             height={250}
             style={{ width: '100%', height: 'auto', border: '1px solid rgba(0,0,0,0.05)', borderRadius: '12px', marginBottom: '16px' }}
           />
-          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '100px', paddingRight: '100px' }}>
+          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
             Our team's target outcomes for daily active user rate, increased goal achievement with NED's support, and NPS driven by user referrals highlight the positive impact on engagement and motivation.
           </p>
         </div>
@@ -209,13 +209,13 @@ export default function NutritionNest() {
           <div className="img-wide" style={{ margin: '0 -80px' }}>
             <Image src="/NN/affinity_map_image.avif" alt="User research affinity map" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', marginBottom: '16px', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
-          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '100px', paddingRight: '100px', marginBottom: '40px' }}>
+          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', marginBottom: '40px' }}>
             Affinity map synthesizing 30+ user survey responses to identify shared pain points, motivations, and behavioral patterns across nutrition tracking apps.
           </p>
           <div className="img-wide" style={{ margin: '0 -80px' }}>
             <Image src="/NN/competitive_icon_image.avif" alt="Competitive analysis" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', marginBottom: '16px', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
-          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '100px', paddingRight: '100px' }}>
+          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
             Competitive analysis of 4 direct competitors lacking in assistance and unique approach which helped guide our app's concept and vision. I found that there's a lack of assistance when users search for nutritional themed questions. These apps may seem like helpful tools, but they aren't helping much with motivation, where consistency is a battle for most people.
           </p>
         </div>
@@ -263,7 +263,7 @@ export default function NutritionNest() {
           <div className="img-wide" style={{ margin: '0 -120px' }}>
             <Image src="/NN/exploration_image (1).png" alt="Exploration" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0', display: 'block', marginBottom: '16px' }} />
           </div>
-          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '100px', paddingRight: '100px' }}>
+          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
             I explored different design approaches to understand how varying styles, structures, concepts, and constraints can shape the design trajectory.
           </p>
         </div>
@@ -284,7 +284,7 @@ export default function NutritionNest() {
           <div className="img-wide" style={{ margin: '0 -80px' }}>
             <Image src="/NN/user_flow_image.png" alt="User flow diagram" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
-          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '100px', paddingRight: '100px' }}>
+          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
             Leveraged user flow to identify potential bottlenecks and prioritize features for the app's overall structure.
           </p>
         </div>
@@ -305,7 +305,7 @@ export default function NutritionNest() {
           <div className="img-wide" style={{ margin: '0 -200px' }}>
             <Image src="/NN/second_iteration_image.png" alt="Low fidelity wireframes" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
-          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '100px', paddingRight: '100px' }}>
+          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
             First stages of breaking down each tab's features with annotated labels to highlight key design elements and functionality, making them easier to digest.
           </p>
         </div>
@@ -326,7 +326,7 @@ export default function NutritionNest() {
           <div className="img-wide" style={{ margin: '0 -200px' }}>
             <Image src="/NN/final_iteration_image1.webp" alt="Final iteration detail" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
-          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', paddingLeft: '100px', paddingRight: '100px' }}>
+          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
             Refined flow from journal, recipes, restaurants with NED fully integrated to provide personalized, nutritionist-like guidance. A dedicated NED tab delivers news, challenges, and real-time updates to stay informed and engaged.
           </p>
         </div>
@@ -402,3 +402,4 @@ export default function NutritionNest() {
     </main>
   )
 }
+
