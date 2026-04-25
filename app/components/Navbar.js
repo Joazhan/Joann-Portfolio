@@ -85,20 +85,23 @@ export default function Navbar() {
           .nav-wrapper { padding: 12px 16px 0 !important; }
           .nav-desktop-links { display: none !important; }
           .nav-hamburger { display: flex !important; }
+          .nav-pill { border: none !important; }
+          .nav-logo { font-size: 24px !important; line-height: 32px !important; }
         }
         @media (min-width: 768px) {
           .nav-hamburger { display: none !important; }
           .nav-mobile-menu { display: none !important; }
+          .nav-pill { border: 1px solid rgba(0,0,0,0.1); }
+          .nav-logo { font-size: 20px; line-height: 28px; }
         }
       `}</style>
 
       <div ref={(el) => { navRef.current = el; menuRef.current = el; }} className="nav-wrapper">
         {/* Pill */}
         <nav
-          className="flex items-center justify-between px-6 py-3 w-full"
+          className="nav-pill flex items-center justify-between px-6 py-3 w-full"
           style={{
             backgroundColor: '#FCFCFC',
-            border: '1px solid rgba(0,0,0,0.1)',
             borderRadius: menuOpen ? '20px 20px 0 0' : '32px',
             transition: 'border-radius 0.2s',
           }}
@@ -107,9 +110,8 @@ export default function Navbar() {
           <Link
             href="/"
             onClick={closeMenu}
+            className="nav-logo"
             style={{
-              fontSize: '20px',
-              lineHeight: '28px',
               letterSpacing: '-0.02em',
               fontWeight: '500',
               color: 'black',
