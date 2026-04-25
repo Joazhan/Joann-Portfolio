@@ -91,7 +91,7 @@ export default function Navbar() {
         @media (min-width: 768px) {
           .nav-hamburger { display: none !important; }
           .nav-mobile-menu { display: none !important; }
-          .nav-pill { border: 1px solid rgba(0,0,0,0.1); }
+          .nav-pill { border: 1px solid rgba(0,0,0,0.1); backdrop-filter: blur(25.1px); -webkit-backdrop-filter: blur(25.1px); background-color: rgba(252,252,252,0.8) !important; }
           .nav-logo { font-size: 20px; line-height: 28px; }
         }
       `}</style>
