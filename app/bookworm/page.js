@@ -163,7 +163,7 @@ export default function Bookworm() {
             Platforms here focuses only on ebooks, paperbacks, and audiobooks, there's a many opportunity to tap into other types of book-related content.
           </p>
           <div className="img-wide" style={{ margin: '0 -200px' }}>
-            <Image src="/Bookworm/competitor_image.png" alt="Competitive analysis" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+            <Image src="/Bookworm/competitor_image.png" alt="Competitive analysis" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
         </div>
       </section>
