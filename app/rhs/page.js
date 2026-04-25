@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Syne } from 'next/font/google'
-import AnimatedFooter from '@/app/components/AnimatedFooter'
+
 
 const syne = Syne({ subsets: ['latin'], weight: ['600'] })
 
@@ -364,7 +364,7 @@ export default function RHS() {
         </div>
       </section>
 
-      <AnimatedFooter />
+
 
     </main>
   )

@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRive } from '@rive-app/react-canvas'
-import AnimatedFooter from '@/app/components/AnimatedFooter'
+
 function RiveIntro({ onComplete }) {
   const [slideUp, setSlideUp] = useState(false)
   const [hidden, setHidden] = useState(false)
@@ -444,7 +444,7 @@ export default function Home() {
         </div>
       </div>
     </main>
-    <AnimatedFooter />
+
     </>
   )
 }
