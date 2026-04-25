@@ -85,7 +85,7 @@ export default function Navbar() {
           .nav-wrapper { padding: 12px 16px 0 !important; }
           .nav-desktop-links { display: none !important; }
           .nav-hamburger { display: flex !important; }
-          .nav-pill { border: none !important; }
+          .nav-pill { border: 1px solid rgba(0,0,0,0.1) !important; }
           .nav-logo { font-size: 24px !important; line-height: 32px !important; }
         }
         @media (min-width: 768px) {
@@ -103,6 +103,7 @@ export default function Navbar() {
           style={{
             backgroundColor: '#FCFCFC',
             borderRadius: menuOpen ? '20px 20px 0 0' : '32px',
+            borderBottom: menuOpen ? '1px solid rgba(0,0,0,0.1)' : undefined,
             transition: 'border-radius 0.2s',
           }}
         >
