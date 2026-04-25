@@ -128,7 +128,7 @@ export default function Home() {
           .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 40px !important; }
           .nn-desktop-img, .bw-desktop-img, .rhs-desktop-img { display: none !important; }
           .nn-phone, .bw-phone, .rhs-phone { flex: unset !important; margin: 0 auto !important; width: 34% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
-          .bw-phone { width: 44% !important; aspect-ratio: 9/16 !important; }
+          .bw-phone { width: 38% !important; aspect-ratio: 9/16 !important; }
           .bw-video { object-fit: contain !important; }
           .project-card { position: relative !important; padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 20px !important; }
           .card-bottom-container { margin: 0 -16px -20px -16px !important; padding: 20px 16px !important; }
