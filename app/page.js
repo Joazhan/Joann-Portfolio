@@ -126,8 +126,8 @@ export default function Home() {
           .hero-shape { display: none !important; }
           .hero-text-p { font-size: 20px !important; line-height: 28px !important; }
           .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 40px !important; }
-          .nn-desktop-img { display: none !important; }
-          .nn-phone { flex: unset !important; margin-left: 0 !important; width: 34% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
+          .nn-desktop-img, .bw-desktop-img, .rhs-desktop-img { display: none !important; }
+          .nn-phone, .bw-phone, .rhs-phone { flex: unset !important; margin: 0 auto !important; width: 34% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
           .project-card { position: relative !important; padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 20px !important; }
           .card-bottom-container { margin: 0 -16px -20px -16px !important; padding: 20px 16px !important; }
           .card-label-row { padding: 16px 0 !important; }
@@ -271,11 +271,11 @@ export default function Home() {
         <Link href="/bookworm" className="group flex flex-col overflow-hidden cursor-pointer project-card"
           style={{ textDecoration: 'none', backgroundColor: '#184131', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
-            <div style={{ flex: '0 0 75%', overflow: 'hidden', borderRadius: '12px' }}>
+            <div className="bw-desktop-img" style={{ flex: '0 0 75%', overflow: 'hidden', borderRadius: '12px' }}>
               <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678} quality={100}
                 style={{ width: '100%', height: 'auto', display: 'block' }} />
             </div>
-            <div style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1420', alignSelf: 'flex-start', marginTop: '0%' }}>
+            <div className="bw-phone" style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1420', alignSelf: 'flex-start', marginTop: '0%' }}>
               <div style={{ position: 'absolute', inset: 0 }}>
                 <div style={{ position: 'absolute', top: '1.6%', left: '9%', right: '9%', bottom: '2%', borderRadius: '10% 10% 6% 6% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
                   <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -307,8 +307,8 @@ export default function Home() {
         <Link href="/rhs" className="group flex flex-col overflow-hidden cursor-pointer project-card"
           style={{ textDecoration: 'none', backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
-            <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} quality={100} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
-            <div style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1430', alignSelf: 'flex-start', marginTop: '1.5%' }}>
+            <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} quality={100} className="object-contain rounded-xl rhs-desktop-img" style={{ width: '75%', height: 'auto' }} />
+            <div className="rhs-phone" style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1430', alignSelf: 'flex-start', marginTop: '1.5%' }}>
               <div style={{ position: 'absolute', top: '2%', left: '9%', right: '9%', bottom: '2%', borderRadius: '6% / 4%', overflow: 'hidden', zIndex: 1, backgroundColor: '#ffffff' }}>
                 <video src="/Images/rhs_video1.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
