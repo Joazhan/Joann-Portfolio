@@ -125,7 +125,9 @@ export default function Home() {
           .hero-section { margin: 0 -16px !important; padding: 32px 16px 32px !important; }
           .hero-shape { display: none !important; }
           .hero-text-p { font-size: 20px !important; line-height: 28px !important; }
-          .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 16px !important; }
+          .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 40px !important; }
+          .nn-desktop-img { display: none !important; }
+          .nn-phone { flex: unset !important; margin-left: 0 !important; width: 60% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
           .project-card { position: relative !important; padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 20px !important; }
           .card-bottom-container { margin: 0 -16px -20px -16px !important; padding: 20px 16px !important; }
           .card-label-row { padding: 16px 0 !important; }
@@ -183,9 +185,9 @@ export default function Home() {
         <Link href="/nn" className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer project-card"
           style={{ textDecoration: 'none', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
           <div ref={nnImagesWrapRef} style={{ willChange: 'transform', overflow: 'visible' }}>
-            <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end' }}>
-              <Image src="/Images/NN.png" alt="NutritionNest" width={900} height={600} className="object-contain rounded-xl" style={{ width: '75%', height: 'auto' }} />
-              <div style={{ position: 'relative', flex: '1 1 0', marginLeft: '-4px', alignSelf: 'stretch' }}>
+            <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+              <Image src="/Images/NN.png" alt="NutritionNest" width={900} height={600} className="object-contain rounded-xl nn-desktop-img" style={{ width: '75%', height: 'auto' }} />
+              <div className="nn-phone" style={{ position: 'relative', flex: '1 1 0', marginLeft: '-4px', alignSelf: 'stretch' }}>
                 <div style={{ position: 'absolute', top: '4%', left: '8.5%', right: '8.5%', bottom: '4.2%', borderRadius: '11%/5.5%', overflow: 'hidden', zIndex: 1 }}>
                   <video src="/Images/NN-video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
