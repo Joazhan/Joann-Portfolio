@@ -152,7 +152,7 @@ export default function AnimatedFooter() {
   const groupTimers = useRef(Array(7).fill(null))
   const footerRef = useRef(null)
   const dragging = useRef(null)
-  const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 })
+  const cursorRef = useRef(null)
   const [hoveredGroup, setHoveredGroup] = useState(null)
   const [inFooter, setInFooter] = useState(false)
 
@@ -255,6 +255,7 @@ export default function AnimatedFooter() {
         0%   { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
         100% { transform: translate(-50%,-50%) scale(5); opacity: 0;   }
       }
+      .footer-canvas, .footer-canvas * { cursor: none !important; }
       @keyframes cursor-glow {
         0%, 100% { box-shadow: 0 0 8px 3px var(--cursor-color); }
         50%       { box-shadow: 0 0 18px 7px var(--cursor-color); }
@@ -269,7 +270,13 @@ export default function AnimatedFooter() {
     `}</style>
     <footer
       ref={footerRef}
-      onMouseMove={e => setCursorPos({ x: e.clientX, y: e.clientY })}
+      className="footer-canvas"
+      onMouseMove={e => {
+        if (cursorRef.current) {
+          cursorRef.current.style.left = e.clientX + 'px'
+          cursorRef.current.style.top  = e.clientY + 'px'
+        }
+      }}
       onMouseEnter={() => setInFooter(true)}
       onMouseLeave={() => { setInFooter(false); setHoveredGroup(null) }}
       style={{
@@ -372,12 +379,13 @@ export default function AnimatedFooter() {
       </div>
     </footer>
 
-    {/* Custom glowing cursor */}
-    {inFooter && (
-      <div style={{
+    {/* Custom glowing cursor — position is written directly to DOM to avoid re-render lag */}
+    <div
+      ref={cursorRef}
+      style={{
         position: 'fixed',
-        left: cursorPos.x,
-        top: cursorPos.y,
+        left: '-100px',
+        top: '-100px',
         width: hoveredGroup !== null ? 12 : 8,
         height: hoveredGroup !== null ? 12 : 8,
         borderRadius: '50%',
@@ -389,10 +397,11 @@ export default function AnimatedFooter() {
           : '0 0 3px 1px rgba(0,0,0,0.12)',
         pointerEvents: 'none',
         zIndex: 99999,
+        display: inFooter ? 'block' : 'none',
         transition: 'width 0.15s, height 0.15s, background-color 0.15s, box-shadow 0.15s',
         animation: hoveredGroup !== null ? 'cursor-glow 1s ease-in-out infinite' : 'none',
-      }} />
-    )}
+      }}
+    />
     </>
   )
 }
