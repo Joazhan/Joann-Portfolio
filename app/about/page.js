@@ -131,16 +131,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* Footer */}
-      <div style={{ paddingTop: '32px', paddingBottom: '40px' }}>
-        <p style={{ fontSize: '18px', fontWeight: '500', color: '#111', marginBottom: '8px' }}>Get in touch!</p>
-        <div className="flex gap-4" style={{ marginBottom: '8px' }}>
-          <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '18px', color: '#6b7280' }} className="hover:text-black">Email ↗</a>
-          <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '18px', color: '#6b7280' }} className="hover:text-black">Resume ↗</a>
-        </div>
-        <p style={{ fontSize: '18px', color: '#9ca3af' }}>© Joann Zhang</p>
-      </div>
-
     </main>
   )
 }
