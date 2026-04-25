@@ -106,12 +106,14 @@ export default function Kalshi() {
       <section style={{ padding: '80px 40px 40px' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <Image src="/Kalshi/Browser Container.png" alt="Kalshi extension popup 3-step flow" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px', marginBottom: '12px' }} />
-          <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px', marginBottom: '4px' }}>
-            Extension pop-up — 3-step flow
-          </p>
-          <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
-            This extension brings Kalshi into everyday browsing, letting users check odds and place trades right where their interest starts.
-          </p>
+          <div style={{ width: '100%' }}>
+            <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', marginBottom: '4px' }}>
+              Extension pop-up — 3-step flow
+            </p>
+            <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
+              This extension brings Kalshi into everyday browsing, letting users check odds and place trades right where their interest starts.
+            </p>
+          </div>
         </div>
       </section>
 
