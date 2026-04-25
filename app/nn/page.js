@@ -154,13 +154,15 @@ export default function NutritionNest() {
       {/* User Research — includes stats grid (moved from Competitive Analysis) */}
       <section style={{ padding: '0 40px' }}>
         <div className="content-img">
-          <p className={`section-label ${syne.className}`}>User Research</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-            30+ users reveal struggles with today's apps
-          </h2>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
-            I first ran online surveys on platforms like Subreddits, Facebook groups, Slack forums, and my professional network, focusing on users' health challenges and obstacles. From 30+ responses, I found that users often struggle to stay motivated, which led to inconsistent use and setbacks in their health goals.
-          </p>
+          <div className="content" style={{ margin: '0 auto' }}>
+            <p className={`section-label ${syne.className}`}>User Research</p>
+            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
+              30+ users reveal struggles with today's apps
+            </h2>
+            <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
+              I first ran online surveys on platforms like Subreddits, Facebook groups, Slack forums, and my professional network, focusing on users' health challenges and obstacles. From 30+ responses, I found that users often struggle to stay motivated, which led to inconsistent use and setbacks in their health goals.
+            </p>
+          </div>
           {/* Stats grid — moved here, more horizontal */}
           <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '80px', marginBottom: '48px' }}>
             <div style={{ textAlign: 'center' }}>
