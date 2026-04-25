@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import Image from 'next/image'
 import { Syne } from 'next/font/google'
@@ -64,6 +64,9 @@ export default function RHS() {
           .two-col-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
           h1 { font-size: 36px !important; line-height: 44px !important; }
           h2, h3 { font-size: 26px !important; line-height: 34px !important; }
+          .img-wide { margin-left: 0 !important; margin-right: 0 !important; }
+          .img-caption { padding-left: 0 !important; padding-right: 0 !important; }
+          .content { overflow: hidden !important; }
         }
       `}</style>
 
@@ -140,7 +143,7 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             My solution for this challenge is to build an application that allows Raymond to interact with his customers while automating scheduling while creating a platform for him to better serve his target audience.
           </p>
-          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', margin: '0 -200px' }}>
+          <div className="features-grid img-wide" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', margin: '0 -200px' }}>
             {[
               { title: 'Simple to Use', desc: 'Approachable design that any age group can pick up and use immediately.' },
               { title: 'Streamlined Booking', desc: 'Clear scheduling flow with minimal steps from selection to confirmation.' },
@@ -165,7 +168,7 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '24px' }}>
             I analyzed two direct and two indirect scheduling apps to evaluate their features. Their focus on functionality over design led to readability issues, missing information, and difficulty locating features.
           </p>
-          <div style={{ margin: '0 -200px' }}>
+          <div className="img-wide" style={{ margin: '0 -200px' }}>
             <Image src="/RHS/competitor_image (1).png" alt="Competitor analysis" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
           </div>
         </div>
@@ -214,7 +217,7 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             My objective was to allow users who are less hands-on with technology to easily pick up the app and begin using it. I conducted the Crazy 8's exercise, allowing me to brainstorm ideas and filter which designs suit the business. I concluded that the last frame was the most user-friendly, and provided 4 basic functionalities: Service, Location & Hours, Contact, and Book Appointment.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0', margin: '0 -160px', marginBottom: '12px' }}>
+          <div className="img-wide" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0', margin: '0 -160px', marginBottom: '12px' }}>
             <Image src="/RHS/paper_wireframe_image (1).png" alt="Paper wireframe 1" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
             <Image src="/RHS/paper_wireframe_2_image (1).png" alt="Paper wireframe 2" width={0} height={0} sizes="50vw" style={{ width: '100%', height: 'auto', borderRadius: '0px', display: 'block' }} />
           </div>
@@ -237,7 +240,7 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             My focus on prioritizing a modern and sleek visual design disregarded the basic needs of providing a good user experience for older customers. I found that a few designs were not WCAG-friendly and contained inconsistent design patterns — the search bar was ultimately removed for lower development cost and mobile optimization.
           </p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '0 -200px', marginBottom: '16px' }}>
+          <div className="img-wide" style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '0 -200px', marginBottom: '16px' }}>
             <Image src="/RHS/first_iteration_image_1.png" alt="First iteration screens" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
             <Image src="/RHS/first_iteration_iamge (1).png" alt="First iteration screens 2" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
           </div>
@@ -264,7 +267,7 @@ export default function RHS() {
               <p style={{ fontSize: '14px', lineHeight: '20px', color: '#6b7280' }}>Cohesive flow with easy personal information entry and options to add to calendar, cancel, or reschedule.</p>
             </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '0 -200px' }}>
+          <div className="img-wide" style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '0 -200px' }}>
             <Image src="/RHS/final_design_1.png" alt="Final design 1" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.05)' }} />
             <Image src="/RHS/final_design_2.png" alt="Final design 2" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.05)' }} />
             <Image src="/RHS/final_design_3.png" alt="Final design 3" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.05)' }} />
@@ -285,7 +288,7 @@ export default function RHS() {
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             The incorporation of Google's API features ensures a seamless means for users to receive timely reminders of upcoming appointments, thereby mitigating potential conflicts and miscommunications between the business owner and users.
           </p>
-          <div style={{ margin: '0 -200px' }}>
+          <div className="img-wide" style={{ margin: '0 -200px' }}>
             <Image src="/RHS/final_design_full_image.png" alt="Final design screens" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
           </div>
         </div>
@@ -313,3 +316,4 @@ export default function RHS() {
     </main>
   )
 }
+
