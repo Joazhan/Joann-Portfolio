@@ -152,6 +152,9 @@ export default function AnimatedFooter() {
   const groupTimers = useRef(Array(7).fill(null))
   const footerRef = useRef(null)
   const dragging = useRef(null)
+  const [cursorPos, setCursorPos] = useState({ x: -100, y: -100 })
+  const [hoveredGroup, setHoveredGroup] = useState(null)
+  const [inFooter, setInFooter] = useState(false)
 
   // Which of the 7 shape groups does this id belong to? (-1 = none)
   const shapeGroup = (id) => {
@@ -163,6 +166,11 @@ export default function AnimatedFooter() {
     if (id >= 57 && id <= 73) return 5  // pink star
     if (id >= 74 && id <= 90) return 6  // blue star
     return -1
+  }
+
+  const getGroupColor = (g) => {
+    const dot = shapes.find(s => shapeGroup(s.id) === g)
+    return dot ? dot.color : '#888'
   }
 
   // Distance-from-centroid layer (0 = middle, higher = further out)
@@ -247,6 +255,10 @@ export default function AnimatedFooter() {
         0%   { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
         100% { transform: translate(-50%,-50%) scale(5); opacity: 0;   }
       }
+      @keyframes cursor-glow {
+        0%, 100% { box-shadow: 0 0 8px 3px var(--cursor-color); }
+        50%       { box-shadow: 0 0 18px 7px var(--cursor-color); }
+      }
       @keyframes piano-bounce {
         0%   { transform: translateY(0);     box-shadow: 0 0 5px  1px var(--glow-dim);    }
         30%  { transform: translateY(-10px); box-shadow: 0 0 18px 7px var(--glow-bright); }
@@ -255,10 +267,16 @@ export default function AnimatedFooter() {
         100% { transform: translateY(0);     box-shadow: 0 0 5px  1px var(--glow-dim);    }
       }
     `}</style>
-    <footer ref={footerRef} style={{
+    <footer
+      ref={footerRef}
+      onMouseMove={e => setCursorPos({ x: e.clientX, y: e.clientY })}
+      onMouseEnter={() => setInFooter(true)}
+      onMouseLeave={() => { setInFooter(false); setHoveredGroup(null) }}
+      style={{
       position: 'relative',
       overflow: 'hidden',
       minHeight: '600px',
+      cursor: 'none',
       backgroundColor: '#FCFCFC',
       backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.05) 2px, transparent 2px)',
       backgroundSize: '22px 22px',
@@ -282,8 +300,10 @@ export default function AnimatedFooter() {
         const bottom = Math.max(...gDots.map(s => s.y + s.h)) + 6
         return (
           <div key={`hitbox-${g}`}
+            onMouseEnter={() => setHoveredGroup(g)}
+            onMouseLeave={() => setHoveredGroup(null)}
             onMouseDown={e => { e.preventDefault(); triggerGroup(g) }}
-            style={{ position: 'absolute', left, top, width: right - left, height: bottom - top, zIndex: 10, cursor: 'pointer' }}
+            style={{ position: 'absolute', left, top, width: right - left, height: bottom - top, zIndex: 10, cursor: 'none' }}
           />
         )
       })}
@@ -351,6 +371,28 @@ export default function AnimatedFooter() {
         <p style={{ fontSize: '16px', color: '#9ca3af', pointerEvents: 'all' }}>© Joann Zhang</p>
       </div>
     </footer>
+
+    {/* Custom glowing cursor */}
+    {inFooter && (
+      <div style={{
+        position: 'fixed',
+        left: cursorPos.x,
+        top: cursorPos.y,
+        width: hoveredGroup !== null ? 12 : 8,
+        height: hoveredGroup !== null ? 12 : 8,
+        borderRadius: '50%',
+        transform: 'translate(-50%, -50%)',
+        backgroundColor: hoveredGroup !== null ? getGroupColor(hoveredGroup) : 'rgba(0,0,0,0.25)',
+        '--cursor-color': hoveredGroup !== null ? `${getGroupColor(hoveredGroup)}bb` : 'rgba(0,0,0,0.15)',
+        boxShadow: hoveredGroup !== null
+          ? `0 0 10px 4px ${getGroupColor(hoveredGroup)}88`
+          : '0 0 3px 1px rgba(0,0,0,0.12)',
+        pointerEvents: 'none',
+        zIndex: 99999,
+        transition: 'width 0.15s, height 0.15s, background-color 0.15s, box-shadow 0.15s',
+        animation: hoveredGroup !== null ? 'cursor-glow 1s ease-in-out infinite' : 'none',
+      }} />
+    )}
     </>
   )
 }
