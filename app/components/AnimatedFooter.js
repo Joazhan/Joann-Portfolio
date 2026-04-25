@@ -1,6 +1,7 @@
 'use client'
 import { useState, useRef, useEffect, useMemo } from 'react'
 import { flushSync } from 'react-dom'
+import { usePathname } from 'next/navigation'
 
 // Dots sit on the 28px background grid. x/y = top-left corner of dot (center - r).
 // d(id, col, row, colorIndex, size) — col/row are grid coordinates
@@ -119,6 +120,16 @@ const INITIAL_SHAPES = [
 ]
 
 export default function AnimatedFooter() {
+  const pathname = usePathname()
+  const dark = pathname === '/lasertaz'
+
+  const bg         = dark ? '#121212' : '#FCFCFC'
+  const dotColor   = dark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)'
+  const headingCol = dark ? '#ffffff' : '#212121'
+  const linkCol    = dark ? '#9ca3af' : '#6b7280'
+  const linkHover  = dark ? 'hover:text-white' : 'hover:text-black'
+  const copyCol    = dark ? '#6b7280' : '#9ca3af'
+
   const [shapes, setShapes] = useState(() =>
     INITIAL_SHAPES.map((s, i) => ({ ...s, z: i + 1, dir: getDir(s.id) }))
   )
@@ -312,8 +323,8 @@ export default function AnimatedFooter() {
       overflow: 'hidden',
       minHeight: '600px',
       cursor: 'none',
-      backgroundColor: '#121212',
-      backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.08) 2px, transparent 2px)',
+      backgroundColor: bg,
+      backgroundImage: `radial-gradient(circle, ${dotColor} 2px, transparent 2px)`,
       backgroundSize: '22px 22px',
       backgroundPosition: '-11px -11px',
     }}>
@@ -321,7 +332,7 @@ export default function AnimatedFooter() {
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0,
         height: '300px',
-        background: 'linear-gradient(to bottom, #121212 40%, transparent 100%)',
+        background: `linear-gradient(to bottom, ${bg} 40%, transparent 100%)`,
         zIndex: topZ + 1,
         pointerEvents: 'none',
       }} />
@@ -397,12 +408,12 @@ export default function AnimatedFooter() {
 
       {/* Footer content */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '80px', pointerEvents: 'none' }}>
-        <p style={{ fontSize: '18px', fontWeight: '500', color: '#ffffff', marginBottom: '8px', pointerEvents: 'all' }}>Get in touch!</p>
+        <p style={{ fontSize: '18px', fontWeight: '500', color: headingCol, marginBottom: '8px', pointerEvents: 'all' }}>Get in touch!</p>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px', pointerEvents: 'all' }}>
-          <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', color: '#9ca3af', textDecoration: 'none' }} className="hover:text-white">Email ↗</a>
-          <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', color: '#9ca3af', textDecoration: 'none' }} className="hover:text-white">Resume ↗</a>
+          <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
+          <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Resume ↗</a>
         </div>
-        <p style={{ fontSize: '16px', color: '#6b7280', pointerEvents: 'all' }}>© Joann Zhang</p>
+        <p style={{ fontSize: '16px', color: copyCol, pointerEvents: 'all' }}>© Joann Zhang</p>
       </div>
     </footer>
 
