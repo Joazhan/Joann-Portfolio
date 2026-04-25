@@ -201,6 +201,9 @@ export default function Navbar() {
               : 'max-height 0.25s ease, opacity 0.15s ease',
             backgroundColor: '#FCFCFC',
             borderRadius: '0 0 20px 20px',
+            borderLeft: '1px solid rgba(0,0,0,0.1)',
+            borderRight: '1px solid rgba(0,0,0,0.1)',
+            borderBottom: '1px solid rgba(0,0,0,0.1)',
           }}
         >
           <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
