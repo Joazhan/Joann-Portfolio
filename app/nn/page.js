@@ -22,6 +22,8 @@ export default function NutritionNest() {
         .content-img {
           max-width: 1100px;
           margin: 0 auto;
+          padding-top: 120px;
+          padding-bottom: 120px;
         }
         .section-label {
           font-size: 14px;
@@ -150,7 +152,7 @@ export default function NutritionNest() {
       </section>
 
       {/* User Research — includes stats grid (moved from Competitive Analysis) */}
-      <section style={{ padding: '120px 40px' }}>
+      <section style={{ padding: '0 40px' }}>
         <div className="content-img">
           <p className={`section-label ${syne.className}`}>User Research</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -186,7 +188,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Competitive Analysis — stats grid removed, paragraph becomes caption */}
-      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '120px 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 40px' }}>
         <div className="content-img">
           <p className={`section-label ${syne.className}`}>Competitive Analysis</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -213,7 +215,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Goal */}
-      <section style={{ padding: '120px 40px' }}>
+      <section style={{ padding: '0 40px' }}>
         <div className="content-img">
           <p className={`section-label ${syne.className}`}>Goal</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -238,7 +240,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Exploration — new section */}
-      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '120px 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 40px' }}>
         <div className="content-img">
           <p className={`section-label ${syne.className}`}>Exploration</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -257,7 +259,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Ideation — exploration image removed, second_iteration_image + caption added */}
-      <section style={{ padding: '120px 40px' }}>
+      <section style={{ padding: '0 40px' }}>
         <div className="content-img">
           <p className={`section-label ${syne.className}`}>Ideation</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -276,7 +278,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Low Fidelity — updated caption text, centered */}
-      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '120px 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 40px' }}>
         <div className="content-img">
           <p className={`section-label ${syne.className}`}>Low Fidelity</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -295,7 +297,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Iterations — NED_image moved to Solution, second_iteration moved to Ideation, final_iteration_image1 added */}
-      <section style={{ padding: '120px 40px' }}>
+      <section style={{ padding: '0 40px' }}>
         <div className="content-img">
           <p className={`section-label ${syne.className}`}>Iterations</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
@@ -314,7 +316,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Solution — NN.png removed, NED_image added, final_iteration_image removed, design system stacked */}
-      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '120px 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 40px' }}>
         <div className="content-img">
           <p className={`section-label ${syne.className}`}>Solution</p>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
