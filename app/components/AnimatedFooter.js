@@ -1,5 +1,5 @@
 'use client'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { flushSync } from 'react-dom'
 
 // Dots sit on the 28px background grid. x/y = top-left corner of dot (center - r).
@@ -153,8 +153,19 @@ export default function AnimatedFooter() {
   const footerRef = useRef(null)
   const dragging = useRef(null)
   const cursorRef = useRef(null)
-  const [hoveredGroup, setHoveredGroup] = useState(null)
-  const [inFooter, setInFooter] = useState(false)
+
+  // Precompute bounding box + color for each group — recomputes only when shapes change
+  const groupBounds = useMemo(() => Array.from({ length: 7 }, (_, g) => {
+    const gDots = shapes.filter(s => shapeGroup(s.id) === g)
+    if (!gDots.length) return null
+    return {
+      left:   Math.min(...gDots.map(s => s.x)) - 10,
+      top:    Math.min(...gDots.map(s => s.y)) - 10,
+      right:  Math.max(...gDots.map(s => s.x + s.w)) + 10,
+      bottom: Math.max(...gDots.map(s => s.y + s.h)) + 10,
+      color:  gDots[0].color,
+    }
+  }), [shapes])
 
   // Which of the 7 shape groups does this id belong to? (-1 = none)
   const shapeGroup = (id) => {
@@ -166,11 +177,6 @@ export default function AnimatedFooter() {
     if (id >= 57 && id <= 73) return 5  // pink star
     if (id >= 74 && id <= 90) return 6  // blue star
     return -1
-  }
-
-  const getGroupColor = (g) => {
-    const dot = shapes.find(s => shapeGroup(s.id) === g)
-    return dot ? dot.color : '#888'
   }
 
   // Distance-from-centroid layer (0 = middle, higher = further out)
@@ -272,13 +278,31 @@ export default function AnimatedFooter() {
       ref={footerRef}
       className="footer-canvas"
       onMouseMove={e => {
-        if (cursorRef.current) {
-          cursorRef.current.style.left = e.clientX + 'px'
-          cursorRef.current.style.top  = e.clientY + 'px'
+        const el = cursorRef.current
+        if (!el || !footerRef.current) return
+        el.style.left = e.clientX + 'px'
+        el.style.top  = e.clientY + 'px'
+        // Position-based group detection — immune to z-index issues
+        const rect = footerRef.current.getBoundingClientRect()
+        const fx = e.clientX - rect.left
+        const fy = e.clientY - rect.top
+        const hit = groupBounds.find(b => b && fx >= b.left && fx <= b.right && fy >= b.top && fy <= b.bottom)
+        if (hit) {
+          el.style.display = 'block'
+          el.style.backgroundColor = hit.color
+          el.style.boxShadow = `0 0 10px 4px ${hit.color}88`
+          el.style.setProperty('--cursor-color', `${hit.color}bb`)
+          el.style.animation = 'cursor-glow 1s ease-in-out infinite'
+          document.body.dataset.overFooterShape = 'true'
+        } else {
+          el.style.display = 'none'
+          document.body.dataset.overFooterShape = 'false'
         }
       }}
-      onMouseEnter={() => setInFooter(true)}
-      onMouseLeave={() => { setInFooter(false); setHoveredGroup(null) }}
+      onMouseLeave={() => {
+        if (cursorRef.current) cursorRef.current.style.display = 'none'
+        document.body.dataset.overFooterShape = 'false'
+      }}
       style={{
       position: 'relative',
       overflow: 'hidden',
@@ -308,8 +332,6 @@ export default function AnimatedFooter() {
         return (
           <div key={`hitbox-${g}`}
             className="footer-shape-hitbox"
-            onMouseEnter={() => setHoveredGroup(g)}
-            onMouseLeave={() => setHoveredGroup(null)}
             onMouseDown={e => { e.preventDefault(); triggerGroup(g) }}
             style={{ position: 'absolute', left, top, width: right - left, height: bottom - top, zIndex: 10, cursor: 'none' }}
           />
@@ -380,27 +402,20 @@ export default function AnimatedFooter() {
       </div>
     </footer>
 
-    {/* Custom glowing cursor — position is written directly to DOM to avoid re-render lag */}
+    {/* Custom glowing cursor — all styles written directly to DOM, no React re-renders */}
     <div
       ref={cursorRef}
       style={{
         position: 'fixed',
         left: '-100px',
         top: '-100px',
-        width: hoveredGroup !== null ? 12 : 8,
-        height: hoveredGroup !== null ? 12 : 8,
+        width: '12px',
+        height: '12px',
         borderRadius: '50%',
         transform: 'translate(-50%, -50%)',
-        backgroundColor: hoveredGroup !== null ? getGroupColor(hoveredGroup) : 'rgba(0,0,0,0.25)',
-        '--cursor-color': hoveredGroup !== null ? `${getGroupColor(hoveredGroup)}bb` : 'rgba(0,0,0,0.15)',
-        boxShadow: hoveredGroup !== null
-          ? `0 0 10px 4px ${getGroupColor(hoveredGroup)}88`
-          : '0 0 3px 1px rgba(0,0,0,0.12)',
         pointerEvents: 'none',
         zIndex: 99999,
-        display: inFooter && hoveredGroup !== null ? 'block' : 'none',
-        transition: 'width 0.15s, height 0.15s, background-color 0.15s, box-shadow 0.15s',
-        animation: hoveredGroup !== null ? 'cursor-glow 1s ease-in-out infinite' : 'none',
+        display: 'none',
       }}
     />
     </>

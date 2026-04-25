@@ -10,9 +10,9 @@ export default function CustomCursor() {
   useEffect(() => {
     const move = (e) => {
       pos.current = { x: e.clientX, y: e.clientY }
-      // Hide only when over a clickable shape in the footer
+      // Hide only when the footer's colored cursor is active
       if (cursorRef.current) {
-        const overShape = !!e.target.closest?.('.footer-shape-hitbox')
+        const overShape = document.body.dataset.overFooterShape === 'true'
         cursorRef.current.style.opacity = overShape ? '0' : '1'
       }
     }
