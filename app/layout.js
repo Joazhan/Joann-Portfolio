@@ -3,6 +3,7 @@ import "./globals.css";
 import { Agentation } from "agentation";
 import CustomCursor from "./components/CustomCursor";
 import AnimatedFooter from "./components/AnimatedFooter";
+import Navbar from "./components/Navbar";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={geist.className}>
         <CustomCursor />
+        <Navbar />
         {children}
         <AnimatedFooter />
 {process.env.NODE_ENV === "development" && <Agentation />}

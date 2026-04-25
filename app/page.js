@@ -52,20 +52,11 @@ export default function Home() {
     }
   }, [])
   const lastScrollY = useRef(0)
-  const navRef = useRef(null)
   const heroRef = useRef(null)
   const nnImagesWrapRef = useRef(null)
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
-      // Nav visibility — direct DOM, no re-render
-      if (navRef.current) {
-        if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-          navRef.current.classList.add('hidden')
-        } else {
-          navRef.current.classList.remove('hidden')
-        }
-      }
       lastScrollY.current = currentScrollY
       // Shape parallax + fade
       if (heroRef.current) {
@@ -128,23 +119,8 @@ export default function Home() {
           transform: rotate(0deg);
           color: #fff !important;
         }
-        .nav-wrapper {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 200;
-          padding: 24px 80px 0;
-          transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        .nav-wrapper.hidden {
-          opacity: 0;
-          transform: translateY(-20px);
-          pointer-events: none;
-        }
         @media (max-width: 767px) {
           * { cursor: auto !important; }
-          .nav-wrapper { padding: 12px 16px 0 !important; }
           .portfolio-main { padding-left: 16px !important; padding-right: 16px !important; }
           .hero-section { margin: 0 -16px !important; padding: 32px 16px 32px !important; }
           .hero-shape { display: none !important; }
@@ -161,27 +137,6 @@ export default function Home() {
           .concepts-desc { font-size: 15px !important; line-height: 22px !important; }
         }
       `}</style>
-      {/* Navbar */}
-      <div ref={navRef} className="nav-wrapper">
-        <nav className="flex items-center justify-between px-6 py-3 w-full"
-          style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.6)',
-            border: '1px solid rgba(0, 0, 0, 0.1)',
-            borderRadius: '32px',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
-          }}>
-          <Link href="/" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.02em', fontWeight: '500', color: 'black', textDecoration: 'none', whiteSpace: 'nowrap', cursor: 'pointer' }}>
-            Joann Zhang
-          </Link>
-          <div className="flex items-center gap-6 flex-wrap justify-end">
-            <Link href="/" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</Link>
-            <Link href="/about" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">About</Link>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
-          </div>
-        </nav>
-      </div>
       {/* Spacer for fixed navbar */}
       <div style={{ height: '96px' }} />
       {/* Hero */}

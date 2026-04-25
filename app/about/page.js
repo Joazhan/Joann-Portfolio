@@ -1,45 +1,12 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 
 export default function About() {
-  const [navVisible, setNavVisible] = useState(true)
-  const lastScrollY = useRef(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-        setNavVisible(false)
-      } else {
-        setNavVisible(true)
-      }
-      lastScrollY.current = currentScrollY
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
     <main className="min-h-screen bg-white" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
 
       <style>{`
-        .nav-wrapper {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 100;
-          padding: 24px 80px 0;
-          transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        .nav-wrapper.hidden {
-          opacity: 0;
-          transform: translateY(-20px);
-          pointer-events: none;
-        }
         .shape {
           position: absolute;
           pointer-events: none;
@@ -55,28 +22,6 @@ export default function About() {
           border-top: 1px solid #e5e7eb;
         }
       `}</style>
-
-      {/* Navbar */}
-      <div className={`nav-wrapper${navVisible ? '' : ' hidden'}`}>
-        <nav className="flex items-center justify-between px-6 py-3 w-full"
-          style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.6)',
-            border: '1px solid rgba(0, 0, 0, 0.1)',
-            borderRadius: '32px',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
-          }}>
-          <Link href="/" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.02em', fontWeight: '500', color: 'black', textDecoration: 'none', whiteSpace: 'nowrap', cursor: 'pointer' }}>
-            Joann Zhang
-          </Link>
-          <div className="flex items-center gap-6 flex-wrap justify-end">
-            <Link href="/" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</Link>
-            <Link href="/about" style={{ fontSize: '16px', lineHeight: '18px', color: 'black' }}>About</Link>
-            <a href="#" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
-          </div>
-        </nav>
-      </div>
 
       {/* Spacer */}
       <div style={{ height: '96px' }} />

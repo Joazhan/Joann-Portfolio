@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 import { Syne } from 'next/font/google'
 
@@ -9,41 +7,10 @@ import { Syne } from 'next/font/google'
 const syne = Syne({ subsets: ['latin'], weight: ['600'] })
 
 export default function RHS() {
-  const [navVisible, setNavVisible] = useState(true)
-  const lastScrollY = useRef(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-        setNavVisible(false)
-      } else {
-        setNavVisible(true)
-      }
-      lastScrollY.current = currentScrollY
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
     <main className="min-h-screen bg-white">
 
       <style>{`
-        .nav-wrapper {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 100;
-          padding: 24px 80px 0;
-          transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        .nav-wrapper.hidden {
-          opacity: 0;
-          transform: translateY(-20px);
-          pointer-events: none;
-        }
         .content-wide {
           max-width: 960px;
           margin: 0 auto;
@@ -89,7 +56,6 @@ export default function RHS() {
           text-align: center;
         }
         @media (max-width: 767px) {
-          .nav-wrapper { padding: 12px 16px 0 !important; }
           section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
           .page-hero { padding-top: 88px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
@@ -100,28 +66,6 @@ export default function RHS() {
           h2, h3 { font-size: 26px !important; line-height: 34px !important; }
         }
       `}</style>
-
-      {/* Navbar */}
-      <div className={`nav-wrapper${navVisible ? '' : ' hidden'}`}>
-        <nav className="flex items-center justify-between px-6 py-3 w-full"
-          style={{
-            backgroundColor: 'rgba(255,255,255,0.6)',
-            border: '1px solid rgba(0,0,0,0.05)',
-            borderRadius: '32px',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
-          }}>
-          <Link href="/" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.02em', fontWeight: '500', color: 'black', textDecoration: 'none', whiteSpace: 'nowrap' }}>
-            Joann Zhang
-          </Link>
-          <div className="flex items-center gap-6">
-            <Link href="/" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Work</Link>
-            <Link href="/about" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">About</Link>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black">Resume</a>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', lineHeight: '18px' }} className="text-gray-500 hover:text-black" target="_blank" rel="noopener noreferrer">Contact</a>
-          </div>
-        </nav>
-      </div>
 
       {/* Hero */}
       <div className="page-hero" style={{ backgroundColor: '#f1f5f9', paddingTop: '120px', paddingBottom: '60px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', paddingLeft: '48px', paddingRight: '48px' }}>
