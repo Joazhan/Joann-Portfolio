@@ -141,6 +141,9 @@ export default function Home() {
           .card-title { font-size: 20px !important; line-height: 26px !important; }
           .card-desc { font-size: 18px !important; line-height: 28px !important; }
           .card-icon { width: 44px !important; height: 44px !important; }
+          .duetti-macbook { width: 100% !important; }
+          .duetti-iphone { display: none !important; }
+          .card-img-wrap { overflow: hidden !important; width: 100% !important; }
           .concepts-section { margin-left: -20px !important; margin-right: -20px !important; padding: 48px 20px !important; margin-top: 48px !important; }
           .concepts-title { font-size: 24px !important; line-height: 32px !important; }
           .concepts-desc { font-size: 15px !important; line-height: 22px !important; }
@@ -222,13 +225,14 @@ export default function Home() {
           style={{ textDecoration: 'none', backgroundColor: '#d9f99d', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
             style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
-            <div style={{ position: 'relative', width: '73%', flexShrink: 0 }}>
+            <div className="duetti-macbook" style={{ position: 'relative', width: '73%', flexShrink: 0 }}>
               <div style={{ position: 'absolute', top: '2.2%', left: '1.4%', right: '1.4%', bottom: '24.9%', overflow: 'hidden', zIndex: 1 }}>
                 <video src="/Images/Duetti video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <Image src="/Images/Apple Pro Display.png" alt="Apple Pro Display" width={1200} height={800} style={{ position: 'relative', width: '100%', height: 'auto', display: 'block', zIndex: 10 }} />
             </div>
             <Image src="/Images/Duetti iphone frame.png" alt="Duetti iPhone" width={400} height={600}
+              className="duetti-iphone"
               style={{ width: '15%', height: 'auto', objectFit: 'contain', alignSelf: 'flex-end', position: 'relative', zIndex: 20 }} />
           </div>
           <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
