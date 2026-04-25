@@ -74,11 +74,11 @@ export default function Navbar() {
           right: 0;
           z-index: 200;
           padding: 24px 80px 0;
-          transition: opacity 0.4s ease, transform 0.4s ease;
+          transition: opacity 0.5s cubic-bezier(0.34, 1.3, 0.64, 1), transform 0.5s cubic-bezier(0.34, 1.3, 0.64, 1);
         }
         .nav-wrapper.hidden {
           opacity: 0;
-          transform: translateY(-20px);
+          transform: translateY(-28px);
           pointer-events: none;
         }
         @media (max-width: 767px) {
@@ -97,11 +97,8 @@ export default function Navbar() {
         <nav
           className="flex items-center justify-between px-6 py-3 w-full"
           style={{
-            backgroundColor: 'rgba(255,255,255,0.6)',
-            border: '1px solid rgba(0,0,0,0.1)',
+            backgroundColor: '#FCFCFC',
             borderRadius: menuOpen ? '20px 20px 0 0' : '32px',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
             transition: 'border-radius 0.2s',
           }}
         >
@@ -199,13 +196,8 @@ export default function Navbar() {
             transition: menuOpen
               ? 'max-height 0.35s ease, opacity 0.25s ease'
               : 'max-height 0.25s ease, opacity 0.15s ease',
-            backgroundColor: 'rgba(255,255,255,0.6)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
+            backgroundColor: '#FCFCFC',
             borderRadius: '0 0 20px 20px',
-            borderLeft: '1px solid rgba(0,0,0,0.1)',
-            borderRight: '1px solid rgba(0,0,0,0.1)',
-            borderBottom: menuOpen ? '1px solid rgba(0,0,0,0.1)' : 'none',
           }}
         >
           <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
