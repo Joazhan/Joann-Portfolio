@@ -4,7 +4,7 @@ import { flushSync } from 'react-dom'
 
 // Dots sit on the 28px background grid. x/y = top-left corner of dot (center - r).
 // d(id, col, row, colorIndex, size) — col/row are grid coordinates
-const COLORS = ['#4ade80','#fb923c','#60a5fa','#a78bfa','#f87171','#fbbf24','#f472b6','#2dd4bf','#EFEFEF']
+const COLORS = ['#4ade80','#fb923c','#60a5fa','#a78bfa','#f87171','#fbbf24','#f472b6','#2dd4bf','#3a3a3a']
 // One Tailwind shade darker for each shape color — used for the hover cursor
 const DARKER = {
   '#4ade80': '#22c55e', // green-400  → green-500
@@ -320,8 +320,8 @@ export default function AnimatedFooter() {
       overflow: 'hidden',
       minHeight: '600px',
       cursor: 'none',
-      backgroundColor: '#FCFCFC',
-      backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.05) 2px, transparent 2px)',
+      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.08) 2px, transparent 2px)',
       backgroundSize: '22px 22px',
       backgroundPosition: '-11px -11px',
     }}>
@@ -329,7 +329,7 @@ export default function AnimatedFooter() {
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0,
         height: '300px',
-        background: 'linear-gradient(to bottom, #FCFCFC 40%, transparent 100%)',
+        background: 'linear-gradient(to bottom, rgba(0,0,0,0.8) 40%, transparent 100%)',
         zIndex: topZ + 1,
         pointerEvents: 'none',
       }} />
@@ -405,12 +405,12 @@ export default function AnimatedFooter() {
 
       {/* Footer content */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '80px', pointerEvents: 'none' }}>
-        <p style={{ fontSize: '18px', fontWeight: '500', color: '#212121', marginBottom: '8px', pointerEvents: 'all' }}>Get in touch!</p>
+        <p style={{ fontSize: '18px', fontWeight: '500', color: '#ffffff', marginBottom: '8px', pointerEvents: 'all' }}>Get in touch!</p>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px', pointerEvents: 'all' }}>
-          <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', color: '#6b7280', textDecoration: 'none' }} className="hover:text-black">Email ↗</a>
-          <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', color: '#6b7280', textDecoration: 'none' }} className="hover:text-black">Resume ↗</a>
+          <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', color: '#9ca3af', textDecoration: 'none' }} className="hover:text-white">Email ↗</a>
+          <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', color: '#9ca3af', textDecoration: 'none' }} className="hover:text-white">Resume ↗</a>
         </div>
-        <p style={{ fontSize: '16px', color: '#9ca3af', pointerEvents: 'all' }}>© Joann Zhang</p>
+        <p style={{ fontSize: '16px', color: '#6b7280', pointerEvents: 'all' }}>© Joann Zhang</p>
       </div>
     </footer>
 
