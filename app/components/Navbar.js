@@ -73,7 +73,7 @@ export default function Navbar() {
           left: 0;
           right: 0;
           z-index: 200;
-          padding: 24px 80px 0;
+          padding: 36px 80px 16px;
           transition: opacity 0.5s cubic-bezier(0.34, 1.3, 0.64, 1), transform 0.5s cubic-bezier(0.34, 1.3, 0.64, 1);
         }
         .nav-wrapper.hidden {
@@ -98,6 +98,7 @@ export default function Navbar() {
           className="flex items-center justify-between px-6 py-3 w-full"
           style={{
             backgroundColor: '#FCFCFC',
+            border: '1px solid rgba(0,0,0,0.1)',
             borderRadius: menuOpen ? '20px 20px 0 0' : '32px',
             transition: 'border-radius 0.2s',
           }}
@@ -107,8 +108,8 @@ export default function Navbar() {
             href="/"
             onClick={closeMenu}
             style={{
-              fontSize: '24px',
-              lineHeight: '32px',
+              fontSize: '20px',
+              lineHeight: '28px',
               letterSpacing: '-0.02em',
               fontWeight: '500',
               color: 'black',
