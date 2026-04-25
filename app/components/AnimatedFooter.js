@@ -4,7 +4,7 @@ import { flushSync } from 'react-dom'
 
 // Dots sit on the 28px background grid. x/y = top-left corner of dot (center - r).
 // d(id, col, row, colorIndex, size) — col/row are grid coordinates
-const COLORS = ['#86efac','#fdba74','#93c5fd','#c4b5fd','#fca5a5','#fde68a','#f9a8d4','#99f6e4','#EFEFEF']
+const COLORS = ['#4ade80','#fb923c','#60a5fa','#a78bfa','#f87171','#fbbf24','#f472b6','#2dd4bf','#EFEFEF']
 const G = 28
 
 const d = (id, col, row, c, s = 6) => ({
