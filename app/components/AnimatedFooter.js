@@ -5,6 +5,17 @@ import { flushSync } from 'react-dom'
 // Dots sit on the 28px background grid. x/y = top-left corner of dot (center - r).
 // d(id, col, row, colorIndex, size) — col/row are grid coordinates
 const COLORS = ['#4ade80','#fb923c','#60a5fa','#a78bfa','#f87171','#fbbf24','#f472b6','#2dd4bf','#EFEFEF']
+// One Tailwind shade darker for each shape color — used for the hover cursor
+const DARKER = {
+  '#4ade80': '#22c55e', // green-400  → green-500
+  '#fb923c': '#f97316', // orange-400 → orange-500
+  '#60a5fa': '#3b82f6', // blue-400   → blue-500
+  '#a78bfa': '#8b5cf6', // violet-400 → violet-500
+  '#f87171': '#ef4444', // red-400    → red-500
+  '#fbbf24': '#f59e0b', // amber-400  → amber-500
+  '#f472b6': '#ec4899', // pink-400   → pink-500
+  '#2dd4bf': '#14b8a6', // teal-400   → teal-500
+}
 const G = 28
 
 const d = (id, col, row, c, s = 6) => ({
@@ -288,10 +299,11 @@ export default function AnimatedFooter() {
         const fy = e.clientY - rect.top
         const hit = groupBounds.find(b => b && fx >= b.left && fx <= b.right && fy >= b.top && fy <= b.bottom)
         if (hit) {
+          const cc = DARKER[hit.color] || hit.color
           el.style.display = 'block'
-          el.style.backgroundColor = hit.color
-          el.style.boxShadow = `0 0 10px 4px ${hit.color}88`
-          el.style.setProperty('--cursor-color', `${hit.color}bb`)
+          el.style.backgroundColor = cc
+          el.style.boxShadow = `0 0 10px 4px ${cc}88`
+          el.style.setProperty('--cursor-color', `${cc}bb`)
           el.style.animation = 'cursor-glow 1s ease-in-out infinite'
           document.body.dataset.overFooterShape = 'true'
         } else {
