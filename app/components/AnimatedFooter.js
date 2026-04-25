@@ -307,6 +307,7 @@ export default function AnimatedFooter() {
         const bottom = Math.max(...gDots.map(s => s.y + s.h)) + 6
         return (
           <div key={`hitbox-${g}`}
+            className="footer-shape-hitbox"
             onMouseEnter={() => setHoveredGroup(g)}
             onMouseLeave={() => setHoveredGroup(null)}
             onMouseDown={e => { e.preventDefault(); triggerGroup(g) }}
@@ -397,7 +398,7 @@ export default function AnimatedFooter() {
           : '0 0 3px 1px rgba(0,0,0,0.12)',
         pointerEvents: 'none',
         zIndex: 99999,
-        display: inFooter ? 'block' : 'none',
+        display: inFooter && hoveredGroup !== null ? 'block' : 'none',
         transition: 'width 0.15s, height 0.15s, background-color 0.15s, box-shadow 0.15s',
         animation: hoveredGroup !== null ? 'cursor-glow 1s ease-in-out infinite' : 'none',
       }}
