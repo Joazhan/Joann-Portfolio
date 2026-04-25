@@ -116,14 +116,6 @@ const INITIAL_SHAPES = [
   d(139, 15, 13, 7), d(140, 32, 13, 0), d(141, 47, 13, 4),
   d(142, 61, 13, 2),
 
-  // ── Grey background: aligned to CSS background dot positions (11 + n×22) ──
-  ...[...Array(27)].flatMap((_, r) => [...Array(86)].map((_, c) => ({
-    id: 1000 + r * 86 + c,
-    x: 11 + c * 22 - 2,
-    y: 11 + r * 22 - 2,
-    w: 4, h: 4,
-    color: COLORS[8],
-  }))),
 ]
 
 export default function AnimatedFooter() {
