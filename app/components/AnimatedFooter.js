@@ -276,6 +276,9 @@ export default function AnimatedFooter() {
         100% { transform: translate(-50%,-50%) scale(5); opacity: 0;   }
       }
       .footer-canvas, .footer-canvas * { cursor: none !important; }
+      @media (max-width: 767px) {
+        .footer-content { padding: 20px !important; }
+      }
       @keyframes cursor-glow {
         0%, 100% { box-shadow: 0 0 8px 3px var(--cursor-color); }
         50%       { box-shadow: 0 0 18px 7px var(--cursor-color); }
@@ -407,7 +410,7 @@ export default function AnimatedFooter() {
       ))}
 
       {/* Footer content */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '80px', pointerEvents: 'none' }}>
+      <div className="footer-content" style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '80px', pointerEvents: 'none' }}>
         <p style={{ fontSize: '14px', lineHeight: '18px', fontWeight: '500', color: headingCol, marginBottom: '8px', pointerEvents: 'all' }}>Get in touch!</p>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px', pointerEvents: 'all' }}>
           <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '18px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
