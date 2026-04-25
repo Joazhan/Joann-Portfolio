@@ -312,7 +312,7 @@ export default function AnimatedFooter() {
       overflow: 'hidden',
       minHeight: '600px',
       cursor: 'none',
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
+      backgroundColor: '#121212',
       backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.08) 2px, transparent 2px)',
       backgroundSize: '22px 22px',
       backgroundPosition: '-11px -11px',
@@ -321,7 +321,7 @@ export default function AnimatedFooter() {
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0,
         height: '300px',
-        background: 'linear-gradient(to bottom, rgba(0,0,0,0.8) 40%, transparent 100%)',
+        background: 'linear-gradient(to bottom, #121212 40%, transparent 100%)',
         zIndex: topZ + 1,
         pointerEvents: 'none',
       }} />
