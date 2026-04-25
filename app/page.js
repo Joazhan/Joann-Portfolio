@@ -139,7 +139,7 @@ export default function Home() {
           .group:hover .arrow-btn, .group:active .arrow-btn { width: 40px !important; height: 40px !important; border-radius: 50% !important; transform: rotate(0deg) !important; }
           .group:hover .arrow-icon, .group:active .arrow-icon { transform: rotate(0deg) !important; color: #fff !important; }
           .card-title { font-size: 20px !important; line-height: 26px !important; }
-          .card-desc { font-size: 13px !important; line-height: 18px !important; }
+          .card-desc { font-size: 18px !important; line-height: 28px !important; }
           .card-icon { width: 44px !important; height: 44px !important; }
           .concepts-section { margin-left: -20px !important; margin-right: -20px !important; padding: 48px 20px !important; margin-top: 48px !important; }
           .concepts-title { font-size: 24px !important; line-height: 32px !important; }
