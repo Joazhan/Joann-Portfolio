@@ -234,18 +234,6 @@ export default function Lasertaz() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ padding: '40px 40px' }}>
-        <div style={{ maxWidth: '1920px', margin: '0 auto' }}>
-          <p style={{ fontSize: '16px', fontWeight: '500', color: '#ffffff', marginBottom: '8px' }}>Get in touch!</p>
-          <div className="flex gap-4" style={{ marginBottom: '8px' }}>
-            <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', color: '#9ca3af' }} className="hover:text-white">Email ↗</a>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', color: '#9ca3af' }} className="hover:text-white">Resume ↗</a>
-          </div>
-          <p style={{ fontSize: '16px', color: '#6b7280' }}>© Joann Zhang</p>
-        </div>
-      </footer>
-
     </main>
   )
 }
