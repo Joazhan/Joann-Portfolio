@@ -408,12 +408,12 @@ export default function AnimatedFooter() {
 
       {/* Footer content */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '80px', pointerEvents: 'none' }}>
-        <p style={{ fontSize: '18px', fontWeight: '500', color: headingCol, marginBottom: '8px', pointerEvents: 'all' }}>Get in touch!</p>
+        <p style={{ fontSize: '14px', lineHeight: '18px', fontWeight: '500', color: headingCol, marginBottom: '8px', pointerEvents: 'all' }}>Get in touch!</p>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px', pointerEvents: 'all' }}>
-          <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '16px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
-          <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Resume ↗</a>
+          <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '18px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
+          <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', lineHeight: '18px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Resume ↗</a>
         </div>
-        <p style={{ fontSize: '16px', color: copyCol, pointerEvents: 'all' }}>© Joann Zhang</p>
+        <p style={{ fontSize: '14px', lineHeight: '18px', color: copyCol, pointerEvents: 'all' }}>© Joann Zhang</p>
       </div>
     </footer>
 

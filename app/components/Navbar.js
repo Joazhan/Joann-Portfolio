@@ -189,24 +189,26 @@ export default function Navbar() {
           </button>
         </nav>
 
-        {/* Mobile dropdown */}
-        {menuOpen && (
-          <div
-            className="nav-mobile-menu"
-            style={{
-              backgroundColor: 'rgba(255,255,255,0.6)',
-              backdropFilter: 'blur(12px)',
-              WebkitBackdropFilter: 'blur(12px)',
-              borderRadius: '0 0 20px 20px',
-              borderLeft: '1px solid rgba(0,0,0,0.1)',
-              borderRight: '1px solid rgba(0,0,0,0.1)',
-              borderBottom: '1px solid rgba(0,0,0,0.1)',
-              padding: '16px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '4px',
-            }}
-          >
+        {/* Mobile dropdown — always mounted, animated via max-height */}
+        <div
+          className="nav-mobile-menu"
+          style={{
+            overflow: 'hidden',
+            maxHeight: menuOpen ? '600px' : '0px',
+            opacity: menuOpen ? 1 : 0,
+            transition: menuOpen
+              ? 'max-height 0.35s ease, opacity 0.25s ease'
+              : 'max-height 0.25s ease, opacity 0.15s ease',
+            backgroundColor: 'rgba(255,255,255,0.6)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            borderRadius: '0 0 20px 20px',
+            borderLeft: '1px solid rgba(0,0,0,0.1)',
+            borderRight: '1px solid rgba(0,0,0,0.1)',
+            borderBottom: menuOpen ? '1px solid rgba(0,0,0,0.1)' : 'none',
+          }}
+        >
+          <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
             {/* Work with chevron */}
             <button
               onClick={() => setWorkOpen((v) => !v)}
@@ -226,93 +228,58 @@ export default function Navbar() {
             >
               Work
               <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#374151"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                style={{
-                  transform: workOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-                  transition: 'transform 0.2s',
-                  flexShrink: 0,
-                }}
+                width="16" height="16" viewBox="0 0 24 24"
+                fill="none" stroke="#374151" strokeWidth="2"
+                strokeLinecap="round" strokeLinejoin="round"
+                style={{ transform: workOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease', flexShrink: 0 }}
               >
                 <polyline points="6 9 12 15 18 9" />
               </svg>
             </button>
 
-            {/* Work subtabs */}
-            {workOpen && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', paddingLeft: '16px' }}>
-                {projects.map((p) => (
-                  <Link
-                    key={p.href}
-                    href={p.href}
-                    onClick={closeMenu}
-                    style={{
-                      fontSize: '14px',
-                      color: isActive(p.href) ? 'black' : '#6b7280',
-                      textDecoration: 'none',
-                      padding: '8px 8px',
-                      display: 'block',
-                    }}
-                  >
-                    {p.label}
-                  </Link>
-                ))}
-              </div>
-            )}
+            {/* Work subtabs — animated */}
+            <div style={{
+              overflow: 'hidden',
+              maxHeight: workOpen ? '400px' : '0px',
+              opacity: workOpen ? 1 : 0,
+              transition: workOpen
+                ? 'max-height 0.3s ease, opacity 0.2s ease'
+                : 'max-height 0.2s ease, opacity 0.1s ease',
+              paddingLeft: '16px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '2px',
+            }}>
+              {projects.map((p) => (
+                <Link
+                  key={p.href}
+                  href={p.href}
+                  onClick={closeMenu}
+                  style={{ fontSize: '14px', color: isActive(p.href) ? 'black' : '#6b7280', textDecoration: 'none', padding: '8px 8px', display: 'block' }}
+                >
+                  {p.label}
+                </Link>
+              ))}
+            </div>
 
-            <Link
-              href="/about"
-              onClick={closeMenu}
-              style={{
-                fontSize: '16px',
-                color: isActive('/about') ? 'black' : '#374151',
-                textDecoration: 'none',
-                padding: '10px 8px',
-                display: 'block',
-              }}
-            >
+            <Link href="/about" onClick={closeMenu}
+              style={{ fontSize: '16px', color: isActive('/about') ? 'black' : '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>
               About
             </Link>
 
-            <a
-              href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={closeMenu}
-              style={{
-                fontSize: '16px',
-                color: '#374151',
-                textDecoration: 'none',
-                padding: '10px 8px',
-                display: 'block',
-              }}
-            >
+            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing"
+              target="_blank" rel="noopener noreferrer" onClick={closeMenu}
+              style={{ fontSize: '16px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>
               Resume
             </a>
 
-            <a
-              href="mailto:joannzhang4@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={closeMenu}
-              style={{
-                fontSize: '16px',
-                color: '#374151',
-                textDecoration: 'none',
-                padding: '10px 8px',
-                display: 'block',
-              }}
-            >
+            <a href="mailto:joannzhang4@gmail.com"
+              target="_blank" rel="noopener noreferrer" onClick={closeMenu}
+              style={{ fontSize: '16px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>
               Contact
             </a>
           </div>
-        )}
+        </div>
       </div>
     </>
   )
