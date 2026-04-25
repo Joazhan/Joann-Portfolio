@@ -248,11 +248,11 @@ export default function AnimatedFooter() {
         100% { transform: translate(-50%,-50%) scale(5); opacity: 0;   }
       }
       @keyframes piano-bounce {
-        0%   { transform: translateY(0);     filter: brightness(1);   }
-        30%  { transform: translateY(-10px); filter: brightness(2.0); }
-        60%  { transform: translateY(4px);   filter: brightness(1.3); }
-        80%  { transform: translateY(-2px);  filter: brightness(1.1); }
-        100% { transform: translateY(0);     filter: brightness(1);   }
+        0%   { transform: translateY(0);     box-shadow: 0 0 5px  1px var(--glow-dim);    }
+        30%  { transform: translateY(-10px); box-shadow: 0 0 18px 7px var(--glow-bright); }
+        60%  { transform: translateY(4px);   box-shadow: 0 0 10px 3px var(--glow-mid);    }
+        80%  { transform: translateY(-2px);  box-shadow: 0 0 7px  2px var(--glow-dim);    }
+        100% { transform: translateY(0);     box-shadow: 0 0 5px  1px var(--glow-dim);    }
       }
     `}</style>
     <footer ref={footerRef} style={{
@@ -315,6 +315,9 @@ export default function AnimatedFooter() {
               zIndex: shape.id >= 1000 ? 1 : shape.z,
               pointerEvents: 'all',
               userSelect: 'none',
+              '--glow-dim':    `${shape.color}66`,
+              '--glow-mid':    `${shape.color}99`,
+              '--glow-bright': `${shape.color}cc`,
               boxShadow: shape.id >= 200 ? 'none' : `0 0 5px 1px ${shape.color}66`,
               animation: pianoAnim ?? pixAnim,
             }}
