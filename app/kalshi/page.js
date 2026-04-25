@@ -91,12 +91,14 @@ export default function Kalshi() {
       <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px 40px' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <Image src="/Kalshi/Browser Container 1.png" alt="Kalshi extension landing screen" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px', marginBottom: '12px' }} />
-          <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px', marginBottom: '4px' }}>
-            Landing screen
-          </p>
-          <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', paddingLeft: '150px', paddingRight: '150px' }}>
-            This widget surfaces live trade activity, making it easy for anyone to join with zero friction. This expands when users hover to show market details, and with one click, they can open a full panel to explore or join trades instantly.
-          </p>
+          <div style={{ width: '100%' }}>
+            <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', marginBottom: '4px' }}>
+              Landing screen
+            </p>
+            <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
+              This widget surfaces live trade activity, making it easy for anyone to join with zero friction. This expands when users hover to show market details, and with one click, they can open a full panel to explore or join trades instantly.
+            </p>
+          </div>
         </div>
       </section>
 
