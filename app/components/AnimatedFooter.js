@@ -146,22 +146,37 @@ export default function AnimatedFooter() {
   const [topZ, setTopZ] = useState(INITIAL_SHAPES.length + 1)
   const [ripples, setRipples] = useState([])
   const rippleCounter = useRef(0)
-  const [trianglePlayKey, setTrianglePlayKey] = useState(0)
-  const [trianglePlaying, setTrianglePlaying] = useState(false)
-  const triangleTimer = useRef(null)
+  // Per-group piano state (7 shape groups)
+  const [groupPlayKeys, setGroupPlayKeys] = useState(Array(7).fill(0))
+  const [groupPlaying,  setGroupPlaying]  = useState(Array(7).fill(false))
+  const groupTimers = useRef(Array(7).fill(null))
   const footerRef = useRef(null)
   const dragging = useRef(null)
 
-  // Piano layers — middle column first, then tip + outer edges
-  const pianoLayer = (id) => {
-    if (id >= 43 && id <= 45) return 0   // middle column (dc=-1): bounces first
-    if (id === 46 || id === 40) return 1  // tip + outer centre
-    if (id === 39 || id === 41) return 2  // outer upper/lower mid
-    return 3                              // outer corners (38, 42)
+  // Which of the 7 shape groups does this id belong to? (-1 = none)
+  const shapeGroup = (id) => {
+    if (id >=  1 && id <=  9) return 0  // green triangle
+    if (id >= 10 && id <= 24) return 1  // orange star
+    if (id >= 25 && id <= 37) return 2  // teal circle
+    if (id >= 38 && id <= 46) return 3  // red triangle
+    if (id >= 47 && id <= 56) return 4  // purple triangle
+    if (id >= 57 && id <= 73) return 5  // pink star
+    if (id >= 74 && id <= 90) return 6  // blue star
+    return -1
+  }
+
+  // Distance-from-centroid layer (0 = middle, higher = further out)
+  const getPianoLayer = (shape, groupDots) => {
+    const cx = groupDots.reduce((s, d) => s + d.x + d.w / 2, 0) / groupDots.length
+    const cy = groupDots.reduce((s, d) => s + d.y + d.h / 2, 0) / groupDots.length
+    const dist = Math.hypot(shape.x + shape.w / 2 - cx, shape.y + shape.h / 2 - cy)
+    if (dist <  8) return 0
+    if (dist < 18) return 1
+    if (dist < 28) return 2
+    return 3
   }
 
   const triggerRipple = ({ cx, cy, color, startSize = 6 }) => {
-    // Three rings staggered to feel like a water drop expanding outward
     ;[0, 200, 400].forEach(delay => {
       const key = rippleCounter.current++
       setTimeout(() => {
@@ -192,13 +207,15 @@ export default function AnimatedFooter() {
     }
   }, [])
 
-  const triggerPiano = () => {
-    if (triangleTimer.current) clearTimeout(triangleTimer.current)
+  const triggerGroup = (g) => {
+    if (groupTimers.current[g]) clearTimeout(groupTimers.current[g])
     flushSync(() => {
-      setTrianglePlayKey(k => k + 1)
-      setTrianglePlaying(true)
+      setGroupPlayKeys(prev => { const n = [...prev]; n[g]++; return n })
+      setGroupPlaying(prev  => { const n = [...prev]; n[g] = true; return n })
     })
-    triangleTimer.current = setTimeout(() => setTrianglePlaying(false), 900)
+    groupTimers.current[g] = setTimeout(() => {
+      setGroupPlaying(prev => { const n = [...prev]; n[g] = false; return n })
+    }, 900)
   }
 
   const onMouseDown = (e, id) => {
@@ -207,7 +224,8 @@ export default function AnimatedFooter() {
     if (!footerRef.current) return
     const rect = footerRef.current.getBoundingClientRect()
     const shape = shapes.find(s => s.id === id)
-    if (id >= 38 && id <= 46) triggerPiano()
+    const g = shapeGroup(id)
+    if (g >= 0) triggerGroup(g)
     const newZ = topZ
     setTopZ(z => z + 1)
     setShapes(prev => prev.map(s => s.id === id ? { ...s, z: newZ } : s))
@@ -230,11 +248,11 @@ export default function AnimatedFooter() {
         100% { transform: translate(-50%,-50%) scale(5); opacity: 0;   }
       }
       @keyframes piano-bounce {
-        0%   { transform: translateY(0);     box-shadow: 0 0 5px 1px #fca5a566; }
-        30%  { transform: translateY(-10px); box-shadow: 0 0 18px 7px #fca5a5cc; }
-        60%  { transform: translateY(4px);   box-shadow: 0 0 10px 3px #fca5a599; }
-        80%  { transform: translateY(-2px);  box-shadow: 0 0 7px 2px #fca5a577;  }
-        100% { transform: translateY(0);     box-shadow: 0 0 5px 1px #fca5a566; }
+        0%   { transform: translateY(0);     filter: brightness(1);   }
+        30%  { transform: translateY(-10px); filter: brightness(2.0); }
+        60%  { transform: translateY(4px);   filter: brightness(1.3); }
+        80%  { transform: translateY(-2px);  filter: brightness(1.1); }
+        100% { transform: translateY(0);     filter: brightness(1);   }
       }
     `}</style>
     <footer ref={footerRef} style={{
@@ -255,40 +273,34 @@ export default function AnimatedFooter() {
         pointerEvents: 'none',
       }} />
 
-      {/* Red triangle hitbox — covers the gaps between dots */}
-      {(() => {
-        const tri = shapes.filter(s => s.id >= 38 && s.id <= 46)
-        const left   = Math.min(...tri.map(s => s.x)) - 6
-        const top    = Math.min(...tri.map(s => s.y)) - 6
-        const right  = Math.max(...tri.map(s => s.x + s.w)) + 6
-        const bottom = Math.max(...tri.map(s => s.y + s.h)) + 6
+      {/* Shape hitboxes — one transparent overlay per group, covers gaps */}
+      {[...Array(7)].map((_, g) => {
+        const gDots = shapes.filter(s => shapeGroup(s.id) === g)
+        const left   = Math.min(...gDots.map(s => s.x)) - 6
+        const top    = Math.min(...gDots.map(s => s.y)) - 6
+        const right  = Math.max(...gDots.map(s => s.x + s.w)) + 6
+        const bottom = Math.max(...gDots.map(s => s.y + s.h)) + 6
         return (
-          <div
-            onMouseDown={e => { e.preventDefault(); triggerPiano() }}
-            style={{
-              position: 'absolute',
-              left, top,
-              width: right - left,
-              height: bottom - top,
-              zIndex: 10,
-              cursor: 'pointer',
-            }}
+          <div key={`hitbox-${g}`}
+            onMouseDown={e => { e.preventDefault(); triggerGroup(g) }}
+            style={{ position: 'absolute', left, top, width: right - left, height: bottom - top, zIndex: 10, cursor: 'pointer' }}
           />
         )
-      })()}
+      })}
 
       {/* Dot shapes */}
       {shapes.map(shape => {
-        const isRedTriangle = shape.id >= 38 && shape.id <= 46
-        const pianoAnim = isRedTriangle && trianglePlaying
-          ? `piano-bounce 0.6s cubic-bezier(0.34, 1.4, 0.64, 1) ${pianoLayer(shape.id) * 120}ms forwards`
+        const g = shapeGroup(shape.id)
+        const gDots = g >= 0 ? shapes.filter(s => shapeGroup(s.id) === g) : []
+        const pianoAnim = g >= 0 && groupPlaying[g]
+          ? `piano-bounce 0.6s cubic-bezier(0.34, 1.4, 0.64, 1) ${getPianoLayer(shape, gDots) * 120}ms forwards`
           : null
         const pixAnim = shape.id < 200 && dragging.current?.id !== shape.id
           ? `pix-${shape.dir} ${getDuration(shape.id)}s steps(5) ${getDelay(shape.id)}s infinite`
           : 'none'
         return (
           <div
-            key={isRedTriangle ? `${shape.id}-${trianglePlayKey}` : shape.id}
+            key={g >= 0 ? `${shape.id}-${groupPlayKeys[g]}` : shape.id}
             data-dir={shape.dir}
             data-sid={shape.id}
             onMouseDown={e => onMouseDown(e, shape.id)}
