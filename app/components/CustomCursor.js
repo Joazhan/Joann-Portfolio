@@ -8,7 +8,14 @@ export default function CustomCursor() {
   const raf = useRef(null)
 
   useEffect(() => {
-    const move = (e) => { pos.current = { x: e.clientX, y: e.clientY } }
+    const move = (e) => {
+      pos.current = { x: e.clientX, y: e.clientY }
+      // Hide when over the footer (which has its own cursor)
+      if (cursorRef.current) {
+        const overFooter = !!e.target.closest?.('.footer-canvas')
+        cursorRef.current.style.opacity = overFooter ? '0' : '1'
+      }
+    }
     window.addEventListener('mousemove', move)
     const animate = () => {
       if (cursorRef.current) {
