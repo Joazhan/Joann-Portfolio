@@ -121,8 +121,8 @@ export default function Home() {
         }
         @media (max-width: 767px) {
           * { cursor: auto !important; }
-          .portfolio-main { padding-left: 16px !important; padding-right: 16px !important; }
-          .hero-section { margin: 0 -16px !important; padding: 32px 16px 32px !important; }
+          .portfolio-main { padding-left: 20px !important; padding-right: 20px !important; }
+          .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; }
           .hero-shape { display: none !important; }
           .hero-text-p { font-size: 20px !important; line-height: 28px !important; }
           .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 40px !important; }
@@ -141,7 +141,7 @@ export default function Home() {
           .card-title { font-size: 20px !important; line-height: 26px !important; }
           .card-desc { font-size: 13px !important; line-height: 18px !important; }
           .card-icon { width: 44px !important; height: 44px !important; }
-          .concepts-section { margin-left: -16px !important; margin-right: -16px !important; padding: 48px 16px !important; margin-top: 48px !important; }
+          .concepts-section { margin-left: -20px !important; margin-right: -20px !important; padding: 48px 20px !important; margin-top: 48px !important; }
           .concepts-title { font-size: 24px !important; line-height: 32px !important; }
           .concepts-desc { font-size: 15px !important; line-height: 22px !important; }
         }
