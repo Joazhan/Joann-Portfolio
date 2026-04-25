@@ -130,6 +130,8 @@ export default function Home() {
           .card-bottom-container { margin: 0 -16px -20px -16px !important; padding: 20px 16px !important; }
           .card-label-row { padding: 16px 0 !important; }
           .arrow-btn { position: absolute !important; top: 16px !important; right: 16px !important; width: 32px !important; height: 48px !important; transform: rotate(45deg) !important; }
+          .group:hover .arrow-btn, .group:active .arrow-btn { width: 40px !important; height: 40px !important; border-radius: 50% !important; transform: rotate(0deg) !important; }
+          .group:hover .arrow-icon, .group:active .arrow-icon { transform: rotate(0deg) !important; color: #fff !important; }
           .card-title { font-size: 20px !important; line-height: 26px !important; }
           .card-desc { font-size: 13px !important; line-height: 18px !important; }
           .card-icon { width: 44px !important; height: 44px !important; }
