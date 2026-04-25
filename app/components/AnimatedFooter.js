@@ -154,6 +154,18 @@ export default function AnimatedFooter() {
   const dragging = useRef(null)
   const cursorRef = useRef(null)
 
+  // Which of the 7 shape groups does this id belong to? (-1 = none)
+  const shapeGroup = (id) => {
+    if (id >=  1 && id <=  9) return 0  // green triangle
+    if (id >= 10 && id <= 24) return 1  // orange star
+    if (id >= 25 && id <= 37) return 2  // teal circle
+    if (id >= 38 && id <= 46) return 3  // red triangle
+    if (id >= 47 && id <= 56) return 4  // purple triangle
+    if (id >= 57 && id <= 73) return 5  // pink star
+    if (id >= 74 && id <= 90) return 6  // blue star
+    return -1
+  }
+
   // Precompute bounding box + color for each group — recomputes only when shapes change
   const groupBounds = useMemo(() => Array.from({ length: 7 }, (_, g) => {
     const gDots = shapes.filter(s => shapeGroup(s.id) === g)
@@ -166,18 +178,6 @@ export default function AnimatedFooter() {
       color:  gDots[0].color,
     }
   }), [shapes])
-
-  // Which of the 7 shape groups does this id belong to? (-1 = none)
-  const shapeGroup = (id) => {
-    if (id >=  1 && id <=  9) return 0  // green triangle
-    if (id >= 10 && id <= 24) return 1  // orange star
-    if (id >= 25 && id <= 37) return 2  // teal circle
-    if (id >= 38 && id <= 46) return 3  // red triangle
-    if (id >= 47 && id <= 56) return 4  // purple triangle
-    if (id >= 57 && id <= 73) return 5  // pink star
-    if (id >= 74 && id <= 90) return 6  // blue star
-    return -1
-  }
 
   // Distance-from-centroid layer (0 = middle, higher = further out)
   const getPianoLayer = (shape, groupDots) => {
