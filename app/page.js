@@ -164,7 +164,6 @@ export default function Home() {
           * { cursor: auto !important; }
           .portfolio-main { padding-left: 20px !important; padding-right: 20px !important; }
           .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; }
-          .hero-shape { display: none !important; }
           .hero-text-p { font-size: 20px !important; line-height: 28px !important; }
           .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 40px !important; }
           .nn-desktop-img, .bw-desktop-img, .rhs-desktop-img { display: none !important; }
