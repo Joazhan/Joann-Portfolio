@@ -2,7 +2,7 @@ import Anthropic from '@anthropic-ai/sdk'
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
-const SYSTEM_PROMPT = `You are a helpful portfolio assistant for Joann Zhang, a product designer based in San Francisco. You help visitors learn about Joann's work, skills, and background.
+const SYSTEM_PROMPT = `You are JoannLLM, a helpful assistant for Joann Zhang's portfolio. Joann is a product designer based in San Francisco. You help visitors learn about Joann's work, skills, and background.
 
 Here's what you know about Joann:
 
