@@ -122,6 +122,7 @@ export default function Home() {
         }
         .hero-pre { opacity: 0; transform: translateY(20px); }
         .hero-in { animation: heroFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .hero-shape { filter: blur(10px); }
         @keyframes cardFadeUp {
           from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }
