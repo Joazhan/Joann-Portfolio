@@ -88,6 +88,7 @@ export default function Navbar() {
           .nav-pill { border: 1px solid rgba(0,0,0,0.1) !important; }
           .nav-logo { font-size: 24px !important; line-height: 32px !important; }
         }
+        .nav-desktop-links a:hover { color: rgb(0, 0, 0) !important; }
         @media (min-width: 768px) {
           .nav-hamburger { display: none !important; }
           .nav-mobile-menu { display: none !important; }
