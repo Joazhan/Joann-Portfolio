@@ -27,7 +27,7 @@ export default function About() {
       <div style={{ height: '96px' }} />
 
       {/* Main content */}
-      <div className="flex flex-col items-start" style={{ paddingTop: '60px', paddingBottom: '120px' }}>
+      <div className="flex flex-col items-center" style={{ paddingTop: '60px', paddingBottom: '120px' }}>
 
         {/* Photo + floating shapes */}
         <div style={{ position: 'relative', width: '320px', height: '380px', marginBottom: '32px', flexShrink: 0 }}>
