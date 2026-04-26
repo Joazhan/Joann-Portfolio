@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={geist.className} style={{ overflowX: 'hidden' }}>
-        <div id="joannllm-page" style={{ transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+        <div id="joannllm-page" style={{ transition: 'width 0.35s cubic-bezier(0.16, 1, 0.3, 1)', width: '100%', overflow: 'hidden' }}>
           <CustomCursor />
           <Navbar />
           {children}

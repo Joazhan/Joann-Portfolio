@@ -26,7 +26,7 @@ export default function ChatWidget() {
 
   useEffect(() => {
     const page = document.getElementById('joannllm-page')
-    if (page) page.style.transform = open ? 'translateX(-380px)' : 'translateX(0)'
+    if (page) page.style.width = open ? 'calc(100vw - 380px)' : '100%'
   }, [open])
 
   useEffect(() => {
@@ -116,8 +116,7 @@ export default function ChatWidget() {
           flex-direction: column;
           z-index: 300;
           transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-          box-shadow: -8px 0 40px rgba(0,0,0,0.08);
-        }
+          }
         @media (max-width: 767px) {
           .joannllm-drawer { width: 100vw; }
         }
