@@ -92,7 +92,7 @@ export default function Home() {
           to { opacity: 1; transform: translateY(0); }
         }
         .hero-pre { opacity: 0; transform: translateY(20px); }
-        .hero-in { animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .hero-in { animation: heroFadeUp 5s cubic-bezier(0.16, 1, 0.3, 1) both; }
         .arrow-btn {
           width: 44px;
           height: 56px;
