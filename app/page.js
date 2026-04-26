@@ -165,7 +165,7 @@ export default function Home() {
           .portfolio-main { padding-left: 20px !important; padding-right: 20px !important; }
           .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; }
           .hero-shape { transform: scale(0.5) !important; transform-origin: center center; }
-          .hero-shape-green-tri { top: -2% !important; }
+          .hero-shape-green-tri { top: -8% !important; }
           .hero-shape-blue-star { bottom: -24px !important; left: 40% !important; }
           .hero-shape-red-circle { transform: scale(0.3) !important; }
           .hero-text-p { font-size: 20px !important; line-height: 28px !important; }
