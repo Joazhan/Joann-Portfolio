@@ -68,6 +68,7 @@ export default function Bookworm() {
           .img-wide { margin-left: 0 !important; margin-right: 0 !important; }
           .img-caption { padding-left: 0 !important; padding-right: 0 !important; }
           .content { overflow: hidden !important; }
+          p { font-size: 14px !important; line-height: 18px !important; }
         }
       `}</style>
 

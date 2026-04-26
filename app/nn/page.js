@@ -66,6 +66,7 @@ export default function NutritionNest() {
           .img-wide { margin-left: 0 !important; margin-right: 0 !important; }
           .img-caption { padding-left: 0 !important; padding-right: 0 !important; }
           .content-img { overflow: hidden !important; }
+          p { font-size: 14px !important; line-height: 18px !important; }
         }
       `}</style>
 
