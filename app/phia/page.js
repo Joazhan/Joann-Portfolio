@@ -97,7 +97,7 @@ export default function Phia() {
             A lower price, front and center
           </h2>
 
-          <div style={{ marginBottom: '-52px' }}>
+          <div style={{ marginBottom: '16px' }}>
             <Image
               src="/Phia/Extension_container.png"
               alt="Extension tab states"
