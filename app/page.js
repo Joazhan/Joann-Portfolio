@@ -196,7 +196,7 @@ export default function Home() {
       {/* Hero */}
       <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, margin: '0 -80px', padding: '120px 80px 60px' }}>
         {/* Floating shapes */}
-        <div className={introComplete ? 'hero-in' : 'hero-pre'} style={{ position: 'absolute', inset: 0, pointerEvents: 'none', animationDelay: '0.4s' }}>
+        <div className={introComplete ? 'hero-in' : 'hero-pre'} style={{ position: 'absolute', inset: 0, pointerEvents: 'none', animationDelay: '0.4s', zIndex: 0 }}>
           {/* Green sharp triangle — top left */}
           <svg data-parallax="0.28" className="hero-shape" style={{ position: 'absolute', top: '12%', left: '3.5%', pointerEvents: 'none' }} width="100" height="100" viewBox="0 0 100 100">
             <path d="M 100 0 L 0 50 L 100 100 Z" fill="#22c55e"/>
