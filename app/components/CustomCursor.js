@@ -8,6 +8,14 @@ export default function CustomCursor() {
   const raf = useRef(null)
 
   useEffect(() => {
+    // Only show on Mac
+    const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform) ||
+      (navigator.userAgentData?.platform && /mac/i.test(navigator.userAgentData.platform))
+    if (!isMac && cursorRef.current) {
+      cursorRef.current.style.display = 'none'
+      return
+    }
+
     const move = (e) => {
       pos.current = { x: e.clientX, y: e.clientY }
       // Hide only when the footer's colored cursor is active
