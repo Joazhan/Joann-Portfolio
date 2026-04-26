@@ -145,7 +145,7 @@ export default function Home() {
           .group:hover .arrow-btn, .group:active .arrow-btn { width: 40px !important; height: 40px !important; border-radius: 50% !important; transform: rotate(0deg) !important; }
           .group:hover .arrow-icon, .group:active .arrow-icon { transform: rotate(0deg) !important; color: #fff !important; }
           .card-title { font-size: 20px !important; line-height: 26px !important; }
-          .card-desc { font-size: 18px !important; line-height: 28px !important; }
+          .card-desc { font-size: 16px !important; line-height: 24px !important; }
           .card-icon { width: 44px !important; height: 44px !important; }
           .duetti-macbook { width: 100% !important; }
           .duetti-iphone { display: none !important; }
