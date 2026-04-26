@@ -25,6 +25,11 @@ export default function ChatWidget() {
   }, [])
 
   useEffect(() => {
+    const page = document.getElementById('joannllm-page')
+    if (page) page.style.transform = open ? 'translateX(-380px)' : 'translateX(0)'
+  }, [open])
+
+  useEffect(() => {
     if (open && messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
     }
