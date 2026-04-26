@@ -158,7 +158,7 @@ export default function Home() {
       {/* Spacer for fixed navbar */}
       <div style={{ height: '96px' }} />
       {/* Hero */}
-      <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, overflow: 'hidden', margin: '0 -80px', padding: '120px 80px 60px' }}>
+      <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, margin: '0 -80px', padding: '120px 80px 60px' }}>
         {/* Floating shapes */}
         <div className={introComplete ? 'hero-in' : 'hero-pre'} style={{ position: 'absolute', inset: 0, pointerEvents: 'none', animationDelay: '0.4s' }}>
           {/* Green sharp triangle — top left */}
