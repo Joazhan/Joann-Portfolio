@@ -4,8 +4,6 @@ import { Agentation } from "agentation";
 import CustomCursor from "./components/CustomCursor";
 import AnimatedFooter from "./components/AnimatedFooter";
 import Navbar from "./components/Navbar";
-import ChatWidget from "./components/ChatWidget";
-
 const geist = Geist({
   subsets: ["latin"],
 });
@@ -19,14 +17,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={geist.className} style={{ overflowX: 'hidden' }}>
-        <div id="joannllm-page" style={{ transition: 'width 0.35s cubic-bezier(0.16, 1, 0.3, 1)', width: '100%', overflow: 'hidden' }}>
-          <CustomCursor />
-          <Navbar />
-          {children}
-          <AnimatedFooter />
-        </div>
-        <ChatWidget />
-{process.env.NODE_ENV === "development" && <Agentation />}
+        <CustomCursor />
+        <Navbar />
+        {children}
+        <AnimatedFooter />
+        {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
     </html>
   );
