@@ -18,11 +18,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={geist.className}>
-        <CustomCursor />
-        <Navbar />
-        {children}
-        <AnimatedFooter />
+      <body className={geist.className} style={{ overflowX: 'hidden' }}>
+        <div id="joannllm-page" style={{ transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}>
+          <CustomCursor />
+          <Navbar />
+          {children}
+          <AnimatedFooter />
+        </div>
         <ChatWidget />
 {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
