@@ -168,7 +168,7 @@ export default function Home() {
           .hero-shape-green-tri { top: -8% !important; transform: scale(0.35) !important; }
           .hero-shape-purple-tri { display: none !important; }
           .hero-shape-blue-star { top: 68% !important; bottom: unset !important; left: unset !important; right: 0px !important; }
-          .hero-shape-red-circle { transform: scale(0.3) !important; right: -16px !important; }
+          .hero-shape-red-circle { display: none !important; }
           .hero-text-p { font-size: 20px !important; line-height: 28px !important; }
           .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 40px !important; }
           .nn-desktop-img, .bw-desktop-img, .rhs-desktop-img { display: none !important; }
