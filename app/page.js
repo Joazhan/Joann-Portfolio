@@ -124,23 +124,23 @@ export default function Home() {
         .hero-in { animation: heroFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
         @keyframes orbitCW {
           0%   { transform: translate(0px, 0px); }
-          25%  { transform: translate(8px, -8px); }
-          50%  { transform: translate(0px, -16px); }
-          75%  { transform: translate(-8px, -8px); }
+          25%  { transform: translate(4px, -4px); }
+          50%  { transform: translate(0px, -8px); }
+          75%  { transform: translate(-4px, -4px); }
           100% { transform: translate(0px, 0px); }
         }
         @keyframes orbitCCW {
           0%   { transform: translate(0px, 0px); }
-          25%  { transform: translate(-8px, -8px); }
-          50%  { transform: translate(0px, -16px); }
-          75%  { transform: translate(8px, -8px); }
+          25%  { transform: translate(-4px, -4px); }
+          50%  { transform: translate(0px, -8px); }
+          75%  { transform: translate(4px, -4px); }
           100% { transform: translate(0px, 0px); }
         }
         @keyframes orbitSm {
           0%   { transform: translate(0px, 0px); }
-          25%  { transform: translate(5px, -5px); }
-          50%  { transform: translate(0px, -10px); }
-          75%  { transform: translate(-5px, -5px); }
+          25%  { transform: translate(3px, -3px); }
+          50%  { transform: translate(0px, -6px); }
+          75%  { transform: translate(-3px, -3px); }
           100% { transform: translate(0px, 0px); }
         }
         @keyframes cardFadeUp {
