@@ -93,7 +93,19 @@ export default function Home() {
       { threshold: 0.1 }
     )
     cards.forEach(card => observer.observe(card))
-    return () => observer.disconnect()
+    const onScroll = () => {
+      cards.forEach(card => {
+        if (card.classList.contains('card-pre')) {
+          card.classList.remove('card-pre')
+        }
+      })
+      observer.disconnect()
+    }
+    window.addEventListener('scroll', onScroll, { passive: true, once: true })
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
   return (
     <>
