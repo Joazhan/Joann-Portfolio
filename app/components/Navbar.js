@@ -161,7 +161,7 @@ export default function Navbar() {
             </a>
             <button
               onClick={() => window.dispatchEvent(new CustomEvent('toggle-joannllm'))}
-              style={{ fontSize: '16px', lineHeight: '18px', color: '#6b7280', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', padding: 0, fontFamily: 'inherit' }}
+              style={{ fontSize: '16px', lineHeight: '18px', color: '#6b7280', background: 'none', border: 'none', cursor: 'none', display: 'flex', alignItems: 'center', gap: '4px', padding: 0, fontFamily: 'inherit' }}
               onMouseEnter={e => { e.currentTarget.style.color = 'rgb(0,0,0)' }}
               onMouseLeave={e => { e.currentTarget.style.color = '#6b7280' }}
             >
