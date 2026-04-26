@@ -78,6 +78,23 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+  useEffect(() => {
+    const cards = document.querySelectorAll('.project-card')
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('card-pre')
+            entry.target.classList.add('card-in')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+    cards.forEach(card => observer.observe(card))
+    return () => observer.disconnect()
+  }, [])
   return (
     <>
     {!introComplete && <RiveIntro onComplete={() => { sessionStorage.setItem('introPlayed', 'true'); setIntroComplete(true) }} />}
@@ -93,6 +110,12 @@ export default function Home() {
         }
         .hero-pre { opacity: 0; transform: translateY(20px); }
         .hero-in { animation: heroFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        @keyframes cardFadeUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .card-pre { opacity: 0; transform: translateY(30px); }
+        .card-in { animation: cardFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
         .arrow-btn {
           width: 44px;
           height: 56px;
@@ -198,7 +221,7 @@ export default function Home() {
       {/* Project Cards */}
       <section className="flex flex-col cards-section" style={{ position: 'relative', zIndex: 1, gap: '80px', marginLeft: '80px', marginRight: '80px' }}>
         {/* NutritionNest */}
-        <Link href="/nn" className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer project-card"
+        <Link href="/nn" className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer project-card card-pre"
           style={{ textDecoration: 'none', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
           <div ref={nnImagesWrapRef} style={{ willChange: 'transform', overflow: 'visible' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
@@ -230,7 +253,7 @@ export default function Home() {
           </div>
         </Link>
         {/* Duetti */}
-        <Link href="/duetti" className="group flex flex-col overflow-hidden cursor-pointer project-card"
+        <Link href="/duetti" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
           style={{ textDecoration: 'none', backgroundColor: '#d9f99d', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
             style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
@@ -262,7 +285,7 @@ export default function Home() {
           </div>
         </Link>
         {/* Lasertaz */}
-        <Link href="/lasertaz" className="group flex flex-col overflow-hidden cursor-pointer project-card"
+        <Link href="/lasertaz" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
           style={{ textDecoration: 'none', backgroundColor: '#0a0a0a', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
             <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
@@ -285,7 +308,7 @@ export default function Home() {
           </div>
         </Link>
         {/* Bookworm */}
-        <Link href="/bookworm" className="group flex flex-col overflow-hidden cursor-pointer project-card"
+        <Link href="/bookworm" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
           style={{ textDecoration: 'none', backgroundColor: '#184131', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
             <div className="bw-desktop-img" style={{ flex: '0 0 75%', overflow: 'hidden', borderRadius: '12px' }}>
@@ -321,7 +344,7 @@ export default function Home() {
           </div>
         </Link>
         {/* Raymond Hair Salon */}
-        <Link href="/rhs" className="group flex flex-col overflow-hidden cursor-pointer project-card"
+        <Link href="/rhs" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
           style={{ textDecoration: 'none', backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
             <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} quality={100} className="object-contain rounded-xl rhs-desktop-img" style={{ width: '75%', height: 'auto' }} />
@@ -365,7 +388,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col" style={{ gap: '80px' }}>
           {/* Kalshi */}
-          <Link href="/kalshi" className="group flex flex-col overflow-hidden cursor-pointer project-card"
+          <Link href="/kalshi" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
             style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px', border: '1px solid rgba(0,0,0,0.1)' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
@@ -389,7 +412,7 @@ export default function Home() {
             </div>
           </Link>
           {/* Phia */}
-          <Link href="/phia" className="group flex flex-col overflow-hidden cursor-pointer project-card"
+          <Link href="/phia" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
             style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px', border: '1px solid rgba(0,0,0,0.1)' }}>
             <div className="w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ overflow: 'hidden', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.1)' }}>
