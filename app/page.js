@@ -165,7 +165,8 @@ export default function Home() {
           .portfolio-main { padding-left: 20px !important; padding-right: 20px !important; }
           .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; }
           .hero-shape { transform: scale(0.5) !important; transform-origin: center center; }
-          .hero-shape-green-tri { top: -8% !important; }
+          .hero-shape-green-tri { top: -8% !important; transform: scale(0.35) !important; }
+          .hero-shape-purple-tri { display: none !important; }
           .hero-shape-blue-star { bottom: -24px !important; left: 40% !important; }
           .hero-shape-red-circle { transform: scale(0.3) !important; }
           .hero-text-p { font-size: 20px !important; line-height: 28px !important; }
@@ -213,7 +214,7 @@ export default function Home() {
           {/* Red circle — far right edge */}
           <div data-parallax="0.32" className="hero-shape hero-shape-red-circle" style={{ position: 'absolute', top: '30%', right: '0px', width: '88px', height: '88px', borderRadius: '50%', backgroundColor: '#ef4444', pointerEvents: 'none' }} />
           {/* Purple sharp triangle — lower right */}
-          <svg data-parallax="0.22" className="hero-shape" style={{ position: 'absolute', bottom: '8%', right: '12%', pointerEvents: 'none' }} width="88" height="88" viewBox="0 0 100 100">
+          <svg data-parallax="0.22" className="hero-shape hero-shape-purple-tri" style={{ position: 'absolute', bottom: '8%', right: '12%', pointerEvents: 'none' }} width="88" height="88" viewBox="0 0 100 100">
             <path d="M 0 0 L 100 50 L 0 100 Z" fill="#818cf8"/>
           </svg>
           {/* Pink organic star — bottom left */}
