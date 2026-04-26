@@ -52,6 +52,7 @@ export default function Phia() {
           h1 { font-size: 36px !important; line-height: 44px !important; }
           h2, h3 { font-size: 26px !important; line-height: 34px !important; }
           .three-cards-grid { grid-template-columns: 1fr !important; }
+          .phia-ext-img { margin-left: 0 !important; margin-right: 0 !important; }
         }
       `}</style>
 
@@ -97,7 +98,7 @@ export default function Phia() {
             A lower price, front and center
           </h2>
 
-          <div style={{ marginBottom: '12px' }}>
+          <div className="phia-ext-img" style={{ marginBottom: '12px', marginLeft: '-20px', marginRight: '-20px' }}>
             <Image
               src="/Phia/Extension_container.png"
               alt="Extension tab states"
