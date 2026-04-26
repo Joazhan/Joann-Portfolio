@@ -196,7 +196,7 @@ export default function RHS() {
             The homepage is built around four essential sub-pages designed to focus on the features users visit most frequently. The contact information page received the most interest, as users liked the streamlined experience to connect with the barber directly.
           </p>
           <div className="img-wide" style={{ margin: '0 -200px' }}>
-            <Image src="/RHS/user_journey.png" alt="User journey map" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
+            <Image src="/RHS/user_journey2.png" alt="User journey map" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
         </div>
       </section>
