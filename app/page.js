@@ -239,7 +239,7 @@ export default function Home() {
             <div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#22c55e', animation: 'orbitSm 5s ease-in-out infinite' }} />
           </div>
           {/* Red circle — far right edge */}
-          <div data-parallax="0.32" className="hero-shape hero-shape-red-circle" style={{ position: 'absolute', top: '30%', right: '0px', pointerEvents: 'none' }}>
+          <div data-parallax="0.32" className="hero-shape hero-shape-red-circle" style={{ position: 'absolute', top: '30%', right: '60px', pointerEvents: 'none' }}>
             <div style={{ width: '60px', height: '60px', borderRadius: '50%', backgroundColor: '#ef4444', animation: 'orbitCW 4s ease-in-out infinite' }} />
           </div>
           {/* Purple sharp triangle — lower right */}
