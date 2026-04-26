@@ -92,7 +92,7 @@ export default function Home() {
           to { opacity: 1; transform: translateY(0); }
         }
         .hero-pre { opacity: 0; transform: translateY(20px); }
-        .hero-in { animation: heroFadeUp 5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .hero-in { animation: heroFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
         .arrow-btn {
           width: 44px;
           height: 56px;
@@ -160,7 +160,7 @@ export default function Home() {
       {/* Hero */}
       <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, overflow: 'hidden', margin: '0 -80px', padding: '120px 80px 60px' }}>
         {/* Floating shapes */}
-        <div className={introComplete ? 'hero-in' : 'hero-pre'} style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+        <div className={introComplete ? 'hero-in' : 'hero-pre'} style={{ position: 'absolute', inset: 0, pointerEvents: 'none', animationDelay: '0.4s' }}>
           {/* Green sharp triangle — top left */}
           <svg data-parallax="0.28" className="hero-shape" style={{ position: 'absolute', top: '12%', left: '3.5%', pointerEvents: 'none' }} width="100" height="100" viewBox="0 0 100 100">
             <path d="M 100 0 L 0 50 L 100 100 Z" fill="#22c55e"/>
@@ -187,7 +187,7 @@ export default function Home() {
           </svg>
         </div>
         {/* Hero text */}
-        <div className={`flex justify-center ${introComplete ? 'hero-in' : 'hero-pre'}`} style={{ position: 'relative', zIndex: 1, paddingTop: '40px', paddingBottom: '40px', animationDelay: '0.2s' }}>
+        <div className={`flex justify-center ${introComplete ? 'hero-in' : 'hero-pre'}`} style={{ position: 'relative', zIndex: 1, paddingTop: '40px', paddingBottom: '40px' }}>
           <p className="hero-text-p" style={{ fontSize: '28px', lineHeight: '36px', letterSpacing: '-0.03em', color: 'black', maxWidth: '1000px', width: '100%', textAlign: 'left' }}>
             SF-based product designer rooted in both visual design and product thinking,{" "}
             <span className="text-gray-400">focused on creating clear, high-quality experiences.</span>
