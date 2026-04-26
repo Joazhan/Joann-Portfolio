@@ -192,9 +192,12 @@ export default function RHS() {
       <section style={{ padding: '80px 40px' }}>
         <div className="content">
           <p className={`section-label ${syne.className}`}>User Journey</p>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262' }}>
+          <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
             The homepage is built around four essential sub-pages designed to focus on the features users visit most frequently. The contact information page received the most interest, as users liked the streamlined experience to connect with the barber directly.
           </p>
+          <div className="img-wide" style={{ margin: '0 -200px' }}>
+            <Image src="/RHS/user_journey.png" alt="User journey map" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block' }} />
+          </div>
         </div>
       </section>
 
