@@ -31,17 +31,20 @@ export default function CustomCursor() {
   }, [])
 
   return (
-    <div ref={cursorRef} style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '16px',
-      height: '16px',
-      borderRadius: '50%',
-      backgroundColor: '#ffffff',
-      mixBlendMode: 'difference',
-      pointerEvents: 'none',
-      zIndex: 99999,
-    }} />
+    <>
+      <style>{`@media (max-width: 767px) { .custom-cursor { display: none !important; } }`}</style>
+      <div ref={cursorRef} className="custom-cursor" style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: '16px',
+        height: '16px',
+        borderRadius: '50%',
+        backgroundColor: '#ffffff',
+        mixBlendMode: 'difference',
+        pointerEvents: 'none',
+        zIndex: 99999,
+      }} />
+    </>
   )
 }
