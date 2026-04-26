@@ -162,9 +162,6 @@ export default function RHS() {
       <section style={{ padding: '80px 40px' }}>
         <div className="content">
           <p className={`section-label ${syne.className}`}>Competitive Analysis</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-            Function over form — a gap in the market
-          </h2>
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '24px' }}>
             I analyzed two direct and two indirect scheduling apps to evaluate their features. Their focus on functionality over design led to readability issues, missing information, and difficulty locating features.
           </p>
@@ -195,9 +192,6 @@ export default function RHS() {
       <section style={{ padding: '80px 40px' }}>
         <div className="content">
           <p className={`section-label ${syne.className}`}>User Journey</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-            Four sub-pages, focused on what matters most
-          </h2>
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262' }}>
             The homepage is built around four essential sub-pages designed to focus on the features users visit most frequently. The contact information page received the most interest, as users liked the streamlined experience to connect with the barber directly.
           </p>
