@@ -53,7 +53,6 @@ export default function Duetti() {
           .img-caption { padding-left: 0 !important; padding-right: 0 !important; }
           .content { overflow: hidden !important; }
           .page-hero { height: 50vh !important; }
-          p { font-size: 14px !important; line-height: 18px !important; }
         }
       `}</style>
 

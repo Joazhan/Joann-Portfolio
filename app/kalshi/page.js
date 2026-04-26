@@ -47,7 +47,6 @@ export default function Kalshi() {
           .page-hero { padding-top: 88px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
           h1 { font-size: 36px !important; line-height: 44px !important; }
           h2, h3 { font-size: 26px !important; line-height: 34px !important; }
-          p { font-size: 14px !important; line-height: 18px !important; }
         }
       `}</style>
 
