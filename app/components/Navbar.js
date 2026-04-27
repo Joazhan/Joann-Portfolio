@@ -129,14 +129,14 @@ export default function Navbar() {
           <div className="nav-desktop-links flex items-center gap-6">
             <Link
               href="/"
-              style={{ fontSize: '16px', lineHeight: '18px', color: isActive('/') ? 'black' : '#6b7280', textDecoration: 'none' }}
+              style={{ fontSize: '14px', lineHeight: '20px', color: isActive('/') ? 'black' : '#6b7280', textDecoration: 'none' }}
               className="hover:text-black"
             >
               Work
             </Link>
             <Link
               href="/about"
-              style={{ fontSize: '16px', lineHeight: '18px', color: isActive('/about') ? 'black' : '#6b7280', textDecoration: 'none' }}
+              style={{ fontSize: '14px', lineHeight: '20px', color: isActive('/about') ? 'black' : '#6b7280', textDecoration: 'none' }}
               className="hover:text-black"
             >
               About
@@ -145,7 +145,7 @@ export default function Navbar() {
               href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ fontSize: '16px', lineHeight: '18px', color: '#6b7280', textDecoration: 'none' }}
+              style={{ fontSize: '14px', lineHeight: '20px', color: '#6b7280', textDecoration: 'none' }}
               className="hover:text-black"
             >
               Resume
@@ -154,7 +154,7 @@ export default function Navbar() {
               href="mailto:joannzhang4@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ fontSize: '16px', lineHeight: '18px', color: '#6b7280', textDecoration: 'none' }}
+              style={{ fontSize: '14px', lineHeight: '20px', color: '#6b7280', textDecoration: 'none' }}
               className="hover:text-black"
             >
               Contact
