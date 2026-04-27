@@ -294,8 +294,8 @@ export default function Home() {
       {/* Project Cards */}
       <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginLeft: '80px', marginRight: '80px' }}>
         {/* NutritionNest */}
-        <Link href="/nn" className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-          style={{ textDecoration: 'none', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
+        <Link href="/nn" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
+          style={{ textDecoration: 'none', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px', border: '1px solid rgba(0,0,0,0.1)' }}>
           <div ref={nnImagesWrapRef} style={{ willChange: 'transform', overflow: 'visible' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
               <Image src="/Images/NN.png" alt="NutritionNest" width={900} height={600} className="object-contain rounded-xl nn-desktop-img" style={{ width: '75%', height: 'auto' }} />
@@ -308,7 +308,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
           <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4 card-icon-wrap">
               <Image src="/Icons/NN_icon.png" alt="NutritionNest icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
@@ -327,7 +327,7 @@ export default function Home() {
         </Link>
         {/* Duetti */}
         <Link href="/duetti" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-          style={{ textDecoration: 'none', backgroundColor: '#d9f99d', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          style={{ textDecoration: 'none', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px', border: '1px solid rgba(0,0,0,0.1)' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
             style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
             <div className="duetti-macbook" style={{ position: 'relative', width: '73%', flexShrink: 0 }}>
@@ -340,7 +340,7 @@ export default function Home() {
               className="duetti-iphone"
               style={{ width: '15%', height: 'auto', objectFit: 'contain', alignSelf: 'flex-end', position: 'relative', zIndex: 20 }} />
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
           <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4 card-icon-wrap">
               <Image src="/Icons/Duetti_icon.png" alt="Duetti icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
@@ -359,20 +359,20 @@ export default function Home() {
         </Link>
         {/* Lasertaz */}
         <Link href="/lasertaz" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-          style={{ textDecoration: 'none', backgroundColor: '#0a0a0a', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          style={{ textDecoration: 'none', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px', border: '1px solid rgba(0,0,0,0.1)' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
             <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(255,255,255,0.05)' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
           <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4 card-icon-wrap">
               <Image src="/Icons/Lasertaz_icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
-                <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#ffffff' }}>Lasertaz</span>
-                <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#9ca3af' }}>Help independent landlords manage their rental properties</span>
+                <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Lasertaz</span>
+                <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>Help independent landlords manage their rental properties</span>
               </div>
             </div>
-            <div className="arrow-btn" style={{ borderColor: 'rgba(255,255,255,0.2)' }}>
+            <div className="arrow-btn">
               <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
               </svg>
@@ -382,7 +382,7 @@ export default function Home() {
         </Link>
         {/* Bookworm */}
         <Link href="/bookworm" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-          style={{ textDecoration: 'none', backgroundColor: '#184131', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
+          style={{ textDecoration: 'none', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', border: '1px solid rgba(0,0,0,0.1)' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
             <div className="bw-desktop-img" style={{ flex: '0 0 75%', overflow: 'hidden', borderRadius: '12px' }}>
               <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678} quality={100}
@@ -399,16 +399,16 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(255,255,255,0.05)' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
           <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4 card-icon-wrap">
               <Image src="/Icons/Bookworm_icon.png" alt="Bookworm icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
-                <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#ffffff' }}>Bookworm</span>
-                <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#9ca3af' }}>E-Commerce platform for books and related content</span>
+                <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Bookworm</span>
+                <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>E-Commerce platform for books and related content</span>
               </div>
             </div>
-            <div className="arrow-btn" style={{ borderColor: 'rgba(255,255,255,0.2)' }}>
+            <div className="arrow-btn">
               <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
               </svg>
@@ -418,7 +418,7 @@ export default function Home() {
         </Link>
         {/* Raymond Hair Salon */}
         <Link href="/rhs" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-          style={{ textDecoration: 'none', backgroundColor: '#f1f5f9', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          style={{ textDecoration: 'none', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px', border: '1px solid rgba(0,0,0,0.1)' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
             <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} quality={100} className="object-contain rounded-xl rhs-desktop-img" style={{ width: '75%', height: 'auto' }} />
             <div className="rhs-phone" style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1430', alignSelf: 'flex-start', marginTop: '1.5%' }}>
@@ -430,7 +430,7 @@ export default function Home() {
                 style={{ objectFit: 'contain', zIndex: 10, pointerEvents: 'none' }} />
             </div>
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px', backgroundColor: 'rgba(0,0,0,0.05)' }}>
+          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
           <div className="flex items-center justify-between card-label-row">
             <div className="flex items-center gap-4 card-icon-wrap">
               <Image src="/Icons/RHS_icon.png" alt="RHS icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
@@ -462,7 +462,7 @@ export default function Home() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
           {/* Kalshi */}
           <Link href="/kalshi" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-            style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px', border: '1px solid rgba(0,0,0,0.1)' }}>
+            style={{ textDecoration: 'none', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px', border: '1px solid rgba(0,0,0,0.1)' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
               <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
@@ -486,7 +486,7 @@ export default function Home() {
           </Link>
           {/* Phia */}
           <Link href="/phia" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-            style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px', border: '1px solid rgba(0,0,0,0.1)' }}>
+            style={{ textDecoration: 'none', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px', border: '1px solid rgba(0,0,0,0.1)' }}>
             <div className="w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ overflow: 'hidden', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.1)' }}>
               <Image
