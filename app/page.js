@@ -181,8 +181,7 @@ export default function Home() {
         .card-pre { opacity: 0; transform: translateY(30px); }
         .card-in { animation: cardFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
         .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 0 !important; }
-        .main-card { padding-top: 80px !important; min-height: 600px; gap: 12px !important; }
-        .main-card > div:first-child { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; }
+        .main-card { padding-top: 80px !important; padding-bottom: 0 !important; min-height: 600px; }
         .card-bottom-container { margin: 0 -32px -32px -32px !important; padding: 24px 32px !important; }
         .card-title { font-size: 24px !important; line-height: 32px !important; }
         .card-desc { font-size: 15px !important; line-height: 22px !important; }
@@ -310,23 +309,24 @@ export default function Home() {
       {/* Project Cards */}
       <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
         {/* NutritionNest */}
-        <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-        <Link href="/nn" className="group flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
-          style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
-          <div ref={nnImagesWrapRef} style={{ willChange: 'transform', overflow: 'visible' }}>
-            <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-              <Image src="/Images/NN.png" alt="NutritionNest" width={900} height={600} className="object-contain rounded-xl nn-desktop-img" style={{ width: '75%', height: 'auto' }} />
-              <div className="nn-phone" style={{ position: 'relative', flex: '1 1 0', marginLeft: '-4px', alignSelf: 'stretch' }}>
-                <div style={{ position: 'absolute', top: '4%', left: '8.5%', right: '8.5%', bottom: '4.2%', borderRadius: '11%/5.5%', overflow: 'hidden', zIndex: 1 }}>
-                  <video src="/Images/NN-video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
+          <div className="card-squircle-wrap" style={{ position: 'relative' }}>
+            <Link href="/nn" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
+              style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
+              <div ref={nnImagesWrapRef} style={{ willChange: 'transform', overflow: 'visible' }}>
+                <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+                  <Image src="/Images/NN.png" alt="NutritionNest" width={900} height={600} className="object-contain rounded-xl nn-desktop-img" style={{ width: '75%', height: 'auto' }} />
+                  <div className="nn-phone" style={{ position: 'relative', flex: '1 1 0', marginLeft: '-4px', alignSelf: 'stretch' }}>
+                    <div style={{ position: 'absolute', top: '4%', left: '8.5%', right: '8.5%', bottom: '4.2%', borderRadius: '11%/5.5%', overflow: 'hidden', zIndex: 1 }}>
+                      <video src="/Images/NN-video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                    <Image src="/Images/NN-iphone-frame.png" alt="iPhone frame" fill style={{ objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
+                  </div>
                 </div>
-                <Image src="/Images/NN-iphone-frame.png" alt="iPhone frame" fill
-                  style={{ objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
               </div>
-            </div>
+            </Link>
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
-          <div className="flex items-center justify-between card-label-row">
+          <div className="flex items-center justify-between card-label-row" style={{ padding: '12px 0 0' }}>
             <div className="flex items-center gap-4 card-icon-wrap">
               <Image src="/Icons/NN_icon.png" alt="NutritionNest icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
@@ -334,33 +334,26 @@ export default function Home() {
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>Log nutritional intake and monitor daily calories</span>
               </div>
             </div>
-            <div className="arrow-btn">
-              <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </div>
+            <div className="arrow-btn"><svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
-          </div>
-        </Link>
         </div>
         {/* Duetti */}
-        <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-        <Link href="/duetti" className="group flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
-          style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
-          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
-            style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
-            <div className="duetti-macbook" style={{ position: 'relative', width: '73%', flexShrink: 0 }}>
-              <div style={{ position: 'absolute', top: '2.2%', left: '1.4%', right: '1.4%', bottom: '24.9%', overflow: 'hidden', zIndex: 1 }}>
-                <video src="/Images/Duetti video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
+          <div className="card-squircle-wrap" style={{ position: 'relative' }}>
+            <Link href="/duetti" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
+              style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
+              <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
+                <div className="duetti-macbook" style={{ position: 'relative', width: '73%', flexShrink: 0 }}>
+                  <div style={{ position: 'absolute', top: '2.2%', left: '1.4%', right: '1.4%', bottom: '24.9%', overflow: 'hidden', zIndex: 1 }}>
+                    <video src="/Images/Duetti video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
+                  <Image src="/Images/Apple Pro Display.png" alt="Apple Pro Display" width={1200} height={800} style={{ position: 'relative', width: '100%', height: 'auto', display: 'block', zIndex: 10 }} />
+                </div>
+                <Image src="/Images/Duetti iphone frame.png" alt="Duetti iPhone" width={400} height={600} className="duetti-iphone" style={{ width: '15%', height: 'auto', objectFit: 'contain', alignSelf: 'flex-end', position: 'relative', zIndex: 20 }} />
               </div>
-              <Image src="/Images/Apple Pro Display.png" alt="Apple Pro Display" width={1200} height={800} style={{ position: 'relative', width: '100%', height: 'auto', display: 'block', zIndex: 10 }} />
-            </div>
-            <Image src="/Images/Duetti iphone frame.png" alt="Duetti iPhone" width={400} height={600}
-              className="duetti-iphone"
-              style={{ width: '15%', height: 'auto', objectFit: 'contain', alignSelf: 'flex-end', position: 'relative', zIndex: 20 }} />
+            </Link>
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
-          <div className="flex items-center justify-between card-label-row">
+          <div className="flex items-center justify-between card-label-row" style={{ padding: '12px 0 0' }}>
             <div className="flex items-center gap-4 card-icon-wrap">
               <Image src="/Icons/Duetti_icon.png" alt="Duetti icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
@@ -368,24 +361,20 @@ export default function Home() {
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#4b5563' }}>Insight-driven report that simplifies music industry data for artists through visual storytelling</span>
               </div>
             </div>
-            <div className="arrow-btn">
-              <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </div>
+            <div className="arrow-btn"><svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
-          </div>
-        </Link>
         </div>
         {/* Lasertaz */}
-        <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-        <Link href="/lasertaz" className="group flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
-          style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
-          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-            <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
+        <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
+          <div className="card-squircle-wrap" style={{ position: 'relative' }}>
+            <Link href="/lasertaz" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
+              style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
+              <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+                <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
+              </div>
+            </Link>
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
-          <div className="flex items-center justify-between card-label-row">
+          <div className="flex items-center justify-between card-label-row" style={{ padding: '12px 0 0' }}>
             <div className="flex items-center gap-4 card-icon-wrap">
               <Image src="/Icons/Lasertaz_icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
@@ -393,37 +382,30 @@ export default function Home() {
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>Help independent landlords manage their rental properties</span>
               </div>
             </div>
-            <div className="arrow-btn">
-              <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </div>
+            <div className="arrow-btn"><svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
-          </div>
-        </Link>
         </div>
         {/* Bookworm */}
-        <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-        <Link href="/bookworm" className="group flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
-          style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
-          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
-            <div className="bw-desktop-img" style={{ flex: '0 0 75%', overflow: 'hidden', borderRadius: '12px' }}>
-              <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678} quality={100}
-                style={{ width: '100%', height: 'auto', display: 'block' }} />
-            </div>
-            <div className="bw-phone" style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1420', alignSelf: 'flex-start', marginTop: '0%' }}>
-              <div style={{ position: 'absolute', inset: 0 }}>
-                <div style={{ position: 'absolute', top: '1.6%', left: '9%', right: '9%', bottom: '2%', borderRadius: '10% 10% 6% 6% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
-                  <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline className="bw-video" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
+          <div className="card-squircle-wrap" style={{ position: 'relative' }}>
+            <Link href="/bookworm" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
+              style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
+              <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
+                <div className="bw-desktop-img" style={{ flex: '0 0 75%', overflow: 'hidden', borderRadius: '12px' }}>
+                  <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678} quality={100} style={{ width: '100%', height: 'auto', display: 'block' }} />
                 </div>
-                <Image src="/Images/bw_iphone_frame.png" alt="iPhone frame"
-                  width={678} height={1390}
-                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
+                <div className="bw-phone" style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1420', alignSelf: 'flex-start', marginTop: '0%' }}>
+                  <div style={{ position: 'absolute', inset: 0 }}>
+                    <div style={{ position: 'absolute', top: '1.6%', left: '9%', right: '9%', bottom: '2%', borderRadius: '10% 10% 6% 6% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
+                      <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline className="bw-video" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                    <Image src="/Images/bw_iphone_frame.png" alt="iPhone frame" width={678} height={1390} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
+                  </div>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
-          <div className="flex items-center justify-between card-label-row">
+          <div className="flex items-center justify-between card-label-row" style={{ padding: '12px 0 0' }}>
             <div className="flex items-center gap-4 card-icon-wrap">
               <Image src="/Icons/Bookworm_icon.png" alt="Bookworm icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
@@ -431,32 +413,26 @@ export default function Home() {
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>E-Commerce platform for books and related content</span>
               </div>
             </div>
-            <div className="arrow-btn">
-              <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </div>
+            <div className="arrow-btn"><svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
-          </div>
-        </Link>
         </div>
         {/* Raymond Hair Salon */}
-        <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-        <Link href="/rhs" className="group flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
-          style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
-          <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
-            <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} quality={100} className="object-contain rounded-xl rhs-desktop-img" style={{ width: '75%', height: 'auto' }} />
-            <div className="rhs-phone" style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1430', alignSelf: 'flex-start', marginTop: '1.5%' }}>
-              <div style={{ position: 'absolute', top: '2%', left: '9%', right: '9%', bottom: '2%', borderRadius: '6% / 4%', overflow: 'hidden', zIndex: 1, backgroundColor: '#ffffff' }}>
-                <video src="/Images/rhs_video1.mp4" autoPlay loop muted playsInline className="rhs-video" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
+          <div className="card-squircle-wrap" style={{ position: 'relative' }}>
+            <Link href="/rhs" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
+              style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
+              <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
+                <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} quality={100} className="object-contain rounded-xl rhs-desktop-img" style={{ width: '75%', height: 'auto' }} />
+                <div className="rhs-phone" style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1430', alignSelf: 'flex-start', marginTop: '1.5%' }}>
+                  <div style={{ position: 'absolute', top: '2%', left: '9%', right: '9%', bottom: '2%', borderRadius: '6% / 4%', overflow: 'hidden', zIndex: 1, backgroundColor: '#ffffff' }}>
+                    <video src="/Images/rhs_video1.mp4" autoPlay loop muted playsInline className="rhs-video" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
+                  <Image src="/Images/rhs_iphone_frame.png" alt="iPhone frame" fill style={{ objectFit: 'contain', zIndex: 10, pointerEvents: 'none' }} />
+                </div>
               </div>
-              <Image src="/Images/rhs_iphone_frame.png" alt="iPhone frame"
-                fill
-                style={{ objectFit: 'contain', zIndex: 10, pointerEvents: 'none' }} />
-            </div>
+            </Link>
           </div>
-          <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
-          <div className="flex items-center justify-between card-label-row">
+          <div className="flex items-center justify-between card-label-row" style={{ padding: '12px 0 0' }}>
             <div className="flex items-center gap-4 card-icon-wrap">
               <Image src="/Icons/RHS_icon.png" alt="RHS icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-1">
@@ -464,14 +440,8 @@ export default function Home() {
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>Scheduling made effortless with online booking</span>
               </div>
             </div>
-            <div className="arrow-btn">
-              <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-              </svg>
-            </div>
+            <div className="arrow-btn"><svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
-          </div>
-        </Link>
         </div>
       </section>
       {/* Concepts Section */}
