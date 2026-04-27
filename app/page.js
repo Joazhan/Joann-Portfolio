@@ -186,38 +186,6 @@ export default function Home() {
         .card-title { font-size: 24px !important; line-height: 32px !important; }
         .card-desc { font-size: 15px !important; line-height: 22px !important; }
         .card-icon { width: 44px !important; height: 44px !important; border-radius: 10px !important; }
-        .arrow-btn {
-          width: 32px;
-          height: 40px;
-          border-radius: 999px;
-          border: 1px solid rgba(0,0,0,0.2);
-          background: transparent;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: width 0.3s ease, height 0.3s ease, border-radius 0.3s ease, background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-          flex-shrink: 0;
-          transform: rotate(45deg);
-        }
-        .arrow-icon {
-          width: 12px;
-          height: 12px;
-          transition: transform 0.3s ease, color 0.3s ease;
-          transform: rotate(-45deg);
-          color: #888;
-        }
-        .group:hover .arrow-btn {
-          background: #000 !important;
-          border-color: #000 !important;
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
-          transform: rotate(0deg);
-        }
-        .group:hover .arrow-icon {
-          transform: rotate(0deg);
-          color: #fff !important;
-        }
         @media (max-width: 767px) {
           * { cursor: auto !important; }
           .portfolio-main { padding-left: 20px !important; padding-right: 20px !important; }
@@ -238,10 +206,7 @@ export default function Home() {
           .project-card { position: relative !important; padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 20px !important; }
           .card-bottom-container { margin: 0 -16px -20px -16px !important; padding: 20px 16px !important; }
           .card-label-row { padding: 16px 0 !important; }
-          .arrow-btn { position: absolute !important; top: 16px !important; right: 16px !important; width: 28px !important; height: 36px !important; transform: rotate(45deg) !important; }
-          .group:hover .arrow-btn, .group:active .arrow-btn { width: 32px !important; height: 32px !important; border-radius: 50% !important; transform: rotate(0deg) !important; }
-          .group:hover .arrow-icon, .group:active .arrow-icon { transform: rotate(0deg) !important; color: #fff !important; }
-          .card-title { font-size: 20px !important; line-height: 26px !important; }
+.card-title { font-size: 20px !important; line-height: 26px !important; }
           .card-desc { font-size: 16px !important; line-height: 24px !important; }
           .card-icon { width: 44px !important; height: 44px !important; border-radius: 10px !important; }
           .card-icon-wrap { align-items: flex-start !important; }
@@ -334,7 +299,6 @@ export default function Home() {
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>Log nutritional intake and monitor daily calories</span>
               </div>
             </div>
-            <div className="arrow-btn"><svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
         </div>
         {/* Duetti */}
@@ -361,7 +325,6 @@ export default function Home() {
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#4b5563' }}>Insight-driven report that simplifies music industry data for artists through visual storytelling</span>
               </div>
             </div>
-            <div className="arrow-btn"><svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
         </div>
         {/* Lasertaz */}
@@ -382,7 +345,6 @@ export default function Home() {
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>Help independent landlords manage their rental properties</span>
               </div>
             </div>
-            <div className="arrow-btn"><svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
         </div>
         {/* Bookworm */}
@@ -413,7 +375,6 @@ export default function Home() {
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>E-Commerce platform for books and related content</span>
               </div>
             </div>
-            <div className="arrow-btn"><svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
         </div>
         {/* Raymond Hair Salon */}
@@ -440,7 +401,6 @@ export default function Home() {
                 <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>Scheduling made effortless with online booking</span>
               </div>
             </div>
-            <div className="arrow-btn"><svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
           </div>
         </div>
       </section>
@@ -473,11 +433,6 @@ export default function Home() {
                   <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>2025 | Desktop extension</span>
                 </div>
               </div>
-              <div className="arrow-btn">
-                <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-                </svg>
-              </div>
             </div>
             </div>
           </Link>
@@ -504,11 +459,6 @@ export default function Home() {
                   <span className="card-title" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.4px', fontWeight: '500', color: '#212121' }}>Phia</span>
                   <span className="card-desc" style={{ fontSize: '20px', lineHeight: '28px', color: '#6b7280' }}>2025 | Desktop extension | Redesign</span>
                 </div>
-              </div>
-              <div className="arrow-btn">
-                <svg className="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-                </svg>
               </div>
             </div>
             </div>
