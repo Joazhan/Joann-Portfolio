@@ -117,7 +117,7 @@ export default function Home() {
       const w = wrap.offsetWidth
       const h = wrap.offsetHeight
       if (!w || !h) return
-      const path = getSvgPath({ width: w, height: h, cornerRadius: 16, cornerSmoothing: 0.6 })
+      const path = getSvgPath({ width: w, height: h, cornerRadius: 10, cornerSmoothing: 0.6 })
       // Clip the card content to squircle shape
       card.style.clipPath = `path('${path}')`
       card.style.borderRadius = '0'
@@ -131,7 +131,7 @@ export default function Home() {
       }
       svg.setAttribute('width', w)
       svg.setAttribute('height', h)
-      svg.innerHTML = `<path d="${path}" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1.5" stroke-linejoin="round"/>`
+      svg.innerHTML = `<path d="${path}" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1"/>`
     }
     const wraps = document.querySelectorAll('.card-squircle-wrap')
     const ro = new ResizeObserver(entries => entries.forEach(e => applySquircle(e.target)))
