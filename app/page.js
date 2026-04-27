@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRive } from '@rive-app/react-canvas'
+import { getSvgPath } from 'figma-squircle'
 
 function RiveIntro({ onComplete }) {
   const [slideUp, setSlideUp] = useState(false)
@@ -107,6 +108,22 @@ export default function Home() {
       window.removeEventListener('scroll', onScroll)
     }
   }, [])
+
+  // Squircle corners on all project cards
+  useEffect(() => {
+    const applySquircle = (card) => {
+      const w = card.offsetWidth
+      const h = card.offsetHeight
+      if (!w || !h) return
+      const path = getSvgPath({ width: w, height: h, cornerRadius: 16, cornerSmoothing: 0.6 })
+      card.style.clipPath = `path('${path}')`
+      card.style.borderRadius = '0'
+    }
+    const cards = document.querySelectorAll('.project-card')
+    const ro = new ResizeObserver(entries => entries.forEach(e => applySquircle(e.target)))
+    cards.forEach(card => { applySquircle(card); ro.observe(card) })
+    return () => ro.disconnect()
+  }, [])
   return (
     <>
     {!introComplete && <RiveIntro onComplete={() => { sessionStorage.setItem('introPlayed', 'true'); setIntroComplete(true) }} />}
@@ -149,7 +166,7 @@ export default function Home() {
         }
         .card-pre { opacity: 0; transform: translateY(30px); }
         .card-in { animation: cardFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; }
+        .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 0 !important; }
         .card-bottom-container { margin: 0 -32px -32px -32px !important; padding: 24px 32px !important; }
         .card-title { font-size: 24px !important; line-height: 32px !important; }
         .card-desc { font-size: 15px !important; line-height: 22px !important; }
