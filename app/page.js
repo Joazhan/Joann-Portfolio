@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRive } from '@rive-app/react-canvas'
-import { getSvgPath } from 'figma-squircle'
 
 function RiveIntro({ onComplete }) {
   const [slideUp, setSlideUp] = useState(false)
@@ -109,35 +108,6 @@ export default function Home() {
     }
   }, [])
 
-  // Squircle corners on all project cards
-  useEffect(() => {
-    const applySquircle = (wrap) => {
-      const card = wrap.querySelector('.project-card')
-      if (!card) return
-      const w = wrap.offsetWidth
-      const h = wrap.offsetHeight
-      if (!w || !h) return
-      const path = getSvgPath({ width: w, height: h, cornerRadius: 10, cornerSmoothing: 0.6 })
-      // Clip the card content to squircle shape
-      card.style.clipPath = `path('${path}')`
-      card.style.borderRadius = '0'
-      // Draw squircle border as SVG overlay (unaffected by clip-path)
-      let svg = wrap.querySelector('.squircle-border-svg')
-      if (!svg) {
-        svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-        svg.classList.add('squircle-border-svg')
-        svg.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:10;overflow:visible;'
-        wrap.appendChild(svg)
-      }
-      svg.setAttribute('width', w)
-      svg.setAttribute('height', h)
-      svg.innerHTML = `<path d="${path}" fill="none" stroke="rgba(0,0,0,0.12)" stroke-width="1"/>`
-    }
-    const wraps = document.querySelectorAll('.card-squircle-wrap')
-    const ro = new ResizeObserver(entries => entries.forEach(e => applySquircle(e.target)))
-    wraps.forEach(wrap => { applySquircle(wrap); ro.observe(wrap) })
-    return () => ro.disconnect()
-  }, [])
   return (
     <>
     {!introComplete && <RiveIntro onComplete={() => { sessionStorage.setItem('introPlayed', 'true'); setIntroComplete(true) }} />}
@@ -180,7 +150,7 @@ export default function Home() {
         }
         .card-pre { opacity: 0; transform: translateY(30px); }
         .card-in { animation: cardFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 0 !important; }
+        .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 10px !important; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1) !important; }
         .main-card { padding-top: 80px !important; padding-bottom: 0 !important; min-height: 600px; }
         .card-bottom-container { margin: 0 -32px -32px -32px !important; padding: 24px 32px !important; }
         .card-title { font-size: 24px !important; line-height: 32px !important; }
