@@ -149,6 +149,11 @@ export default function Home() {
         }
         .card-pre { opacity: 0; transform: translateY(30px); }
         .card-in { animation: cardFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+        .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; }
+        .card-bottom-container { margin: 0 -32px -32px -32px !important; padding: 24px 32px !important; }
+        .card-title { font-size: 24px !important; line-height: 32px !important; }
+        .card-desc { font-size: 15px !important; line-height: 22px !important; }
+        .card-icon { width: 44px !important; height: 44px !important; border-radius: 10px !important; }
         .arrow-btn {
           width: 44px;
           height: 56px;
@@ -191,7 +196,7 @@ export default function Home() {
           .hero-shape-blue-star { top: 68% !important; bottom: unset !important; left: unset !important; right: 0px !important; }
           .hero-shape-red-circle { display: none !important; }
           .hero-text-p { font-size: 20px !important; line-height: 28px !important; }
-          .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 40px !important; }
+          .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 16px !important; grid-template-columns: 1fr !important; }
           .nn-desktop-img, .bw-desktop-img, .rhs-desktop-img { display: none !important; }
           .nn-phone, .bw-phone, .rhs-phone { flex: unset !important; margin: 0 auto !important; width: 34% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
           .bw-phone { width: 38% !important; aspect-ratio: 9/16 !important; }
@@ -270,7 +275,7 @@ export default function Home() {
         </div>
       </section>
       {/* Project Cards */}
-      <section className="flex flex-col cards-section" style={{ position: 'relative', zIndex: 1, gap: '80px', marginLeft: '80px', marginRight: '80px' }}>
+      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginLeft: '80px', marginRight: '80px' }}>
         {/* NutritionNest */}
         <Link href="/nn" className="group bg-gray-100 flex flex-col overflow-hidden cursor-pointer project-card card-pre"
           style={{ textDecoration: 'none', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px', borderRadius: '32px' }}>
@@ -437,7 +442,7 @@ export default function Home() {
             This led me to prototype ideas and explore them hands-on.
           </p>
         </div>
-        <div className="flex flex-col" style={{ gap: '80px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
           {/* Kalshi */}
           <Link href="/kalshi" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
             style={{ textDecoration: 'none', backgroundColor: '#ffffff', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px', border: '1px solid rgba(0,0,0,0.1)' }}>
