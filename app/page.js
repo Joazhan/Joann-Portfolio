@@ -141,7 +141,7 @@ export default function Home() {
   return (
     <>
     {!introComplete && <RiveIntro onComplete={() => { sessionStorage.setItem('introPlayed', 'true'); setIntroComplete(true) }} />}
-    <main className="min-h-screen portfolio-main" style={{ paddingLeft: '80px', paddingRight: '80px', cursor: 'none', backgroundColor: '#fbfbfb' }}>
+    <main className="min-h-screen portfolio-main" style={{ paddingLeft: '64px', paddingRight: '64px', cursor: 'none', backgroundColor: '#fbfbfb' }}>
       <style>{`
         @keyframes sparkle-fade {
           0%, 100% { opacity: 0; transform: scale(0.6); }
@@ -186,8 +186,8 @@ export default function Home() {
         .card-desc { font-size: 15px !important; line-height: 22px !important; }
         .card-icon { width: 44px !important; height: 44px !important; border-radius: 10px !important; }
         .arrow-btn {
-          width: 44px;
-          height: 56px;
+          width: 32px;
+          height: 40px;
           border-radius: 999px;
           border: 1px solid rgba(0,0,0,0.2);
           background: transparent;
@@ -199,8 +199,8 @@ export default function Home() {
           transform: rotate(45deg);
         }
         .arrow-icon {
-          width: 16px;
-          height: 16px;
+          width: 12px;
+          height: 12px;
           transition: transform 0.3s ease, color 0.3s ease;
           transform: rotate(-45deg);
           color: #888;
@@ -208,8 +208,8 @@ export default function Home() {
         .group:hover .arrow-btn {
           background: #000 !important;
           border-color: #000 !important;
-          width: 52px;
-          height: 52px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
           transform: rotate(0deg);
         }
@@ -237,8 +237,8 @@ export default function Home() {
           .project-card { position: relative !important; padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 20px !important; }
           .card-bottom-container { margin: 0 -16px -20px -16px !important; padding: 20px 16px !important; }
           .card-label-row { padding: 16px 0 !important; }
-          .arrow-btn { position: absolute !important; top: 16px !important; right: 16px !important; width: 32px !important; height: 48px !important; transform: rotate(45deg) !important; }
-          .group:hover .arrow-btn, .group:active .arrow-btn { width: 40px !important; height: 40px !important; border-radius: 50% !important; transform: rotate(0deg) !important; }
+          .arrow-btn { position: absolute !important; top: 16px !important; right: 16px !important; width: 28px !important; height: 36px !important; transform: rotate(45deg) !important; }
+          .group:hover .arrow-btn, .group:active .arrow-btn { width: 32px !important; height: 32px !important; border-radius: 50% !important; transform: rotate(0deg) !important; }
           .group:hover .arrow-icon, .group:active .arrow-icon { transform: rotate(0deg) !important; color: #fff !important; }
           .card-title { font-size: 20px !important; line-height: 26px !important; }
           .card-desc { font-size: 16px !important; line-height: 24px !important; }
@@ -255,7 +255,7 @@ export default function Home() {
       {/* Spacer for fixed navbar */}
       <div style={{ height: '96px' }} />
       {/* Hero */}
-      <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, margin: '0 -80px', padding: '120px 80px 60px' }}>
+      <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, margin: '0 -64px', padding: '120px 64px 60px' }}>
         {/* Floating shapes */}
         <div className={introComplete ? 'hero-in' : 'hero-pre'} style={{ position: 'absolute', inset: 0, pointerEvents: 'none', animationDelay: '0.4s', zIndex: 0 }}>
           {/* Green sharp triangle — top left */}
@@ -306,7 +306,7 @@ export default function Home() {
         </div>
       </section>
       {/* Project Cards */}
-      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginLeft: '80px', marginRight: '80px' }}>
+      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
         {/* NutritionNest */}
         <div className="card-squircle-wrap" style={{ position: 'relative' }}>
         <Link href="/nn" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
@@ -473,7 +473,7 @@ export default function Home() {
         </div>
       </section>
       {/* Concepts Section */}
-      <div className="concepts-section" style={{ marginTop: '80px', marginLeft: '-80px', marginRight: '-80px', backgroundColor: '#f3f4f6', padding: '80px 160px' }}>
+      <div className="concepts-section" style={{ marginTop: '80px', marginLeft: '-64px', marginRight: '-64px', backgroundColor: '#f3f4f6', padding: '80px 64px' }}>
         <div style={{ marginBottom: '40px' }}>
           <h2 className="concepts-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.6px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Concepts</h2>
           <p className="concepts-desc" style={{ fontSize: '20px', lineHeight: '28px', letterSpacing: '-0.6px', color: '#6b7280', marginBottom: '4px' }}>

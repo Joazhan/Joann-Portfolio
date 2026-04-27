@@ -73,7 +73,7 @@ export default function Navbar() {
           left: 0;
           right: 0;
           z-index: 200;
-          padding: 36px 80px 16px;
+          padding: 36px 64px 16px;
           transition: opacity 0.5s cubic-bezier(0.34, 1.3, 0.64, 1), transform 0.5s cubic-bezier(0.34, 1.3, 0.64, 1);
         }
         .nav-wrapper.hidden {
