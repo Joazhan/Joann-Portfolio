@@ -8,19 +8,9 @@ export default function CustomCursor() {
   const raf = useRef(null)
 
   useEffect(() => {
-    // Only show on Mac
-    const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform) ||
-      (navigator.userAgentData?.platform && /mac/i.test(navigator.userAgentData.platform))
-
-    if (!isMac) {
-      // Leave native cursor as-is for non-Mac users
-      if (cursorRef.current) cursorRef.current.style.display = 'none'
-      return
-    }
-
-    // Hide native cursor only on Mac
+    // Hide native cursor on desktop
     const style = document.createElement('style')
-    style.id = 'mac-cursor-none'
+    style.id = 'custom-cursor-none'
     style.textContent = 'html, body, *, *::before, *::after { cursor: none !important; }'
     document.head.appendChild(style)
 
@@ -44,7 +34,7 @@ export default function CustomCursor() {
     return () => {
       window.removeEventListener('mousemove', move)
       cancelAnimationFrame(raf.current)
-      document.getElementById('mac-cursor-none')?.remove()
+      document.getElementById('custom-cursor-none')?.remove()
     }
   }, [])
 
