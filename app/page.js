@@ -131,7 +131,7 @@ export default function Home() {
       }
       svg.setAttribute('width', w)
       svg.setAttribute('height', h)
-      svg.innerHTML = `<path d="${path}" fill="none" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>`
+      svg.innerHTML = `<path d="${path}" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>`
     }
     const wraps = document.querySelectorAll('.card-squircle-wrap')
     const ro = new ResizeObserver(entries => entries.forEach(e => applySquircle(e.target)))
