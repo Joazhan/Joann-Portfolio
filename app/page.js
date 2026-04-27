@@ -181,6 +181,7 @@ export default function Home() {
         .card-pre { opacity: 0; transform: translateY(30px); }
         .card-in { animation: cardFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
         .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 0 !important; }
+        .main-card { padding-top: 80px !important; min-height: 520px; }
         .card-bottom-container { margin: 0 -32px -32px -32px !important; padding: 24px 32px !important; }
         .card-title { font-size: 24px !important; line-height: 32px !important; }
         .card-desc { font-size: 15px !important; line-height: 22px !important; }
@@ -309,7 +310,7 @@ export default function Home() {
       <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
         {/* NutritionNest */}
         <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-        <Link href="/nn" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
+        <Link href="/nn" className="group flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
           style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
           <div ref={nnImagesWrapRef} style={{ willChange: 'transform', overflow: 'visible' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
@@ -343,7 +344,7 @@ export default function Home() {
         </div>
         {/* Duetti */}
         <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-        <Link href="/duetti" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
+        <Link href="/duetti" className="group flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
           style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
             style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
@@ -377,7 +378,7 @@ export default function Home() {
         </div>
         {/* Lasertaz */}
         <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-        <Link href="/lasertaz" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
+        <Link href="/lasertaz" className="group flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
           style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
             <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
@@ -402,7 +403,7 @@ export default function Home() {
         </div>
         {/* Bookworm */}
         <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-        <Link href="/bookworm" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
+        <Link href="/bookworm" className="group flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
           style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
             <div className="bw-desktop-img" style={{ flex: '0 0 75%', overflow: 'hidden', borderRadius: '12px' }}>
@@ -440,7 +441,7 @@ export default function Home() {
         </div>
         {/* Raymond Hair Salon */}
         <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-        <Link href="/rhs" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
+        <Link href="/rhs" className="group flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
           style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
             <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} quality={100} className="object-contain rounded-xl rhs-desktop-img" style={{ width: '75%', height: 'auto' }} />
