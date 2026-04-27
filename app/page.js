@@ -310,7 +310,7 @@ export default function Home() {
         {/* NutritionNest */}
         <div className="card-squircle-wrap" style={{ position: 'relative' }}>
         <Link href="/nn" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-          style={{ textDecoration: 'none', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
+          style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
           <div ref={nnImagesWrapRef} style={{ willChange: 'transform', overflow: 'visible' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
               <Image src="/Images/NN.png" alt="NutritionNest" width={900} height={600} className="object-contain rounded-xl nn-desktop-img" style={{ width: '75%', height: 'auto' }} />
@@ -344,7 +344,7 @@ export default function Home() {
         {/* Duetti */}
         <div className="card-squircle-wrap" style={{ position: 'relative' }}>
         <Link href="/duetti" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-          style={{ textDecoration: 'none', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
             style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
             <div className="duetti-macbook" style={{ position: 'relative', width: '73%', flexShrink: 0 }}>
@@ -378,7 +378,7 @@ export default function Home() {
         {/* Lasertaz */}
         <div className="card-squircle-wrap" style={{ position: 'relative' }}>
         <Link href="/lasertaz" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-          style={{ textDecoration: 'none', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
             <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
           </div>
@@ -403,7 +403,7 @@ export default function Home() {
         {/* Bookworm */}
         <div className="card-squircle-wrap" style={{ position: 'relative' }}>
         <Link href="/bookworm" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-          style={{ textDecoration: 'none', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
+          style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '20px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
             <div className="bw-desktop-img" style={{ flex: '0 0 75%', overflow: 'hidden', borderRadius: '12px' }}>
               <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678} quality={100}
@@ -441,7 +441,7 @@ export default function Home() {
         {/* Raymond Hair Salon */}
         <div className="card-squircle-wrap" style={{ position: 'relative' }}>
         <Link href="/rhs" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-          style={{ textDecoration: 'none', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+          style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
           <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
             <Image src="/Images/rhs_image (3).png" alt="Raymond Hair Salon" width={955} height={617} quality={100} className="object-contain rounded-xl rhs-desktop-img" style={{ width: '75%', height: 'auto' }} />
             <div className="rhs-phone" style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1430', alignSelf: 'flex-start', marginTop: '1.5%' }}>
@@ -487,7 +487,7 @@ export default function Home() {
           {/* Kalshi */}
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
           <Link href="/kalshi" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-            style={{ textDecoration: 'none', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+            style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
             <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
               <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
@@ -513,7 +513,7 @@ export default function Home() {
           {/* Phia */}
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
           <Link href="/phia" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-            style={{ textDecoration: 'none', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
+            style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
             <div className="w-full transition-all duration-500 group-hover:-translate-y-4"
               style={{ overflow: 'hidden', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.1)' }}>
               <Image
