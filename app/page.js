@@ -150,7 +150,7 @@ export default function Home() {
         }
         .card-pre { opacity: 0; transform: translateY(30px); }
         .card-in { animation: cardFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 10px !important; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1) !important; }
+        .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 10px !important; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08) !important; }
         .main-card { padding-top: 80px !important; padding-bottom: 0 !important; min-height: 600px; }
         .card-bottom-container { margin: 0 -32px -32px -32px !important; padding: 24px 32px !important; }
         .card-title { font-size: 24px !important; line-height: 32px !important; }
