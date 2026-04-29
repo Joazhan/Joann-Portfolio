@@ -392,15 +392,17 @@ export default function Home() {
         {/* Scrolling cards */}
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {/* Kalshi */}
-          <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-          <Link href="/kalshi" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-            style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
-            <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
-              style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-              <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
+          <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className="card-squircle-wrap" style={{ position: 'relative' }}>
+              <Link href="/kalshi" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
+                style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
+                <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
+                  style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+                  <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                </div>
+              </Link>
             </div>
-            <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
-          <div className="flex items-center justify-between card-label-row">
+            <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
               <div className="flex items-center gap-4 card-icon-wrap">
                 <Image src="/Icons/Kalshi_icon.png" alt="Kalshi icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-1">
@@ -409,25 +411,19 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            </div>
-          </Link>
           </div>
           {/* Phia */}
-          <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-          <Link href="/phia" className="group flex flex-col overflow-hidden cursor-pointer project-card card-pre"
-            style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', borderRadius: '32px', paddingTop: '80px', paddingBottom: '40px', paddingLeft: '48px', paddingRight: '48px', gap: '10px' }}>
-            <div className="w-full transition-all duration-500 group-hover:-translate-y-4"
-              style={{ overflow: 'hidden', borderRadius: '12px', border: '1px solid rgba(0,0,0,0.1)' }}>
-              <Image
-                src="/Images/Phia_cover.png"
-                alt="Phia cover"
-                width={1400}
-                height={800}
-                style={{ width: '100%', height: 'auto', display: 'block' }}
-              />
+          <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
+            <div className="card-squircle-wrap" style={{ position: 'relative' }}>
+              <Link href="/phia" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
+                style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
+                <div className="w-full transition-all duration-500 group-hover:-translate-y-4"
+                  style={{ overflow: 'hidden', borderRadius: '12px' }}>
+                  <Image src="/Images/Phia_cover.png" alt="Phia cover" width={1400} height={800} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                </div>
+              </Link>
             </div>
-            <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
-          <div className="flex items-center justify-between card-label-row">
+            <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
               <div className="flex items-center gap-4 card-icon-wrap">
                 <Image src="/Icons/Phia_icon.png" alt="Phia icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-1">
@@ -436,8 +432,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            </div>
-          </Link>
           </div>
         </div>
         </div>
