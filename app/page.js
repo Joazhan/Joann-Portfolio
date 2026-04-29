@@ -263,8 +263,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
             <div className="flex items-center gap-4 card-icon-wrap">
-              <Image src="/Icons/NN_icon.png" alt="NutritionNest icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
-              <div className="flex flex-col gap-1">
+                            <div className="flex flex-col gap-1">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>NutritionNest</span>
                 <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Log nutritional intake and monitor daily calories</span>
               </div>
@@ -289,8 +288,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
             <div className="flex items-center gap-4 card-icon-wrap">
-              <Image src="/Icons/Duetti_icon.png" alt="Duetti icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
-              <div className="flex flex-col gap-1">
+                            <div className="flex flex-col gap-1">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Duetti</span>
                 <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Insight-driven report that simplifies music industry data for artists through visual storytelling</span>
               </div>
@@ -309,8 +307,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
             <div className="flex items-center gap-4 card-icon-wrap">
-              <Image src="/Icons/Lasertaz_icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
-              <div className="flex flex-col gap-1">
+                            <div className="flex flex-col gap-1">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Lasertaz</span>
                 <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Help independent landlords manage their rental properties</span>
               </div>
@@ -339,8 +336,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
             <div className="flex items-center gap-4 card-icon-wrap">
-              <Image src="/Icons/Bookworm_icon.png" alt="Bookworm icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
-              <div className="flex flex-col gap-1">
+                            <div className="flex flex-col gap-1">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Bookworm</span>
                 <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>E-Commerce platform for books and related content</span>
               </div>
@@ -365,8 +361,7 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
             <div className="flex items-center gap-4 card-icon-wrap">
-              <Image src="/Icons/RHS_icon.png" alt="RHS icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
-              <div className="flex flex-col gap-1">
+                            <div className="flex flex-col gap-1">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Raymond Hair Salon</span>
                 <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Scheduling made effortless with online booking</span>
               </div>
@@ -397,8 +392,7 @@ export default function Home() {
             <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
           <div className="flex items-center justify-between card-label-row">
               <div className="flex items-center gap-4 card-icon-wrap">
-                <Image src="/Icons/Kalshi_icon.png" alt="Kalshi icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
-                <div className="flex flex-col gap-1">
+                                <div className="flex flex-col gap-1">
                   <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Kalshi</span>
                   <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>2025 | Desktop extension</span>
                 </div>
@@ -424,8 +418,7 @@ export default function Home() {
             <div className="card-bottom-container" style={{ margin: '0 -48px -40px -48px', padding: '40px 80px' }}>
           <div className="flex items-center justify-between card-label-row">
               <div className="flex items-center gap-4 card-icon-wrap">
-                <Image src="/Icons/Phia_icon.png" alt="Phia icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
-                <div className="flex flex-col gap-1">
+                                <div className="flex flex-col gap-1">
                   <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Phia</span>
                   <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>2025 | Desktop extension | Redesign</span>
                 </div>
