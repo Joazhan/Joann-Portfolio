@@ -37,7 +37,9 @@ This is a **Next.js 16 App Router** portfolio site using **Tailwind CSS v4** and
 
 ## Design Standards
 
-**Card title typography**: `font-size: 24px`, `line-height: 32px`, `letter-spacing: -0.03em`, `font-weight: 500`, `color: #212121`. Apply via `.card-title` class + matching inline style. Mobile override: 20px / 26px.
+**Card title typography**: `font-size: 24px`, `line-height: 32px`, `letter-spacing: -0.03em`, `font-weight: 400`, `color: #212121`. Apply via `.card-title` class + matching inline style. Mobile override: 20px / 26px.
+
+**Card subtext typography**: `font-size: 14px`, `line-height: 20px`, `font-weight: 400`, `color: rgba(10,10,10,0.4)`. Apply via `.card-desc` class + matching inline style.
 
 **Card border**: `box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08)` on `.project-card`. No SVG borders or clip-path squircles.
 
