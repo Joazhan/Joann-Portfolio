@@ -41,6 +41,8 @@ This is a **Next.js 16 App Router** portfolio site using **Tailwind CSS v4** and
 
 **Card subtext typography**: `font-size: 14px`, `line-height: 20px`, `font-weight: 400`, `color: rgba(10,10,10,0.4)`. Apply via `.card-desc` class + matching inline style.
 
+**Card label spacing**: `8px` gap between the card image area and the label row (`padding: '8px 0 0'` on `.card-label-row`). `4px` gap between title and subtext (`gap-1` on the wrapping flex column).
+
 **Card border**: `box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08)` on `.project-card`. No SVG borders or clip-path squircles.
 
 **Card corner radius**: `border-radius: 10px`.
