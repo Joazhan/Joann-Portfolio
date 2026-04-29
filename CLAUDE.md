@@ -34,3 +34,15 @@ This is a **Next.js 16 App Router** portfolio site using **Tailwind CSS v4** and
 **No routing yet**: The `/about` nav link exists in the navbar but no `app/about/` route has been created. The `Joann-Portfolio/` subdirectory appears to be a nested copy of the project — work only in the root directory.
 
 **Path alias**: `@/*` maps to the project root (configured in `jsconfig.json`).
+
+## Design Standards
+
+**Card title typography**: `font-size: 24px`, `line-height: 32px`, `letter-spacing: -0.03em`, `font-weight: 500`, `color: #212121`. Apply via `.card-title` class + matching inline style. Mobile override: 20px / 26px.
+
+**Card border**: `box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08)` on `.project-card`. No SVG borders or clip-path squircles.
+
+**Card corner radius**: `border-radius: 10px`.
+
+**Desktop padding**: `64px` left/right on main content, hero section, navbar, and concepts section.
+
+**Nav links**: `font-size: 14px`, `line-height: 20px`.
