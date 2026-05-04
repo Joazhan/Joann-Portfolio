@@ -93,7 +93,7 @@ export default function Navbar() {
           .nav-hamburger { display: none !important; }
           .nav-mobile-menu { display: none !important; }
           .nav-pill { border: 1px solid rgba(0,0,0,0.1); backdrop-filter: blur(25.1px); -webkit-backdrop-filter: blur(25.1px); background-color: rgba(252,252,252,0.55) !important; }
-          .nav-logo { font-size: 14px; line-height: 20px; }
+          .nav-logo { font-size: 14px; line-height: 20px; letter-spacing: 0px; }
         }
       `}</style>
 
@@ -129,14 +129,14 @@ export default function Navbar() {
           <div className="nav-desktop-links flex items-center gap-6">
             <Link
               href="/"
-              style={{ fontSize: '14px', lineHeight: '20px', color: isActive('/') ? 'black' : 'rgba(0,0,0,0.4)', textDecoration: 'none' }}
+              style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '0px', color: isActive('/') ? 'black' : 'rgba(0,0,0,0.4)', textDecoration: 'none' }}
               className="hover:text-black"
             >
               Work
             </Link>
             <Link
               href="/about"
-              style={{ fontSize: '14px', lineHeight: '20px', color: isActive('/about') ? 'black' : 'rgba(0,0,0,0.4)', textDecoration: 'none' }}
+              style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '0px', color: isActive('/about') ? 'black' : 'rgba(0,0,0,0.4)', textDecoration: 'none' }}
               className="hover:text-black"
             >
               About
@@ -145,7 +145,7 @@ export default function Navbar() {
               href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(0,0,0,0.4)', textDecoration: 'none' }}
+              style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '0px', color: 'rgba(0,0,0,0.4)', textDecoration: 'none' }}
               className="hover:text-black"
             >
               Resume
@@ -154,7 +154,7 @@ export default function Navbar() {
               href="mailto:joannzhang4@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(0,0,0,0.4)', textDecoration: 'none' }}
+              style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '0px', color: 'rgba(0,0,0,0.4)', textDecoration: 'none' }}
               className="hover:text-black"
             >
               Contact
