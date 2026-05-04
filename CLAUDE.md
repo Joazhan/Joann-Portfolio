@@ -50,3 +50,8 @@ This is a **Next.js 16 App Router** portfolio site using **Tailwind CSS v4** and
 **Desktop padding**: `64px` left/right on main content, hero section, navbar, and concepts section.
 
 **Nav links**: `font-size: 14px`, `line-height: 20px`.
+
+**RHS card image/video positioning (approved layout — do not change without user request)**:
+- Container: `height: '620px'`, `alignItems: 'flex-end'`, `justifyContent: 'center'`, `gap: '0px'`
+- Static image (`rhs_image1.png`): `height: '530px'`, `width: 'auto'`, `alignSelf: 'flex-end'`, `marginBottom: '60px'`, `marginRight: '-4px'`
+- Video phone: `height: '480px'`, `aspectRatio: '750/1430'`, `alignSelf: 'flex-end'`, `marginBottom: '92px'`
