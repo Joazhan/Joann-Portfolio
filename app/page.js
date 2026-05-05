@@ -383,15 +383,15 @@ export default function Home() {
         {/* Sticky left label */}
         <div className="concepts-sticky-left" style={{ position: 'sticky', top: '100px', flexShrink: 0, width: '340px' }}>
           <h2 className="concepts-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.6px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Concepts</h2>
-          <p className="concepts-desc" style={{ fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.3px', color: '#6b7280', marginBottom: '4px' }}>
-            I designed these projects after noticing gaps in existing products and wanting to see what a better solution could feel like.
+          <p className="concepts-desc" style={{ fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.3px', color: '#6b7280', marginBottom: '12px' }}>
+            I designed these projects after noticing gaps in existing products and asking myself what a more thoughtful, user-centered solution could look like — one that actually fits how people think and work.
           </p>
           <p className="concepts-desc" style={{ fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.3px', color: '#6b7280' }}>
-            This led me to prototype ideas and explore them hands-on.
+            Each concept started with a real frustration, and led me to prototype, iterate, and explore the problem space hands-on.
           </p>
         </div>
         {/* Stacked cards on the right */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', flex: '0 0 calc(50% - 12px)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', flex: '0 0 calc(50% - 12px)' }}>
           {/* Kalshi */}
           <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="card-squircle-wrap" style={{ position: 'relative' }}>
