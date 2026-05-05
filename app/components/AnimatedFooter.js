@@ -161,16 +161,85 @@ export default function AnimatedFooter() {
   const [ripples, setRipples] = useState([])
   const rippleCounter = useRef(0)
 
-  // Dot-to-text formation animation
-  const [textStarted, setTextStarted] = useState(false)
+  // Canvas particle dot-to-text animation
+  const dotCanvasRef = useRef(null)
+  const animFrameRef = useRef(null)
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return
       observer.disconnect()
-      setTextStarted(true)
-    }, { threshold: 0.2 })
+
+      const canvas = dotCanvasRef.current
+      const footer = footerRef.current
+      if (!canvas || !footer) return
+
+      const dpr = window.devicePixelRatio || 1
+      const W = footer.offsetWidth
+      const H = 200
+      canvas.width = W * dpr
+      canvas.height = H * dpr
+      const ctx = canvas.getContext('2d')
+      ctx.scale(dpr, dpr)
+
+      // Sample "Get in touch!" pixel positions from a temp canvas
+      const FONT_SIZE = 14
+      const TEXT_X = 64
+      const TEXT_Y = 86  // 72px top padding + 14px baseline
+      const tmp = document.createElement('canvas')
+      tmp.width = 300
+      tmp.height = 20
+      const tctx = tmp.getContext('2d')
+      tctx.font = `500 ${FONT_SIZE}px Geist, -apple-system, BlinkMacSystemFont, sans-serif`
+      tctx.fillStyle = '#000'
+      tctx.fillText('Get in touch!', 0, FONT_SIZE)
+      const { data } = tctx.getImageData(0, 0, tmp.width, tmp.height)
+
+      const targets = []
+      for (let y = 0; y < tmp.height; y++) {
+        for (let x = 0; x < tmp.width; x++) {
+          if (data[(y * tmp.width + x) * 4 + 3] > 100) {
+            targets.push({ x: TEXT_X + x, y: TEXT_Y - FONT_SIZE + y })
+          }
+        }
+      }
+      if (!targets.length) return
+
+      const DOT_COLORS = ['#4ade80','#fb923c','#60a5fa','#a78bfa','#f87171','#fbbf24','#f472b6','#2dd4bf']
+      const particles = targets.map((t, i) => ({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        tx: t.x,
+        ty: t.y,
+        vx: (Math.random() - 0.5) * 8,
+        vy: (Math.random() - 0.5) * 8,
+        color: DOT_COLORS[i % DOT_COLORS.length],
+      }))
+
+      let frames = 0
+      const tick = () => {
+        ctx.clearRect(0, 0, W, H)
+        let moving = false
+        for (const p of particles) {
+          p.vx += (p.tx - p.x) * 0.07
+          p.vy += (p.ty - p.y) * 0.07
+          p.vx *= 0.78
+          p.vy *= 0.78
+          p.x += p.vx
+          p.y += p.vy
+          if (Math.abs(p.tx - p.x) > 0.4 || Math.abs(p.ty - p.y) > 0.4) moving = true
+          ctx.beginPath()
+          ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2)
+          ctx.fillStyle = p.color
+          ctx.fill()
+        }
+        frames++
+        if (moving && frames < 300) animFrameRef.current = requestAnimationFrame(tick)
+      }
+      animFrameRef.current = requestAnimationFrame(tick)
+    }, { threshold: 0.1 })
+
     if (footerRef.current) observer.observe(footerRef.current)
-    return () => observer.disconnect()
+    return () => { observer.disconnect(); cancelAnimationFrame(animFrameRef.current) }
   }, [])
   // Per-group piano state (7 shape groups)
   const [groupPlayKeys, setGroupPlayKeys] = useState(Array(7).fill(0))
@@ -294,11 +363,6 @@ export default function AnimatedFooter() {
       @keyframes cursor-glow {
         0%, 100% { box-shadow: 0 0 8px 3px var(--cursor-color); }
         50%       { box-shadow: 0 0 18px 7px var(--cursor-color); }
-      }
-      @keyframes dot-to-char {
-        0%   { transform: scale(0.08); filter: blur(6px); opacity: 0; }
-        40%  { filter: blur(3px); opacity: 0.5; }
-        100% { transform: scale(1);    filter: blur(0px); opacity: 1; }
       }
       @keyframes piano-bounce {
         0%   { transform: translateY(0);     box-shadow: 0 0 5px  1px var(--glow-dim);    }
@@ -426,20 +490,15 @@ export default function AnimatedFooter() {
         }} />
       ))}
 
+      {/* Dot particle canvas — forms Get in touch from colored dots */}
+      <canvas ref={dotCanvasRef} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '200px', pointerEvents: 'none', zIndex: topZ + 2 }} />
+
       {/* Footer content */}
-      <div className="footer-content" style={{ position: 'absolute', top: 0, left: 0, width: 'fit-content', zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '64px', pointerEvents: 'none' }}>
-        <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '500', color: headingCol, marginBottom: '8px', pointerEvents: 'all' }}>
-          {'Get in touch!'.split('').map((char, i) => (
-            <span key={i} style={{
-              display: 'inline-block',
-              opacity: textStarted ? undefined : 0,
-              animation: textStarted ? `dot-to-char 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${i * 45}ms both` : 'none',
-            }}>{char === ' ' ? ' ' : char}</span>
-          ))}
-        </p>
+      <div className='footer-content' style={{ position: 'absolute', top: 0, left: 0, width: 'fit-content', zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '64px', pointerEvents: 'none' }}>
+        <div style={{ height: '28px' }} />
         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px', pointerEvents: 'all' }}>
-          <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
-          <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Resume ↗</a>
+          <a href='mailto:joannzhang4@gmail.com' style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
+          <a href='https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing' target='_blank' rel='noopener noreferrer' style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Resume ↗</a>
         </div>
         <p style={{ fontSize: '14px', lineHeight: '20px', color: copyCol, pointerEvents: 'all' }}>© Joann Zhang</p>
       </div>
