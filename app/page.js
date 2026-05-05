@@ -379,9 +379,8 @@ export default function Home() {
       </section>
       {/* Concepts Section */}
       <div className="concepts-section" style={{ marginTop: '80px', marginLeft: '-64px', marginRight: '-64px', backgroundColor: '#f3f4f6', padding: '80px 64px' }}>
-        <div className="concepts-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        {/* Sticky left label */}
-        <div className="concepts-sticky-left" style={{ position: 'sticky', top: '100px', flexShrink: 0, width: '260px' }}>
+        {/* Header */}
+        <div style={{ marginBottom: '40px' }}>
           <h2 className="concepts-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.6px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Concepts</h2>
           <p className="concepts-desc" style={{ fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.3px', color: '#6b7280', marginBottom: '4px' }}>
             I designed these projects after noticing gaps in existing products and wanting to see what a better solution could feel like.
@@ -390,8 +389,8 @@ export default function Home() {
             This led me to prototype ideas and explore them hands-on.
           </p>
         </div>
-        {/* Scrolling cards */}
-        <div style={{ flex: '0 0 540px', display: 'flex', flexDirection: 'column', gap: '24px', alignSelf: 'flex-start' }}>
+        {/* Cards — same 1fr 1fr grid as project cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
           {/* Kalshi */}
           <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="card-squircle-wrap" style={{ position: 'relative' }}>
@@ -434,7 +433,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </main>
