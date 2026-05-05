@@ -382,11 +382,11 @@ export default function Home() {
         <div className="concepts-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         {/* Sticky left label */}
         <div className="concepts-sticky-left" style={{ position: 'sticky', top: '100px', flexShrink: 0, width: '520px' }}>
-          <h2 className="concepts-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.6px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Concepts</h2>
-          <p className="concepts-desc" style={{ fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.3px', color: '#6b7280', marginBottom: '4px' }}>
+          <h2 className="concepts-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.6px', fontWeight: '400', color: '#212121', marginBottom: '8px' }}>Concepts</h2>
+          <p className="concepts-desc" style={{ fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.3px', color: '#969696', marginBottom: '4px' }}>
             I designed these projects after noticing gaps in existing products and wanting to see what a better solution could feel like.
           </p>
-          <p className="concepts-desc" style={{ fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.3px', color: '#6b7280' }}>
+          <p className="concepts-desc" style={{ fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.3px', color: '#969696' }}>
             This led me to prototype ideas and explore them hands-on.
           </p>
         </div>
