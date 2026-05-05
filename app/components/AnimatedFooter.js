@@ -160,6 +160,28 @@ export default function AnimatedFooter() {
   const [topZ, setTopZ] = useState(INITIAL_SHAPES.length + 1)
   const [ripples, setRipples] = useState([])
   const rippleCounter = useRef(0)
+
+  // Typewriter effect for "Get in touch!"
+  const TYPEWRITER_TEXT = 'Get in touch!'
+  const [typedText, setTypedText] = useState('')
+  const [showCursor, setShowCursor] = useState(false)
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      observer.disconnect()
+      let i = 0
+      const interval = setInterval(() => {
+        i++
+        setTypedText(TYPEWRITER_TEXT.slice(0, i))
+        if (i >= TYPEWRITER_TEXT.length) {
+          clearInterval(interval)
+          setShowCursor(true)
+        }
+      }, 60)
+    }, { threshold: 0.2 })
+    if (footerRef.current) observer.observe(footerRef.current)
+    return () => observer.disconnect()
+  }, [])
   // Per-group piano state (7 shape groups)
   const [groupPlayKeys, setGroupPlayKeys] = useState(Array(7).fill(0))
   const [groupPlaying,  setGroupPlaying]  = useState(Array(7).fill(false))
@@ -283,6 +305,7 @@ export default function AnimatedFooter() {
         0%, 100% { box-shadow: 0 0 8px 3px var(--cursor-color); }
         50%       { box-shadow: 0 0 18px 7px var(--cursor-color); }
       }
+      @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
       @keyframes piano-bounce {
         0%   { transform: translateY(0);     box-shadow: 0 0 5px  1px var(--glow-dim);    }
         30%  { transform: translateY(-10px); box-shadow: 0 0 18px 7px var(--glow-bright); }
@@ -411,7 +434,9 @@ export default function AnimatedFooter() {
 
       {/* Footer content */}
       <div className="footer-content" style={{ position: 'absolute', top: 0, left: 0, width: 'fit-content', zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '64px', pointerEvents: 'none' }}>
-        <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '500', color: headingCol, marginBottom: '8px', pointerEvents: 'all' }}>Get in touch!</p>
+        <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '500', color: headingCol, marginBottom: '8px', pointerEvents: 'all' }}>
+          {typedText}<span style={{ opacity: showCursor ? 1 : 0, animation: showCursor ? 'blink 1s step-end infinite' : 'none' }}>|</span>
+        </p>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px', pointerEvents: 'all' }}>
           <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
           <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Resume ↗</a>
