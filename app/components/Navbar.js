@@ -167,6 +167,13 @@ export default function Navbar() {
             >
               Contact
             </a>
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('toggle-joannllm'))}
+              style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '0px', color: 'rgba(0,0,0,0.4)', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', padding: 0, fontFamily: 'inherit' }}
+              className="hover:text-black"
+            >
+              ✦ JoannLLM
+            </button>
           </div>
 
           {/* Hamburger / Close button */}
