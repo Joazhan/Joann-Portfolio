@@ -22,19 +22,27 @@ export default function Navbar() {
 
   const [menuOpen, setMenuOpen] = useState(false)
   const [workOpen, setWorkOpen] = useState(false)
+  const ticking = useRef(false)
 
   // Scroll hide behavior — direct DOM manipulation, no re-render
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      if (navRef.current) {
-        if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-          navRef.current.classList.add('nav-hidden')
-        } else {
-          navRef.current.classList.remove('nav-hidden')
+      if (ticking.current) return
+      ticking.current = true
+      requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY
+        if (navRef.current) {
+          if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+            navRef.current.style.transition = 'opacity 0.25s ease, transform 0.25s ease'
+            navRef.current.classList.add('nav-hidden')
+          } else {
+            navRef.current.style.transition = 'opacity 0.15s ease, transform 0.15s ease'
+            navRef.current.classList.remove('nav-hidden')
+          }
         }
-      }
-      lastScrollY.current = currentScrollY
+        lastScrollY.current = currentScrollY
+        ticking.current = false
+      })
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
@@ -74,7 +82,7 @@ export default function Navbar() {
           right: 0;
           z-index: 200;
           padding: 36px 64px 16px;
-          transition: opacity 0.2s ease, transform 0.2s ease;
+          transition: opacity 0.15s ease, transform 0.15s ease;
         }
         .nav-wrapper.nav-hidden {
           opacity: 0;
