@@ -205,35 +205,27 @@ export default function AnimatedFooter() {
       if (!targets.length) return
 
       const DOT_COLORS = ['#4ade80','#fb923c','#60a5fa','#a78bfa','#f87171','#fbbf24','#f472b6','#2dd4bf']
-      const particles = targets.map((t, i) => ({
-        x: Math.random() * W,
-        y: Math.random() * H,
-        tx: t.x,
-        ty: t.y,
-        vx: (Math.random() - 0.5) * 8,
-        vy: (Math.random() - 0.5) * 8,
-        color: DOT_COLORS[i % DOT_COLORS.length],
-      }))
 
-      let frames = 0
+      // Shuffle targets so dots appear in random order across the text
+      for (let i = targets.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [targets[i], targets[j]] = [targets[j], targets[i]]
+      }
+
+      // Reveal ~4 dots per frame (~2s total at 60fps for ~500 dots)
+      let revealed = 0
+      const DOTS_PER_FRAME = Math.max(1, Math.ceil(targets.length / 120))
+
       const tick = () => {
-        ctx.clearRect(0, 0, W, H)
-        let moving = false
-        for (const p of particles) {
-          p.vx += (p.tx - p.x) * 0.07
-          p.vy += (p.ty - p.y) * 0.07
-          p.vx *= 0.78
-          p.vy *= 0.78
-          p.x += p.vx
-          p.y += p.vy
-          if (Math.abs(p.tx - p.x) > 0.4 || Math.abs(p.ty - p.y) > 0.4) moving = true
+        // Draw new dots this frame — no clear, so dots accumulate
+        for (let i = 0; i < DOTS_PER_FRAME && revealed < targets.length; i++, revealed++) {
+          const t = targets[revealed]
           ctx.beginPath()
-          ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2)
-          ctx.fillStyle = p.color
+          ctx.arc(t.x, t.y, 1.5, 0, Math.PI * 2)
+          ctx.fillStyle = DOT_COLORS[revealed % DOT_COLORS.length]
           ctx.fill()
         }
-        frames++
-        if (moving && frames < 300) animFrameRef.current = requestAnimationFrame(tick)
+        if (revealed < targets.length) animFrameRef.current = requestAnimationFrame(tick)
       }
       animFrameRef.current = requestAnimationFrame(tick)
     }, { threshold: 0.1 })
