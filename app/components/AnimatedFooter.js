@@ -410,7 +410,7 @@ export default function AnimatedFooter() {
       ))}
 
       {/* Footer content */}
-      <div className="footer-content" style={{ position: 'absolute', top: 0, left: 0, width: 'fit-content', zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '80px', pointerEvents: 'none' }}>
+      <div className="footer-content" style={{ position: 'absolute', top: 0, left: 0, width: 'fit-content', zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '64px', pointerEvents: 'none' }}>
         <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '500', color: headingCol, marginBottom: '8px', pointerEvents: 'all' }}>Get in touch!</p>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px', pointerEvents: 'all' }}>
           <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
