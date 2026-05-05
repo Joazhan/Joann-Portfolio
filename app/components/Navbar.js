@@ -115,7 +115,7 @@ export default function Navbar() {
             className="nav-logo"
             style={{
               letterSpacing: '0px',
-              fontWeight: '400',
+              fontWeight: '500',
               color: 'black',
               textDecoration: 'none',
               whiteSpace: 'nowrap',
