@@ -114,8 +114,8 @@ export default function Navbar() {
             onClick={closeMenu}
             className="nav-logo"
             style={{
-              letterSpacing: '-0.02em',
-              fontWeight: '500',
+              letterSpacing: '0px',
+              fontWeight: '400',
               color: 'black',
               textDecoration: 'none',
               whiteSpace: 'nowrap',
