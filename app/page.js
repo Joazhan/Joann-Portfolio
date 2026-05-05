@@ -391,7 +391,7 @@ export default function Home() {
           </p>
         </div>
         {/* Stacked cards on the right */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '1fr', flex: 1, marginLeft: '64px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', flex: '0 0 calc(50% - 12px)' }}>
           {/* Kalshi */}
           <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="card-squircle-wrap" style={{ position: 'relative' }}>
