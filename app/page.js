@@ -381,7 +381,7 @@ export default function Home() {
       <div className="concepts-section" style={{ marginTop: '80px', marginLeft: '-64px', marginRight: '-64px', backgroundColor: '#f3f4f6', padding: '80px 64px' }}>
         <div className="concepts-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         {/* Sticky left label */}
-        <div className="concepts-sticky-left" style={{ position: 'sticky', top: '100px', flexShrink: 0, width: '420px' }}>
+        <div className="concepts-sticky-left" style={{ position: 'sticky', top: '100px', flexShrink: 0, width: '520px' }}>
           <h2 className="concepts-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.6px', fontWeight: '500', color: '#212121', marginBottom: '8px' }}>Concepts</h2>
           <p className="concepts-desc" style={{ fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.3px', color: '#6b7280', marginBottom: '4px' }}>
             I designed these projects after noticing gaps in existing products and wanting to see what a better solution could feel like.
