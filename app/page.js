@@ -378,7 +378,7 @@ export default function Home() {
         </div>
       </section>
       {/* Concepts Section */}
-      <div className="concepts-section" style={{ marginTop: '80px', marginLeft: '-64px', marginRight: '-64px', backgroundColor: '#f3f4f6', padding: '80px 64px' }}>
+      <div className="concepts-section" style={{ marginTop: '80px', marginLeft: '-64px', marginRight: '-64px', padding: '80px 64px', border: '1px solid rgba(0,0,0,0.2)' }}>
         <div className="concepts-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         {/* Sticky left label */}
         <div className="concepts-sticky-left" style={{ position: 'sticky', top: '100px', flexShrink: 0, width: '520px' }}>
