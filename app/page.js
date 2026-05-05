@@ -391,7 +391,7 @@ export default function Home() {
           </p>
         </div>
         {/* Scrolling cards */}
-        <div style={{ flex: 1, maxWidth: '540px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <div style={{ flex: '0 0 540px', display: 'flex', flexDirection: 'column', gap: '24px', alignSelf: 'flex-start' }}>
           {/* Kalshi */}
           <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="card-squircle-wrap" style={{ position: 'relative' }}>
