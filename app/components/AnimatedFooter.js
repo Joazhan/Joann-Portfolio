@@ -181,53 +181,59 @@ export default function AnimatedFooter() {
       const ctx = canvas.getContext('2d')
       ctx.scale(dpr, dpr)
 
-      // Sample "Get in touch!" pixel positions from a temp canvas
-      const FONT_SIZE = 14
-      const TEXT_X = 64
-      const TEXT_Y = 86  // 72px top padding + 14px baseline
-      const tmp = document.createElement('canvas')
-      tmp.width = 300
-      tmp.height = 20
-      const tctx = tmp.getContext('2d')
-      tctx.font = `500 ${FONT_SIZE}px Geist, -apple-system, BlinkMacSystemFont, sans-serif`
-      tctx.fillStyle = '#000'
-      tctx.fillText('Get in touch!', 0, FONT_SIZE)
-      const { data } = tctx.getImageData(0, 0, tmp.width, tmp.height)
+      // Wait for fonts to load, then sample at 4x scale for crisp letterforms
+      document.fonts.ready.then(() => {
+        const SCALE = 4
+        const FONT_SIZE = 14
+        const TEXT_X = 64
+        const TEXT_Y = 72 + FONT_SIZE  // match footer-content top padding + baseline
+        const tmp = document.createElement('canvas')
+        tmp.width = 400 * SCALE
+        tmp.height = 24 * SCALE
+        const tctx = tmp.getContext('2d')
+        tctx.font = `500 ${FONT_SIZE * SCALE}px Geist, -apple-system, BlinkMacSystemFont, sans-serif`
+        tctx.fillStyle = '#000'
+        tctx.fillText('Get in touch!', 0, FONT_SIZE * SCALE)
+        const { data } = tctx.getImageData(0, 0, tmp.width, tmp.height)
 
-      const targets = []
-      for (let y = 0; y < tmp.height; y++) {
-        for (let x = 0; x < tmp.width; x++) {
-          if (data[(y * tmp.width + x) * 4 + 3] > 100) {
-            targets.push({ x: TEXT_X + x, y: TEXT_Y - FONT_SIZE + y })
+        const targets = []
+        const STEP = 2  // sample every 2px in 4x space = every 0.5px in display space
+        for (let y = 0; y < tmp.height; y += STEP) {
+          for (let x = 0; x < tmp.width; x += STEP) {
+            if (data[(y * tmp.width + x) * 4 + 3] > 128) {
+              targets.push({
+                x: TEXT_X + x / SCALE,
+                y: TEXT_Y - FONT_SIZE + y / SCALE,
+              })
+            }
           }
         }
-      }
-      if (!targets.length) return
+        if (!targets.length) return
 
-      const DOT_COLORS = ['#4ade80','#fb923c','#60a5fa','#a78bfa','#f87171','#fbbf24','#f472b6','#2dd4bf']
+        const DOT_COLORS = ['#4ade80','#fb923c','#60a5fa','#a78bfa','#f87171','#fbbf24','#f472b6','#2dd4bf']
 
-      // Shuffle targets so dots appear in random order across the text
-      for (let i = targets.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [targets[i], targets[j]] = [targets[j], targets[i]]
-      }
-
-      // Reveal ~4 dots per frame (~2s total at 60fps for ~500 dots)
-      let revealed = 0
-      const DOTS_PER_FRAME = Math.max(1, Math.ceil(targets.length / 120))
-
-      const tick = () => {
-        // Draw new dots this frame — no clear, so dots accumulate
-        for (let i = 0; i < DOTS_PER_FRAME && revealed < targets.length; i++, revealed++) {
-          const t = targets[revealed]
-          ctx.beginPath()
-          ctx.arc(t.x, t.y, 1.5, 0, Math.PI * 2)
-          ctx.fillStyle = DOT_COLORS[revealed % DOT_COLORS.length]
-          ctx.fill()
+        // Shuffle for random reveal order
+        for (let i = targets.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [targets[i], targets[j]] = [targets[j], targets[i]]
         }
-        if (revealed < targets.length) animFrameRef.current = requestAnimationFrame(tick)
-      }
-      animFrameRef.current = requestAnimationFrame(tick)
+
+        // Reveal over ~2s at 60fps
+        let revealed = 0
+        const DOTS_PER_FRAME = Math.max(1, Math.ceil(targets.length / 120))
+
+        const tick = () => {
+          for (let i = 0; i < DOTS_PER_FRAME && revealed < targets.length; i++, revealed++) {
+            const t = targets[revealed]
+            ctx.beginPath()
+            ctx.arc(t.x, t.y, 1, 0, Math.PI * 2)
+            ctx.fillStyle = DOT_COLORS[revealed % DOT_COLORS.length]
+            ctx.fill()
+          }
+          if (revealed < targets.length) animFrameRef.current = requestAnimationFrame(tick)
+        }
+        animFrameRef.current = requestAnimationFrame(tick)
+      }) // end document.fonts.ready
     }, { threshold: 0.1 })
 
     if (footerRef.current) observer.observe(footerRef.current)
