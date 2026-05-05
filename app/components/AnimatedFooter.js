@@ -219,9 +219,9 @@ export default function AnimatedFooter() {
           [targets[i], targets[j]] = [targets[j], targets[i]]
         }
 
-        // Reveal over ~2s at 60fps
+        // Reveal over ~4s at 60fps
         let revealed = 0
-        const DOTS_PER_FRAME = Math.max(1, Math.ceil(targets.length / 120))
+        const DOTS_PER_FRAME = Math.max(1, Math.ceil(targets.length / 240))
 
         const tick = () => {
           for (let i = 0; i < DOTS_PER_FRAME && revealed < targets.length; i++, revealed++) {
