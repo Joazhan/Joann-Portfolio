@@ -164,6 +164,7 @@ export default function AnimatedFooter() {
   // Canvas particle dot-to-text animation
   const dotCanvasRef = useRef(null)
   const animFrameRef = useRef(null)
+  const [textVisible, setTextVisible] = useState(false)
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return
@@ -230,7 +231,14 @@ export default function AnimatedFooter() {
             ctx.fillStyle = DOT_COLORS[revealed % DOT_COLORS.length]
             ctx.fill()
           }
-          if (revealed < targets.length) animFrameRef.current = requestAnimationFrame(tick)
+          if (revealed < targets.length) {
+            animFrameRef.current = requestAnimationFrame(tick)
+          } else {
+            // All dots placed — fade canvas out and reveal real text
+            const c = dotCanvasRef.current
+            if (c) { c.style.transition = 'opacity 0.6s ease'; c.style.opacity = '0' }
+            setTextVisible(true)
+          }
         }
         animFrameRef.current = requestAnimationFrame(tick)
       }) // end document.fonts.ready
@@ -493,7 +501,7 @@ export default function AnimatedFooter() {
 
       {/* Footer content */}
       <div className='footer-content' style={{ position: 'absolute', top: 0, left: 0, width: 'fit-content', zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '64px', pointerEvents: 'none' }}>
-        <div style={{ height: '28px' }} />
+        <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '400', color: headingCol, marginBottom: '8px', pointerEvents: 'all', opacity: textVisible ? 1 : 0, transition: 'opacity 0.6s ease' }}>Get in touch!</p>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px', pointerEvents: 'all' }}>
           <a href='mailto:joannzhang4@gmail.com' style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
           <a href='https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing' target='_blank' rel='noopener noreferrer' style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Resume ↗</a>
