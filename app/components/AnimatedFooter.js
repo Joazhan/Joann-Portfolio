@@ -161,23 +161,13 @@ export default function AnimatedFooter() {
   const [ripples, setRipples] = useState([])
   const rippleCounter = useRef(0)
 
-  // Typewriter effect for "Get in touch!"
-  const TYPEWRITER_TEXT = 'Get in touch!'
-  const [typedText, setTypedText] = useState('')
-  const [showCursor, setShowCursor] = useState(false)
+  // Dot-to-text formation animation
+  const [textStarted, setTextStarted] = useState(false)
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return
       observer.disconnect()
-      let i = 0
-      const interval = setInterval(() => {
-        i++
-        setTypedText(TYPEWRITER_TEXT.slice(0, i))
-        if (i >= TYPEWRITER_TEXT.length) {
-          clearInterval(interval)
-          setShowCursor(true)
-        }
-      }, 60)
+      setTextStarted(true)
     }, { threshold: 0.2 })
     if (footerRef.current) observer.observe(footerRef.current)
     return () => observer.disconnect()
@@ -305,7 +295,11 @@ export default function AnimatedFooter() {
         0%, 100% { box-shadow: 0 0 8px 3px var(--cursor-color); }
         50%       { box-shadow: 0 0 18px 7px var(--cursor-color); }
       }
-      @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+      @keyframes dot-to-char {
+        0%   { transform: scale(0.08); filter: blur(6px); opacity: 0; }
+        40%  { filter: blur(3px); opacity: 0.5; }
+        100% { transform: scale(1);    filter: blur(0px); opacity: 1; }
+      }
       @keyframes piano-bounce {
         0%   { transform: translateY(0);     box-shadow: 0 0 5px  1px var(--glow-dim);    }
         30%  { transform: translateY(-10px); box-shadow: 0 0 18px 7px var(--glow-bright); }
@@ -435,7 +429,13 @@ export default function AnimatedFooter() {
       {/* Footer content */}
       <div className="footer-content" style={{ position: 'absolute', top: 0, left: 0, width: 'fit-content', zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '64px', pointerEvents: 'none' }}>
         <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '500', color: headingCol, marginBottom: '8px', pointerEvents: 'all' }}>
-          {typedText}<span style={{ opacity: showCursor ? 1 : 0, animation: showCursor ? 'blink 1s step-end infinite' : 'none' }}>|</span>
+          {'Get in touch!'.split('').map((char, i) => (
+            <span key={i} style={{
+              display: 'inline-block',
+              opacity: textStarted ? undefined : 0,
+              animation: textStarted ? `dot-to-char 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${i * 45}ms both` : 'none',
+            }}>{char === ' ' ? ' ' : char}</span>
+          ))}
         </p>
         <div style={{ display: 'flex', gap: '16px', marginBottom: '8px', pointerEvents: 'all' }}>
           <a href="mailto:joannzhang4@gmail.com" style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
