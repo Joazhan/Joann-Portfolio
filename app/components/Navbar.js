@@ -29,9 +29,9 @@ export default function Navbar() {
       const currentScrollY = window.scrollY
       if (navRef.current) {
         if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-          navRef.current.classList.add('hidden')
+          navRef.current.classList.add('nav-hidden')
         } else {
-          navRef.current.classList.remove('hidden')
+          navRef.current.classList.remove('nav-hidden')
         }
       }
       lastScrollY.current = currentScrollY
@@ -76,7 +76,7 @@ export default function Navbar() {
           padding: 36px 64px 16px;
           transition: opacity 0.5s cubic-bezier(0.34, 1.3, 0.64, 1), transform 0.5s cubic-bezier(0.34, 1.3, 0.64, 1);
         }
-        .nav-wrapper.hidden {
+        .nav-wrapper.nav-hidden {
           opacity: 0;
           transform: translateY(-28px);
           pointer-events: none;
