@@ -244,7 +244,7 @@ export default function Home() {
         </div>
         {/* Hero text */}
         <div className={`flex justify-center ${introComplete ? 'hero-in' : 'hero-pre'}`} style={{ position: 'relative', zIndex: 1, paddingTop: '40px', paddingBottom: '40px' }}>
-          <p className="hero-text-p" style={{ fontSize: '28px', lineHeight: '36px', letterSpacing: '-0.03em', fontWeight: '400', color: 'black', maxWidth: '1000px', width: '100%', textAlign: 'left' }}>
+          <p className="hero-text-p" style={{ fontSize: '28px', lineHeight: '36px', letterSpacing: '-0.03em', fontWeight: '400', color: 'rgb(33, 33, 33)', maxWidth: '1000px', width: '100%', textAlign: 'left' }}>
             SF-based product designer rooted in both visual design and product thinking,{" "}
             <span className="text-gray-400">focused on creating clear, high-quality experiences.</span>
           </p>
