@@ -502,7 +502,7 @@ export default function AnimatedFooter() {
       {/* Footer content */}
       <div className='footer-content' style={{ position: 'absolute', top: 0, left: 0, width: 'fit-content', zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '64px', pointerEvents: 'none' }}>
         <div style={{
-          display: 'flex', flexDirection: 'column', gap: '8px',
+          display: 'flex', flexDirection: 'column', gap: '4px',
           background: dark ? 'rgba(30,30,30,0.7)' : 'rgba(252,252,252,0.75)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',

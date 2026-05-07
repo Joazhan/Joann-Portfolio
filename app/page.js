@@ -335,7 +335,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-            <div className="flex items-center gap-4 card-icon-wrap">
+            <div className="flex items-center gap-3 card-icon-wrap">
               <Image src="/Icons/NN_icon.png" alt="NutritionNest icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>NutritionNest</span>
@@ -361,7 +361,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-            <div className="flex items-center gap-4 card-icon-wrap">
+            <div className="flex items-center gap-3 card-icon-wrap">
               <Image src="/Icons/Duetti_icon.png" alt="Duetti icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Duetti</span>
@@ -381,7 +381,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-            <div className="flex items-center gap-4 card-icon-wrap">
+            <div className="flex items-center gap-3 card-icon-wrap">
               <Image src="/Icons/Lasertaz_icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Lasertaz</span>
@@ -411,7 +411,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-            <div className="flex items-center gap-4 card-icon-wrap">
+            <div className="flex items-center gap-3 card-icon-wrap">
               <Image src="/Icons/Bookworm_icon.png" alt="Bookworm icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Bookworm</span>
@@ -437,7 +437,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-            <div className="flex items-center gap-4 card-icon-wrap">
+            <div className="flex items-center gap-3 card-icon-wrap">
               <Image src="/Icons/RHS_icon.png" alt="RHS icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Raymond Hair Salon</span>
@@ -474,7 +474,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-              <div className="flex items-center gap-4 card-icon-wrap">
+              <div className="flex items-center gap-3 card-icon-wrap">
                 <Image src="/Icons/Kalshi_icon.png" alt="Kalshi icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-0">
                   <span style={{ fontSize: '12px', lineHeight: '16px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
@@ -495,7 +495,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-              <div className="flex items-center gap-4 card-icon-wrap">
+              <div className="flex items-center gap-3 card-icon-wrap">
                 <Image src="/Icons/Phia_icon.png" alt="Phia icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-0">
                   <span style={{ fontSize: '12px', lineHeight: '16px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
