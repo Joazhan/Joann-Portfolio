@@ -501,12 +501,14 @@ export default function AnimatedFooter() {
 
       {/* Footer content */}
       <div className='footer-content' style={{ position: 'absolute', top: 0, left: 0, width: 'fit-content', zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '64px', pointerEvents: 'none' }}>
-        <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '400', color: headingCol, marginBottom: '8px', pointerEvents: 'all', opacity: textVisible ? 1 : 0, transition: 'opacity 0.6s ease' }}>Get in touch!</p>
-        <div style={{ display: 'flex', gap: '16px', marginBottom: '8px', pointerEvents: 'all' }}>
-          <a href='mailto:joannzhang4@gmail.com' style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
-          <a href='https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing' target='_blank' rel='noopener noreferrer' style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Resume ↗</a>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '400', color: headingCol, margin: 0, pointerEvents: 'all', opacity: textVisible ? 1 : 0, transition: 'opacity 0.6s ease' }}>Get in touch!</p>
+          <div style={{ display: 'flex', gap: '16px', pointerEvents: 'all' }}>
+            <a href='mailto:joannzhang4@gmail.com' style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
+            <a href='https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing' target='_blank' rel='noopener noreferrer' style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Resume ↗</a>
+          </div>
+          <p style={{ fontSize: '14px', lineHeight: '20px', color: copyCol, margin: 0, pointerEvents: 'all' }}>© Joann Zhang</p>
         </div>
-        <p style={{ fontSize: '14px', lineHeight: '20px', color: copyCol, pointerEvents: 'all' }}>© Joann Zhang</p>
       </div>
     </footer>
 
