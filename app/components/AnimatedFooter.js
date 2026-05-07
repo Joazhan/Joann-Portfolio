@@ -501,13 +501,22 @@ export default function AnimatedFooter() {
 
       {/* Footer content */}
       <div className='footer-content' style={{ position: 'absolute', top: 0, left: 0, width: 'fit-content', zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '64px', pointerEvents: 'none' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '400', color: headingCol, margin: 0, pointerEvents: 'all', opacity: textVisible ? 1 : 0, transition: 'opacity 0.6s ease' }}>Get in touch!</p>
-          <div style={{ display: 'flex', gap: '16px', pointerEvents: 'all' }}>
+        <div style={{
+          display: 'flex', flexDirection: 'column', gap: '8px',
+          background: dark ? 'rgba(30,30,30,0.7)' : 'rgba(252,252,252,0.75)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          border: `1px solid ${dark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'}`,
+          borderRadius: '16px',
+          padding: '20px 24px',
+          pointerEvents: 'all',
+        }}>
+          <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '400', color: headingCol, margin: 0, opacity: textVisible ? 1 : 0, transition: 'opacity 0.6s ease' }}>Get in touch!</p>
+          <div style={{ display: 'flex', gap: '16px' }}>
             <a href='mailto:joannzhang4@gmail.com' style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
             <a href='https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing' target='_blank' rel='noopener noreferrer' style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Resume ↗</a>
           </div>
-          <p style={{ fontSize: '14px', lineHeight: '20px', color: copyCol, margin: 0, pointerEvents: 'all' }}>© Joann Zhang</p>
+          <p style={{ fontSize: '14px', lineHeight: '20px', color: copyCol, margin: 0 }}>© Joann Zhang</p>
         </div>
       </div>
     </footer>
