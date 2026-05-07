@@ -4,7 +4,6 @@ import { Agentation } from "agentation";
 import CustomCursor from "./components/CustomCursor";
 import AnimatedFooter from "./components/AnimatedFooter";
 import Navbar from "./components/Navbar";
-import ChatWidget from "./components/ChatWidget";
 const geist = Geist({
   subsets: ["latin"],
 });
@@ -22,7 +21,6 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <AnimatedFooter />
-        <ChatWidget />
         {process.env.NODE_ENV === "development" && <Agentation />}
       </body>
     </html>
