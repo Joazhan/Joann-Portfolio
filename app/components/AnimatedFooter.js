@@ -506,8 +506,6 @@ export default function AnimatedFooter() {
           background: dark ? 'rgba(30,30,30,0.7)' : 'rgba(252,252,252,0.75)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
-          border: `1px solid ${dark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'}`,
-          borderRadius: '16px',
           padding: '20px 24px',
           pointerEvents: 'all',
         }}>
