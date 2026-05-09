@@ -44,6 +44,7 @@ function RiveIntro({ onComplete }) {
     </div>
   )
 }
+
 export default function Home() {
   const [introComplete, setIntroComplete] = useState(false)
   useEffect(() => {
@@ -82,6 +83,46 @@ export default function Home() {
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+  useEffect(() => {
+    if (!heroRef.current) return
+    const tiltEls = Array.from(heroRef.current.querySelectorAll('[data-tilt]'))
+    const onMove = (e) => {
+      const el = e.currentTarget
+      const rect = el.getBoundingClientRect()
+      const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)
+      const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)
+      el.style.transition = 'transform 0.08s linear'
+      el.style.transform = `perspective(400px) rotateX(${-dy * 30}deg) rotateY(${dx * 30}deg) scale(1.12)`
+      // Grey shadow for all shapes — scales with cursor distance from center
+      const svg = el.querySelector('svg')
+      if (svg) {
+        const dist = Math.min(Math.sqrt(dx * dx + dy * dy), 1)
+        const opacity = (0.12 + dist * 0.13).toFixed(2)
+        svg.style.transition = 'filter 0.08s linear'
+        svg.style.filter = `drop-shadow(0px 8px 20px rgba(0,0,0,${opacity}))`
+      }
+    }
+    const onLeave = (e) => {
+      const el = e.currentTarget
+      el.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)'
+      el.style.transform = 'perspective(400px) rotateX(0deg) rotateY(0deg) scale(1)'
+      const svg = el.querySelector('svg')
+      if (svg) {
+        svg.style.transition = 'filter 0.5s ease'
+        svg.style.filter = 'none'
+      }
+    }
+    tiltEls.forEach(el => {
+      el.addEventListener('mousemove', onMove)
+      el.addEventListener('mouseleave', onLeave)
+    })
+    return () => {
+      tiltEls.forEach(el => {
+        el.removeEventListener('mousemove', onMove)
+        el.removeEventListener('mouseleave', onLeave)
+      })
+    }
   }, [])
   useEffect(() => {
     const cards = document.querySelectorAll('.project-card')
@@ -170,16 +211,16 @@ export default function Home() {
         .concept-card { height: 600px !important; min-height: unset !important; }
         .card-bottom-container { margin: 0 -32px -32px -32px !important; padding: 24px 32px !important; }
         .card-title { font-size: 24px !important; line-height: 32px !important; letter-spacing: -0.03em !important; font-weight: 400 !important; color: #212121 !important; }
-        .card-desc { font-size: 14px !important; line-height: 20px !important; color: rgba(10,10,10,0.4) !important; font-weight: 400 !important; }
+        .card-desc { font-size: 16px !important; line-height: 24px !important; color: rgba(10,10,10,0.4) !important; font-weight: 400 !important; }
         .card-icon { width: 44px !important; height: 44px !important; border-radius: 10px !important; }
         @media (max-width: 767px) {
           * { cursor: auto !important; }
           .portfolio-main { padding-left: 20px !important; padding-right: 20px !important; }
           .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; }
           .hero-shape { transform: scale(0.5) !important; transform-origin: center center; }
-          .hero-shape-green-tri { top: -8% !important; transform: scale(0.35) !important; }
-          .hero-shape-purple-tri { display: none !important; }
-          .hero-shape-blue-star { top: 68% !important; bottom: unset !important; left: unset !important; right: 0px !important; }
+          .hero-shape-orange-sq { display: none !important; }
+          .hero-shape-red-sq { display: none !important; }
+          .hero-shape-purple-star { display: none !important; }
           .hero-shape-red-circle { display: none !important; }
           .hero-text-p { font-size: 20px !important; line-height: 28px !important; }
           .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 16px !important; grid-template-columns: 1fr !important; }
@@ -212,124 +253,262 @@ export default function Home() {
       <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, margin: '0 -64px', padding: '120px 64px 60px' }}>
         {/* Floating shapes */}
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
-          {/* Green sharp triangle — top left */}
-          <div data-parallax="0.28" style={{ position: 'absolute', top: '12%', left: '3.5%', pointerEvents: 'none', willChange: 'transform' }}>
-          <div className={`hero-shape hero-shape-green-tri ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.55s', filter: 'drop-shadow(0 3px 10px rgba(0,0,0,0.12))' }}>
-            <svg width="100" height="100" viewBox="0 0 100 100" overflow="visible" style={{ animation: 'orbitCW 6s ease-in-out infinite' }}>
+          {/* ── LARGE SHAPES (7) ── */}
+          {/* 1. Large blue circle — center left */}
+          <div data-parallax="0.28" style={{ position: 'absolute', top: '22%', left: '10%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape hero-shape-blue-circle ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.55s' }}>
+            <div data-tilt style={{ display: 'inline-block', transformStyle: 'preserve-3d', pointerEvents: 'all' }}>
+            <svg width="160" height="160" viewBox="0 0 160 160" overflow="visible" style={{ animation: 'orbitSm 5s ease-in-out infinite' }}>
               <defs>
-                <linearGradient id="gloss-gtri" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                <linearGradient id="gls-bc" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
                   <stop offset="0%" stopColor="white" stopOpacity="0.85" />
                   <stop offset="55%" stopColor="white" stopOpacity="0.2" />
                   <stop offset="100%" stopColor="white" stopOpacity="0" />
                 </linearGradient>
               </defs>
-              <path d="M 100 0 L 0 50 L 100 100 Z" fill="#22c55e"/>
-              <path d="M 100 0 L 0 50 L 100 100 Z" fill="none" stroke="url(#gloss-gtri)" strokeWidth="2" style={{ animation: 'glisten 4s ease-in-out 0s infinite' }}/>
+              <circle cx="80" cy="80" r="79" fill="#2DA3F8"/>
+              <circle cx="80" cy="80" r="79" fill="none" stroke="url(#gls-bc)" strokeWidth="2" style={{ animation: 'glisten 3.5s ease-in-out 1.2s infinite' }}/>
             </svg>
+            </div>
           </div>
           </div>
-          {/* Orange organic star — top center */}
-          <div data-parallax="0.42" style={{ position: 'absolute', top: '8px', left: '42%', pointerEvents: 'none', willChange: 'transform' }}>
-          <div className={`hero-shape hero-shape-orange-star ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.7s', filter: 'drop-shadow(0 3px 10px rgba(0,0,0,0.12))' }}>
-            <svg width="52" height="50" viewBox="0 0 189 181" overflow="visible" style={{ animation: 'orbitCCW 8s ease-in-out infinite' }}>
+          {/* 3. Large green right-pointing triangle — top right */}
+          <div data-parallax="0.22" style={{ position: 'absolute', top: '4%', right: '10%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape hero-shape-green-tri ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.7s' }}>
+            <div data-tilt style={{ display: 'inline-block', transformStyle: 'preserve-3d', pointerEvents: 'all' }}>
+            <svg width="130" height="130" viewBox="0 0 100 100" overflow="visible" style={{ animation: 'orbitCW 6s ease-in-out infinite' }}>
               <defs>
-                <linearGradient id="gloss-ostar" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                <linearGradient id="gls-gt" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                  <stop offset="0%" stopColor="white" stopOpacity="0.85" />
+                  <stop offset="55%" stopColor="white" stopOpacity="0.2" />
+                  <stop offset="100%" stopColor="white" stopOpacity="0" />
+                </linearGradient>
+              </defs>
+              <path d="M 0 7.69 Q 0 0 6.88 3.44 L 93.12 46.56 Q 100 50 93.12 53.44 L 6.88 96.56 Q 0 100 0 92.31 Z" fill="#0C840C"/>
+              <path d="M 0 7.69 Q 0 0 6.88 3.44 L 93.12 46.56 Q 100 50 93.12 53.44 L 6.88 96.56 Q 0 100 0 92.31 Z" fill="none" stroke="url(#gls-gt)" strokeWidth="2" style={{ animation: 'glisten 4s ease-in-out 0s infinite' }}/>
+            </svg>
+            </div>
+          </div>
+          </div>
+          {/* 2. Large orange organic star — bottom left */}
+          <div data-parallax="0.36" style={{ position: 'absolute', bottom: '-50px', left: '0%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape hero-shape-orange-star ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.2s' }}>
+            <div data-tilt style={{ display: 'inline-block', transformStyle: 'preserve-3d', pointerEvents: 'all' }}>
+            <svg width="190" height="187" viewBox="0 0 189 181" overflow="visible" style={{ animation: 'orbitCCW 8s ease-in-out infinite' }}>
+              <defs>
+                <linearGradient id="gls-os" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
                   <stop offset="0%" stopColor="white" stopOpacity="0.85" />
                   <stop offset="55%" stopColor="white" stopOpacity="0.2" />
                   <stop offset="100%" stopColor="white" stopOpacity="0" />
                 </linearGradient>
               </defs>
               <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="#f97316"/>
-              <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="none" stroke="url(#gloss-ostar)" strokeWidth="2" style={{ animation: 'glisten 4.5s ease-in-out 0.6s infinite' }}/>
+              <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="none" stroke="url(#gls-os)" strokeWidth="2" style={{ animation: 'glisten 4.5s ease-in-out 0.6s infinite' }}/>
             </svg>
+            </div>
           </div>
           </div>
-          {/* Green circle — top right */}
-          <div data-parallax="0.18" style={{ position: 'absolute', top: '5px', right: '13%', pointerEvents: 'none', willChange: 'transform' }}>
-          <div className={`hero-shape hero-shape-green-circle ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.85s', filter: 'drop-shadow(0 3px 10px rgba(0,0,0,0.12))' }}>
-            <svg width="40" height="40" viewBox="0 0 40 40" overflow="visible" style={{ animation: 'orbitSm 5s ease-in-out infinite' }}>
+          {/* 4. Large orange rounded square — right, below green triangle */}
+          <div data-parallax="0.42" style={{ position: 'absolute', top: '14%', right: '2%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape hero-shape-orange-sq ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.75s' }}>
+            <div data-tilt style={{ display: 'inline-block', transformStyle: 'preserve-3d', pointerEvents: 'all' }}>
+            <div style={{ transform: 'rotate(-24.02deg)' }}>
+            <svg width="78" height="78" viewBox="0 0 78 78" overflow="visible" style={{ animation: 'orbitCCW 7s ease-in-out infinite' }}>
               <defs>
-                <linearGradient id="gloss-gcircle" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                <linearGradient id="gls-osq" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
                   <stop offset="0%" stopColor="white" stopOpacity="0.85" />
                   <stop offset="55%" stopColor="white" stopOpacity="0.2" />
                   <stop offset="100%" stopColor="white" stopOpacity="0" />
                 </linearGradient>
               </defs>
-              <circle cx="20" cy="20" r="19" fill="#22c55e"/>
-              <circle cx="20" cy="20" r="19" fill="none" stroke="url(#gloss-gcircle)" strokeWidth="2" style={{ animation: 'glisten 3.5s ease-in-out 1.2s infinite' }}/>
+              <rect x="1" y="1" width="76" height="76" rx="12" fill="#f97316"/>
+              <rect x="1" y="1" width="76" height="76" rx="12" fill="none" stroke="url(#gls-osq)" strokeWidth="2" style={{ animation: 'glisten 4.5s ease-in-out 0.6s infinite' }}/>
             </svg>
+            </div>
+            </div>
           </div>
           </div>
-          {/* Red circle — far right */}
-          <div data-parallax="0.32" style={{ position: 'absolute', top: '30%', right: '60px', pointerEvents: 'none', willChange: 'transform' }}>
-          <div className={`hero-shape hero-shape-red-circle ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.0s', filter: 'drop-shadow(0 3px 10px rgba(0,0,0,0.12))' }}>
-            <svg width="60" height="60" viewBox="0 0 60 60" overflow="visible" style={{ animation: 'orbitCW 4s ease-in-out infinite' }}>
+          {/* 5. Large red rounded square */}
+          <div data-parallax="0.26" style={{ position: 'absolute', top: '26%', right: '24%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape hero-shape-red-sq ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.95s' }}>
+            <div data-tilt style={{ display: 'inline-block', transformStyle: 'preserve-3d', pointerEvents: 'all' }}>
+            <div style={{ transform: 'rotate(-20.26deg)' }}>
+            <svg width="70" height="70" viewBox="0 0 70 70" overflow="visible" style={{ animation: 'orbitCW 6s ease-in-out infinite' }}>
               <defs>
-                <linearGradient id="gloss-rcircle" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                <linearGradient id="gls-rsq" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
                   <stop offset="0%" stopColor="white" stopOpacity="0.85" />
                   <stop offset="55%" stopColor="white" stopOpacity="0.2" />
                   <stop offset="100%" stopColor="white" stopOpacity="0" />
                 </linearGradient>
               </defs>
-              <circle cx="30" cy="30" r="29" fill="#ef4444"/>
-              <circle cx="30" cy="30" r="29" fill="none" stroke="url(#gloss-rcircle)" strokeWidth="2" style={{ animation: 'glisten 5s ease-in-out 0.3s infinite' }}/>
+              <rect x="1" y="1" width="68" height="68" rx="10" fill="#E52C2C"/>
+              <rect x="1" y="1" width="68" height="68" rx="10" fill="none" stroke="url(#gls-rsq)" strokeWidth="2" style={{ animation: 'glisten 4s ease-in-out 1.1s infinite' }}/>
             </svg>
+            </div>
+            </div>
           </div>
           </div>
-          {/* Purple sharp triangle — lower right */}
-          <div data-parallax="0.22" style={{ position: 'absolute', bottom: '8%', right: '12%', pointerEvents: 'none', willChange: 'transform' }}>
-          <div className={`hero-shape hero-shape-purple-tri ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.1s', filter: 'drop-shadow(0 3px 10px rgba(0,0,0,0.12))' }}>
-            <svg width="88" height="88" viewBox="0 0 100 100" overflow="visible" style={{ animation: 'orbitCCW 7s ease-in-out infinite' }}>
+          {/* 6. Purple organic star */}
+          <div data-parallax="0.30" style={{ position: 'absolute', top: '43%', right: '14%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape hero-shape-purple-star ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.85s' }}>
+            <div data-tilt style={{ display: 'inline-block', transformStyle: 'preserve-3d', pointerEvents: 'all' }}>
+            <svg width="131" height="124" viewBox="0 0 189 181" overflow="visible" style={{ animation: 'orbitCCW 7s ease-in-out infinite', borderRadius: '7px' }}>
               <defs>
-                <linearGradient id="gloss-ptri" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                <linearGradient id="gls-ps" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
                   <stop offset="0%" stopColor="white" stopOpacity="0.85" />
                   <stop offset="55%" stopColor="white" stopOpacity="0.2" />
                   <stop offset="100%" stopColor="white" stopOpacity="0" />
                 </linearGradient>
               </defs>
-              <path d="M 0 0 L 100 50 L 0 100 Z" fill="#818cf8"/>
-              <path d="M 0 0 L 100 50 L 0 100 Z" fill="none" stroke="url(#gloss-ptri)" strokeWidth="2" style={{ animation: 'glisten 4s ease-in-out 0.9s infinite' }}/>
+              <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="#C8CFFC"/>
+              <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="none" stroke="url(#gls-ps)" strokeWidth="2" style={{ animation: 'glisten 4.5s ease-in-out 0.5s infinite' }}/>
             </svg>
+            </div>
           </div>
           </div>
-          {/* Pink organic star — bottom left */}
-          <div data-parallax="0.36" style={{ position: 'absolute', bottom: '0px', left: '6%', pointerEvents: 'none', willChange: 'transform' }}>
-          <div className={`hero-shape hero-shape-pink-star ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.2s', filter: 'drop-shadow(0 3px 10px rgba(0,0,0,0.12))' }}>
-            <svg width="96" height="92" viewBox="0 0 189 181" overflow="visible" style={{ animation: 'orbitCW 9s ease-in-out infinite' }}>
+          {/* 7. Red circle — below orange square */}
+          <div data-parallax="0.32" style={{ position: 'absolute', top: '44%', right: '2%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape hero-shape-red-circle ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.0s' }}>
+            <div data-tilt style={{ display: 'inline-block', transformStyle: 'preserve-3d', pointerEvents: 'all' }}>
+            <svg width="120" height="120" viewBox="0 0 120 120" overflow="visible" style={{ animation: 'orbitCW 4s ease-in-out infinite' }}>
               <defs>
-                <linearGradient id="gloss-pstar" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+                <linearGradient id="gls-rc" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
                   <stop offset="0%" stopColor="white" stopOpacity="0.85" />
                   <stop offset="55%" stopColor="white" stopOpacity="0.2" />
                   <stop offset="100%" stopColor="white" stopOpacity="0" />
                 </linearGradient>
               </defs>
-              <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="#f472b6"/>
-              <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="none" stroke="url(#gloss-pstar)" strokeWidth="2" style={{ animation: 'glisten 4.5s ease-in-out 0.5s infinite' }}/>
+              <circle cx="60" cy="60" r="59" fill="#ef4444"/>
+              <circle cx="60" cy="60" r="59" fill="none" stroke="url(#gls-rc)" strokeWidth="2" style={{ animation: 'glisten 5s ease-in-out 0.3s infinite' }}/>
+            </svg>
+            </div>
+          </div>
+          </div>
+          {/* ── SMALL DECORATIVE SHAPES ── */}
+          {/* 8. Blue right-pointing triangle — top left */}
+          <div data-parallax="0.15" style={{ position: 'absolute', top: '0%', left: '2%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.8s' }}>
+            <svg width="123" height="123" viewBox="0 0 100 100" overflow="visible" style={{ animation: 'orbitCCW 5s ease-in-out infinite' }}><path d="M 0 8.13 Q 0 0 7.27 3.64 L 92.73 46.36 Q 100 50 92.73 53.64 L 7.27 96.36 Q 0 100 0 91.87 Z" fill="#677AF4"/></svg>
+          </div>
+          </div>
+          {/* 9. Small green dash — top left, rotated -20° */}
+          <div data-parallax="0.20" style={{ position: 'absolute', top: '7%', left: '11%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.9s' }}>
+            <div style={{ animation: 'orbitSm 3.8s ease-in-out 0.4s infinite' }}>
+              <svg width="30" height="8" viewBox="0 0 30 8" style={{ transform: 'rotate(-20deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#22c55e"/></svg>
+            </div>
+          </div>
+          </div>
+          {/* 10. Lavender downward triangle */}
+          <div data-parallax="0.12" style={{ position: 'absolute', top: '7%', left: '15%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.0s' }}>
+            <div style={{ transform: 'rotate(98.2deg)', animation: 'orbitCW 4.2s ease-in-out 0.7s infinite' }}>
+              <svg width="51" height="51" viewBox="0 0 100 100" overflow="visible">
+                <path d="M 11.77 0 L 88.24 0 Q 100 0 94.74 10.52 L 55.26 89.48 Q 50 100 44.74 89.48 L 5.26 10.52 Q 0 0 11.77 0 Z" fill="#C8CFFC"/>
+              </svg>
+            </div>
+          </div>
+          </div>
+          {/* 11. Small red dash — left mid, rotated 15° */}
+          <div data-parallax="0.18" style={{ position: 'absolute', top: '62%', left: '5%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.1s' }}>
+            <div style={{ animation: 'orbitSm 3.5s ease-in-out 0.2s infinite' }}>
+              <svg width="30" height="8" viewBox="0 0 30 8" style={{ transform: 'rotate(15deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#F87171"/></svg>
+            </div>
+          </div>
+          </div>
+          {/* 12. Small light blue circle — left mid */}
+          <div data-parallax="0.10" style={{ position: 'absolute', top: '43%', left: '21%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.2s' }}>
+            <svg width="57" height="57" viewBox="0 0 57 57" style={{ animation: 'orbitCW 4s ease-in-out 0.9s infinite' }}><circle cx="28.5" cy="28.5" r="27.5" fill="#94CFF9"/></svg>
+          </div>
+          </div>
+          {/* 22. Green rounded triangle — left mid-lower */}
+          <div data-parallax="0.13" style={{ position: 'absolute', top: '62%', left: '19%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.05s' }}>
+            <svg width="42" height="42" viewBox="0 0 100 100" overflow="visible" style={{ animation: 'orbitCW 4.6s ease-in-out 0.8s infinite' }}>
+              <path d="M 0 9.52 Q 0 0 8.52 4.26 L 91.48 45.74 Q 100 50 91.48 54.26 L 8.52 95.74 Q 0 100 0 90.48 Z" fill="#A5DBA5"/>
             </svg>
           </div>
           </div>
-          {/* Blue organic star — bottom center-right */}
-          <div data-parallax="0.38" style={{ position: 'absolute', bottom: '0px', left: '57%', pointerEvents: 'none', willChange: 'transform' }}>
-          <div className={`hero-shape hero-shape-blue-star ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.35s', filter: 'drop-shadow(0 3px 10px rgba(0,0,0,0.12))' }}>
-            <svg width="110" height="105" viewBox="0 0 189 181" overflow="visible" style={{ animation: 'orbitSm 6.5s ease-in-out infinite' }}>
-              <defs>
-                <linearGradient id="gloss-bstar" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
-                  <stop offset="0%" stopColor="white" stopOpacity="0.85" />
-                  <stop offset="55%" stopColor="white" stopOpacity="0.2" />
-                  <stop offset="100%" stopColor="white" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="#3b82f6"/>
-              <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="none" stroke="url(#gloss-bstar)" strokeWidth="2" style={{ animation: 'glisten 3.5s ease-in-out 1.5s infinite' }}/>
-            </svg>
+          {/* 13. Small light green upward triangle — left lower */}
+          <div data-parallax="0.14" style={{ position: 'absolute', top: '66%', left: '19%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.3s' }}>
+            <svg width="15" height="13" viewBox="0 0 100 87" style={{ animation: 'orbitCCW 4.8s ease-in-out 1.3s infinite' }}><path d="M 50 0 L 100 87 L 0 87 Z" fill="#86EFAC"/></svg>
+          </div>
+          </div>
+          {/* 14. Small light purple 4-star — left lower */}
+          <div data-parallax="0.16" style={{ position: 'absolute', top: '71%', left: '12%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.4s' }}>
+            <svg width="18" height="18" viewBox="0 0 100 100" style={{ animation: 'orbitSm 5s ease-in-out 0.6s infinite' }}><path d="M 49.34 1.89 Q 50 0 50.66 1.89 L 62.34 35.11 Q 63 37 64.89 37.66 L 98.11 49.34 Q 100 50 98.11 50.66 L 64.89 62.34 Q 63 63 62.34 64.89 L 50.66 98.11 Q 50 100 49.34 98.11 L 37.66 64.89 Q 37 63 35.11 62.34 L 1.89 50.66 Q 0 50 1.89 49.34 L 35.11 37.66 Q 37 37 37.66 35.11 Z" fill="#D8B4FE"/></svg>
+          </div>
+          </div>
+          {/* 15. Small peach rounded square — above blue circle, to the right */}
+          <div data-parallax="0.20" style={{ position: 'absolute', top: '16%', left: '22%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.9s' }}>
+            <svg width="18" height="18" viewBox="0 0 18 18" style={{ animation: 'orbitCW 3.6s ease-in-out 1.5s infinite' }}><rect x="0" y="0" width="18" height="18" rx="4" fill="#FED7AA"/></svg>
+          </div>
+          </div>
+          {/* 16. Small teal dash — top right, rotated -25° */}
+          <div data-parallax="0.13" style={{ position: 'absolute', top: '4%', right: '23%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.0s' }}>
+            <div style={{ animation: 'orbitCCW 4.3s ease-in-out 0.3s infinite' }}>
+              <svg width="30" height="8" viewBox="0 0 30 8" style={{ transform: 'rotate(-25deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#2DA3F8"/></svg>
+            </div>
+          </div>
+          </div>
+          {/* 17. Small blue dash — between red square and purple star */}
+          <div data-parallax="0.17" style={{ position: 'absolute', top: '35%', right: '19%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.15s' }}>
+            <div style={{ animation: 'orbitSm 3.9s ease-in-out 0.8s infinite' }}>
+              <svg width="30" height="8" viewBox="0 0 30 8" style={{ transform: 'rotate(10deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#93C5FD"/></svg>
+            </div>
+          </div>
+          </div>
+          {/* 18. Small green triangle — upper-left area of red circle */}
+          <div data-parallax="0.11" style={{ position: 'absolute', top: '44%', right: '10%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.25s' }}>
+            <svg width="14" height="12" viewBox="0 0 100 87" style={{ animation: 'orbitCW 4.1s ease-in-out 1.0s infinite' }}><path d="M 50 0 L 100 87 L 0 87 Z" fill="#4FBC4F"/></svg>
+          </div>
+          </div>
+          {/* 21. Salmon confetti — below purple star */}
+          <div data-parallax="0.14" style={{ position: 'absolute', top: '85%', right: '8%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.1s' }}>
+            <div style={{ animation: 'orbitSm 4.2s ease-in-out 0.7s infinite' }}>
+              <svg width="30" height="8" viewBox="0 0 30 8" style={{ transform: 'rotate(-15deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#F87171"/></svg>
+            </div>
+          </div>
+          </div>
+          {/* 20. Light blue 4-corner star */}
+          <div data-parallax="0.18" style={{ position: 'absolute', top: '62%', right: '9%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.05s' }}>
+            <div style={{ animation: 'orbitSm 4.4s ease-in-out 0.5s infinite' }}>
+              <svg width="80" height="80" viewBox="0 0 100 100" overflow="visible" style={{ transform: 'rotate(79.87deg)', display: 'block' }}>
+                <path d="M 54.02 13.83 L 62.04 35.41 Q 62.73 37.27 64.59 37.96 L 86.17 45.98 Q 97 50 86.17 54.02 L 64.59 62.04 Q 62.73 62.73 62.04 64.59 L 54.02 86.17 Q 50 97 45.98 86.17 L 37.96 64.59 Q 37.27 62.73 35.40 62.04 L 13.83 54.02 Q 3 50 13.83 45.98 L 35.41 37.96 Q 37.27 37.27 37.96 35.41 L 45.98 13.83 Q 50 3 54.02 13.83 Z" fill="#B0EBF8"/>
+              </svg>
+            </div>
+          </div>
+          </div>
+          {/* 19. Small light blue 4-star — bottom right */}
+          <div data-parallax="0.15" style={{ position: 'absolute', bottom: '2%', right: '14%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.35s' }}>
+            <svg width="18" height="18" viewBox="0 0 100 100" style={{ animation: 'orbitCCW 4.7s ease-in-out 1.4s infinite' }}><path d="M 49.34 1.89 Q 50 0 50.66 1.89 L 62.34 35.11 Q 63 37 64.89 37.66 L 98.11 49.34 Q 100 50 98.11 50.66 L 64.89 62.34 Q 63 63 62.34 64.89 L 50.66 98.11 Q 50 100 49.34 98.11 L 37.66 64.89 Q 37 63 35.11 62.34 L 1.89 50.66 Q 0 50 1.89 49.34 L 35.11 37.66 Q 37 37 37.66 35.11 Z" fill="#93C5FD"/></svg>
+          </div>
+          </div>
+          {/* 20. Small confetti downward triangle — pastel */}
+          <div data-parallax="0.19" style={{ position: 'absolute', top: '36%', right: '12%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.45s' }}>
+            <div style={{ transform: 'rotate(134.27deg)' }}>
+            <svg width="32" height="32" viewBox="0 0 100 100" style={{ animation: 'orbitCW 3.7s ease-in-out 1.2s infinite' }}><path d="M 54.47 14.68 L 61.8 33.8 L 82.22 34.86 Q 94.7 35.5 84.97 43.34 L 69.0 56.2 L 74.34 75.93 Q 77.6 88.0 67.12 81.17 L 50 70 L 32.88 81.17 Q 22.4 88.0 25.66 75.93 L 31.0 56.2 L 15.04 43.34 Q 5.3 35.5 17.79 34.86 L 38.2 33.8 L 45.53 14.68 Q 50 3 54.47 14.68 Z" fill="#F09393"/></svg>
+            </div>
           </div>
           </div>
         </div>
         {/* Hero text */}
-        <div className={`flex justify-center ${introComplete ? 'hero-in' : 'hero-pre'}`} style={{ position: 'relative', zIndex: 1, paddingTop: '40px', paddingBottom: '40px' }}>
-          <p className="hero-text-p" style={{ fontSize: '28px', lineHeight: '36px', letterSpacing: '-0.03em', fontWeight: '400', color: 'rgb(33, 33, 33)', maxWidth: '1000px', width: '100%', textAlign: 'left' }}>
-            SF-based product designer rooted in both visual design and product thinking,{" "}
-            <span className="text-gray-400">focused on creating clear, high-quality experiences.</span>
+        <div className={`flex justify-center ${introComplete ? 'hero-in' : 'hero-pre'}`} style={{ position: 'relative', zIndex: 1, paddingTop: '20px', paddingBottom: '40px' }}>
+          <p className="hero-text-p" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-3px', fontWeight: '400', color: 'rgb(33, 33, 33)', width: '580px', textAlign: 'center', margin: '0 auto' }}>
+            SF based product designer rooted in visual design and product thinking,{" "}
+            <span style={{ color: '#969696' }}>focused on creating clear, high-quality experiences.</span>
           </p>
         </div>
       </section>
@@ -358,7 +537,7 @@ export default function Home() {
               <Image src="/Icons/NN_icon.png" alt="NutritionNest icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>NutritionNest</span>
-                <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Log nutritional intake and monitor daily calories</span>
+                <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Log nutritional intake and monitor daily calories</span>
               </div>
             </div>
           </div>
@@ -384,7 +563,7 @@ export default function Home() {
               <Image src="/Icons/Duetti_icon.png" alt="Duetti icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Duetti</span>
-                <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Insight-driven report that simplifies music industry data for artists through visual storytelling</span>
+                <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Insight-driven report that simplifies music industry data for artists through visual storytelling</span>
               </div>
             </div>
           </div>
@@ -404,7 +583,7 @@ export default function Home() {
               <Image src="/Icons/Lasertaz_icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Lasertaz</span>
-                <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Help independent landlords manage their rental properties</span>
+                <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Help independent landlords manage their rental properties</span>
               </div>
             </div>
           </div>
@@ -434,7 +613,7 @@ export default function Home() {
               <Image src="/Icons/Bookworm_icon.png" alt="Bookworm icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Bookworm</span>
-                <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>E-Commerce platform for books and related content</span>
+                <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>E-Commerce platform for books and related content</span>
               </div>
             </div>
           </div>
@@ -460,7 +639,7 @@ export default function Home() {
               <Image src="/Icons/RHS_icon.png" alt="RHS icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Raymond Hair Salon</span>
-                <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Scheduling made effortless with online booking</span>
+                <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Scheduling made effortless with online booking</span>
               </div>
             </div>
           </div>
@@ -496,7 +675,7 @@ export default function Home() {
               <div className="flex items-center gap-3 card-icon-wrap">
                 <Image src="/Icons/Kalshi_icon.png" alt="Kalshi icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-0">
-                  <span style={{ fontSize: '12px', lineHeight: '16px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
+                  <span style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
                   <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Kalshi Desktop Extension</span>
                 </div>
               </div>
@@ -517,7 +696,7 @@ export default function Home() {
               <div className="flex items-center gap-3 card-icon-wrap">
                 <Image src="/Icons/Phia_icon.png" alt="Phia icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-0">
-                  <span style={{ fontSize: '12px', lineHeight: '16px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
+                  <span style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
                   <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Phia Extension Redesign</span>
                 </div>
               </div>
