@@ -109,10 +109,11 @@ export default function Navbar() {
             top: 0 !important;
             border-radius: 0 !important;
             border: none !important;
-            background: rgb(251, 251, 251) !important;
+            background: rgb(243, 244, 246) !important;
           }
           .nav-desktop-links { display: none !important; }
           .nav-hamburger { display: flex !important; }
+          .nav-dark.nav-wrapper { background: #121212 !important; }
         }
         @media (min-width: 768px) {
           .nav-hamburger { display: none !important; }

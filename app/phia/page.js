@@ -48,7 +48,8 @@ export default function Phia() {
         @media (max-width: 767px) {
           section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
-          .page-hero { padding-top: 88px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
+          .page-hero { padding-top: 100px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
+          .cover-hero { padding-top: 100px !important; padding-left: 20px !important; padding-right: 20px !important; }
           h1 { font-size: 36px !important; line-height: 44px !important; }
           h2, h3 { font-size: 26px !important; line-height: 34px !important; }
           .three-cards-grid { grid-template-columns: 1fr !important; }
@@ -57,7 +58,7 @@ export default function Phia() {
       `}</style>
 
       {/* Cover image */}
-      <section style={{ paddingTop: '120px', paddingBottom: '40px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#F2F2F2', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
+      <section className="cover-hero" style={{ paddingTop: '120px', paddingBottom: '40px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#F2F2F2', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
         <div className="content-wide" style={{ maxWidth: '1380px' }}>
           <Image
             src="/Phia/Hero_image.png"
@@ -73,12 +74,14 @@ export default function Phia() {
       {/* Title block */}
       <section className="page-hero" style={{ paddingTop: '64px', paddingBottom: '80px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
         <div className="content-wide">
-          <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121', marginBottom: '16px' }}>
-            Phia Browser Extension
-          </h1>
-          <p style={{ fontSize: '20px', lineHeight: '32px', color: '#6b7280', maxWidth: '600px', marginBottom: '40px' }}>
-            I redesigned this existing extension after finding it hard to scan prices and alternatives while shopping. The updated layout focuses on clarity, reducing drop-off rates, and higher purchase rates.
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '40px' }}>
+            <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
+              Phia Browser Extension
+            </h1>
+            <p style={{ fontSize: '20px', lineHeight: '32px', color: '#6b7280', maxWidth: '600px' }}>
+              I redesigned this existing extension after finding it hard to scan prices and alternatives while shopping. The updated layout focuses on clarity, reducing drop-off rates, and higher purchase rates.
+            </p>
+          </div>
           <div className="flex flex-col gap-3">
             <a href="https://www.figma.com/proto/vH2Yqx2XS9U90KCoaga1Lz/Phia-Extension-Redesign?node-id=2054-1861&t=AaDjhaBeozJ4YHBW-0&scaling=scale-down&content-scaling=fixed&page-id=22%3A7&starting-point-node-id=2054%3A1861" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content' }} className="hover:opacity-60">
               View prototype ↗

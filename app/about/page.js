@@ -44,6 +44,10 @@ export default function About() {
         }
         @media (max-width: 767px) {
           .about-main { padding-left: 20px !important; padding-right: 20px !important; }
+          .about-main h1 { font-size: 24px !important; line-height: 32px !important; }
+          .exp-label { line-height: 20px !important; }
+          .exp-row span { font-size: 14px !important; line-height: 20px !important; }
+          .about-bio { font-size: 14px !important; line-height: 20px !important; }
         }
       `}</style>
 
@@ -109,15 +113,15 @@ export default function About() {
           <h1 style={{ fontSize: '40px', lineHeight: '52px', fontWeight: '500', color: '#111', letterSpacing: '-0.03em', marginBottom: '20px' }}>
             Joann Zhang
           </h1>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: '#6b7280', marginBottom: '16px' }}>
+          <p className="about-bio" style={{ fontSize: '18px', lineHeight: '28px', color: '#6b7280', marginBottom: '16px' }}>
             As a self-taught Product Designer. I first fell in love with design my senior year of college, and it's been a steady part of my life ever since. It's something that inspires me, challenges me, and gives me a way to make a real impact. What motivates me most is the chance to create work that feels meaningful and sparks a bit of inspiration in others.
           </p>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: '#6b7280', marginBottom: '48px' }}>
+          <p className="about-bio" style={{ fontSize: '18px', lineHeight: '28px', color: '#6b7280', marginBottom: '48px' }}>
             During my personal time, you'll find me learning to code and playing around with ideas that make AI feel a little more human.
           </p>
 
           {/* Experience */}
-          <p style={{ fontSize: '14px', letterSpacing: '0.08em', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', marginBottom: '16px' }}>
+          <p className="exp-label" style={{ fontSize: '14px', letterSpacing: '0.08em', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', marginBottom: '16px' }}>
             Experience
           </p>
 

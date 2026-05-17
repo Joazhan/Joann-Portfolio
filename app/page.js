@@ -203,9 +203,12 @@ export default function Home() {
         .card-pre { opacity: 0; transform: translateY(30px); }
         .card-in { animation: cardFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
         .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 10px !important; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08) !important; }
-        .main-card { padding-top: 80px !important; padding-bottom: 0 !important; min-height: 600px; }
+        .main-card { padding-top: 80px !important; padding-bottom: 0 !important; min-height: 600px; height: 100%; }
+        .nn-card { justify-content: center !important; padding: 48px !important; }
+        .card-squircle-wrap { flex: 1; display: flex; flex-direction: column; }
         .concept-card { height: auto !important; min-height: unset !important; }
-        .concept-card.main-card { justify-content: center !important; padding: 32px 48px !important; min-height: unset !important; }
+        .concept-card.main-card { justify-content: center !important; padding: 32px 48px !important; min-height: unset !important; height: auto !important; }
+        .concepts-cards-col .card-squircle-wrap { flex: none; }
         .card-bottom-container { margin: 0 -32px -32px -32px !important; padding: 24px 32px !important; }
         .card-title { font-size: 24px !important; line-height: 32px !important; letter-spacing: -0.03em !important; font-weight: 400 !important; color: #212121 !important; }
         .card-desc { font-size: 16px !important; line-height: 24px !important; color: rgba(10,10,10,0.4) !important; font-weight: 400 !important; }
@@ -231,7 +234,7 @@ export default function Home() {
           .card-label-row { padding: 8px 0 !important; }
           .card-title { font-size: 20px !important; line-height: 28px !important; letter-spacing: -0.03em !important; }
           .card-desc { font-size: 14px !important; line-height: 18px !important; color: rgba(10,10,10,0.4) !important; }
-          .card-icon { width: 40px !important; height: 40px !important; border-radius: 10px !important; }
+          .card-icon { width: 32px !important; height: 32px !important; border-radius: 10px !important; }
           .card-icon-wrap { align-items: flex-start !important; }
           .duetti-macbook { width: 100% !important; }
           .duetti-iphone { display: none !important; }
@@ -594,7 +597,7 @@ export default function Home() {
 
         {/* Hero text */}
         <div className={`flex justify-center ${introComplete ? 'hero-in' : 'hero-pre'}`} style={{ position: 'relative', zIndex: 1, paddingTop: '48px', paddingBottom: '72px' }}>
-          <p className="hero-text-p" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.02em', fontWeight: '400', color: 'rgb(33, 33, 33)', width: '580px', textAlign: 'center', margin: '0 auto' }}>
+          <p className="hero-text-p" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.03em', fontWeight: '400', color: 'rgb(33, 33, 33)', width: '620px', textAlign: 'center', margin: '0 auto' }}>
             SF-based product designer grounded in visual design and product thinking,{" "}
             <span style={{ color: 'rgb(150, 150, 150)' }}>with a hands-on approach to coding polished digital experiences.</span>
           </p>
@@ -605,9 +608,9 @@ export default function Home() {
         {/* NutritionNest */}
         <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-            <Link href="/nn" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
-              style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div ref={nnImagesWrapRef} className="nn-img-wrap" style={{ willChange: 'transform', overflow: 'visible', marginTop: '-24px' }}>
+            <Link href="/nn" className="flex flex-col overflow-hidden cursor-pointer project-card main-card nn-card card-pre"
+              style={{ textDecoration: 'none', backgroundColor: '#fbfbfb' }}>
+              <div ref={nnImagesWrapRef} className="nn-img-wrap" style={{ willChange: 'transform', overflow: 'visible' }}>
                 <div className="card-img-row flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', justifyContent: 'center' }}>
                   <div className="nn-desktop-img" style={{ flex: '0 0 62%', overflow: 'hidden', borderRadius: '12px' }}>
                     <Image src="/Images/NN2.png" alt="NutritionNest" width={2730} height={2764} quality={100} style={{ width: '100%', height: 'auto', display: 'block' }} />

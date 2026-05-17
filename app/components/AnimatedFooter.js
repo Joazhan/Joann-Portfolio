@@ -154,6 +154,8 @@ export default function AnimatedFooter() {
   const footerRef = useRef(null)
   const dragging = useRef(null)
   const cursorRef = useRef(null)
+  const xScaleRef = useRef(1)
+  const [canvasWidth, setCanvasWidth] = useState(1900)
   const [revealed, setRevealed] = useState(false)
 
   const shapeGroup = (id) => {
@@ -167,17 +169,42 @@ export default function AnimatedFooter() {
     return -1
   }
 
-  const groupBounds = useMemo(() => Array.from({ length: 7 }, (_, g) => {
-    const gDots = shapes.filter(s => shapeGroup(s.id) === g)
-    if (!gDots.length) return null
-    return {
-      left:   Math.min(...gDots.map(s => s.x)) - 10,
-      top:    Math.min(...gDots.map(s => s.y)) - 10,
-      right:  Math.max(...gDots.map(s => s.x + s.w)) + 10,
-      bottom: Math.max(...gDots.map(s => s.y + s.h)) + 10,
-      color:  gDots[0].color,
-    }
-  }), [shapes])
+  // Unscaled group center x/y — used to preserve internal dot spacing on mobile
+  const groupCenters = useMemo(() =>
+    Array.from({ length: 7 }, (_, g) => {
+      const gDots = shapes.filter(s => shapeGroup(s.id) === g)
+      if (!gDots.length) return 0
+      return gDots.reduce((sum, s) => sum + s.x, 0) / gDots.length
+    })
+  , [shapes])
+
+  const groupCentersY = useMemo(() =>
+    Array.from({ length: 7 }, (_, g) => {
+      const gDots = shapes.filter(s => shapeGroup(s.id) === g)
+      if (!gDots.length) return 0
+      return gDots.reduce((sum, s) => sum + s.y, 0) / gDots.length
+    })
+  , [shapes])
+
+  const groupBounds = useMemo(() => {
+    const sc = canvasWidth / 1900
+    const isMobile = canvasWidth < 768
+    const internalScale = isMobile ? 6 / 14 : 1
+    return Array.from({ length: 7 }, (_, g) => {
+      if (isMobile && (g === 3 || g === 6)) return null
+      const gDots = shapes.filter(s => shapeGroup(s.id) === g)
+      if (!gDots.length) return null
+      const gcx = groupCenters[g]
+      const gcy = groupCentersY[g]
+      return {
+        left:   gcx * sc + (Math.min(...gDots.map(s => s.x)) - gcx) * internalScale - 10,
+        top:    gcy + (Math.min(...gDots.map(s => s.y)) - gcy) * internalScale - 10,
+        right:  gcx * sc + (Math.max(...gDots.map(s => s.x + s.w)) - gcx) * internalScale + 10,
+        bottom: gcy + (Math.max(...gDots.map(s => s.y + s.h)) - gcy) * internalScale + 10,
+        color:  gDots[0].color,
+      }
+    })
+  }, [shapes, canvasWidth, groupCenters, groupCentersY])
 
   // Row index by vertical distance from group centroid — each row is 14px apart
   const getPianoLayer = (shape, groupDots) => {
@@ -208,8 +235,9 @@ export default function AnimatedFooter() {
       const drag = dragging.current
       if (!drag || !footerRef.current) return
       const rect = footerRef.current.getBoundingClientRect()
+      const sc = xScaleRef.current
       setShapes(prev => prev.map(s => s.id === drag.id
-        ? { ...s, x: e.clientX - rect.left - drag.offsetX, y: e.clientY - rect.top - drag.offsetY }
+        ? { ...s, x: (e.clientX - rect.left - drag.offsetX) / sc, y: e.clientY - rect.top - drag.offsetY }
         : s
       ))
     }
@@ -220,6 +248,19 @@ export default function AnimatedFooter() {
       window.removeEventListener('mousemove', handleMove)
       window.removeEventListener('mouseup', handleUp)
     }
+  }, [])
+
+  // Track footer width for responsive x-scaling
+  useEffect(() => {
+    const update = () => {
+      if (!footerRef.current) return
+      const w = footerRef.current.offsetWidth
+      setCanvasWidth(w)
+      xScaleRef.current = w / 1900
+    }
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
   }, [])
 
   const triggerGroup = (g) => {
@@ -246,6 +287,7 @@ export default function AnimatedFooter() {
     return () => obs.disconnect()
   }, [])
 
+
   const onMouseDown = (e, id) => {
     e.preventDefault()
     e.stopPropagation()
@@ -259,7 +301,7 @@ export default function AnimatedFooter() {
     setShapes(prev => prev.map(s => s.id === id ? { ...s, z: newZ } : s))
     dragging.current = {
       id,
-      offsetX: e.clientX - rect.left - shape.x,
+      offsetX: e.clientX - rect.left - shape.x * xScaleRef.current,
       offsetY: e.clientY - rect.top - shape.y,
     }
   }
@@ -274,7 +316,14 @@ export default function AnimatedFooter() {
       .footer-canvas, .footer-canvas * { cursor: none !important; }
       .footer-link:hover { color: rgb(0,0,0) !important; }
       @media (max-width: 767px) {
+        .footer-canvas { min-height: 420px !important; }
         .footer-content { padding: 20px !important; }
+        .footer-content p,
+        .footer-content p span,
+        .footer-content .footer-link {
+          font-size: 14px !important;
+          line-height: 20px !important;
+        }
       }
       @keyframes cursor-glow {
         0%, 100% { box-shadow: 0 0 8px 3px var(--cursor-color); }
@@ -329,13 +378,22 @@ export default function AnimatedFooter() {
         backgroundPosition: '0px 0px',
       }}>
 
+      {/* Dots + hitboxes shifted up */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, transform: 'translateY(-60px)', pointerEvents: 'none' }}>
+
       {/* Shape hitboxes */}
       {[...Array(7)].map((_, g) => {
+        const isMobile = canvasWidth < 768
+        if (isMobile && (g === 3 || g === 6)) return null
         const gDots = shapes.filter(s => shapeGroup(s.id) === g)
-        const left   = Math.min(...gDots.map(s => s.x)) - 6
-        const top    = Math.min(...gDots.map(s => s.y)) - 6
-        const right  = Math.max(...gDots.map(s => s.x + s.w)) + 6
-        const bottom = Math.max(...gDots.map(s => s.y + s.h)) + 6
+        const sc = canvasWidth / 1900
+        const internalScale = isMobile ? 6 / 14 : 1
+        const gcx = groupCenters[g]
+        const gcy = groupCentersY[g]
+        const left   = gcx * sc + (Math.min(...gDots.map(s => s.x)) - gcx) * internalScale - 6
+        const top    = gcy + (Math.min(...gDots.map(s => s.y)) - gcy) * internalScale - 6
+        const right  = gcx * sc + (Math.max(...gDots.map(s => s.x + s.w)) - gcx) * internalScale + 6
+        const bottom = gcy + (Math.max(...gDots.map(s => s.y + s.h)) - gcy) * internalScale + 6
         return (
           <div key={`hitbox-${g}`}
             className="footer-shape-hitbox"
@@ -343,7 +401,7 @@ export default function AnimatedFooter() {
               e.preventDefault()
               triggerGroup(g)
             }}
-            style={{ position: 'absolute', left, top, width: right - left, height: bottom - top, zIndex: 10, cursor: 'none' }}
+            style={{ position: 'absolute', left, top, width: right - left, height: bottom - top, zIndex: 10, cursor: 'none', pointerEvents: 'all' }}
           />
         )
       })}
@@ -358,17 +416,32 @@ export default function AnimatedFooter() {
         const pixAnim = shape.id < 200 && dragging.current?.id !== shape.id
           ? `pix-${shape.dir} ${getDuration(shape.id)}s steps(4, end) ${getDelay(shape.id)}s infinite alternate`
           : 'none'
+        const sc = canvasWidth / 1900
+        const isMobile = canvasWidth < 768
+        // Remove red triangle (g=3) and blue star (g=6) on mobile
+        if (isMobile && (g === 3 || g === 6)) return null
+        const dotSc = isMobile ? 0.6 : 1
+        const dw = Math.round(shape.w * dotSc)
+        const dh = Math.round(shape.h * dotSc)
         const revealDelay = g >= 0 ? g * 80 : Math.round((shape.x / 1900) * 400)
+        // On mobile: scale group center but tighten internal spacing to ~2px gap between dots
+        const internalScale = isMobile ? 6 / 14 : 1
+        const scaledX = g >= 0
+          ? groupCenters[g] * sc + (shape.x - groupCenters[g]) * internalScale
+          : shape.x * sc
+        const scaledY = g >= 0
+          ? groupCentersY[g] + (shape.y - groupCentersY[g]) * internalScale
+          : shape.y
 
         return (
           <div
             key={shape.id}
             style={{
               position: 'absolute',
-              left: shape.x,
-              top: shape.y,
-              width: shape.w,
-              height: shape.h,
+              left: scaledX,
+              top: scaledY,
+              width: dw,
+              height: dh,
               opacity: 0,
               ...(revealed && { animation: `fadeUp 500ms ease-out ${revealDelay}ms both` }),
               zIndex: shape.id >= 1000 ? 1 : shape.z,
@@ -380,8 +453,8 @@ export default function AnimatedFooter() {
               data-sid={shape.id}
               onMouseDown={e => onMouseDown(e, shape.id)}
               style={{
-                width: shape.w,
-                height: shape.h,
+                width: dw,
+                height: dh,
                 borderRadius: '50%',
                 backgroundColor: shape.color,
                 pointerEvents: 'all',
@@ -398,6 +471,8 @@ export default function AnimatedFooter() {
         )
       })}
 
+      </div>{/* end shifted dots wrapper */}
+
       {/* Footer content */}
       <div className='footer-content' style={{
         position: 'absolute', top: 0, left: 0, right: 0,
@@ -405,15 +480,12 @@ export default function AnimatedFooter() {
         padding: '72px 64px 32px',
         display: 'flex',
         justifyContent: 'space-between',
-        alignItems: 'flex-start',
+        alignItems: 'flex-end',
         pointerEvents: 'none',
       }}>
         <div style={{
           display: 'flex', flexDirection: 'column', gap: '4px',
-          background: dark ? 'rgba(30,30,30,0.7)' : 'rgba(252,252,252,0.75)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          padding: '20px 24px',
+          background: 'transparent',
           pointerEvents: 'all',
         }}>
           <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '400', color: headingCol, margin: 0 }}>
@@ -428,19 +500,16 @@ export default function AnimatedFooter() {
           </p>
           <div style={{ display: 'flex', gap: '16px' }}>
             <a href='mailto:joannzhang4@gmail.com'
-              style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none', opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 400ms both' }) }}
+              style={{ fontSize: '16px', lineHeight: '24px', color: linkCol, textDecoration: 'none', opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 400ms both' }) }}
               className={`footer-link ${linkHover}`}>Email ↗</a>
             <a href='https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing' target='_blank' rel='noopener noreferrer'
-              style={{ fontSize: '16px', lineHeight: '24px', color: 'rgb(156, 163, 175)', textDecoration: 'none', opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 500ms both' }) }}
+              style={{ fontSize: '16px', lineHeight: '24px', color: '#6b7280', textDecoration: 'none', opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 500ms both' }) }}
               className={`footer-link ${linkHover}`}>Resume ↗</a>
           </div>
         </div>
         <div style={{
           display: 'flex', flexDirection: 'column', gap: '2px', textAlign: 'right',
-          background: dark ? 'rgba(30,30,30,0.7)' : 'rgba(252,252,252,0.75)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          padding: '20px 24px',
+          background: 'transparent',
           pointerEvents: 'all',
         }}>
           <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgb(33, 33, 33)', margin: 0, opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 300ms both' }) }}>© Joann Zhang</p>

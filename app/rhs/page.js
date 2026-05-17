@@ -58,7 +58,7 @@ export default function RHS() {
         @media (max-width: 767px) {
           section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
-          .page-hero { padding-top: 88px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
+          .page-hero { padding-top: 100px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
           .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
           .two-col-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
