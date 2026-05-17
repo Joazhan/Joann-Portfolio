@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function About() {
   return (
-    <main className="min-h-screen bg-white" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
+    <main className="about-main min-h-screen bg-white" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
 
       <style>{`
         .shape {
@@ -41,6 +41,9 @@ export default function About() {
         }
         .exp-row:first-of-type {
           border-top: 1px solid #e5e7eb;
+        }
+        @media (max-width: 767px) {
+          .about-main { padding-left: 20px !important; padding-right: 20px !important; }
         }
       `}</style>
 
@@ -103,7 +106,7 @@ export default function About() {
 
         {/* Name + Bio */}
         <div style={{ maxWidth: '540px', width: '100%' }}>
-          <h1 style={{ fontSize: '48px', lineHeight: '56px', fontWeight: '700', color: '#111', letterSpacing: '-0.02em', marginBottom: '20px' }}>
+          <h1 style={{ fontSize: '40px', lineHeight: '52px', fontWeight: '500', color: '#111', letterSpacing: '-0.03em', marginBottom: '20px' }}>
             Joann Zhang
           </h1>
           <p style={{ fontSize: '18px', lineHeight: '28px', color: '#6b7280', marginBottom: '16px' }}>

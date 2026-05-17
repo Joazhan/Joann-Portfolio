@@ -3,41 +3,36 @@ import { useState, useRef, useEffect, useMemo } from 'react'
 import { flushSync } from 'react-dom'
 import { usePathname } from 'next/navigation'
 
-// Dots sit on the 28px background grid. x/y = top-left corner of dot (center - r).
-// d(id, col, row, colorIndex, size) — col/row are grid coordinates
 const COLORS = ['#4ade80','#fb923c','#60a5fa','#a78bfa','#f87171','#fbbf24','#f472b6','#2dd4bf','#3a3a3a']
-// One Tailwind shade darker for each shape color — used for the hover cursor
 const DARKER = {
-  '#4ade80': '#22c55e', // green-400  → green-500
-  '#fb923c': '#f97316', // orange-400 → orange-500
-  '#60a5fa': '#3b82f6', // blue-400   → blue-500
-  '#a78bfa': '#8b5cf6', // violet-400 → violet-500
-  '#f87171': '#ef4444', // red-400    → red-500
-  '#fbbf24': '#f59e0b', // amber-400  → amber-500
-  '#f472b6': '#ec4899', // pink-400   → pink-500
-  '#2dd4bf': '#14b8a6', // teal-400   → teal-500
+  '#4ade80': '#22c55e',
+  '#fb923c': '#f97316',
+  '#60a5fa': '#3b82f6',
+  '#a78bfa': '#8b5cf6',
+  '#f87171': '#ef4444',
+  '#fbbf24': '#f59e0b',
+  '#f472b6': '#ec4899',
+  '#2dd4bf': '#14b8a6',
 }
 const G = 28
 
 const d = (id, col, row, c, s = 6) => ({
-  id, x: col * G - s / 2, y: row * G - s / 2, w: s, h: s, color: COLORS[c % COLORS.length]
+  id, x: Math.round(col * G - s / 2), y: Math.round(row * G - s / 2), w: s, h: s, color: COLORS[c % COLORS.length]
 })
-// Star helper: cx/cy = pixel center of the star, dc/dr = offset in 14px units
 const ds = (id, cx, cy, dc, dr, c, s = 6) => ({
-  id, x: cx + dc * 14 - s / 2, y: cy + dr * 14 - s / 2, w: s, h: s, color: COLORS[c % COLORS.length]
+  id, x: Math.round(cx + dc * 14 - s / 2), y: Math.round(cy + dr * 14 - s / 2), w: s, h: s, color: COLORS[c % COLORS.length]
 })
 
-// Direction each shape cluster drifts automatically
 function getDir(id) {
-  if (id <=  9) return 'up'      // green triangle
-  if (id <= 24) return 'right'   // orange star
-  if (id <= 37) return 'up'      // teal circle
-  if (id <= 46) return 'down'    // red triangle
-  if (id <= 56) return 'left'    // purple triangle
-  if (id <= 73) return 'right'   // pink star
-  if (id <= 90) return 'down'    // blue star
+  if (id <=  9) return 'up'
+  if (id <= 24) return 'right'
+  if (id <= 37) return 'up'
+  if (id <= 46) return 'down'
+  if (id <= 56) return 'left'
+  if (id <= 73) return 'right'
+  if (id <= 90) return 'down'
   const dirs = ['left', 'right', 'up', 'down']
-  return dirs[id % 4]            // scattered + rows — alternating mix
+  return dirs[id % 4]
 }
 
 const INITIAL_SHAPES = [
@@ -86,7 +81,7 @@ const INITIAL_SHAPES = [
   ds(89, 1740, 420,  0,  2, 2),
   ds(90, 1740, 420,  0,  3, 2),
 
-  // ── Scattered fill dots between shapes ──
+  // ── Scattered fill dots ──
   d(91,  6, 21, 5), d(92,  7, 21, 1), d(93,  8, 21, 5),
   d(94, 17, 21, 0), d(95, 18, 21, 7),
   d(96, 26, 21, 3), d(97, 27, 21, 4),
@@ -97,26 +92,21 @@ const INITIAL_SHAPES = [
   d(107, 5, 20, 7), d(108,16, 20, 4), d(109,25, 20, 6),
   d(110,37, 20, 0), d(111,47, 20, 5),
 
-  // ── Row 16 ──
   d(112,  3, 16, 5), d(113,  9, 16, 2), d(114, 14, 16, 0),
   d(115, 19, 16, 7), d(116, 24, 16, 4), d(117, 28, 16, 1),
   d(118, 33, 16, 6), d(119, 38, 16, 3), d(120, 43, 16, 0),
   d(121, 48, 16, 5), d(122, 53, 16, 2), d(123, 58, 16, 7),
   d(124, 63, 16, 4), d(125, 67, 16, 1),
 
-  // ── Row 15 ──
   d(126,  5, 15, 3), d(127, 12, 15, 6), d(128, 20, 15, 1),
   d(129, 30, 15, 4), d(130, 40, 15, 7), d(131, 50, 15, 0),
   d(132, 60, 15, 5), d(133, 66, 15, 2),
 
-  // ── Row 14 ──
   d(134,  8, 14, 2), d(135, 22, 14, 5), d(136, 37, 14, 1),
   d(137, 52, 14, 6), d(138, 64, 14, 3),
 
-  // ── Row 13 ──
   d(139, 15, 13, 7), d(140, 32, 13, 0), d(141, 47, 13, 4),
   d(142, 61, 13, 2),
-
 ]
 
 export default function AnimatedFooter() {
@@ -133,55 +123,50 @@ export default function AnimatedFooter() {
   const [shapes, setShapes] = useState(() =>
     INITIAL_SHAPES.map((s, i) => ({ ...s, z: i + 1, dir: getDir(s.id) }))
   )
-  // Shape clusters: all dots in the same group share identical duration + delay
-  // so they're always at the same animation phase and move as one unit.
-  // Scattered dots (id > 90) keep individual timing.
-  const DURATIONS = [2.0, 2.4, 1.8, 2.6, 2.2, 1.6, 2.8, 2.1, 2.5, 1.9]
+
+  const DURATIONS = [0.5, 0.6, 0.45, 0.65, 0.55, 0.4, 0.7, 0.52, 0.62, 0.48]
   const getDuration = (id) => {
-    if (id <=  9) return 2.0   // green triangle
-    if (id <= 24) return 2.4   // orange star
-    if (id <= 37) return 1.8   // teal circle
-    if (id <= 46) return 2.6   // red triangle
-    if (id <= 56) return 2.2   // purple triangle
-    if (id <= 73) return 2.0   // pink star
-    if (id <= 90) return 2.8   // blue star
+    if (id <=  9) return 0.5
+    if (id <= 24) return 0.6
+    if (id <= 37) return 0.45
+    if (id <= 46) return 0.65
+    if (id <= 56) return 0.55
+    if (id <= 73) return 0.5
+    if (id <= 90) return 0.7
     return DURATIONS[id % DURATIONS.length]
   }
   const getDelay = (id) => {
     if (id <=  9) return  0
-    if (id <= 24) return -0.8
-    if (id <= 37) return -0.4
-    if (id <= 46) return -1.2
-    if (id <= 56) return -0.6
-    if (id <= 73) return -1.0
-    if (id <= 90) return -0.2
-    return -((id * 0.37) % 2.6)
+    if (id <= 24) return -0.2
+    if (id <= 37) return -0.1
+    if (id <= 46) return -0.3
+    if (id <= 56) return -0.15
+    if (id <= 73) return -0.25
+    if (id <= 90) return -0.05
+    return -((id * 0.09) % 0.5)
   }
-  const [topZ, setTopZ] = useState(INITIAL_SHAPES.length + 1)
-  const [ripples, setRipples] = useState([])
-  const rippleCounter = useRef(0)
 
-  // Per-group piano state (7 shape groups)
+  const [topZ, setTopZ] = useState(INITIAL_SHAPES.length + 1)
+  const [clockTime, setClockTime] = useState('')
   const [groupPlayKeys, setGroupPlayKeys] = useState(Array(7).fill(0))
   const [groupPlaying,  setGroupPlaying]  = useState(Array(7).fill(false))
   const groupTimers = useRef(Array(7).fill(null))
   const footerRef = useRef(null)
   const dragging = useRef(null)
   const cursorRef = useRef(null)
+  const [revealed, setRevealed] = useState(false)
 
-  // Which of the 7 shape groups does this id belong to? (-1 = none)
   const shapeGroup = (id) => {
-    if (id >=  1 && id <=  9) return 0  // green triangle
-    if (id >= 10 && id <= 24) return 1  // orange star
-    if (id >= 25 && id <= 37) return 2  // teal circle
-    if (id >= 38 && id <= 46) return 3  // red triangle
-    if (id >= 47 && id <= 56) return 4  // purple triangle
-    if (id >= 57 && id <= 73) return 5  // pink star
-    if (id >= 74 && id <= 90) return 6  // blue star
+    if (id >=  1 && id <=  9) return 0
+    if (id >= 10 && id <= 24) return 1
+    if (id >= 25 && id <= 37) return 2
+    if (id >= 38 && id <= 46) return 3
+    if (id >= 47 && id <= 56) return 4
+    if (id >= 57 && id <= 73) return 5
+    if (id >= 74 && id <= 90) return 6
     return -1
   }
 
-  // Precompute bounding box + color for each group — recomputes only when shapes change
   const groupBounds = useMemo(() => Array.from({ length: 7 }, (_, g) => {
     const gDots = shapes.filter(s => shapeGroup(s.id) === g)
     if (!gDots.length) return null
@@ -194,42 +179,43 @@ export default function AnimatedFooter() {
     }
   }), [shapes])
 
-  // Distance-from-centroid layer (0 = middle, higher = further out)
+  // Row index by vertical distance from group centroid — each row is 14px apart
   const getPianoLayer = (shape, groupDots) => {
-    const cx = groupDots.reduce((s, d) => s + d.x + d.w / 2, 0) / groupDots.length
     const cy = groupDots.reduce((s, d) => s + d.y + d.h / 2, 0) / groupDots.length
-    const dist = Math.hypot(shape.x + shape.w / 2 - cx, shape.y + shape.h / 2 - cy)
-    if (dist <  8) return 0
-    if (dist < 18) return 1
-    if (dist < 28) return 2
-    return 3
+    const vDist = Math.abs(shape.y + shape.h / 2 - cy)
+    return Math.round(vDist / 14)
   }
 
-  const triggerRipple = ({ cx, cy, color, startSize = 6 }) => {
-    ;[0, 200, 400].forEach(delay => {
-      const key = rippleCounter.current++
-      setTimeout(() => {
-        setRipples(prev => [...prev, { key, cx, cy, color, startSize }])
-        setTimeout(() => setRipples(prev => prev.filter(r => r.key !== key)), 1000)
-      }, delay)
-    })
-  }
+  useEffect(() => {
+    const update = () => {
+      const now = new Date()
+      const timeStr = now.toLocaleTimeString('en-US', {
+        timeZone: 'America/Los_Angeles',
+        hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true,
+      })
+      const tzAbbr = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Los_Angeles', timeZoneName: 'short',
+      }).formatToParts(now).find(p => p.type === 'timeZoneName')?.value || 'PT'
+      setClockTime(`${timeStr} ${tzAbbr}`)
+    }
+    update()
+    const interval = setInterval(update, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     const handleMove = (e) => {
       const drag = dragging.current
       if (!drag || !footerRef.current) return
       const rect = footerRef.current.getBoundingClientRect()
-      const x = e.clientX - rect.left - drag.offsetX
-      const y = e.clientY - rect.top - drag.offsetY
-      setShapes(prev =>
-        prev.map(s => s.id === drag.id ? { ...s, x, y } : s)
-      )
+      setShapes(prev => prev.map(s => s.id === drag.id
+        ? { ...s, x: e.clientX - rect.left - drag.offsetX, y: e.clientY - rect.top - drag.offsetY }
+        : s
+      ))
     }
     const handleUp = () => { dragging.current = null }
     window.addEventListener('mousemove', handleMove)
     window.addEventListener('mouseup', handleUp)
-
     return () => {
       window.removeEventListener('mousemove', handleMove)
       window.removeEventListener('mouseup', handleUp)
@@ -246,6 +232,19 @@ export default function AnimatedFooter() {
       setGroupPlaying(prev => { const n = [...prev]; n[g] = false; return n })
     }, 900)
   }
+
+  useEffect(() => {
+    const el = footerRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setRevealed(true)
+        obs.disconnect()
+      }
+    }, { threshold: 0.15 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
 
   const onMouseDown = (e, id) => {
     e.preventDefault()
@@ -268,15 +267,12 @@ export default function AnimatedFooter() {
   return (
     <>
     <style>{`
-      @keyframes pix-up    { 0%,100%{transform:translateY(0)}  50%{transform:translateY(-14px)} }
-      @keyframes pix-down  { 0%,100%{transform:translateY(0)}  50%{transform:translateY(14px)}  }
-      @keyframes pix-left  { 0%,100%{transform:translateX(0)}  50%{transform:translateX(-14px)} }
-      @keyframes pix-right { 0%,100%{transform:translateX(0)}  50%{transform:translateX(14px)}  }
-      @keyframes water-drop {
-        0%   { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
-        100% { transform: translate(-50%,-50%) scale(5); opacity: 0;   }
-      }
+      @keyframes pix-up    { from{transform:translateY(0)}  to{transform:translateY(-16px)} }
+      @keyframes pix-down  { from{transform:translateY(0)}  to{transform:translateY(16px)}  }
+      @keyframes pix-left  { from{transform:translateX(0)}  to{transform:translateX(-16px)} }
+      @keyframes pix-right { from{transform:translateX(0)}  to{transform:translateX(16px)}  }
       .footer-canvas, .footer-canvas * { cursor: none !important; }
+      .footer-link:hover { color: rgb(0,0,0) !important; }
       @media (max-width: 767px) {
         .footer-content { padding: 20px !important; }
       }
@@ -284,12 +280,16 @@ export default function AnimatedFooter() {
         0%, 100% { box-shadow: 0 0 8px 3px var(--cursor-color); }
         50%       { box-shadow: 0 0 18px 7px var(--cursor-color); }
       }
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
       @keyframes piano-bounce {
-        0%   { transform: translateY(0);     box-shadow: 0 0 5px  1px var(--glow-dim);    }
-        30%  { transform: translateY(-10px); box-shadow: 0 0 18px 7px var(--glow-bright); }
-        60%  { transform: translateY(4px);   box-shadow: 0 0 10px 3px var(--glow-mid);    }
-        80%  { transform: translateY(-2px);  box-shadow: 0 0 7px  2px var(--glow-dim);    }
-        100% { transform: translateY(0);     box-shadow: 0 0 5px  1px var(--glow-dim);    }
+        0%   { transform: translateY(0);     box-shadow: 0 0 4px 1px var(--glow-dim);    }
+        30%  { transform: translateY(-18px); box-shadow: 0 0 20px 8px var(--glow-bright); }
+        65%  { transform: translateY(5px);   box-shadow: 0 0 8px  3px var(--glow-mid);    }
+        85%  { transform: translateY(-2px);  box-shadow: 0 0 5px  1px var(--glow-dim);    }
+        100% { transform: translateY(0);     box-shadow: 0 0 4px  1px var(--glow-dim);    }
       }
     `}</style>
     <footer
@@ -300,7 +300,6 @@ export default function AnimatedFooter() {
         if (!el || !footerRef.current) return
         el.style.left = e.clientX + 'px'
         el.style.top  = e.clientY + 'px'
-        // Position-based group detection — immune to z-index issues
         const rect = footerRef.current.getBoundingClientRect()
         const fx = e.clientX - rect.left
         const fy = e.clientY - rect.top
@@ -312,36 +311,25 @@ export default function AnimatedFooter() {
           el.style.boxShadow = `0 0 10px 4px ${cc}88`
           el.style.setProperty('--cursor-color', `${cc}bb`)
           el.style.animation = 'cursor-glow 1s ease-in-out infinite'
-          document.body.dataset.overFooterShape = 'true'
         } else {
           el.style.display = 'none'
-          document.body.dataset.overFooterShape = 'false'
         }
       }}
       onMouseLeave={() => {
         if (cursorRef.current) cursorRef.current.style.display = 'none'
-        document.body.dataset.overFooterShape = 'false'
       }}
       style={{
-      position: 'relative',
-      overflow: 'hidden',
-      minHeight: '600px',
-      cursor: 'none',
-      backgroundColor: bg,
-      backgroundImage: `radial-gradient(circle, ${dotColor} 2px, transparent 2px)`,
-      backgroundSize: '22px 22px',
-      backgroundPosition: '-11px -11px',
-    }}>
-      {/* Gradient fade */}
-      <div style={{
-        position: 'absolute', top: 0, left: 0, right: 0,
-        height: '300px',
-        background: `linear-gradient(to bottom, ${bg} 40%, transparent 100%)`,
-        zIndex: topZ + 1,
-        pointerEvents: 'none',
-      }} />
+        position: 'relative',
+        overflow: 'hidden',
+        minHeight: '600px',
+        cursor: 'none',
+        backgroundColor: bg,
+        backgroundImage: `radial-gradient(circle, ${dotColor} 1.5px, transparent 1.5px)`,
+        backgroundSize: '10px 10px',
+        backgroundPosition: '0px 0px',
+      }}>
 
-      {/* Shape hitboxes — one transparent overlay per group, covers gaps */}
+      {/* Shape hitboxes */}
       {[...Array(7)].map((_, g) => {
         const gDots = shapes.filter(s => shapeGroup(s.id) === g)
         const left   = Math.min(...gDots.map(s => s.x)) - 6
@@ -351,68 +339,75 @@ export default function AnimatedFooter() {
         return (
           <div key={`hitbox-${g}`}
             className="footer-shape-hitbox"
-            onMouseDown={e => { e.preventDefault(); triggerGroup(g) }}
+            onMouseDown={e => {
+              e.preventDefault()
+              triggerGroup(g)
+            }}
             style={{ position: 'absolute', left, top, width: right - left, height: bottom - top, zIndex: 10, cursor: 'none' }}
           />
         )
       })}
 
-      {/* Dot shapes */}
+      {/* Dots */}
       {shapes.map(shape => {
         const g = shapeGroup(shape.id)
         const gDots = g >= 0 ? shapes.filter(s => shapeGroup(s.id) === g) : []
         const pianoAnim = g >= 0 && groupPlaying[g]
-          ? `piano-bounce 0.6s cubic-bezier(0.34, 1.4, 0.64, 1) ${getPianoLayer(shape, gDots) * 120}ms forwards`
+          ? `piano-bounce 0.55s ease-out ${getPianoLayer(shape, gDots) * 90}ms both`
           : null
         const pixAnim = shape.id < 200 && dragging.current?.id !== shape.id
-          ? `pix-${shape.dir} ${getDuration(shape.id)}s steps(5) ${getDelay(shape.id)}s infinite`
+          ? `pix-${shape.dir} ${getDuration(shape.id)}s steps(4, end) ${getDelay(shape.id)}s infinite alternate`
           : 'none'
+        const revealDelay = g >= 0 ? g * 80 : Math.round((shape.x / 1900) * 400)
+
         return (
           <div
-            key={g >= 0 ? `${shape.id}-${groupPlayKeys[g]}` : shape.id}
-            data-dir={shape.dir}
-            data-sid={shape.id}
-            onMouseDown={e => onMouseDown(e, shape.id)}
+            key={shape.id}
             style={{
               position: 'absolute',
               left: shape.x,
               top: shape.y,
               width: shape.w,
               height: shape.h,
-              borderRadius: '50%',
-              backgroundColor: shape.color,
+              opacity: 0,
+              ...(revealed && { animation: `fadeUp 500ms ease-out ${revealDelay}ms both` }),
               zIndex: shape.id >= 1000 ? 1 : shape.z,
-              pointerEvents: 'all',
-              userSelect: 'none',
-              '--glow-dim':    `${shape.color}66`,
-              '--glow-mid':    `${shape.color}99`,
-              '--glow-bright': `${shape.color}cc`,
-              boxShadow: shape.id >= 200 ? 'none' : `0 0 5px 1px ${shape.color}66`,
-              animation: pianoAnim ?? pixAnim,
+              pointerEvents: 'none',
             }}
-          />
+          >
+            <div
+              key={g >= 0 ? `p-${shape.id}-${groupPlayKeys[g]}` : `p-${shape.id}`}
+              data-sid={shape.id}
+              onMouseDown={e => onMouseDown(e, shape.id)}
+              style={{
+                width: shape.w,
+                height: shape.h,
+                borderRadius: '50%',
+                backgroundColor: shape.color,
+                pointerEvents: 'all',
+                userSelect: 'none',
+                '--glow-dim':    `${shape.color}66`,
+                '--glow-mid':    `${shape.color}99`,
+                '--glow-bright': `${shape.color}cc`,
+                willChange: 'transform',
+                boxShadow: `0 0 3px 0px ${shape.color}cc`,
+                animation: pianoAnim ?? pixAnim,
+              }}
+            />
+          </div>
         )
       })}
 
-      {/* Water-drop ripples */}
-      {ripples.map(r => (
-        <div key={r.key} style={{
-          position: 'absolute',
-          left: r.cx,
-          top: r.cy,
-          width: r.startSize,
-          height: r.startSize,
-          borderRadius: '50%',
-          border: `1.5px solid ${r.color}`,
-          pointerEvents: 'none',
-          zIndex: topZ + 3,
-          animation: 'water-drop 0.9s ease-out forwards',
-        }} />
-      ))}
-
-
       {/* Footer content */}
-      <div className='footer-content' style={{ position: 'absolute', top: 0, left: 0, width: 'fit-content', zIndex: topZ + 2, padding: '72px 0 32px', paddingLeft: '64px', pointerEvents: 'none' }}>
+      <div className='footer-content' style={{
+        position: 'absolute', top: 0, left: 0, right: 0,
+        zIndex: topZ + 2,
+        padding: '72px 64px 32px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        pointerEvents: 'none',
+      }}>
         <div style={{
           display: 'flex', flexDirection: 'column', gap: '4px',
           background: dark ? 'rgba(30,30,30,0.7)' : 'rgba(252,252,252,0.75)',
@@ -421,25 +416,46 @@ export default function AnimatedFooter() {
           padding: '20px 24px',
           pointerEvents: 'all',
         }}>
-          <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '400', color: headingCol, margin: 0 }}>Get in touch!</p>
+          <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '400', color: headingCol, margin: 0 }}>
+            {['Get', 'in', 'touch!'].map((word, i) => (
+              <span key={word} style={{
+                display: 'inline-block',
+                marginRight: i < 2 ? '0.28em' : 0,
+                opacity: 0,
+                ...(revealed && { animation: `fadeUp 500ms ease-out ${i * 100}ms both` }),
+              }}>{word}</span>
+            ))}
+          </p>
           <div style={{ display: 'flex', gap: '16px' }}>
-            <a href='mailto:joannzhang4@gmail.com' style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Email ↗</a>
-            <a href='https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing' target='_blank' rel='noopener noreferrer' style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none' }} className={linkHover}>Resume ↗</a>
+            <a href='mailto:joannzhang4@gmail.com'
+              style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none', opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 400ms both' }) }}
+              className={`footer-link ${linkHover}`}>Email ↗</a>
+            <a href='https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing' target='_blank' rel='noopener noreferrer'
+              style={{ fontSize: '16px', lineHeight: '24px', color: 'rgb(156, 163, 175)', textDecoration: 'none', opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 500ms both' }) }}
+              className={`footer-link ${linkHover}`}>Resume ↗</a>
           </div>
-          <p style={{ fontSize: '14px', lineHeight: '20px', color: copyCol, margin: 0 }}>© Joann Zhang</p>
+        </div>
+        <div style={{
+          display: 'flex', flexDirection: 'column', gap: '2px', textAlign: 'right',
+          background: dark ? 'rgba(30,30,30,0.7)' : 'rgba(252,252,252,0.75)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          padding: '20px 24px',
+          pointerEvents: 'all',
+        }}>
+          <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgb(33, 33, 33)', margin: 0, opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 300ms both' }) }}>© Joann Zhang</p>
+          <p style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '16px', lineHeight: '24px', color: copyCol, margin: 0, opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 400ms both' }) }}>{clockTime}</p>
         </div>
       </div>
     </footer>
 
-    {/* Custom glowing cursor — all styles written directly to DOM, no React re-renders */}
+    {/* Custom glowing cursor */}
     <div
       ref={cursorRef}
       style={{
         position: 'fixed',
-        left: '-100px',
-        top: '-100px',
-        width: '12px',
-        height: '12px',
+        left: '-100px', top: '-100px',
+        width: '12px', height: '12px',
         borderRadius: '50%',
         transform: 'translate(-50%, -50%)',
         pointerEvents: 'none',

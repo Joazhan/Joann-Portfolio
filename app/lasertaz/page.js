@@ -63,7 +63,7 @@ export default function Lasertaz() {
           alt="Lasertaz app screens"
           width={1200}
           height={700}
-          style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+          style={{ width: '70%', height: 'auto', objectFit: 'contain' }}
         />
       </div>
 

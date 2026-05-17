@@ -54,24 +54,19 @@ export default function Home() {
   }, [])
   const lastScrollY = useRef(0)
   const heroRef = useRef(null)
+  const shapesContainerRef = useRef(null)
   const nnImagesWrapRef = useRef(null)
   const shapesCache = useRef(null)
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY
       lastScrollY.current = currentScrollY
-      // Shape parallax + fade
-      if (heroRef.current) {
-        if (!shapesCache.current) {
-          shapesCache.current = Array.from(heroRef.current.querySelectorAll('[data-parallax]')).map(el => ({
-            el, speed: parseFloat(el.dataset.parallax)
-          }))
-        }
-        const opacity = Math.max(0, 1 - currentScrollY / 300)
-        shapesCache.current.forEach(({ el, speed }) => {
-          el.style.transform = `translateY(${currentScrollY * speed}px)`
-          el.style.opacity = opacity
-        })
+      // Shape parallax + fade — move the whole container so shapes never overlap
+      if (shapesContainerRef.current) {
+        const offset = currentScrollY * 0.6
+        const opacity = Math.max(0, 1 - Math.max(0, currentScrollY - 120) / 250)
+        shapesContainerRef.current.style.transform = `translateY(${offset}px)`
+        shapesContainerRef.current.style.opacity = opacity
       }
       // NN card parallax
       if (nnImagesWrapRef.current) {
@@ -204,55 +199,62 @@ export default function Home() {
           from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }
         }
+        .hero-shapes-mobile { display: none; }
         .card-pre { opacity: 0; transform: translateY(30px); }
         .card-in { animation: cardFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
         .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 10px !important; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08) !important; }
         .main-card { padding-top: 80px !important; padding-bottom: 0 !important; min-height: 600px; }
-        .concept-card { height: 600px !important; min-height: unset !important; }
+        .concept-card { height: auto !important; min-height: unset !important; }
+        .concept-card.main-card { justify-content: center !important; padding: 32px 48px !important; min-height: unset !important; }
         .card-bottom-container { margin: 0 -32px -32px -32px !important; padding: 24px 32px !important; }
         .card-title { font-size: 24px !important; line-height: 32px !important; letter-spacing: -0.03em !important; font-weight: 400 !important; color: #212121 !important; }
         .card-desc { font-size: 16px !important; line-height: 24px !important; color: rgba(10,10,10,0.4) !important; font-weight: 400 !important; }
-        .card-icon { width: 44px !important; height: 44px !important; border-radius: 10px !important; }
+        .card-icon { width: 48px !important; height: 48px !important; border-radius: 10px !important; }
         @media (max-width: 767px) {
           * { cursor: auto !important; }
           .portfolio-main { padding-left: 20px !important; padding-right: 20px !important; }
-          .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; }
-          .hero-shape { transform: scale(0.5) !important; transform-origin: center center; }
-          .hero-shape-orange-sq { display: none !important; }
-          .hero-shape-red-sq { display: none !important; }
-          .hero-shape-purple-star { display: none !important; }
-          .hero-shape-red-circle { display: none !important; }
-          .hero-text-p { font-size: 20px !important; line-height: 28px !important; }
+          .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; overflow: hidden !important; }
+          .hero-shapes-wrap { display: none !important; }
+          .hero-shapes-mobile { display: block !important; }
+          .hero-text-p { font-size: 24px !important; line-height: 32px !important; letter-spacing: -0.03em !important; width: 100% !important; max-width: 100% !important; }
           .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 16px !important; grid-template-columns: 1fr !important; }
           .nn-desktop-img, .bw-desktop-img, .rhs-desktop-img { display: none !important; }
-          .nn-phone, .bw-phone, .rhs-phone { flex: unset !important; margin: 0 auto !important; width: 34% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
-          .bw-phone { width: 38% !important; aspect-ratio: 9/16 !important; }
+          .nn-phone, .bw-phone, .rhs-phone { flex: unset !important; margin: 0 auto !important; width: 40% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
+          .nn-phone { overflow: hidden !important; border-radius: 14% / 7% !important; }
+          .bw-phone { width: 44% !important; aspect-ratio: 9/16 !important; }
           .bw-video { object-fit: contain !important; }
-          .rhs-phone { width: 38% !important; aspect-ratio: 9/16 !important; }
-          .rhs-video { object-fit: contain !important; }
+          .rhs-phone { width: 44% !important; height: auto !important; margin: 0 auto !important; align-self: center !important; aspect-ratio: 750/1430 !important; }
+          .rhs-video { object-fit: cover !important; }
+          .main-card { height: 460px !important; min-height: unset !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; }
           .project-card { position: relative !important; padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 20px !important; }
           .card-bottom-container { margin: 0 -16px -20px -16px !important; padding: 20px 16px !important; }
           .card-label-row { padding: 8px 0 !important; }
-.card-title { font-size: 20px !important; line-height: 26px !important; letter-spacing: -0.03em !important; }
-          .card-desc { font-size: 14px !important; line-height: 20px !important; color: rgba(10,10,10,0.4) !important; }
-          .card-icon { width: 44px !important; height: 44px !important; border-radius: 10px !important; }
+          .card-title { font-size: 20px !important; line-height: 28px !important; letter-spacing: -0.03em !important; }
+          .card-desc { font-size: 14px !important; line-height: 18px !important; color: rgba(10,10,10,0.4) !important; }
+          .card-icon { width: 40px !important; height: 40px !important; border-radius: 10px !important; }
           .card-icon-wrap { align-items: flex-start !important; }
           .duetti-macbook { width: 100% !important; }
           .duetti-iphone { display: none !important; }
           .card-img-wrap { overflow: hidden !important; width: 100% !important; }
+          .rhs-img-container { height: auto !important; min-height: unset !important; width: 100% !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+          .nn-img-wrap { display: flex !important; justify-content: center !important; align-items: center !important; width: 100% !important; }
+          .card-img-row { justify-content: center !important; align-items: center !important; width: 100% !important; }
+          .concept-card { height: auto !important; min-height: unset !important; }
           .concepts-section { margin-left: -20px !important; margin-right: -20px !important; padding: 48px 20px !important; margin-top: 48px !important; }
           .concepts-sticky-left { position: static !important; width: 100% !important; margin-bottom: 32px !important; }
           .concepts-inner { flex-direction: column !important; }
-          .concepts-title { font-size: 24px !important; line-height: 32px !important; }
-          .concepts-desc { font-size: 15px !important; line-height: 22px !important; }
+          .concepts-cards-col { flex: unset !important; width: 100% !important; }
+          .concepts-title { font-size: 20px !important; line-height: 28px !important; }
+          .concepts-desc { font-size: 14px !important; line-height: 18px !important; }
+          .card-year-label { font-size: 14px !important; line-height: 18px !important; }
         }
       `}</style>
       {/* Spacer for fixed navbar */}
       <div style={{ height: '96px' }} />
       {/* Hero */}
-      <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, margin: '0 -64px', padding: '120px 64px 60px' }}>
+      <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, margin: '0 -64px', padding: '120px 68px 60px' }}>
         {/* Floating shapes */}
-        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+        <div ref={shapesContainerRef} className="hero-shapes-wrap" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0, willChange: 'transform' }}>
           {/* ── LARGE SHAPES (7) ── */}
           {/* 1. Large blue circle — center left */}
           <div data-parallax="0.28" style={{ position: 'absolute', top: '22%', left: '10%', pointerEvents: 'none', willChange: 'transform' }}>
@@ -449,6 +451,24 @@ export default function Home() {
             <svg width="18" height="18" viewBox="0 0 18 18" style={{ animation: 'orbitCW 3.6s ease-in-out 1.5s infinite' }}><rect x="0" y="0" width="18" height="18" rx="4" fill="#FED7AA"/></svg>
           </div>
           </div>
+          {/* 24. Light blue 4-corner star — left side */}
+          <div data-parallax="0.14" style={{ position: 'absolute', top: '34%', left: '2.5%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.1s' }}>
+            <div style={{ transform: 'rotate(77.07deg)', animation: 'orbitSm 4.8s ease-in-out 0.9s infinite' }}>
+              <svg width="37" height="35" viewBox="0 0 100 100" overflow="visible">
+                <path d="M 54.02 13.83 L 62.04 35.41 Q 62.73 37.27 64.59 37.96 L 86.17 45.98 Q 97 50 86.17 54.02 L 64.59 62.04 Q 62.73 62.73 62.04 64.59 L 54.02 86.17 Q 50 97 45.98 86.17 L 37.96 64.59 Q 37.27 62.73 35.40 62.04 L 13.83 54.02 Q 3 50 13.83 45.98 L 35.41 37.96 Q 37.27 37.27 37.96 35.41 L 45.98 13.83 Q 50 3 54.02 13.83 Z" fill="#B0EBF8"/>
+              </svg>
+            </div>
+          </div>
+          </div>
+          {/* 23. Light blue ellipse — center right */}
+          <div data-parallax="0.14" style={{ position: 'absolute', top: '65%', left: '77%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.1s' }}>
+            <svg width="40" height="40" viewBox="0 0 40 40" style={{ animation: 'orbitSm 4.8s ease-in-out 0.9s infinite' }}>
+              <circle cx="20" cy="20" r="19" fill="#DD9FE6"/>
+            </svg>
+          </div>
+          </div>
           {/* 16. Small teal dash — top right, rotated -25° */}
           <div data-parallax="0.13" style={{ position: 'absolute', top: '4%', right: '23%', pointerEvents: 'none', willChange: 'transform' }}>
           <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.0s' }}>
@@ -504,11 +524,79 @@ export default function Home() {
           </div>
           </div>
         </div>
+        {/* Mobile-only shapes */}
+        <div className="hero-shapes-mobile" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+          {/* Top-left: blue triangle */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '2%', left: '2%', animationDelay: '0.5s' }}>
+            <svg width="58" height="58" viewBox="0 0 100 100" overflow="visible" style={{ animation: 'orbitCCW 5s ease-in-out infinite' }}>
+              <path d="M 0 8.13 Q 0 0 7.27 3.64 L 92.73 46.36 Q 100 50 92.73 53.64 L 7.27 96.36 Q 0 100 0 91.87 Z" fill="#677AF4"/>
+            </svg>
+          </div>
+          {/* Top-right: orange organic star */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '1%', right: '2%', animationDelay: '0.7s' }}>
+            <svg width="68" height="68" viewBox="0 0 189 181" overflow="visible" style={{ animation: 'orbitCW 7s ease-in-out infinite' }}>
+              <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="#f97316"/>
+            </svg>
+          </div>
+          {/* Top-center-left: green dash */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '8%', left: '16%', animationDelay: '0.9s' }}>
+            <div style={{ animation: 'orbitSm 3.8s ease-in-out 0.4s infinite' }}>
+              <svg width="32" height="9" viewBox="0 0 30 8" style={{ transform: 'rotate(-20deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#22c55e"/></svg>
+            </div>
+          </div>
+          {/* Top-right area: teal dash */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '9%', right: '14%', animationDelay: '1.0s' }}>
+            <div style={{ animation: 'orbitCCW 4.3s ease-in-out 0.3s infinite' }}>
+              <svg width="32" height="9" viewBox="0 0 30 8" style={{ transform: 'rotate(-25deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#2DA3F8"/></svg>
+            </div>
+          </div>
+          {/* Top-center: lavender star */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '2%', left: '43%', animationDelay: '0.6s' }}>
+            <div style={{ animation: 'orbitSm 4.4s ease-in-out 0.5s infinite' }}>
+              <svg width="30" height="30" viewBox="0 0 100 100" overflow="visible" style={{ transform: 'rotate(20deg)' }}>
+                <path d="M 54.02 13.83 L 62.04 35.41 Q 62.73 37.27 64.59 37.96 L 86.17 45.98 Q 97 50 86.17 54.02 L 64.59 62.04 Q 62.73 62.73 62.04 64.59 L 54.02 86.17 Q 50 97 45.98 86.17 L 37.96 64.59 Q 37.27 62.73 35.40 62.04 L 13.83 54.02 Q 3 50 13.83 45.98 L 35.41 37.96 Q 37.27 37.27 37.96 35.41 L 45.98 13.83 Q 50 3 54.02 13.83 Z" fill="#C8CFFC"/>
+              </svg>
+            </div>
+          </div>
+          {/* Bottom-left: green triangle */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', bottom: '4%', left: '3%', animationDelay: '1.1s' }}>
+            <svg width="52" height="46" viewBox="0 0 100 87" style={{ animation: 'orbitCW 4.5s ease-in-out 0.8s infinite' }}>
+              <path d="M 50 0 L 100 87 L 0 87 Z" fill="#0C840C"/>
+            </svg>
+          </div>
+          {/* Bottom-right: purple organic star */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', bottom: '3%', right: '3%', animationDelay: '0.85s' }}>
+            <svg width="62" height="60" viewBox="0 0 189 181" overflow="visible" style={{ animation: 'orbitCCW 7s ease-in-out infinite' }}>
+              <path d="M84.7774 53.7775C91.3204 41.5751 94.5919 35.4739 98.0802 34.1447C101.423 32.8708 105.192 33.48 107.964 35.7421C110.856 38.1025 112.039 44.9236 114.405 58.5659C115.025 62.1438 115.336 63.9327 116.116 65.3728C117.058 67.1133 118.496 68.535 120.248 69.4576C121.697 70.221 123.465 70.5068 127.003 71.0785L128.533 71.3258C140.708 73.2936 146.796 74.2775 149.046 76.439C152.37 79.6314 153.082 84.6821 150.77 88.6688C149.204 91.3682 143.626 93.9961 132.468 99.252C129.338 100.727 127.772 101.464 126.629 102.53C124.949 104.095 123.86 106.192 123.543 108.466C123.327 110.014 123.626 111.733 124.222 115.17C126.352 127.455 127.418 133.597 125.969 136.524C124.073 140.354 119.954 142.556 115.716 142.004C112.478 141.583 108.004 137.325 99.0565 128.809L97.2231 127.064C94.4168 124.393 93.0136 123.057 91.3756 122.35C89.8539 121.693 88.1928 121.424 86.5416 121.569C84.7642 121.724 83.0118 122.549 79.5069 124.2L77.2172 125.279C66.0424 130.543 60.455 133.175 57.2486 132.555C53.0533 131.743 49.8373 128.356 49.2447 124.124C48.7917 120.889 51.7376 115.396 57.6293 104.408C59.2781 101.333 60.1025 99.7953 60.3856 98.2585C60.8016 96.0001 60.4276 93.6674 59.3266 91.6522C58.5773 90.2808 57.3239 89.0879 54.8172 86.7021C45.8836 78.1991 41.4168 73.9476 40.7811 70.8924C39.8424 66.3803 42.1089 61.8109 46.2694 59.8282C49.0864 58.4857 55.1741 59.4696 67.3494 61.4374L68.8795 61.6847C72.4169 62.2564 74.1856 62.5422 75.8011 62.2742C77.7539 61.9502 79.5666 61.0539 81.0096 59.6989C82.2035 58.5779 83.0615 56.9778 84.7774 53.7775Z" fill="#C8CFFC"/>
+            </svg>
+          </div>
+          {/* Bottom-left-center: red circle */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', bottom: '7%', left: '20%', animationDelay: '1.0s' }}>
+            <svg width="42" height="42" viewBox="0 0 120 120" overflow="visible" style={{ animation: 'orbitCW 4s ease-in-out infinite' }}>
+              <circle cx="60" cy="60" r="59" fill="#ef4444"/>
+            </svg>
+          </div>
+          {/* Bottom-right-center: blue 4-star */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', bottom: '9%', right: '16%', animationDelay: '1.2s' }}>
+            <div style={{ animation: 'orbitSm 4.4s ease-in-out 0.5s infinite' }}>
+              <svg width="34" height="34" viewBox="0 0 100 100" overflow="visible" style={{ transform: 'rotate(45deg)' }}>
+                <path d="M 54.02 13.83 L 62.04 35.41 Q 62.73 37.27 64.59 37.96 L 86.17 45.98 Q 97 50 86.17 54.02 L 64.59 62.04 Q 62.73 62.73 62.04 64.59 L 54.02 86.17 Q 50 97 45.98 86.17 L 37.96 64.59 Q 37.27 62.73 35.40 62.04 L 13.83 54.02 Q 3 50 13.83 45.98 L 35.41 37.96 Q 37.27 37.27 37.96 35.41 L 45.98 13.83 Q 50 3 54.02 13.83 Z" fill="#B0EBF8"/>
+              </svg>
+            </div>
+          </div>
+          {/* Bottom-center: salmon dash */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', bottom: '4%', left: '41%', animationDelay: '1.3s' }}>
+            <div style={{ animation: 'orbitSm 4.2s ease-in-out 0.7s infinite' }}>
+              <svg width="32" height="9" viewBox="0 0 30 8" style={{ transform: 'rotate(-15deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#F87171"/></svg>
+            </div>
+          </div>
+        </div>
+
         {/* Hero text */}
-        <div className={`flex justify-center ${introComplete ? 'hero-in' : 'hero-pre'}`} style={{ position: 'relative', zIndex: 1, paddingTop: '20px', paddingBottom: '40px' }}>
-          <p className="hero-text-p" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-3px', fontWeight: '400', color: 'rgb(33, 33, 33)', width: '580px', textAlign: 'center', margin: '0 auto' }}>
-            SF based product designer rooted in visual design and product thinking,{" "}
-            <span style={{ color: '#969696' }}>focused on creating clear, high-quality experiences.</span>
+        <div className={`flex justify-center ${introComplete ? 'hero-in' : 'hero-pre'}`} style={{ position: 'relative', zIndex: 1, paddingTop: '48px', paddingBottom: '72px' }}>
+          <p className="hero-text-p" style={{ fontSize: '40px', lineHeight: '52px', letterSpacing: '-0.02em', fontWeight: '400', color: 'rgb(33, 33, 33)', width: '580px', textAlign: 'center', margin: '0 auto' }}>
+            SF-based product designer grounded in visual design and product thinking,{" "}
+            <span style={{ color: 'rgb(150, 150, 150)' }}>with a hands-on approach to coding polished digital experiences.</span>
           </p>
         </div>
       </section>
@@ -519,12 +607,14 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/nn" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div ref={nnImagesWrapRef} style={{ willChange: 'transform', overflow: 'visible' }}>
-                <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-                  <Image src="/Images/NN.png" alt="NutritionNest" width={900} height={600} className="object-contain rounded-xl nn-desktop-img" style={{ width: '75%', height: 'auto' }} />
-                  <div className="nn-phone" style={{ position: 'relative', flex: '1 1 0', marginLeft: '-4px', alignSelf: 'stretch' }}>
-                    <div style={{ position: 'absolute', top: '4%', left: '8.5%', right: '8.5%', bottom: '4.2%', borderRadius: '11%/5.5%', overflow: 'hidden', zIndex: 1 }}>
-                      <video src="/Images/NN-video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div ref={nnImagesWrapRef} className="nn-img-wrap" style={{ willChange: 'transform', overflow: 'visible', marginTop: '-24px' }}>
+                <div className="card-img-row flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', justifyContent: 'center' }}>
+                  <div className="nn-desktop-img" style={{ flex: '0 0 62%', overflow: 'hidden', borderRadius: '12px' }}>
+                    <Image src="/Images/NN2.png" alt="NutritionNest" width={2730} height={2764} quality={100} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                  </div>
+                  <div className="nn-phone" style={{ position: 'relative', flex: '0 0 32%', marginLeft: '-4px', alignSelf: 'flex-start', aspectRatio: '806 / 1586', overflow: 'hidden' }}>
+                    <div style={{ position: 'absolute', top: '3.7%', left: '2.5%', right: '2.5%', bottom: '4%', borderRadius: '14% / 7%', overflow: 'hidden', zIndex: 1, backgroundColor: '#fff' }}>
+                      <video src="/Images/NN-video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                     </div>
                     <Image src="/Images/NN-iphone-frame.png" alt="iPhone frame" fill style={{ objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
                   </div>
@@ -533,8 +623,8 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-            <div className="flex items-center gap-3 card-icon-wrap">
-              <Image src="/Icons/NN_icon.png" alt="NutritionNest icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
+            <div className="flex items-center gap-2 card-icon-wrap">
+              <Image src="/Icons/NN_icon.png" alt="NutritionNest icon" width={48} height={48} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>NutritionNest</span>
                 <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Log nutritional intake and monitor daily calories</span>
@@ -559,11 +649,11 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-            <div className="flex items-center gap-3 card-icon-wrap">
+            <div className="flex items-center gap-2 card-icon-wrap">
               <Image src="/Icons/Duetti_icon.png" alt="Duetti icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Duetti</span>
-                <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Insight-driven report that simplifies music industry data for artists through visual storytelling</span>
+                <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Turning complex music industry data into clear, visual stories.</span>
               </div>
             </div>
           </div>
@@ -573,13 +663,13 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/lasertaz" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+              <div className="card-img-row flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
                 <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
               </div>
             </Link>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-            <div className="flex items-center gap-3 card-icon-wrap">
+            <div className="flex items-center gap-2 card-icon-wrap">
               <Image src="/Icons/Lasertaz_icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Lasertaz</span>
@@ -593,11 +683,11 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/bookworm" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px' }}>
-                <div className="bw-desktop-img" style={{ flex: '0 0 75%', overflow: 'hidden', borderRadius: '12px' }}>
-                  <Image src="/Images/bw_image.png" alt="Bookworm" width={1080} height={678} quality={100} style={{ width: '100%', height: 'auto', display: 'block' }} />
+              <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px', justifyContent: 'center' }}>
+                <div className="bw-desktop-img" style={{ flex: '0 0 62%', overflow: 'hidden', borderRadius: '12px' }}>
+                  <Image src="/Images/bw_cover1.png" alt="Bookworm" width={678} height={1390} quality={100} style={{ width: '100%', height: 'auto', display: 'block' }} />
                 </div>
-                <div className="bw-phone" style={{ position: 'relative', flex: '0 0 25%', aspectRatio: '750 / 1420', alignSelf: 'flex-start', marginTop: '0%' }}>
+                <div className="bw-phone" style={{ position: 'relative', flex: '0 0 31%', aspectRatio: '750 / 1420', alignSelf: 'flex-start', marginTop: '0%' }}>
                   <div style={{ position: 'absolute', inset: 0 }}>
                     <div style={{ position: 'absolute', top: '1.6%', left: '9%', right: '9%', bottom: '2%', borderRadius: '10% 10% 6% 6% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
                       <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline className="bw-video" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -609,7 +699,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-            <div className="flex items-center gap-3 card-icon-wrap">
+            <div className="flex items-center gap-2 card-icon-wrap">
               <Image src="/Icons/Bookworm_icon.png" alt="Bookworm icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Bookworm</span>
@@ -623,7 +713,8 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/rhs" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '0px', height: '620px' }}>
+              <div className="rhs-img-container flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '0px', height: '620px' }}>
+
                 <Image src="/Images/rhs_image1.png" alt="Raymond Hair Salon" width={3564} height={3620} quality={100} unoptimized className="object-contain rounded-xl rhs-desktop-img" style={{ height: '530px', width: 'auto', alignSelf: 'flex-end', marginBottom: '60px', marginRight: '-4px' }} />
                 <div className="rhs-phone" style={{ position: 'relative', height: '480px', aspectRatio: '750 / 1430', alignSelf: 'flex-end', marginBottom: '92px' }}>
                   <div style={{ position: 'absolute', top: '2%', left: '9%', right: '9%', bottom: '2%', borderRadius: '6% / 4%', overflow: 'hidden', zIndex: 1, backgroundColor: '#ffffff' }}>
@@ -635,7 +726,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-            <div className="flex items-center gap-3 card-icon-wrap">
+            <div className="flex items-center gap-2 card-icon-wrap">
               <Image src="/Icons/RHS_icon.png" alt="RHS icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
                 <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Raymond Hair Salon</span>
@@ -650,7 +741,7 @@ export default function Home() {
         <div className="concepts-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         {/* Sticky left label */}
         <div className="concepts-sticky-left" style={{ position: 'sticky', top: '100px', flexShrink: 0, width: '520px' }}>
-          <h2 className="concepts-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.6px', fontWeight: '400', color: '#212121', marginBottom: '8px' }}>Concepts</h2>
+          <h2 className="concepts-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121', marginBottom: '8px' }}>Concepts</h2>
           <p className="concepts-desc" style={{ fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.3px', color: '#969696', marginBottom: '4px' }}>
             I designed these projects after noticing gaps in existing products and wanting to see what a better solution could feel like.
           </p>
@@ -659,23 +750,23 @@ export default function Home() {
           </p>
         </div>
         {/* Stacked cards on the right */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px', flex: '0 0 calc(50% - 12px)' }}>
+        <div className="concepts-cards-col" style={{ display: 'flex', flexDirection: 'column', gap: '40px', flex: '0 0 calc(50% - 12px)' }}>
           {/* Kalshi */}
           <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="card-squircle-wrap" style={{ position: 'relative' }}>
               <Link href="/kalshi" className="flex flex-col overflow-hidden cursor-pointer project-card main-card concept-card card-pre"
-                style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
+                style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '48px 48px 0' }}>
                 <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
-                  style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+                  style={{ alignItems: 'center', justifyContent: 'center' }}>
                   <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
                 </div>
               </Link>
             </div>
             <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-              <div className="flex items-center gap-3 card-icon-wrap">
+              <div className="flex items-center gap-2 card-icon-wrap">
                 <Image src="/Icons/Kalshi_icon.png" alt="Kalshi icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-0">
-                  <span style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
+                  <span className="card-year-label" style={{ fontSize: '14px', lineHeight: '18px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
                   <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Kalshi Desktop Extension</span>
                 </div>
               </div>
@@ -685,18 +776,18 @@ export default function Home() {
           <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
             <div className="card-squircle-wrap" style={{ position: 'relative' }}>
               <Link href="/phia" className="flex flex-col overflow-hidden cursor-pointer project-card main-card concept-card card-pre"
-                style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-                <div className="w-full transition-all duration-500 group-hover:-translate-y-4"
-                  style={{ overflow: 'hidden', borderRadius: '12px' }}>
-                  <Image src="/Images/Phia_cover.png" alt="Phia cover" width={1400} height={800} style={{ width: '100%', height: 'auto', display: 'block' }} />
+                style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '48px 48px 0' }}>
+                <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
+                  style={{ alignItems: 'center', justifyContent: 'center' }}>
+                  <Image src="/Images/Phia_cover.png" alt="Phia cover" width={1400} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
                 </div>
               </Link>
             </div>
             <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-              <div className="flex items-center gap-3 card-icon-wrap">
+              <div className="flex items-center gap-2 card-icon-wrap">
                 <Image src="/Icons/Phia_icon.png" alt="Phia icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-0">
-                  <span style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
+                  <span className="card-year-label" style={{ fontSize: '14px', lineHeight: '18px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
                   <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Phia Extension Redesign</span>
                 </div>
               </div>
