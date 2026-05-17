@@ -255,7 +255,7 @@ export default function Home() {
       {/* Spacer for fixed navbar */}
       <div style={{ height: '96px' }} />
       {/* Hero */}
-      <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, margin: '0 -64px', padding: '120px 68px 60px' }}>
+      <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, margin: '0 -64px', padding: '96px 68px 48px' }}>
         {/* Floating shapes */}
         <div ref={shapesContainerRef} className="hero-shapes-wrap" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0, willChange: 'transform' }}>
           {/* ── LARGE SHAPES (7) ── */}
@@ -596,8 +596,8 @@ export default function Home() {
         </div>
 
         {/* Hero text */}
-        <div className={`flex justify-center ${introComplete ? 'hero-in' : 'hero-pre'}`} style={{ position: 'relative', zIndex: 1, paddingTop: '48px', paddingBottom: '72px' }}>
-          <p className="hero-text-p" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.03em', fontWeight: '400', color: 'rgb(33, 33, 33)', width: '620px', textAlign: 'center', margin: '0 auto' }}>
+        <div className={`flex justify-center ${introComplete ? 'hero-in' : 'hero-pre'}`} style={{ position: 'relative', zIndex: 1, paddingTop: '32px', paddingBottom: '56px' }}>
+          <p className="hero-text-p" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.03em', fontWeight: '400', color: 'rgb(33, 33, 33)', width: '560px', textAlign: 'center', margin: '0 auto' }}>
             SF-based product designer grounded in visual design and product thinking,{" "}
             <span style={{ color: 'rgb(150, 150, 150)' }}>with a hands-on approach to coding polished digital experiences.</span>
           </p>
