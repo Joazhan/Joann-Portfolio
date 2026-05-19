@@ -203,15 +203,15 @@ export default function Home() {
         .card-pre { opacity: 0; transform: translateY(30px); }
         .card-in { animation: cardFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
         .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 10px !important; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08) !important; }
-        .main-card { padding-top: 80px !important; padding-bottom: 0 !important; min-height: 600px; height: 100%; }
-        .nn-card { justify-content: center !important; padding: 48px !important; }
+        .main-card { padding-top: 56px !important; padding-bottom: 56px !important; min-height: 550px; height: 100%; justify-content: center; }
+        .nn-card { justify-content: center !important; padding: 36px !important; }
         .card-squircle-wrap { flex: 1; display: flex; flex-direction: column; }
         .concept-card { height: auto !important; min-height: unset !important; }
-        .concept-card.main-card { justify-content: center !important; padding: 32px 48px !important; min-height: unset !important; height: auto !important; }
+        .concept-card.main-card { justify-content: center !important; padding: 24px 36px !important; min-height: unset !important; height: auto !important; }
         .concepts-cards-col .card-squircle-wrap { flex: none; }
         .card-bottom-container { margin: 0 -32px -32px -32px !important; padding: 24px 32px !important; }
-        .card-title { font-size: 24px !important; line-height: 32px !important; letter-spacing: -0.03em !important; font-weight: 400 !important; color: #212121 !important; }
-        .card-desc { font-size: 16px !important; line-height: 24px !important; color: rgba(10,10,10,0.4) !important; font-weight: 400 !important; }
+        .card-title { font-size: 14px !important; line-height: 20px !important; letter-spacing: -0.03em !important; font-weight: 400 !important; color: #212121 !important; }
+        .card-desc { font-size: 14px !important; line-height: 20px !important; color: rgba(10,10,10,0.4) !important; font-weight: 400 !important; }
         .card-icon { width: 48px !important; height: 48px !important; border-radius: 10px !important; }
         @media (max-width: 767px) {
           * { cursor: auto !important; }
@@ -255,7 +255,7 @@ export default function Home() {
       {/* Spacer for fixed navbar */}
       <div style={{ height: '96px' }} />
       {/* Hero */}
-      <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, margin: '0 -64px', padding: '96px 68px 48px' }}>
+      <section ref={heroRef} className="hero-section" style={{ position: 'relative', zIndex: 0, margin: '0 -64px', padding: '96px 68px 48px', minHeight: '80vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         {/* Floating shapes */}
         <div ref={shapesContainerRef} className="hero-shapes-wrap" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0, willChange: 'transform' }}>
           {/* ── LARGE SHAPES (7) ── */}
@@ -437,7 +437,7 @@ export default function Home() {
           </div>
           </div>
           {/* 13. Small light green upward triangle — left lower */}
-          <div data-parallax="0.14" style={{ position: 'absolute', top: '66%', left: '19%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div data-parallax="0.14" style={{ position: 'absolute', top: '72%', left: '23%', pointerEvents: 'none', willChange: 'transform' }}>
           <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.3s' }}>
             <svg width="15" height="13" viewBox="0 0 100 87" style={{ animation: 'orbitCCW 4.8s ease-in-out 1.3s infinite' }}><path d="M 50 0 L 100 87 L 0 87 Z" fill="#86EFAC"/></svg>
           </div>
@@ -526,6 +526,52 @@ export default function Home() {
             </div>
           </div>
           </div>
+
+          {/* ── EXTRA LEFT SHAPES ── */}
+          {/* L1. Yellow 4-star — top left */}
+          <div data-parallax="0.17" style={{ position: 'absolute', top: '3%', left: '20%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.75s' }}>
+            <svg width="22" height="22" viewBox="0 0 100 100" style={{ animation: 'orbitSm 4.6s ease-in-out 0.5s infinite' }}><path d="M 49.34 1.89 Q 50 0 50.66 1.89 L 62.34 35.11 Q 63 37 64.89 37.66 L 98.11 49.34 Q 100 50 98.11 50.66 L 64.89 62.34 Q 63 63 62.34 64.89 L 50.66 98.11 Q 50 100 49.34 98.11 L 37.66 64.89 Q 37 63 35.11 62.34 L 1.89 50.66 Q 0 50 1.89 49.34 L 35.11 37.66 Q 37 37 37.66 35.11 Z" fill="#FDE68A"/></svg>
+          </div>
+          </div>
+          {/* L2. Teal circle — mid left */}
+          <div data-parallax="0.13" style={{ position: 'absolute', top: '52%', left: '4%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.05s' }}>
+            <svg width="44" height="44" viewBox="0 0 44 44" style={{ animation: 'orbitCCW 5.2s ease-in-out 0.7s infinite' }}><circle cx="22" cy="22" r="21" fill="#5EEAD4"/></svg>
+          </div>
+          </div>
+          {/* L3. Pink rounded square — lower left */}
+          <div data-parallax="0.16" style={{ position: 'absolute', top: '78%', left: '7%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.2s' }}>
+            <div style={{ transform: 'rotate(18deg)', animation: 'orbitCW 4.1s ease-in-out 1.0s infinite' }}>
+              <svg width="20" height="20" viewBox="0 0 20 20"><rect x="0" y="0" width="20" height="20" rx="5" fill="#F9A8D4"/></svg>
+            </div>
+          </div>
+          </div>
+
+          {/* ── EXTRA RIGHT SHAPES ── */}
+          {/* R1. Lavender rounded square — upper right */}
+          <div data-parallax="0.21" style={{ position: 'absolute', top: '30%', right: '5%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '0.8s' }}>
+            <div style={{ transform: 'rotate(-14deg)', animation: 'orbitCCW 4.4s ease-in-out 0.6s infinite' }}>
+              <svg width="24" height="24" viewBox="0 0 24 24"><rect x="0" y="0" width="24" height="24" rx="6" fill="#C4B5FD"/></svg>
+            </div>
+          </div>
+          </div>
+          {/* R2. Green circle — mid right */}
+          <div data-parallax="0.15" style={{ position: 'absolute', top: '64%', right: '5%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.1s' }}>
+            <svg width="36" height="36" viewBox="0 0 36 36" style={{ animation: 'orbitCW 4.8s ease-in-out 0.9s infinite' }}><circle cx="18" cy="18" r="17" fill="#86EFAC"/></svg>
+          </div>
+          </div>
+          {/* R3. Gold dash — lower right */}
+          <div data-parallax="0.12" style={{ position: 'absolute', top: '75%', right: '3%', pointerEvents: 'none', willChange: 'transform' }}>
+          <div className={`hero-shape ${introComplete ? 'shape-in' : 'shape-pre'}`} style={{ animationDelay: '1.3s' }}>
+            <div style={{ animation: 'orbitSm 3.6s ease-in-out 1.1s infinite' }}>
+              <svg width="30" height="8" viewBox="0 0 30 8" style={{ transform: 'rotate(12deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#FCD34D"/></svg>
+            </div>
+          </div>
+          </div>
         </div>
         {/* Mobile-only shapes */}
         <div className="hero-shapes-mobile" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
@@ -597,14 +643,14 @@ export default function Home() {
 
         {/* Hero text */}
         <div className={`flex justify-center ${introComplete ? 'hero-in' : 'hero-pre'}`} style={{ position: 'relative', zIndex: 1, paddingTop: '32px', paddingBottom: '56px' }}>
-          <p className="hero-text-p" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.03em', fontWeight: '400', color: 'rgb(33, 33, 33)', width: '560px', textAlign: 'center', margin: '0 auto' }}>
+          <p className="hero-text-p" style={{ fontSize: '20px', lineHeight: '28px', letterSpacing: '-0.03em', fontWeight: '400', color: 'rgb(33, 33, 33)', width: '475px', textAlign: 'center', margin: '0 auto', paddingLeft: '32px', paddingRight: '32px' }}>
             SF-based product designer grounded in visual design and product thinking,{" "}
-            <span style={{ color: 'rgb(150, 150, 150)' }}>with a hands-on approach to coding polished digital experiences.</span>
+            with a hands-on approach to coding polished digital experiences.
           </p>
         </div>
       </section>
       {/* Project Cards */}
-      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '24px', rowGap: '40px' }}>
         {/* NutritionNest */}
         <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
@@ -612,10 +658,10 @@ export default function Home() {
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb' }}>
               <div ref={nnImagesWrapRef} className="nn-img-wrap" style={{ willChange: 'transform', overflow: 'visible' }}>
                 <div className="card-img-row flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', justifyContent: 'center' }}>
-                  <div className="nn-desktop-img" style={{ flex: '0 0 62%', overflow: 'hidden', borderRadius: '12px' }}>
+                  <div className="nn-desktop-img" style={{ flex: '0 0 44%', overflow: 'hidden', borderRadius: '12px' }}>
                     <Image src="/Images/NN2.png" alt="NutritionNest" width={2730} height={2764} quality={100} style={{ width: '100%', height: 'auto', display: 'block' }} />
                   </div>
-                  <div className="nn-phone" style={{ position: 'relative', flex: '0 0 32%', marginLeft: '-4px', alignSelf: 'flex-start', aspectRatio: '806 / 1586', overflow: 'hidden' }}>
+                  <div className="nn-phone" style={{ position: 'relative', flex: '0 0 23%', marginLeft: '-4px', alignSelf: 'flex-start', aspectRatio: '806 / 1586', overflow: 'hidden' }}>
                     <div style={{ position: 'absolute', top: '3.7%', left: '2.5%', right: '2.5%', bottom: '4%', borderRadius: '14% / 7%', overflow: 'hidden', zIndex: 1, backgroundColor: '#fff' }}>
                       <video src="/Images/NN-video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                     </div>
@@ -627,10 +673,9 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
             <div className="flex items-center gap-2 card-icon-wrap">
-              <Image src="/Icons/NN_icon.png" alt="NutritionNest icon" width={48} height={48} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
-                <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>NutritionNest</span>
-                <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Log nutritional intake and monitor daily calories</span>
+                <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>NutritionNest</span>
+                <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Log nutritional intake and monitor daily calories</span>
               </div>
             </div>
           </div>
@@ -641,7 +686,7 @@ export default function Home() {
             <Link href="/duetti" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
               <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
-                <div className="duetti-macbook" style={{ position: 'relative', width: '73%', flexShrink: 0 }}>
+                <div className="duetti-macbook" style={{ position: 'relative', width: '52%', flexShrink: 0 }}>
                   <div style={{ position: 'absolute', top: '2.2%', left: '1.4%', right: '1.4%', bottom: '24.9%', overflow: 'hidden', zIndex: 1 }}>
                     <video src="/Images/Duetti video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
@@ -653,10 +698,9 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
             <div className="flex items-center gap-2 card-icon-wrap">
-              <Image src="/Icons/Duetti_icon.png" alt="Duetti icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
-                <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Duetti</span>
-                <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Turning complex music industry data into clear, visual stories.</span>
+                <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Duetti</span>
+                <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Turning complex music industry data into clear, visual stories.</span>
               </div>
             </div>
           </div>
@@ -667,16 +711,15 @@ export default function Home() {
             <Link href="/lasertaz" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
               <div className="card-img-row flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-                <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
+                <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '75%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
               </div>
             </Link>
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
             <div className="flex items-center gap-2 card-icon-wrap">
-              <Image src="/Icons/Lasertaz_icon.png" alt="Lasertaz icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
-                <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Lasertaz</span>
-                <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Help independent landlords manage their rental properties</span>
+                <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Lasertaz</span>
+                <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Help independent landlords manage their rental properties</span>
               </div>
             </div>
           </div>
@@ -687,10 +730,10 @@ export default function Home() {
             <Link href="/bookworm" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
               <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px', justifyContent: 'center' }}>
-                <div className="bw-desktop-img" style={{ flex: '0 0 62%', overflow: 'hidden', borderRadius: '12px' }}>
+                <div className="bw-desktop-img" style={{ flex: '0 0 44%', overflow: 'hidden', borderRadius: '12px' }}>
                   <Image src="/Images/bw_cover1.png" alt="Bookworm" width={678} height={1390} quality={100} style={{ width: '100%', height: 'auto', display: 'block' }} />
                 </div>
-                <div className="bw-phone" style={{ position: 'relative', flex: '0 0 31%', aspectRatio: '750 / 1420', alignSelf: 'flex-start', marginTop: '0%' }}>
+                <div className="bw-phone" style={{ position: 'relative', flex: '0 0 22%', aspectRatio: '750 / 1420', alignSelf: 'flex-start', marginTop: '0%' }}>
                   <div style={{ position: 'absolute', inset: 0 }}>
                     <div style={{ position: 'absolute', top: '1.6%', left: '9%', right: '9%', bottom: '2%', borderRadius: '10% 10% 6% 6% / 7% 7% 4% 4%', overflow: 'hidden', zIndex: 1 }}>
                       <video src="/Images/Bookworm.mp4" autoPlay loop muted playsInline className="bw-video" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -703,10 +746,9 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
             <div className="flex items-center gap-2 card-icon-wrap">
-              <Image src="/Icons/Bookworm_icon.png" alt="Bookworm icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
-                <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Bookworm</span>
-                <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>E-Commerce platform for books and related content</span>
+                <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Bookworm</span>
+                <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>E-Commerce platform for books and related content</span>
               </div>
             </div>
           </div>
@@ -716,10 +758,10 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/rhs" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div className="rhs-img-container flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '0px', height: '620px' }}>
+              <div className="rhs-img-container flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '0px', height: '400px' }}>
 
-                <Image src="/Images/rhs_image1.png" alt="Raymond Hair Salon" width={3564} height={3620} quality={100} unoptimized className="object-contain rounded-xl rhs-desktop-img" style={{ height: '530px', width: 'auto', alignSelf: 'flex-end', marginBottom: '60px', marginRight: '-4px' }} />
-                <div className="rhs-phone" style={{ position: 'relative', height: '480px', aspectRatio: '750 / 1430', alignSelf: 'flex-end', marginBottom: '92px' }}>
+                <Image src="/Images/rhs_image1.png" alt="Raymond Hair Salon" width={3564} height={3620} quality={100} unoptimized className="object-contain rounded-xl rhs-desktop-img" style={{ height: '340px', width: 'auto', alignSelf: 'flex-end', marginBottom: '38px', marginRight: '-4px' }} />
+                <div className="rhs-phone" style={{ position: 'relative', height: '310px', aspectRatio: '750 / 1430', alignSelf: 'flex-end', marginBottom: '59px' }}>
                   <div style={{ position: 'absolute', top: '2%', left: '9%', right: '9%', bottom: '2%', borderRadius: '6% / 4%', overflow: 'hidden', zIndex: 1, backgroundColor: '#ffffff' }}>
                     <video src="/Images/rhs_video1.mp4" autoPlay loop muted playsInline className="rhs-video" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
@@ -730,10 +772,9 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
             <div className="flex items-center gap-2 card-icon-wrap">
-              <Image src="/Icons/RHS_icon.png" alt="RHS icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
               <div className="flex flex-col gap-0">
-                <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Raymond Hair Salon</span>
-                <span className="card-desc" style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Scheduling made effortless with online booking</span>
+                <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Raymond Hair Salon</span>
+                <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Scheduling made effortless with online booking</span>
               </div>
             </div>
           </div>
@@ -761,16 +802,15 @@ export default function Home() {
                 style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '48px 48px 0' }}>
                 <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
                   style={{ alignItems: 'center', justifyContent: 'center' }}>
-                  <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                  <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '80%', height: 'auto', display: 'block', margin: '0 auto' }} />
                 </div>
               </Link>
             </div>
             <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
               <div className="flex items-center gap-2 card-icon-wrap">
-                <Image src="/Icons/Kalshi_icon.png" alt="Kalshi icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-0">
                   <span className="card-year-label" style={{ fontSize: '14px', lineHeight: '18px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
-                  <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Kalshi Desktop Extension</span>
+                  <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Kalshi Desktop Extension</span>
                 </div>
               </div>
             </div>
@@ -782,16 +822,15 @@ export default function Home() {
                 style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '48px 48px 0' }}>
                 <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
                   style={{ alignItems: 'center', justifyContent: 'center' }}>
-                  <Image src="/Images/Phia_cover.png" alt="Phia cover" width={1400} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block' }} />
+                  <Image src="/Images/Phia_cover.png" alt="Phia cover" width={1400} height={800} className="object-contain" style={{ width: '80%', height: 'auto', display: 'block', margin: '0 auto' }} />
                 </div>
               </Link>
             </div>
             <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
               <div className="flex items-center gap-2 card-icon-wrap">
-                <Image src="/Icons/Phia_icon.png" alt="Phia icon" width={64} height={64} className="card-icon" style={{ borderRadius: '14px' }} />
                 <div className="flex flex-col gap-0">
                   <span className="card-year-label" style={{ fontSize: '14px', lineHeight: '18px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
-                  <span className="card-title" style={{ fontSize: '24px', lineHeight: '32px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Phia Extension Redesign</span>
+                  <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Phia Extension Redesign</span>
                 </div>
               </div>
             </div>

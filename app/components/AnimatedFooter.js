@@ -113,7 +113,7 @@ export default function AnimatedFooter() {
   const pathname = usePathname()
   const dark = pathname === '/lasertaz'
 
-  const bg         = dark ? '#121212' : '#FCFCFC'
+  const bg         = dark ? '#121212' : 'rgb(255, 255, 255)'
   const dotColor   = dark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)'
   const headingCol = dark ? '#ffffff' : '#212121'
   const linkCol    = dark ? '#9ca3af' : '#6b7280'
@@ -321,8 +321,8 @@ export default function AnimatedFooter() {
         .footer-content p,
         .footer-content p span,
         .footer-content .footer-link {
-          font-size: 14px !important;
-          line-height: 20px !important;
+          font-size: 12px !important;
+          line-height: 18px !important;
         }
       }
       @keyframes cursor-glow {
@@ -484,11 +484,11 @@ export default function AnimatedFooter() {
         pointerEvents: 'none',
       }}>
         <div style={{
-          display: 'flex', flexDirection: 'column', gap: '4px',
+          display: 'flex', flexDirection: 'column', gap: '0px',
           background: 'transparent',
           pointerEvents: 'all',
         }}>
-          <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '400', color: headingCol, margin: 0 }}>
+          <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '400', color: headingCol, margin: 0 }}>
             {['Get', 'in', 'touch!'].map((word, i) => (
               <span key={word} style={{
                 display: 'inline-block',
@@ -500,20 +500,20 @@ export default function AnimatedFooter() {
           </p>
           <div style={{ display: 'flex', gap: '16px' }}>
             <a href='mailto:joannzhang4@gmail.com'
-              style={{ fontSize: '16px', lineHeight: '24px', color: linkCol, textDecoration: 'none', opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 400ms both' }) }}
+              style={{ fontSize: '14px', lineHeight: '20px', color: 'rgb(156, 163, 175)', textDecoration: 'none', opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 400ms both' }) }}
               className={`footer-link ${linkHover}`}>Email ↗</a>
             <a href='https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing' target='_blank' rel='noopener noreferrer'
-              style={{ fontSize: '16px', lineHeight: '24px', color: '#6b7280', textDecoration: 'none', opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 500ms both' }) }}
+              style={{ fontSize: '14px', lineHeight: '20px', color: 'rgb(156, 163, 175)', textDecoration: 'none', opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 500ms both' }) }}
               className={`footer-link ${linkHover}`}>Resume ↗</a>
           </div>
         </div>
         <div style={{
-          display: 'flex', flexDirection: 'column', gap: '2px', textAlign: 'right',
+          display: 'flex', flexDirection: 'column', gap: '0px', textAlign: 'right',
           background: 'transparent',
           pointerEvents: 'all',
         }}>
-          <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgb(33, 33, 33)', margin: 0, opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 300ms both' }) }}>© Joann Zhang</p>
-          <p style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '16px', lineHeight: '24px', color: copyCol, margin: 0, opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 400ms both' }) }}>{clockTime}</p>
+          <p style={{ fontSize: '14px', lineHeight: '20px', color: 'rgb(33, 33, 33)', margin: 0, opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 300ms both' }) }}>© Joann Zhang</p>
+          <p style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '14px', lineHeight: '20px', color: copyCol, margin: 0, opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 400ms both' }) }}>{clockTime}</p>
         </div>
       </div>
     </footer>

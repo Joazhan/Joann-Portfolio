@@ -139,8 +139,8 @@ export default function Navbar() {
             href="/"
             onClick={closeMenu}
             style={{
-              fontSize: '16px',
-              lineHeight: '24px',
+              fontSize: '14px',
+              lineHeight: '20px',
               fontWeight: '500',
               color: isDark ? '#ffffff' : '#212121',
               textDecoration: 'none',
@@ -153,18 +153,18 @@ export default function Navbar() {
 
           {/* Desktop links */}
           <div className="nav-desktop-links" style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-            <Link href="/" style={{ fontSize: '16px', lineHeight: '24px', color: isActive('/') ? (isDark ? '#ffffff' : '#212121') : (isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)'), textDecoration: 'none' }}>
+            <Link href="/" style={{ fontSize: '14px', lineHeight: '20px', color: isActive('/') ? (isDark ? '#ffffff' : '#212121') : (isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)'), textDecoration: 'none' }}>
               Work
             </Link>
-            <Link href="/about" style={{ fontSize: '16px', lineHeight: '24px', color: isActive('/about') ? (isDark ? '#ffffff' : '#212121') : (isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)'), textDecoration: 'none' }}>
+            <Link href="/about" style={{ fontSize: '14px', lineHeight: '20px', color: isActive('/about') ? (isDark ? '#ffffff' : '#212121') : (isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)'), textDecoration: 'none' }}>
               About
             </Link>
             <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer"
-              style={{ fontSize: '16px', lineHeight: '24px', color: isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)', textDecoration: 'none' }}>
+              style={{ fontSize: '14px', lineHeight: '20px', color: isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)', textDecoration: 'none' }}>
               Resume
             </a>
             <a href="mailto:joannzhang4@gmail.com" target="_blank" rel="noopener noreferrer"
-              style={{ fontSize: '16px', lineHeight: '24px', color: isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)', textDecoration: 'none' }}>
+              style={{ fontSize: '14px', lineHeight: '20px', color: isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)', textDecoration: 'none' }}>
               Contact
             </a>
           </div>
