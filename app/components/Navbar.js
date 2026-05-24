@@ -77,15 +77,15 @@ export default function Navbar() {
       <style>{`
         .nav-wrapper {
           position: fixed;
-          top: 16px;
-          left: 24px;
-          right: 24px;
+          top: 0;
+          left: 0;
+          right: 0;
           z-index: 200;
           display: flex;
           flex-direction: column;
-          padding: 16px 32px;
-          transition: opacity 0.15s ease, transform 0.15s ease, left 0.3s ease, right 0.3s ease, top 0.3s ease, border-radius 0.3s ease;
-          border-radius: 100px;
+          padding: 40px 64px 16px;
+          transition: opacity 0.15s ease, transform 0.15s ease;
+          border-radius: 0;
         }
         .nav-wrapper.nav-hidden {
           opacity: 0;
@@ -103,13 +103,8 @@ export default function Navbar() {
         .nav-dark .nav-desktop-links a:hover { color: #ffffff !important; }
         @media (max-width: 767px) {
           .nav-wrapper {
-            padding: 36px 16px 16px !important;
-            left: 0 !important;
-            right: 0 !important;
-            top: 0 !important;
-            border-radius: 0 !important;
-            border: none !important;
-            background: rgb(243, 244, 246) !important;
+            padding: 16px 20px !important;
+            background: rgba(255, 255, 255, 0.7) !important;
           }
           .nav-desktop-links { display: none !important; }
           .nav-hamburger { display: flex !important; }
@@ -125,11 +120,10 @@ export default function Navbar() {
         ref={(el) => { navRef.current = el; menuRef.current = el; }}
         className={`nav-wrapper${isDark ? ' nav-dark' : ''}${menuOpen ? ' nav-menu-open' : ''}`}
         style={{
-          background: isDark ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.35)',
-          border: isDark ? '1px solid rgba(255,255,255,0.08)' : 'none',
-          backdropFilter: 'blur(72px)',
-          WebkitBackdropFilter: 'blur(72px)',
-          boxShadow: isDark ? 'none' : '0 2px 32px rgba(0,0,0,0.06)',
+          background: isDark ? 'rgba(18,18,18,0.6)' : 'rgba(255,255,255,0.45)',
+          borderBottom: isDark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.06)',
+          backdropFilter: 'blur(80px)',
+          WebkitBackdropFilter: 'blur(80px)',
         }}
       >
         {/* Header row — logo + desktop links + hamburger */}

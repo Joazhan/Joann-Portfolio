@@ -59,7 +59,7 @@ export default function Bookworm() {
         @media (max-width: 767px) {
           section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
-          .page-hero { padding-top: 100px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
+          .page-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
           .content-wide > div { gap: 4px !important; }
           .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
@@ -73,7 +73,7 @@ export default function Bookworm() {
       `}</style>
 
       {/* Hero */}
-      <div className="page-hero" style={{ paddingTop: '120px', paddingBottom: '40px', backgroundColor: '#0C3D29', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '24px', paddingRight: '24px' }}>
+      <div className="page-hero" style={{ paddingTop: '80px', paddingBottom: '40px', backgroundColor: '#0C3D29', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '24px', paddingRight: '24px' }}>
         <Image
           src="/Images/bw_image.png"
           alt="Bookworm app screens"

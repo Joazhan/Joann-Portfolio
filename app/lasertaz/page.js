@@ -44,7 +44,7 @@ export default function Lasertaz() {
         @media (max-width: 767px) {
           section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
-          .page-hero { padding-top: 100px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
+          .page-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
           .content-wide > div { gap: 4px !important; }
           .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
@@ -58,7 +58,7 @@ export default function Lasertaz() {
       `}</style>
 
       {/* Hero */}
-      <div className="page-hero" style={{ paddingTop: '120px', paddingBottom: '40px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '80px', paddingRight: '80px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="page-hero" style={{ paddingTop: '80px', paddingBottom: '40px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '80px', paddingRight: '80px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
         <Image
           src="/Images/Lasertaz image.png"
           alt="Lasertaz app screens"

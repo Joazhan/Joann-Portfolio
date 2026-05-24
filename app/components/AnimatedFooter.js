@@ -16,10 +16,10 @@ const DARKER = {
 }
 const G = 28
 
-const d = (id, col, row, c, s = 6) => ({
+const d = (id, col, row, c, s = 4) => ({
   id, x: Math.round(col * G - s / 2), y: Math.round(row * G - s / 2), w: s, h: s, color: COLORS[c % COLORS.length]
 })
-const ds = (id, cx, cy, dc, dr, c, s = 6) => ({
+const ds = (id, cx, cy, dc, dr, c, s = 4) => ({
   id, x: Math.round(cx + dc * 14 - s / 2), y: Math.round(cy + dr * 14 - s / 2), w: s, h: s, color: COLORS[c % COLORS.length]
 })
 
@@ -456,14 +456,14 @@ export default function AnimatedFooter() {
                 width: dw,
                 height: dh,
                 borderRadius: '50%',
-                backgroundColor: shape.color,
+                backgroundColor: dark ? shape.color : '#212121',
                 pointerEvents: 'all',
                 userSelect: 'none',
                 '--glow-dim':    `${shape.color}66`,
                 '--glow-mid':    `${shape.color}99`,
                 '--glow-bright': `${shape.color}cc`,
                 willChange: 'transform',
-                boxShadow: `0 0 3px 0px ${shape.color}cc`,
+                boxShadow: dark ? `0 0 3px 0px ${shape.color}cc` : 'none',
                 animation: pianoAnim ?? pixAnim,
               }}
             />

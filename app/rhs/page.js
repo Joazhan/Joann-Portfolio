@@ -58,7 +58,7 @@ export default function RHS() {
         @media (max-width: 767px) {
           section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
-          .page-hero { padding-top: 100px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
+          .page-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
           .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
           .two-col-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
@@ -71,7 +71,7 @@ export default function RHS() {
       `}</style>
 
       {/* Hero */}
-      <div className="page-hero" style={{ backgroundColor: '#f1f5f9', paddingTop: '120px', paddingBottom: '60px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', paddingLeft: '48px', paddingRight: '48px' }}>
+      <div className="page-hero" style={{ backgroundColor: '#f1f5f9', paddingTop: '80px', paddingBottom: '60px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', paddingLeft: '48px', paddingRight: '48px' }}>
         <Image
           src="/Images/rhs_image (3).png"
           alt="Raymond Hair Salon app screens"

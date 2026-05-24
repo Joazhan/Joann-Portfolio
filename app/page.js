@@ -80,45 +80,65 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
   useEffect(() => {
-    if (!heroRef.current) return
-    const tiltEls = Array.from(heroRef.current.querySelectorAll('[data-tilt]'))
-    const onMove = (e) => {
-      const el = e.currentTarget
-      const rect = el.getBoundingClientRect()
-      const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2)
-      const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2)
-      el.style.transition = 'transform 0.08s linear'
-      el.style.transform = `perspective(400px) rotateX(${-dy * 30}deg) rotateY(${dx * 30}deg) scale(1.12)`
-      // Grey shadow for all shapes — scales with cursor distance from center
-      const svg = el.querySelector('svg')
-      if (svg) {
-        const dist = Math.min(Math.sqrt(dx * dx + dy * dy), 1)
-        const opacity = (0.12 + dist * 0.13).toFixed(2)
-        svg.style.transition = 'filter 0.08s linear'
-        svg.style.filter = `drop-shadow(0px 8px 20px rgba(0,0,0,${opacity}))`
-      }
-    }
-    const onLeave = (e) => {
-      const el = e.currentTarget
-      el.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)'
-      el.style.transform = 'perspective(400px) rotateX(0deg) rotateY(0deg) scale(1)'
-      const svg = el.querySelector('svg')
-      if (svg) {
-        svg.style.transition = 'filter 0.5s ease'
-        svg.style.filter = 'none'
-      }
-    }
-    tiltEls.forEach(el => {
-      el.addEventListener('mousemove', onMove)
-      el.addEventListener('mouseleave', onLeave)
-    })
-    return () => {
-      tiltEls.forEach(el => {
-        el.removeEventListener('mousemove', onMove)
-        el.removeEventListener('mouseleave', onLeave)
+    const hero = heroRef.current
+    if (!hero) return
+    const repelShapes = Array.from(hero.querySelectorAll('[data-parallax]'))
+
+    // Per-shape lerp state — no velocity, no bounce
+    const state = repelShapes.map(() => ({ x: 0, y: 0 }))
+    let mouseX = -9999
+    let mouseY = -9999
+    let rafId = null
+
+    const tick = () => {
+      const rects = repelShapes.map(s => s.getBoundingClientRect())
+
+      repelShapes.forEach((shape, i) => {
+        const s = state[i]
+        const rect = rects[i]
+        const cx = rect.left + rect.width / 2
+        const cy = rect.top + rect.height / 2
+
+        // Distance from cursor to shape's current screen position
+        const dx = mouseX - cx
+        const dy = mouseY - cy
+        const dist = Math.sqrt(dx * dx + dy * dy)
+        const threshold = 260
+
+        // Target offset: push shape away from cursor
+        let targetX = 0
+        let targetY = 0
+        if (dist < threshold && dist > 0) {
+          const t = Math.pow((threshold - dist) / threshold, 1.2)
+          const push = t * 200
+          targetX = -(dx / dist) * push
+          targetY = -(dy / dist) * push
+        }
+
+        // Lerp smoothly toward target — slow factor = floaty, no bounce possible
+        s.x += (targetX - s.x) * 0.035
+        s.y += (targetY - s.y) * 0.035
+
+        shape.style.transition = 'none'
+        shape.style.transform = `translate(${s.x.toFixed(2)}px, ${s.y.toFixed(2)}px)`
       })
+
+      rafId = requestAnimationFrame(tick)
+    }
+
+    const onMove = (e) => { mouseX = e.clientX; mouseY = e.clientY }
+    const onLeave = () => { mouseX = -9999; mouseY = -9999 }
+
+    rafId = requestAnimationFrame(tick)
+    hero.addEventListener('mousemove', onMove)
+    hero.addEventListener('mouseleave', onLeave)
+    return () => {
+      cancelAnimationFrame(rafId)
+      hero.removeEventListener('mousemove', onMove)
+      hero.removeEventListener('mouseleave', onLeave)
     }
   }, [])
+
   useEffect(() => {
     const cards = document.querySelectorAll('.project-card')
     const observer = new IntersectionObserver(
@@ -202,7 +222,7 @@ export default function Home() {
         .hero-shapes-mobile { display: none; }
         .card-pre { opacity: 0; transform: translateY(30px); }
         .card-in { animation: cardFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 10px !important; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08) !important; }
+        .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 8px !important; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08) !important; }
         .main-card { padding-top: 56px !important; padding-bottom: 56px !important; min-height: 550px; height: 100%; justify-content: center; }
         .nn-card { justify-content: center !important; padding: 36px !important; }
         .card-squircle-wrap { flex: 1; display: flex; flex-direction: column; }
@@ -650,7 +670,7 @@ export default function Home() {
         </div>
       </section>
       {/* Project Cards */}
-      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '24px', rowGap: '40px' }}>
+      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '24px', rowGap: '80px' }}>
         {/* NutritionNest */}
         <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
@@ -781,59 +801,44 @@ export default function Home() {
         </div>
       </section>
       {/* Concepts Section */}
-      <div className="concepts-section" style={{ marginTop: '80px', marginLeft: '-64px', marginRight: '-64px', backgroundColor: '#f3f4f6', padding: '80px 64px' }}>
-        <div className="concepts-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        {/* Sticky left label */}
-        <div className="concepts-sticky-left" style={{ position: 'sticky', top: '100px', flexShrink: 0, width: '520px' }}>
-          <h2 className="concepts-title" style={{ fontSize: '32px', lineHeight: '40px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121', marginBottom: '8px' }}>Concepts</h2>
-          <p className="concepts-desc" style={{ fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.3px', color: '#969696', marginBottom: '4px' }}>
-            I designed these projects after noticing gaps in existing products and wanting to see what a better solution could feel like.
-          </p>
-          <p className="concepts-desc" style={{ fontSize: '16px', lineHeight: '24px', letterSpacing: '-0.3px', color: '#969696' }}>
-            This led me to prototype ideas and explore them hands-on.
-          </p>
+      <div className="concepts-section" style={{ marginTop: '80px', paddingBottom: '64px' }}>
+        {/* Label block — background only wraps this */}
+        <div style={{ backgroundColor: '#f3f4f6', paddingTop: '32px', paddingBottom: '32px', paddingLeft: '64px', paddingRight: '64px', marginLeft: '-64px', marginRight: '-64px', marginBottom: '64px', textAlign: 'center' }}>
+          <div style={{ display: 'inline-flex', flexDirection: 'column', gap: '4px' }}>
+            <h2 className="concepts-title" style={{ fontSize: '20px', lineHeight: '28px', letterSpacing: '-0.03em', fontWeight: '500', color: '#212121' }}>Concepts</h2>
+            <p className="concepts-desc" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.2px', color: '#B1B1B1' }}>
+              I designed these projects after noticing gaps in existing products.<br />Wanting to see what a better solution could feel like.
+            </p>
+          </div>
         </div>
+        <div className="concepts-inner" style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
         {/* Stacked cards on the right */}
-        <div className="concepts-cards-col" style={{ display: 'flex', flexDirection: 'column', gap: '40px', flex: '0 0 calc(50% - 12px)' }}>
+        <div className="concepts-cards-col" style={{ display: 'flex', flexDirection: 'column', gap: '40px', width: '100%' }}>
           {/* Kalshi */}
           <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
-            <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-              <Link href="/kalshi" className="flex flex-col overflow-hidden cursor-pointer project-card main-card concept-card card-pre"
-                style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '48px 48px 0' }}>
-                <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
-                  style={{ alignItems: 'center', justifyContent: 'center' }}>
-                  <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '80%', height: 'auto', display: 'block', margin: '0 auto' }} />
-                </div>
-              </Link>
-            </div>
-            <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-              <div className="flex items-center gap-2 card-icon-wrap">
+            <Link href="/kalshi" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', cursor: 'pointer', width: '34%', margin: '0 auto' }}>
+              <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', borderRadius: '8px' }} />
+              <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
                 <div className="flex flex-col gap-0">
-                  <span className="card-year-label" style={{ fontSize: '14px', lineHeight: '18px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
-                  <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Kalshi Desktop Extension</span>
+                  <span className="card-year-label" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>2025 | Desktop extension</span>
+                  <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Kalshi</span>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
+          {/* Divider */}
+          <hr style={{ width: '34%', margin: '0 auto', border: 'none', borderTop: '1px solid rgba(0,0,0,0.1)' }} />
           {/* Phia */}
           <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
-            <div className="card-squircle-wrap" style={{ position: 'relative' }}>
-              <Link href="/phia" className="flex flex-col overflow-hidden cursor-pointer project-card main-card concept-card card-pre"
-                style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '48px 48px 0' }}>
-                <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4"
-                  style={{ alignItems: 'center', justifyContent: 'center' }}>
-                  <Image src="/Images/Phia_cover.png" alt="Phia cover" width={1400} height={800} className="object-contain" style={{ width: '80%', height: 'auto', display: 'block', margin: '0 auto' }} />
-                </div>
-              </Link>
-            </div>
-            <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-              <div className="flex items-center gap-2 card-icon-wrap">
+            <Link href="/phia" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', cursor: 'pointer', width: '34%', margin: '0 auto' }}>
+              <Image src="/Images/Phia_cover.png" alt="Phia cover" width={1400} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', borderRadius: '8px' }} />
+              <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
                 <div className="flex flex-col gap-0">
-                  <span className="card-year-label" style={{ fontSize: '14px', lineHeight: '18px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', marginBottom: '2px' }}>2025</span>
-                  <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Phia Extension Redesign</span>
+                  <span className="card-year-label" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>2025 | Desktop extension</span>
+                  <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Phia</span>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
         </div>

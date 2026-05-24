@@ -44,15 +44,15 @@ export default function Kalshi() {
         @media (max-width: 767px) {
           section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
-          .page-hero { padding-top: 100px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
-          .cover-hero { padding-top: 100px !important; padding-left: 20px !important; padding-right: 20px !important; }
+          .page-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
+          .cover-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; }
           h1 { font-size: 36px !important; line-height: 44px !important; }
           h2, h3 { font-size: 26px !important; line-height: 34px !important; }
         }
       `}</style>
 
       {/* Bento overview image */}
-      <section className="cover-hero" style={{ paddingTop: '120px', paddingBottom: '40px', paddingLeft: '80px', paddingRight: '80px', backgroundImage: 'url(/Kalshi/background_image.png)', backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
+      <section className="cover-hero" style={{ paddingTop: '80px', paddingBottom: '40px', paddingLeft: '80px', paddingRight: '80px', backgroundImage: 'url(/Kalshi/background_image.png)', backgroundSize: 'cover', backgroundPosition: 'center', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
         <div className="content-wide" style={{ maxWidth: '1380px' }}>
           <Image
             src="/Images/kalshi_bento.png"
