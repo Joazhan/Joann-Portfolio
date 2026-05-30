@@ -8,7 +8,7 @@ const syne = Syne({ subsets: ['latin'], weight: ['600'] })
 
 export default function Phia() {
   return (
-    <main className="min-h-screen bg-white" style={{ color: '#212121' }}>
+    <main className="min-h-screen" style={{ color: '#212121', backgroundColor: '#fbfbfb' }}>
 
       <style>{`
         .content-wide {
@@ -21,9 +21,9 @@ export default function Phia() {
         }
         .section-label {
           font-size: 11px;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.12em;
           font-weight: 600;
-          color: #9ca3af;
+          color: rgba(10, 10, 10, 0.6);
           text-transform: uppercase;
           margin-bottom: 8px;
         }
@@ -45,13 +45,27 @@ export default function Phia() {
           grid-template-columns: repeat(3, 1fr);
           gap: 16px;
         }
+        p { font-size: 14px !important; line-height: 20px !important; }
+        .content p:not(.section-label) { color: rgba(10, 10, 10, 0.4) !important; }
+        a { font-size: 14px !important; line-height: 20px !important; color: rgba(10, 10, 10, 0.4) !important; transition: opacity 0.15s ease !important; }
+        a:hover { color: rgb(33, 33, 33) !important; }
+        h1 { font-size: 24px !important; line-height: 32px !important; margin-top: 0 !important; }
+        h2, h3 { font-size: 20px !important; line-height: 28px !important; margin-top: 0 !important; font-weight: 500 !important; }
+        .section-label { font-size: 10px !important; line-height: 12px !important; letter-spacing: 0.12em !important; margin-bottom: 4px !important; color: rgba(10, 10, 10, 0.6) !important; font-weight: 600 !important; }
+        .img-caption { font-size: 14px !important; line-height: 20px !important; max-width: 500px !important; margin-left: auto !important; margin-right: auto !important; }
+        img { border-radius: 8px !important; }
         @media (max-width: 767px) {
-          section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+          .min-h-screen section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
           .page-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
           .cover-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; }
-          h1 { font-size: 36px !important; line-height: 44px !important; }
-          h2, h3 { font-size: 26px !important; line-height: 34px !important; }
+          h1 { font-size: 16px !important; line-height: 24px !important; font-weight: 500 !important; margin-bottom: 4px !important; }
+          h2, h3 { font-size: 14px !important; line-height: 20px !important; margin-bottom: 4px !important; }
+          p { font-size: 12px !important; line-height: 18px !important; }
+          a { font-size: 12px !important; line-height: 18px !important; }
+          .section-label { font-size: 10px !important; line-height: 12px !important; margin-bottom: 4px !important; }
+          .img-caption { font-size: 10px !important; line-height: 12px !important; margin-top: 6px !important; padding-left: 0 !important; padding-right: 0 !important; }
+          img { border-radius: 4px !important; }
           .three-cards-grid { grid-template-columns: 1fr !important; }
           .phia-ext-img { margin-left: 0 !important; margin-right: 0 !important; }
         }
@@ -75,10 +89,10 @@ export default function Phia() {
       <section className="page-hero" style={{ paddingTop: '64px', paddingBottom: '80px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
         <div className="content-wide">
           <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '40px' }}>
-            <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
+            <h1 style={{ fontSize: '24px', lineHeight: '32px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
               Phia Browser Extension
             </h1>
-            <p style={{ fontSize: '20px', lineHeight: '32px', color: '#6b7280', maxWidth: '600px' }}>
+            <p style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10, 10, 10, 0.4)', maxWidth: '600px' }}>
               I redesigned this existing extension after finding it hard to scan prices and alternatives while shopping. The updated layout focuses on clarity, reducing drop-off rates, and higher purchase rates.
             </p>
           </div>
@@ -95,13 +109,12 @@ export default function Phia() {
 
       {/* Extension Tab */}
       <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px' }}>
-        <div className="content-wide" style={{ maxWidth: '1400px' }}>
-          <p className={`section-label ${syne.className}`}>Extension Tab</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '48px' }}>
+        <div className="content-wide" style={{ maxWidth: '1400px', display: 'flex', flexDirection: 'column', gap: '0' }}>
+          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '12px' }}>
             A lower price, front and center
           </h2>
 
-          <div className="phia-ext-img" style={{ marginBottom: '12px', marginLeft: '-20px', marginRight: '-20px' }}>
+          <div className="phia-ext-img" style={{ marginBottom: '-48px', marginLeft: '-20px', marginRight: '-20px' }}>
             <Image
               src="/Phia/Extension_container.png"
               alt="Extension tab states"
@@ -113,7 +126,7 @@ export default function Phia() {
           </div>
           <div style={{ width: '100%' }}>
             <p style={{ fontSize: '18px', fontWeight: '500', fontStyle: 'italic', color: '#212121', textAlign: 'center', marginBottom: '8px' }}>Extension tab</p>
-            <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
+            <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', maxWidth: '500px', margin: '0 auto' }}>
               &ldquo;Let us provide a lower price&rdquo; shows the lowest and sustainable item, which gives users a sense of value. This creates a small &lsquo;win&rsquo; moment that feels helpful and trustworthy. I would A/B test a few versions of the tag to see which phrasing feels the most natural and motivating.
             </p>
           </div>
@@ -127,19 +140,19 @@ export default function Phia() {
             Secondhand Price Extension
           </h2>
 
-          <div style={{ marginBottom: '32px', marginLeft: '8px', marginRight: '8px', borderRadius: '16px 16px 10px 10px', overflow: 'hidden' }}>
+          <div style={{ marginBottom: '32px', marginLeft: '8px', marginRight: '8px' }}>
             <Image
               src="/Phia/Browser_container1.png"
               alt="Secondhand price extension"
               width={0}
               height={0}
               sizes="100vw"
-              style={{ width: '100%', height: 'auto', display: 'block' }}
+              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '16px 16px 10px 10px' }}
             />
           </div>
           <div style={{ width: '100%' }}>
             <p style={{ fontSize: '18px', fontWeight: '500', fontStyle: 'italic', color: '#212121', textAlign: 'center', marginBottom: '8px' }}>Secondhand Price Extension</p>
-            <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
+            <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', maxWidth: '500px', margin: '0 auto' }}>
               Extension tab uses clearer hierarchy and trust cues to drive action, while users can recognize key savings without scanning through clutter. The verified seller badge builds confidence in lesser-known resellers.
             </p>
           </div>

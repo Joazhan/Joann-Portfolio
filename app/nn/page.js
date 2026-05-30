@@ -8,7 +8,7 @@ const syne = Syne({ subsets: ['latin'], weight: ['600'] })
 
 export default function NutritionNest() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen" style={{ backgroundColor: '#fbfbfb' }}>
 
       <style>{`
         .content-wide {
@@ -30,7 +30,7 @@ export default function NutritionNest() {
           line-height: 20px;
           font-weight: 600;
           letter-spacing: 0.4px;
-          color: #9ca3af;
+          color: rgba(10, 10, 10, 0.6);
           text-transform: uppercase;
           margin-bottom: 5px;
         }
@@ -54,19 +54,51 @@ export default function NutritionNest() {
           font-size: 14px;
           color: #374151;
         }
+        /* ── Desktop overrides ── */
+        .content-wide > div { gap: 40px !important; }
+        .content-wide > div > div { display: flex !important; flex-direction: column !important; gap: 4px !important; }
+        .content-wide p, .content-wide h1, .content-wide h2, .content-wide h3 { margin-top: 0 !important; margin-bottom: 0 !important; }
+        .content-wide a { margin-top: 0 !important; margin-bottom: 0 !important; }
+        p { font-size: 14px !important; line-height: 20px !important; margin-top: 0 !important; }
+        .content p:not(.section-label), .content-wide p:not(.section-label) { color: rgba(10, 10, 10, 0.4) !important; }
+        a { font-size: 14px !important; line-height: 20px !important; color: rgba(10, 10, 10, 0.4) !important; transition: opacity 0.15s ease !important; }
+        a:hover { color: rgb(33, 33, 33) !important; }
+        .img-caption { font-size: 14px !important; line-height: 20px !important; max-width: 500px !important; margin-left: auto !important; margin-right: auto !important; }
+        h1 { font-size: 24px !important; line-height: 32px !important; margin-top: 0 !important; }
+        h2, h3 { font-size: 20px !important; line-height: 28px !important; margin-top: 0 !important; margin-bottom: 0 !important; font-weight: 500 !important; }
+        .section-label { font-size: 10px !important; line-height: 12px !important; letter-spacing: 0.12em !important; margin-bottom: 4px !important; color: rgba(10, 10, 10, 0.6) !important; font-weight: 600 !important; }
+        .section-label-gray { color: rgb(107, 114, 128) !important; }
+        .content-wide .section-label { margin-bottom: 0 !important; color: rgba(10, 10, 10, 0.6) !important; }
+        .features-grid > div > p:first-child { font-size: 20px !important; line-height: 28px !important; }
+        .stats-coded h3 { font-size: 28px !important; line-height: 32px !important; }
+        .quote-card { font-size: 14px !important; line-height: 20px !important; }
+        .img-wide img { border-radius: 8px !important; }
+        img { border-radius: 8px !important; }
+        .content-img > div { border-radius: 8px !important; }
+        .features-grid > div { border-radius: 8px !important; overflow: hidden; }
         @media (max-width: 767px) {
-          section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+          .min-h-screen section { padding-top: 48px !important; padding-bottom: 48px !important; padding-left: 20px !important; padding-right: 20px !important; }
           footer { padding: 32px 20px !important; }
           .page-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
           .content-wide > div { gap: 4px !important; }
+          .content-wide > div > div { display: flex !important; flex-direction: column !important; gap: 4px !important; }
           .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
           .two-col-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
-          h1 { font-size: 36px !important; line-height: 44px !important; }
-          h2, h3 { font-size: 26px !important; line-height: 34px !important; }
+          h1 { font-size: 16px !important; line-height: 24px !important; font-weight: 500 !important; margin-bottom: 4px !important; }
+          h2, h3 { font-size: 14px !important; line-height: 20px !important; margin-bottom: 4px !important; }
+          p { font-size: 12px !important; line-height: 18px !important; }
+          .quote-card { font-size: 12px !important; line-height: 18px !important; }
+          .pill { font-size: 12px !important; line-height: 18px !important; }
+          .section-label { font-size: 10px !important; line-height: 12px !important; margin-bottom: 4px !important; }
+          .img-caption { font-size: 10px !important; line-height: 12px !important; margin-top: 6px !important; }
+          .img-wide { margin-bottom: 4px !important; }
+          .img-wide + .img-caption { margin-top: 6px !important; }
+          a { font-size: 12px !important; line-height: 18px !important; }
           .img-wide { margin-left: 0 !important; margin-right: 0 !important; }
           .img-caption { padding-left: 0 !important; padding-right: 0 !important; }
-          .content-img { overflow: hidden !important; }
+          img { border-radius: 4px !important; }
+          .content-img { overflow: hidden !important; padding-top: 0 !important; padding-bottom: 0 !important; }
         }
       `}</style>
 
@@ -77,7 +109,7 @@ export default function NutritionNest() {
           alt="NutritionNest app screens"
           width={1200}
           height={700}
-          style={{ width: '85%', maxWidth: '1200px', height: 'auto', objectFit: 'contain', paddingBottom: '20px' }}
+          style={{ width: '60%', maxWidth: '1200px', height: 'auto', objectFit: 'contain', paddingBottom: '20px' }}
         />
       </div>
 
@@ -94,8 +126,8 @@ export default function NutritionNest() {
               </p>
             </div>
             <div>
-              <p className={`section-label ${syne.className}`}>Overview</p>
-              <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262' }}>
+              <p className={`section-label section-label-gray ${syne.className}`}>Overview</p>
+              <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(10, 10, 10, 0.4)' }}>
                 Serendipitous Dream Inc. (SDI) is a nonprofit organization dedicated to promoting health through scientific research, education, and charity work. We aim to serve the Irvine community first by building an app called NutritionNest, which focuses on helping people achieve their nutrition goals through a meal-logging app powered by AI. As a lead designer of this project, I collaborated closely with the founder, engineer, and social media lead to make their visions come to life.
               </p>
             </div>
@@ -104,22 +136,22 @@ export default function NutritionNest() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
             <div>
               <p className={`section-label ${syne.className}`}>Team</p>
-              <p style={{ fontSize: '16px', color: '#626262', lineHeight: '1.8' }}>Founder<br />Product Designer (Me)<br />Software Engineer<br />Social Media Lead</p>
+              <p style={{ fontSize: '16px', color: 'rgba(10, 10, 10, 0.4)', lineHeight: '1.8' }}>Founder<br />Product Designer (Me)<br />Software Engineer<br />Social Media Lead</p>
             </div>
             <div>
               <p className={`section-label ${syne.className}`}>Project Timeline</p>
-              <p style={{ fontSize: '16px', color: '#626262' }}>4 months</p>
+              <p style={{ fontSize: '16px', color: 'rgba(10, 10, 10, 0.4)' }}>4 months</p>
             </div>
             <div>
               <p className={`section-label ${syne.className}`}>Outcomes</p>
-              <p style={{ fontSize: '16px', color: '#626262', lineHeight: '1.8' }}>8% daily active users<br />~6% goals achieved<br />~10% NPS</p>
+              <p style={{ fontSize: '16px', color: 'rgba(10, 10, 10, 0.4)', lineHeight: '1.8' }}>8% daily active users<br />~6% goals achieved<br />~10% NPS</p>
             </div>
             <div>
               <p className={`section-label ${syne.className}`}>Links</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <a href="https://figma.com/proto/X7n6zDv38NCC1RPuXzmc7A/NutritionNest-App--v3-?node-id=7267-49023&p=f&t=HunrmP0wBwIdWoYc-0&scaling=scale-down&content-scaling=fixed&page-id=5802%3A73243&starting-point-node-id=7267%3A49023&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View prototype ↗</a>
-                <a href="https://www.figma.com/design/X7n6zDv38NCC1RPuXzmc7A/NutritionNest-App--v3-?node-id=262-218&p=f&t=HunrmP0wBwIdWoYc-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View design file ↗</a>
-                <a href="https://figma.com/board/4X9oG3D4vhHr7mBYZd7M5y/NutritionNest-competitive-analaysis?t=pfoHjXtM4MEpUhAp-1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View affinity map ↗</a>
+                <a href="https://figma.com/proto/X7n6zDv38NCC1RPuXzmc7A/NutritionNest-App--v3-?node-id=7267-49023&p=f&t=HunrmP0wBwIdWoYc-0&scaling=scale-down&content-scaling=fixed&page-id=5802%3A73243&starting-point-node-id=7267%3A49023&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', color: 'rgba(10, 10, 10, 0.4)', textDecoration: 'none' }} className="hover:text-black">View prototype ↗</a>
+                <a href="https://www.figma.com/design/X7n6zDv38NCC1RPuXzmc7A/NutritionNest-App--v3-?node-id=262-218&p=f&t=HunrmP0wBwIdWoYc-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', color: 'rgba(10, 10, 10, 0.4)', textDecoration: 'none' }} className="hover:text-black">View design file ↗</a>
+                <a href="https://figma.com/board/4X9oG3D4vhHr7mBYZd7M5y/NutritionNest-competitive-analaysis?t=pfoHjXtM4MEpUhAp-1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', color: 'rgba(10, 10, 10, 0.4)', textDecoration: 'none' }} className="hover:text-black">View affinity map ↗</a>
               </div>
             </div>
           </div>
@@ -129,14 +161,19 @@ export default function NutritionNest() {
       {/* Stats */}
       <section style={{ padding: '80px 40px 60px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <Image
-            src="/Images/Container.png"
-            alt="NutritionNest stats"
-            width={1200}
-            height={250}
-            style={{ width: '100%', height: 'auto', border: '1px solid rgba(0,0,0,0.05)', borderRadius: '12px', marginBottom: '16px' }}
-          />
-          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
+          <div className="stats-coded" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', background: '#F9FAFB', border: '1px solid rgba(0,0,0,0.05)', borderRadius: '12px', padding: '40px 48px', marginBottom: '16px', gap: '40px' }}>
+            {[
+              { stat: '8% Daily Active Users',  desc: 'Increased engagement from NED, recipes, and restaurants' },
+              { stat: '~6% Goals Achieved',      desc: 'Utilize meal logs and support from NED to drive motivation' },
+              { stat: '~10% NPS',                desc: 'Achieved through user referrals from successful outcomes' },
+            ].map(({ stat, desc }) => (
+              <div key={stat} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <h3 style={{ fontSize: '28px', lineHeight: '32px', fontWeight: '500', color: '#3B5BDB', margin: 0 }}>{stat}</h3>
+                <p style={{ fontSize: '16px', lineHeight: '24px', color: '#6b7280', margin: 0 }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center', maxWidth: '480px', margin: '0 auto' }}>
             Our team's target outcomes for daily active user rate, increased goal achievement with NED's support, and NPS driven by user referrals highlight the positive impact on engagement and motivation.
           </p>
         </div>
@@ -145,13 +182,17 @@ export default function NutritionNest() {
       {/* Challenge */}
       <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '120px 40px' }}>
         <div className="content">
-          <p className={`section-label ${syne.className}`}>Challenge</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-            How can we make healthy living feel achievable?
-          </h2>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262' }}>
-            I met with the founder to discuss initial concepts of creating a nutrition and fitness app. Our goal was to create an app that supported users in jump-starting their health journey. We ultimately decided to prioritize nutrition to avoid overwhelming users since it serves as the foundation of a successful health journey.
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <p className={`section-label ${syne.className}`}>Challenge</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
+                How can we make healthy living feel achievable?
+              </h2>
+              <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(10, 10, 10, 0.4)' }}>
+                I met with the founder to discuss initial concepts of creating a nutrition and fitness app. Our goal was to create an app that supported users in jump-starting their health journey. We ultimately decided to prioritize nutrition to avoid overwhelming users since it serves as the foundation of a successful health journey.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -159,16 +200,20 @@ export default function NutritionNest() {
       <section style={{ padding: '0 40px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
-            <p className={`section-label ${syne.className}`}>User Research</p>
-            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-              30+ users reveal struggles with today's apps
-            </h2>
-            <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
-              I first ran online surveys on platforms like Subreddits, Facebook groups, Slack forums, and my professional network, focusing on users' health challenges and obstacles. From 30+ responses, I found that users often struggle to stay motivated, which led to inconsistent use and setbacks in their health goals.
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <p className={`section-label ${syne.className}`}>User Research</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
+                  30+ users reveal struggles with today's apps
+                </h2>
+                <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(10, 10, 10, 0.4)', marginBottom: '40px' }}>
+                  I first ran online surveys on platforms like Subreddits, Facebook groups, Slack forums, and my professional network, focusing on users' health challenges and obstacles. From 30+ responses, I found that users often struggle to stay motivated, which led to inconsistent use and setbacks in their health goals.
+                </p>
+              </div>
+            </div>
           </div>
           {/* Stats grid — moved here, more horizontal */}
-          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '80px', marginBottom: '48px' }}>
+          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '80px', marginBottom: '20px', paddingBottom: '20px' }}>
             <div style={{ textAlign: 'center' }}>
               <p style={{ fontSize: '48px', fontWeight: '700', color: '#212121', letterSpacing: '-0.02em', marginBottom: '8px' }}>70%</p>
               <p style={{ fontSize: '16px', lineHeight: '24px', color: '#6b7280' }}>Prefers MyFitnessPal</p>
@@ -184,7 +229,7 @@ export default function NutritionNest() {
           </div>
 
           <div style={{ backgroundColor: 'rgb(242, 244, 246)', borderRadius: '16px', padding: '24px' }}>
-            <p style={{ fontSize: '12px', letterSpacing: '0.08em', color: '#9ca3af', marginBottom: '16px', fontWeight: '600', textTransform: 'uppercase' }}>30+ responses</p>
+            <p style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '0.08em', color: '#9ca3af', marginBottom: '16px', fontWeight: '600', textTransform: 'uppercase' }}>30+ responses</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div className="quote-card">"I need more accountability to keep my workout schedule going."</div>
               <div className="quote-card">"I want something that can help when I feel unmotivated."</div>
@@ -197,14 +242,18 @@ export default function NutritionNest() {
       <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 40px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
-            <p className={`section-label ${syne.className}`}>Competitive Analysis</p>
-            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-              Everyone's tracking, but no one's commiting
-            </h2>
-            <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '12px' }}>
-              I began looking into most commonly used nutrition apps to understand similar and different product offerings. Each app offers meal logging, journal, and recipes as commonly used features. User profiles use broad averages from their own data, which can make the guidance feel generic or inaccurate.
-            </p>
-            <a href="#" style={{ fontSize: '15px', fontWeight: '600', color: '#626262', textDecoration: 'none', display: 'inline-block', marginBottom: '48px' }} className="hover:text-black">View affinity map ↗</a>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <p className={`section-label ${syne.className}`}>Competitive Analysis</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
+                  Everyone's tracking, but no one's commiting
+                </h2>
+                <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(10, 10, 10, 0.4)', marginBottom: '12px' }}>
+                  I began looking into most commonly used nutrition apps to understand similar and different product offerings. Each app offers meal logging, journal, and recipes as commonly used features. User profiles use broad averages from their own data, which can make the guidance feel generic or inaccurate.
+                </p>
+              </div>
+            </div>
+            <a href="#" style={{ fontWeight: '600', color: 'rgba(10, 10, 10, 0.4)', textDecoration: 'none', display: 'inline-block', marginBottom: '48px' }}>View affinity map ↗</a>
           </div>
 
           <div className="img-wide" style={{ margin: '0 -80px' }}>
@@ -226,15 +275,19 @@ export default function NutritionNest() {
       <section style={{ padding: '0 40px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
-            <p className={`section-label ${syne.className}`}>Goal</p>
-            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-              I proposed 3 main features for our MVP
-            </h2>
-            <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '48px' }}>
-              Based on our feedback from users, we learned that users struggled to stay motivated with meal logs due to the lack of personalization. Our proposed solution is to focus on features that consisted of customization, engagement, and AI personalization.
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <p className={`section-label ${syne.className}`}>Goal</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
+                  I proposed 3 main features for our MVP
+                </h2>
+                <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(10, 10, 10, 0.4)', marginBottom: '48px' }}>
+                  Based on our feedback from users, we learned that users struggled to stay motivated with meal logs due to the lack of personalization. Our proposed solution is to focus on features that consisted of customization, engagement, and AI personalization.
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px' }}>
+          <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', marginBottom: '20px' }}>
             {[
               { title: 'Customizable', desc: 'Personalized experiences tailored to individual goals and preferences.' },
               { title: 'Engaging', desc: 'Drive motivation and consistency through meaningful interaction.' },
@@ -253,13 +306,17 @@ export default function NutritionNest() {
       <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 40px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
-            <p className={`section-label ${syne.className}`}>Exploration</p>
-            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-              Testing different visual approaches
-            </h2>
-            <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '40px' }}>
-              I explored different design options to guide my vision to test out different visual approaches, allowing me outline the skeleton when structuring my visual hierarchy.
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <p className={`section-label ${syne.className}`}>Exploration</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
+                  Testing different visual approaches
+                </h2>
+                <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(10, 10, 10, 0.4)', marginBottom: '40px' }}>
+                  I explored different design options to guide my vision to test out different visual approaches, allowing me outline the skeleton when structuring my visual hierarchy.
+                </p>
+              </div>
+            </div>
           </div>
           <div className="img-wide" style={{ margin: '0 -120px' }}>
             <Image src="/NN/exploration_image (1).png" alt="Exploration" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '0', display: 'block', marginBottom: '16px' }} />
@@ -274,13 +331,17 @@ export default function NutritionNest() {
       <section style={{ padding: '0 40px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
-            <p className={`section-label ${syne.className}`}>Ideation</p>
-            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-              Mapping a clear, friction-free journey
-            </h2>
-            <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '32px' }}>
-              After aligning our goals, I mapped out a user flow to identify bottlenecks and key screens, such as an AI chatbot for personalized support, restaurant listings for healthier dining, a recipes for meal planning, and a user journal for tracking progress.
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <p className={`section-label ${syne.className}`}>Ideation</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
+                  Mapping a clear, friction-free journey
+                </h2>
+                <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(10, 10, 10, 0.4)', marginBottom: '32px' }}>
+                  After aligning our goals, I mapped out a user flow to identify bottlenecks and key screens, such as an AI chatbot for personalized support, restaurant listings for healthier dining, a recipes for meal planning, and a user journal for tracking progress.
+                </p>
+              </div>
+            </div>
           </div>
           <div className="img-wide" style={{ margin: '0 -80px' }}>
             <Image src="/NN/user_flow_image.png" alt="User flow diagram" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
@@ -295,13 +356,17 @@ export default function NutritionNest() {
       <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 40px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
-            <p className={`section-label ${syne.className}`}>Low Fidelity</p>
-            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-              Good start that helped our redirection
-            </h2>
-            <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '32px' }}>
-              I shared early low-fidelity designs with the team, and while they liked the overall flow, they pointed out a couple of important issues. The floating action button made the interface feel cluttered, and AI wasn't being used to its full potential — it was just a basic chatbot. Because of that, the app came across as just another meal-logging tool.
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <p className={`section-label ${syne.className}`}>Low Fidelity</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
+                  Good start that helped our redirection
+                </h2>
+                <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(10, 10, 10, 0.4)', marginBottom: '32px' }}>
+                  I shared early low-fidelity designs with the team, and while they liked the overall flow, they pointed out a couple of important issues. The floating action button made the interface feel cluttered, and AI wasn't being used to its full potential — it was just a basic chatbot. Because of that, the app came across as just another meal-logging tool.
+                </p>
+              </div>
+            </div>
           </div>
           <div className="img-wide" style={{ margin: '0 -200px' }}>
             <Image src="/NN/second_iteration_image.png" alt="Low fidelity wireframes" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
@@ -316,13 +381,17 @@ export default function NutritionNest() {
       <section style={{ padding: '0 40px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
-            <p className={`section-label ${syne.className}`}>Iterations</p>
-            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-              Introducing AI assistant, NED
-            </h2>
-            <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '32px' }}>
-              We made the chatbot feel more human by renaming it to 'NED,' adding NED cards throughout the app for better support, and giving NED its own tab for easier access. The design was a hit and got the green light to move forward!
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <p className={`section-label ${syne.className}`}>Iterations</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
+                  Introducing AI assistant, NED
+                </h2>
+                <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(10, 10, 10, 0.4)', marginBottom: '32px' }}>
+                  We made the chatbot feel more human by renaming it to 'NED,' adding NED cards throughout the app for better support, and giving NED its own tab for easier access. The design was a hit and got the green light to move forward!
+                </p>
+              </div>
+            </div>
           </div>
           <div className="img-wide" style={{ margin: '0 -200px' }}>
             <Image src="/NN/final_iteration_image1.webp" alt="Final iteration detail" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
@@ -337,16 +406,20 @@ export default function NutritionNest() {
       <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 40px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
-            <p className={`section-label ${syne.className}`}>Solution</p>
-            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '24px' }}>
-              Final designs
-            </h2>
-            <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '32px' }}>
-              The final design circles back to its core mission providing a customizable and engaging design approach. From onboarding to finding recipes and restaurants, everything adapts to their preferences. NED cards keep users engaged with quick, AI-powered tips and calorie adjustments that fit their daily needs.
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <p className={`section-label ${syne.className}`}>Solution</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
+                  Final designs
+                </h2>
+                <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(10, 10, 10, 0.4)', marginBottom: '32px' }}>
+                  The final design circles back to its core mission providing a customizable and engaging design approach. From onboarding to finding recipes and restaurants, everything adapts to their preferences. NED cards keep users engaged with quick, AI-powered tips and calorie adjustments that fit their daily needs.
+                </p>
+              </div>
+            </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '48px' }}>
-              <a href="https://figma.com/proto/X7n6zDv38NCC1RPuXzmc7A/NutritionNest-App--v3-?node-id=7267-49023&p=f&t=HunrmP0wBwIdWoYc-0&scaling=scale-down&content-scaling=fixed&page-id=5802%3A73243&starting-point-node-id=7267%3A49023&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View design file ↗</a>
-              <a href="https://figma.com/proto/X7n6zDv38NCC1RPuXzmc7A/NutritionNest-App--v3-?node-id=7267-49023&p=f&t=HunrmP0wBwIdWoYc-0&scaling=scale-down&content-scaling=fixed&page-id=5802%3A73243&starting-point-node-id=7267%3A49023&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: '#626262', textDecoration: 'none' }} className="hover:text-black">View prototype ↗</a>
+              <a href="https://figma.com/proto/X7n6zDv38NCC1RPuXzmc7A/NutritionNest-App--v3-?node-id=7267-49023&p=f&t=HunrmP0wBwIdWoYc-0&scaling=scale-down&content-scaling=fixed&page-id=5802%3A73243&starting-point-node-id=7267%3A49023&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: 'rgba(10, 10, 10, 0.4)', textDecoration: 'none' }} className="hover:text-black">View design file ↗</a>
+              <a href="https://figma.com/proto/X7n6zDv38NCC1RPuXzmc7A/NutritionNest-App--v3-?node-id=7267-49023&p=f&t=HunrmP0wBwIdWoYc-0&scaling=scale-down&content-scaling=fixed&page-id=5802%3A73243&starting-point-node-id=7267%3A49023&show-proto-sidebar=1" target="_blank" rel="noopener noreferrer" style={{ fontSize: '15px', color: 'rgba(10, 10, 10, 0.4)', textDecoration: 'none' }} className="hover:text-black">View prototype ↗</a>
             </div>
           </div>
           <div className="features-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '24px', marginBottom: '48px' }}>
@@ -384,15 +457,19 @@ export default function NutritionNest() {
       {/* Introspective */}
       <section style={{ padding: '120px 40px' }}>
         <div className="content">
-          <p className={`section-label ${syne.className}`}>Introspective</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '32px' }}>
-            Learnings
-          </h2>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262', marginBottom: '48px' }}>
-            This process was challenging but I learned so much. I gained valuable insights into what makes this app unique and learned the importance of clarifying business goals before diving into design. Understanding user pain points helped me re-evaluate critical design decisions, such as whether NED should remain in a chat room or be integrated throughout the app, ensuring that we address the right problems effectively.
-          </p>
-          <h3 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '16px' }}>Next Steps</h3>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: '#626262' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <p className={`section-label ${syne.className}`}>Introspective</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121' }}>
+                Learnings
+              </h2>
+              <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(10, 10, 10, 0.4)', marginBottom: '48px' }}>
+                This process was challenging but I learned so much. I gained valuable insights into what makes this app unique and learned the importance of clarifying business goals before diving into design. Understanding user pain points helped me re-evaluate critical design decisions, such as whether NED should remain in a chat room or be integrated throughout the app, ensuring that we address the right problems effectively.
+              </p>
+            </div>
+          </div>
+          <h3 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121', marginBottom: '16px' }}>Next Steps</h3>
+          <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(10, 10, 10, 0.4)' }}>
             If I had more time, I would track which NED touchpoints are most effective in engaging users and helping them achieve their goals. I would also brainstorm strategies to help users reach their nutrition goals faster. Additionally, I would identify underused features, evaluate their potential impact, and focus on enhancing the most valuable ones.
           </p>
         </div>

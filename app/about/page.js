@@ -1,10 +1,13 @@
 'use client'
 
 import Image from 'next/image'
+import { Syne } from 'next/font/google'
+
+const syne = Syne({ subsets: ['latin'], weight: ['600'] })
 
 export default function About() {
   return (
-    <main className="about-main min-h-screen bg-white" style={{ paddingLeft: '80px', paddingRight: '80px' }}>
+    <main className="about-main min-h-screen" style={{ paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#fbfbfb' }}>
 
       <style>{`
         .shape {
@@ -110,36 +113,38 @@ export default function About() {
 
         {/* Name + Bio */}
         <div style={{ maxWidth: '540px', width: '100%' }}>
-          <h1 style={{ fontSize: '40px', lineHeight: '52px', fontWeight: '500', color: '#111', letterSpacing: '-0.03em', marginBottom: '20px' }}>
-            Joann Zhang
-          </h1>
-          <p className="about-bio" style={{ fontSize: '18px', lineHeight: '28px', color: '#6b7280', marginBottom: '16px' }}>
-            As a self-taught Product Designer. I first fell in love with design my senior year of college, and it's been a steady part of my life ever since. It's something that inspires me, challenges me, and gives me a way to make a real impact. What motivates me most is the chance to create work that feels meaningful and sparks a bit of inspiration in others.
-          </p>
-          <p className="about-bio" style={{ fontSize: '18px', lineHeight: '28px', color: '#6b7280', marginBottom: '48px' }}>
-            During my personal time, you'll find me learning to code and playing around with ideas that make AI feel a little more human.
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '48px' }}>
+            <h1 style={{ fontSize: '24px', lineHeight: '32px', fontWeight: '600', color: '#111', letterSpacing: '-0.03em', marginBottom: '0' }}>
+              Joann Zhang
+            </h1>
+            <p className="about-bio" style={{ fontSize: '14px', lineHeight: '20px', color: '#6b7280', marginBottom: '0' }}>
+              As a self-taught Product Designer. I first fell in love with design my senior year of college, and it's been a steady part of my life ever since. It's something that inspires me, challenges me, and gives me a way to make a real impact. What motivates me most is the chance to create work that feels meaningful and sparks a bit of inspiration in others.
+            </p>
+            <p className="about-bio" style={{ fontSize: '14px', lineHeight: '20px', color: '#6b7280', marginBottom: '0' }}>
+              During my personal time, you'll find me learning to code and playing around with ideas that make AI feel a little more human.
+            </p>
+          </div>
 
           {/* Experience */}
-          <p className="exp-label" style={{ fontSize: '14px', letterSpacing: '0.08em', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', marginBottom: '16px' }}>
+          <p className={`exp-label ${syne.className}`} style={{ fontSize: '12px', lineHeight: '14px', letterSpacing: '0.12em', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', marginBottom: '16px' }}>
             Experience
           </p>
 
           <div className="exp-row">
-            <span style={{ fontSize: '18px', color: '#111' }}><strong>Iverson</strong> Product Design Intern</span>
-            <span style={{ fontSize: '16px', color: '#9ca3af', whiteSpace: 'nowrap', marginLeft: '24px' }}>Nov 2024–May 2025</span>
+            <span style={{ fontSize: '14px', lineHeight: '20px', color: '#111' }}><strong style={{ fontSize: '14px', lineHeight: '20px' }}>Iverson</strong> Product Design Intern</span>
+            <span style={{ fontSize: '14px', lineHeight: '20px', color: '#9ca3af', whiteSpace: 'nowrap', marginLeft: '24px' }}>Nov 2024–May 2025</span>
           </div>
           <div className="exp-row">
-            <span style={{ fontSize: '18px', color: '#111' }}><strong>NutritionNest</strong> Product Design Intern</span>
-            <span style={{ fontSize: '16px', color: '#9ca3af', whiteSpace: 'nowrap', marginLeft: '24px' }}>Aug 2024–Oct 2024</span>
+            <span style={{ fontSize: '14px', lineHeight: '20px', color: '#111' }}><strong style={{ fontSize: '14px', lineHeight: '20px' }}>NutritionNest</strong> Product Design Intern</span>
+            <span style={{ fontSize: '14px', lineHeight: '20px', color: '#9ca3af', whiteSpace: 'nowrap', marginLeft: '24px' }}>Aug 2024–Oct 2024</span>
           </div>
           <div className="exp-row">
-            <span style={{ fontSize: '18px', color: '#111' }}><strong>Bookworm</strong> Product Designer</span>
-            <span style={{ fontSize: '16px', color: '#9ca3af', whiteSpace: 'nowrap', marginLeft: '24px' }}>May 2023–Jun 2023</span>
+            <span style={{ fontSize: '14px', lineHeight: '20px', color: '#111' }}><strong style={{ fontSize: '14px', lineHeight: '20px' }}>Bookworm</strong> Product Designer</span>
+            <span style={{ fontSize: '14px', lineHeight: '20px', color: '#9ca3af', whiteSpace: 'nowrap', marginLeft: '24px' }}>May 2023–Jun 2023</span>
           </div>
           <div className="exp-row">
-            <span style={{ fontSize: '18px', color: '#111' }}><strong>Raymond Hair Salon</strong> Product Designer</span>
-            <span style={{ fontSize: '16px', color: '#9ca3af', whiteSpace: 'nowrap', marginLeft: '24px' }}>Jan 2023–Feb 2023</span>
+            <span style={{ fontSize: '14px', lineHeight: '20px', color: '#111' }}><strong style={{ fontSize: '14px', lineHeight: '20px' }}>Raymond Hair Salon</strong> Product Designer</span>
+            <span style={{ fontSize: '14px', lineHeight: '20px', color: '#9ca3af', whiteSpace: 'nowrap', marginLeft: '24px' }}>Jan 2023–Feb 2023</span>
           </div>
         </div>
       </div>

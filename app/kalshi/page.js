@@ -8,7 +8,7 @@ const syne = Syne({ subsets: ['latin'], weight: ['600'] })
 
 export default function Kalshi() {
   return (
-    <main className="min-h-screen bg-white" style={{ color: '#212121' }}>
+    <main className="min-h-screen" style={{ color: '#212121', backgroundColor: '#fbfbfb' }}>
 
       <style>{`
         .content-wide {
@@ -21,9 +21,9 @@ export default function Kalshi() {
         }
         .section-label {
           font-size: 11px;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.12em;
           font-weight: 600;
-          color: #9ca3af;
+          color: rgba(10, 10, 10, 0.6);
           text-transform: uppercase;
           margin-bottom: 8px;
         }
@@ -41,13 +41,27 @@ export default function Kalshi() {
           text-align: center;
           border: 1px solid #e5e7eb;
         }
+        p { font-size: 14px !important; line-height: 20px !important; }
+        .content p:not(.section-label) { color: rgba(10, 10, 10, 0.4) !important; }
+        a { font-size: 14px !important; line-height: 20px !important; color: rgba(10, 10, 10, 0.4) !important; transition: opacity 0.15s ease !important; }
+        a:hover { color: rgb(33, 33, 33) !important; }
+        h1 { font-size: 24px !important; line-height: 32px !important; margin-top: 0 !important; }
+        h2, h3 { font-size: 20px !important; line-height: 28px !important; margin-top: 0 !important; font-weight: 500 !important; }
+        .section-label { font-size: 10px !important; line-height: 12px !important; letter-spacing: 0.12em !important; margin-bottom: 4px !important; color: rgba(10, 10, 10, 0.6) !important; font-weight: 600 !important; }
+        .img-caption { font-size: 14px !important; line-height: 20px !important; max-width: 500px !important; margin-left: auto !important; margin-right: auto !important; }
+        img { border-radius: 8px !important; }
         @media (max-width: 767px) {
-          section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+          .min-h-screen section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
           .page-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
           .cover-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; }
-          h1 { font-size: 36px !important; line-height: 44px !important; }
-          h2, h3 { font-size: 26px !important; line-height: 34px !important; }
+          h1 { font-size: 16px !important; line-height: 24px !important; font-weight: 500 !important; margin-bottom: 4px !important; }
+          h2, h3 { font-size: 14px !important; line-height: 20px !important; margin-bottom: 4px !important; }
+          p { font-size: 12px !important; line-height: 18px !important; }
+          a { font-size: 12px !important; line-height: 18px !important; }
+          .section-label { font-size: 10px !important; line-height: 12px !important; margin-bottom: 4px !important; }
+          .img-caption { font-size: 10px !important; line-height: 12px !important; margin-top: 6px !important; padding-left: 0 !important; padding-right: 0 !important; }
+          img { border-radius: 4px !important; }
         }
       `}</style>
 
@@ -68,20 +82,22 @@ export default function Kalshi() {
       {/* Hero */}
       <section className="page-hero" style={{ paddingTop: '64px', paddingBottom: '80px', paddingLeft: '80px', paddingRight: '80px', backgroundColor: '#f8fafc' }}>
         <div className="content-wide" style={{ maxWidth: '1380px' }}>
-          <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121', marginBottom: '16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginBottom: '40px' }}>
+          <h1 style={{ fontSize: '24px', lineHeight: '32px', fontWeight: '500', letterSpacing: '-0.02em', color: '#212121', marginBottom: '0' }}>
             Kalshi Browser Extension
           </h1>
-          <p style={{ fontSize: '20px', lineHeight: '32px', color: '#6b7280', maxWidth: '600px', marginBottom: '40px' }}>
+          <p style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10, 10, 10, 0.4)', maxWidth: '600px', marginBottom: '0' }}>
             I explored how Kalshi could live directly in everyday browsing, letting users check market odds and place trades without leaving the page they&apos;re on.
           </p>
-          <div className="flex flex-col gap-3">
-            <a href="https://www.figma.com/proto/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=CBHfNuU3QerPsGQt-0&scaling=scale-down&content-scaling=fixed&page-id=2%3A2&starting-point-node-id=106%3A1982" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content', opacity: '0.7', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity='1'} onMouseLeave={e => e.currentTarget.style.opacity='0.7'}>
+          </div>
+          <div className="flex flex-col gap-3" style={{ marginTop: '40px' }}>
+            <a href="https://www.figma.com/proto/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=CBHfNuU3QerPsGQt-0&scaling=scale-down&content-scaling=fixed&page-id=2%3A2&starting-point-node-id=106%3A1982" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: 'rgba(10, 10, 10, 0.4)', textDecoration: 'none', display: 'inline-block', width: 'fit-content', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.color='#212121'} onMouseLeave={e => e.currentTarget.style.color='rgba(10,10,10,0.4)'}>
               View Figma Prototype ↗
             </a>
-            <a href="https://www.figma.com/design/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=IJKBuGVOfeqFv0v1-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content', opacity: '0.7', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity='1'} onMouseLeave={e => e.currentTarget.style.opacity='0.7'}>
+            <a href="https://www.figma.com/design/yL0s8tLcm2VuJn238XlJXw/Kalshi-Design?node-id=106-1982&t=IJKBuGVOfeqFv0v1-0" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: 'rgba(10, 10, 10, 0.4)', textDecoration: 'none', display: 'inline-block', width: 'fit-content', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.color='#212121'} onMouseLeave={e => e.currentTarget.style.color='rgba(10,10,10,0.4)'}>
               View Design File ↗
             </a>
-            <a href="https://github.com/Joazhan/kalshi-extension" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: '#212121', textDecoration: 'none', display: 'inline-block', width: 'fit-content', opacity: '0.7', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.opacity='1'} onMouseLeave={e => e.currentTarget.style.opacity='0.7'}>
+            <a href="https://github.com/Joazhan/kalshi-extension" target="_blank" rel="noopener noreferrer" style={{ fontSize: '16px', fontWeight: '600', color: 'rgba(10, 10, 10, 0.4)', textDecoration: 'none', display: 'inline-block', width: 'fit-content', transition: 'opacity 0.2s' }} onMouseEnter={e => e.currentTarget.style.color='#212121'} onMouseLeave={e => e.currentTarget.style.color='rgba(10,10,10,0.4)'}>
               View GitHub ↗
             </a>
           </div>
@@ -96,7 +112,7 @@ export default function Kalshi() {
             <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', marginBottom: '4px' }}>
               Landing screen
             </p>
-            <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
+            <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', maxWidth: '550px', margin: '0 auto' }}>
               This widget surfaces live trade activity, making it easy for anyone to join with zero friction. This expands when users hover to show market details, and with one click, they can open a full panel to explore or join trades instantly.
             </p>
           </div>
@@ -111,7 +127,7 @@ export default function Kalshi() {
             <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', marginBottom: '4px' }}>
               Extension pop-up — 3-step flow
             </p>
-            <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center' }}>
+            <p style={{ fontSize: '16px', lineHeight: '24px', color: 'rgba(0, 0, 0, 0.5)', fontStyle: 'italic', textAlign: 'center', maxWidth: '550px', margin: '0 auto' }}>
               This extension brings Kalshi into everyday browsing, letting users check odds and place trades right where their interest starts.
             </p>
           </div>

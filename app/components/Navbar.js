@@ -101,6 +101,8 @@ export default function Navbar() {
         .nav-desktop-links a { transition: color 0.15s ease; }
         .nav-desktop-links a:hover { color: #212121 !important; }
         .nav-dark .nav-desktop-links a:hover { color: #ffffff !important; }
+        .nav-wrapper .nav-logo, .nav-wrapper .nav-logo:hover { color: rgb(33, 33, 33) !important; opacity: 1 !important; transition: none !important; }
+        .nav-wrapper.nav-dark .nav-logo, .nav-wrapper.nav-dark .nav-logo:hover { color: #ffffff !important; }
         @media (max-width: 767px) {
           .nav-wrapper {
             padding: 16px 20px !important;
@@ -132,6 +134,7 @@ export default function Navbar() {
           <Link
             href="/"
             onClick={closeMenu}
+            className="nav-logo"
             style={{
               fontSize: '14px',
               lineHeight: '20px',

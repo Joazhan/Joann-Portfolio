@@ -239,7 +239,7 @@ export default function Home() {
           .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; overflow: hidden !important; }
           .hero-shapes-wrap { display: none !important; }
           .hero-shapes-mobile { display: block !important; }
-          .hero-text-p { font-size: 24px !important; line-height: 32px !important; letter-spacing: -0.03em !important; width: 100% !important; max-width: 100% !important; }
+          .hero-text-p { font-size: 14px !important; line-height: 20px !important; letter-spacing: -0.03em !important; width: 100% !important; max-width: 100% !important; }
           .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 16px !important; grid-template-columns: 1fr !important; }
           .nn-desktop-img, .bw-desktop-img, .rhs-desktop-img { display: none !important; }
           .nn-phone, .bw-phone, .rhs-phone { flex: unset !important; margin: 0 auto !important; width: 40% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
@@ -252,8 +252,8 @@ export default function Home() {
           .project-card { position: relative !important; padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 20px !important; }
           .card-bottom-container { margin: 0 -16px -20px -16px !important; padding: 20px 16px !important; }
           .card-label-row { padding: 8px 0 !important; }
-          .card-title { font-size: 20px !important; line-height: 28px !important; letter-spacing: -0.03em !important; }
-          .card-desc { font-size: 14px !important; line-height: 18px !important; color: rgba(10,10,10,0.4) !important; }
+          .card-title { font-size: 12px !important; line-height: 14px !important; letter-spacing: -0.03em !important; }
+          .card-desc { font-size: 12px !important; line-height: 14px !important; color: rgba(10,10,10,0.4) !important; }
           .card-icon { width: 32px !important; height: 32px !important; border-radius: 10px !important; }
           .card-icon-wrap { align-items: flex-start !important; }
           .duetti-macbook { width: 100% !important; }
@@ -267,9 +267,9 @@ export default function Home() {
           .concepts-sticky-left { position: static !important; width: 100% !important; margin-bottom: 32px !important; }
           .concepts-inner { flex-direction: column !important; }
           .concepts-cards-col { flex: unset !important; width: 100% !important; }
-          .concepts-title { font-size: 20px !important; line-height: 28px !important; }
-          .concepts-desc { font-size: 14px !important; line-height: 18px !important; }
-          .card-year-label { font-size: 14px !important; line-height: 18px !important; }
+          .concepts-title { font-size: 14px !important; line-height: 20px !important; }
+          .concepts-desc { font-size: 12px !important; line-height: 14px !important; }
+          .card-year-label { font-size: 12px !important; line-height: 14px !important; }
         }
       `}</style>
       {/* Spacer for fixed navbar */}
@@ -806,7 +806,7 @@ export default function Home() {
         <div style={{ backgroundColor: '#f3f4f6', paddingTop: '32px', paddingBottom: '32px', paddingLeft: '64px', paddingRight: '64px', marginLeft: '-64px', marginRight: '-64px', marginBottom: '64px', textAlign: 'center' }}>
           <div style={{ display: 'inline-flex', flexDirection: 'column', gap: '4px' }}>
             <h2 className="concepts-title" style={{ fontSize: '20px', lineHeight: '28px', letterSpacing: '-0.03em', fontWeight: '500', color: '#212121' }}>Concepts</h2>
-            <p className="concepts-desc" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.2px', color: '#B1B1B1' }}>
+            <p className="concepts-desc" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.2px', color: 'rgba(10, 10, 10, 0.4)' }}>
               I designed these projects after noticing gaps in existing products.<br />Wanting to see what a better solution could feel like.
             </p>
           </div>

@@ -21,9 +21,9 @@ export default function Lasertaz() {
         .section-label {
           font-size: 14px;
           line-height: 20px;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.12em;
           font-weight: 600;
-          color: #6b7280;
+          color: rgba(255, 255, 255, 0.6);
           text-transform: uppercase;
           margin-bottom: 5px;
         }
@@ -41,24 +41,37 @@ export default function Lasertaz() {
           text-align: center;
           border: 1px solid #2a2a2a;
         }
+        p { font-size: 14px !important; line-height: 20px !important; margin-top: 0 !important; }
+        .content p:not(.section-label) { color: rgba(255, 255, 255, 0.4) !important; }
+        a { font-size: 14px !important; line-height: 20px !important; color: rgba(255, 255, 255, 0.4) !important; transition: opacity 0.15s ease !important; }
+        a:hover { color: rgba(255, 255, 255, 0.9) !important; }
+        h1 { font-size: 24px !important; line-height: 32px !important; margin-top: 0 !important; }
+        h2, h3 { font-size: 20px !important; line-height: 28px !important; margin-top: 0 !important; margin-bottom: 0 !important; font-weight: 500 !important; }
+        .section-label { font-size: 10px !important; line-height: 12px !important; letter-spacing: 0.12em !important; margin-bottom: 4px !important; color: rgba(255, 255, 255, 0.6) !important; font-weight: 600 !important; }
+        .img-caption { font-size: 14px !important; line-height: 20px !important; max-width: 500px !important; margin-left: auto !important; margin-right: auto !important; }
+        img { border-radius: 8px !important; }
         @media (max-width: 767px) {
-          section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+          .min-h-screen section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
           .page-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
           .content-wide > div { gap: 4px !important; }
           .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
           .two-col-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
-          h1 { font-size: 36px !important; line-height: 44px !important; }
-          h2, h3 { font-size: 26px !important; line-height: 34px !important; }
+          h1 { font-size: 16px !important; line-height: 24px !important; font-weight: 500 !important; margin-bottom: 4px !important; }
+          h2, h3 { font-size: 14px !important; line-height: 20px !important; margin-bottom: 4px !important; }
+          p { font-size: 12px !important; line-height: 18px !important; }
+          a { font-size: 12px !important; line-height: 18px !important; }
+          .section-label { font-size: 10px !important; line-height: 12px !important; margin-bottom: 4px !important; }
+          .img-caption { font-size: 10px !important; line-height: 12px !important; margin-top: 6px !important; padding-left: 0 !important; padding-right: 0 !important; }
+          img { border-radius: 4px !important; }
           .img-wide { margin-left: 0 !important; margin-right: 0 !important; }
-          .img-caption { padding-left: 0 !important; padding-right: 0 !important; }
           .content { overflow: hidden !important; }
         }
       `}</style>
 
       {/* Hero */}
-      <div className="page-hero" style={{ paddingTop: '80px', paddingBottom: '40px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '80px', paddingRight: '80px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+      <div className="page-hero" style={{ paddingTop: '120px', paddingBottom: '40px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end', overflow: 'hidden', paddingLeft: '80px', paddingRight: '80px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
         <Image
           src="/Images/Lasertaz image.png"
           alt="Lasertaz app screens"
@@ -69,14 +82,14 @@ export default function Lasertaz() {
       </div>
 
       {/* Title + Overview + Sidebar */}
-      <section style={{ padding: '80px 40px' }}>
-        <div className="content-wide overview-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div>
-              <h1 style={{ fontSize: '56px', lineHeight: '64px', fontWeight: '600', letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '16px' }}>
+      <section style={{ padding: '80px 40px', display: 'flex', justifyContent: 'center' }}>
+        <div className="content-wide overview-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start', width: '100%' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <h1 style={{ fontSize: '24px', lineHeight: '32px', fontWeight: '600', letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '0' }}>
                 Lasertaz
               </h1>
-              <p style={{ fontSize: '20px', lineHeight: '28px', color: 'rgba(255,255,255,0.8)', maxWidth: '520px' }}>
+              <p style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(255,255,255,0.8)', maxWidth: '520px' }}>
                 Help independent landlords manage their rental properties
               </p>
             </div>
@@ -112,26 +125,34 @@ export default function Lasertaz() {
       {/* My Role */}
       <section style={{ backgroundColor: '#1a1a1a', padding: '80px 40px' }}>
         <div className="content">
-          <p className={`section-label ${syne.className}`}>My Role</p>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(255,255,255,0.8)', marginBottom: '24px' }}>
-            I helped audit and organize the existing design file and reviewed each frame to understand which repeated components to design, and reorganized each user flow so that the rest of the product designers can focus on redesigning the app.
-          </p>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(255,255,255,0.8)' }}>
-            I organized the files from their previous app design to establish a clear and consistent foundation for our design system. This helped streamline collaboration, reduce back-and-forth communication, and ensure the entire team had easy access to reference materials before beginning the redesign process.
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <p className={`section-label ${syne.className}`}>My Role</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(255,255,255,0.8)' }}>
+                I helped audit and organize the existing design file and reviewed each frame to understand which repeated components to design, and reorganized each user flow so that the rest of the product designers can focus on redesigning the app.
+              </p>
+              <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(255,255,255,0.8)' }}>
+                I organized the files from their previous app design to establish a clear and consistent foundation for our design system. This helped streamline collaboration, reduce back-and-forth communication, and ensure the entire team had easy access to reference materials before beginning the redesign process.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Design Handoff */}
       <section style={{ padding: '80px 40px' }}>
         <div className="content">
-          <p className={`section-label ${syne.className}`}>Design Handoff</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '24px' }}>
-            Building a scalable UI component library
-          </h2>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(255,255,255,0.8)', marginBottom: '48px' }}>
-            With a clear foundation in place, I began creating our new UI components for our redesigned app so they're aligned with our updated visual direction. I aligned with my PD Lead to identify our foundational elements like colors, typography, and spacing. From there, I built out key patterns such as buttons, input fields, and modals that were cohesive and scalable across the app.
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '48px' }}>
+            <p className={`section-label ${syne.className}`}>Design Handoff</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#ffffff' }}>
+                Building a scalable UI component library
+              </h2>
+              <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(255,255,255,0.8)' }}>
+                With a clear foundation in place, I began creating our new UI components for our redesigned app so they're aligned with our updated visual direction. I aligned with my PD Lead to identify our foundational elements like colors, typography, and spacing. From there, I built out key patterns such as buttons, input fields, and modals that were cohesive and scalable across the app.
+              </p>
+            </div>
+          </div>
 
           <div className="img-wide" style={{ margin: '0 -120px', marginBottom: '16px' }}>
             <Image src="/Lasertaz/system_overview_image.png" alt="Design system overview" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(255,255,255,0.1)', paddingBottom: '16px' }} />
@@ -166,16 +187,20 @@ export default function Lasertaz() {
       {/* Introspective */}
       <section style={{ backgroundColor: '#1a1a1a', padding: '80px 40px' }}>
         <div className="content">
-          <p className={`section-label ${syne.className}`}>Introspective</p>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '24px' }}>
-            Learnings
-          </h2>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(255,255,255,0.8)', marginBottom: '24px' }}>
-            This project was a great experience to apply my design system skills in a real, collaborative environment. By designing out a consistent system early on, we were able to reduce back-and-forth communication and eliminate many of the inconsistencies across the app.
-          </p>
-          <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(255,255,255,0.8)', marginBottom: '32px' }}>
-            The team leaned on this system throughout the redesign process, which helped cut down on design decisions and minimized about 80% cross-team friction and cut down unnecessary iteration loops. The file now serves as the foundation for both current and future design work.
-          </p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '32px' }}>
+            <p className={`section-label ${syne.className}`}>Introspective</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '500', letterSpacing: '-0.02em', color: '#ffffff' }}>
+                Learnings
+              </h2>
+              <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(255,255,255,0.8)' }}>
+                This project was a great experience to apply my design system skills in a real, collaborative environment. By designing out a consistent system early on, we were able to reduce back-and-forth communication and eliminate many of the inconsistencies across the app.
+              </p>
+              <p style={{ fontSize: '18px', lineHeight: '28px', color: 'rgba(255,255,255,0.8)' }}>
+                The team leaned on this system throughout the redesign process, which helped cut down on design decisions and minimized about 80% cross-team friction and cut down unnecessary iteration loops. The file now serves as the foundation for both current and future design work.
+              </p>
+            </div>
+          </div>
           <a href="https://lasertaz.com/" target="_blank" rel="noopener noreferrer" style={{ fontSize: '17px', fontWeight: '600', color: '#ffffff', textDecoration: 'none' }} className="hover:underline">
             See it live at lasertaz.com ↗
           </a>
