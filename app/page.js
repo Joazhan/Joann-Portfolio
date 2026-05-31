@@ -172,7 +172,7 @@ export default function Home() {
   return (
     <>
     {!introComplete && <RiveIntro onComplete={() => { sessionStorage.setItem('introPlayed', 'true'); setIntroComplete(true) }} />}
-    <main className="min-h-screen portfolio-main" style={{ paddingLeft: '64px', paddingRight: '64px', cursor: 'none', backgroundColor: '#fbfbfb' }}>
+    <main className="min-h-screen portfolio-main" style={{ paddingLeft: '64px', paddingRight: '64px', paddingTop: '80px', paddingBottom: '80px', cursor: 'none', backgroundColor: '#fbfbfb', overflowX: 'hidden' }}>
       <style>{`
         @keyframes sparkle-fade {
           0%, 100% { opacity: 0; transform: scale(0.6); }
@@ -236,11 +236,11 @@ export default function Home() {
         @media (max-width: 767px) {
           * { cursor: auto !important; }
           .portfolio-main { padding-left: 20px !important; padding-right: 20px !important; }
-          .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; overflow: hidden !important; }
+          .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; overflow: hidden !important; min-height: 60vh !important; }
           .hero-shapes-wrap { display: none !important; }
           .hero-shapes-mobile { display: block !important; }
           .hero-text-p { font-size: 14px !important; line-height: 20px !important; letter-spacing: -0.03em !important; width: 100% !important; max-width: 100% !important; }
-          .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 16px !important; grid-template-columns: 1fr !important; }
+          .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 40px !important; grid-template-columns: 1fr !important; }
           .nn-desktop-img, .bw-desktop-img, .rhs-desktop-img { display: none !important; }
           .nn-phone, .bw-phone, .rhs-phone { flex: unset !important; margin: 0 auto !important; width: 40% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
           .nn-phone { overflow: hidden !important; border-radius: 14% / 7% !important; }
@@ -270,6 +270,19 @@ export default function Home() {
           .concepts-title { font-size: 14px !important; line-height: 20px !important; }
           .concepts-desc { font-size: 12px !important; line-height: 14px !important; }
           .card-year-label { font-size: 12px !important; line-height: 14px !important; }
+          .concept-card-link { width: 100% !important; }
+          .concepts-inner-card { padding: 16px !important; gap: 12px !important; }
+          .concepts-inner-card + .concepts-inner-card { margin-top: 0 !important; }
+          .concepts-inner-card:first-of-type ~ div { flex-direction: column !important; }
+          .concepts-label-stripe { padding-left: 20px !important; padding-right: 20px !important; margin-left: -20px !important; margin-right: -20px !important; }
+        }
+        @media (min-width: 768px) and (max-width: 1024px) {
+          .portfolio-main { padding-left: 32px !important; padding-right: 32px !important; }
+          .hero-section { margin: 0 -32px !important; padding-left: 36px !important; padding-right: 36px !important; }
+          .cards-section { column-gap: 16px !important; row-gap: 48px !important; }
+          .main-card { min-height: 420px !important; }
+          .concepts-label-stripe { padding-left: 32px !important; padding-right: 32px !important; margin-left: -32px !important; margin-right: -32px !important; }
+          .concepts-grid { column-gap: 16px !important; }
         }
       `}</style>
       {/* Spacer for fixed navbar */}
@@ -659,6 +672,34 @@ export default function Home() {
               <svg width="32" height="9" viewBox="0 0 30 8" style={{ transform: 'rotate(-15deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#F87171"/></svg>
             </div>
           </div>
+          {/* Left-center: blue rounded square */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '28%', left: '3%', animationDelay: '0.8s' }}>
+            <div style={{ transform: 'rotate(-18deg)', animation: 'orbitCCW 6s ease-in-out 0.2s infinite' }}>
+              <svg width="38" height="38" viewBox="0 0 78 78" overflow="visible">
+                <rect x="1" y="1" width="76" height="76" rx="12" fill="#2DA3F8"/>
+              </svg>
+            </div>
+          </div>
+          {/* Right-center: gold dash */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '55%', right: '3%', animationDelay: '1.0s' }}>
+            <div style={{ animation: 'orbitSm 3.5s ease-in-out 0.6s infinite' }}>
+              <svg width="30" height="9" viewBox="0 0 30 8" style={{ transform: 'rotate(15deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#FCD34D"/></svg>
+            </div>
+          </div>
+          {/* Upper-center: pink small circle */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '18%', left: '50%', animationDelay: '0.65s' }}>
+            <svg width="22" height="22" viewBox="0 0 120 120" overflow="visible" style={{ animation: 'orbitCW 5s ease-in-out 0.9s infinite' }}>
+              <circle cx="60" cy="60" r="59" fill="#f472b6"/>
+            </svg>
+          </div>
+          {/* Left-lower-center: green 4-star */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '62%', left: '8%', animationDelay: '0.9s' }}>
+            <div style={{ animation: 'orbitSm 4.8s ease-in-out 0.3s infinite' }}>
+              <svg width="28" height="28" viewBox="0 0 100 100" overflow="visible">
+                <path d="M 54.02 13.83 L 62.04 35.41 Q 62.73 37.27 64.59 37.96 L 86.17 45.98 Q 97 50 86.17 54.02 L 64.59 62.04 Q 62.73 62.73 62.04 64.59 L 54.02 86.17 Q 50 97 45.98 86.17 L 37.96 64.59 Q 37.27 62.73 35.40 62.04 L 13.83 54.02 Q 3 50 13.83 45.98 L 35.41 37.96 Q 37.27 37.27 37.96 35.41 L 45.98 13.83 Q 50 3 54.02 13.83 Z" fill="#22c55e"/>
+              </svg>
+            </div>
+          </div>
         </div>
 
         {/* Hero text */}
@@ -670,7 +711,7 @@ export default function Home() {
         </div>
       </section>
       {/* Project Cards */}
-      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '24px', rowGap: '80px' }}>
+      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '24px', rowGap: '100px' }}>
         {/* NutritionNest */}
         <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
@@ -779,7 +820,6 @@ export default function Home() {
             <Link href="/rhs" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
               <div className="rhs-img-container flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '0px', height: '400px' }}>
-
                 <Image src="/Images/rhs_image1.png" alt="Raymond Hair Salon" width={3564} height={3620} quality={100} unoptimized className="object-contain rounded-xl rhs-desktop-img" style={{ height: '340px', width: 'auto', alignSelf: 'flex-end', marginBottom: '38px', marginRight: '-4px' }} />
                 <div className="rhs-phone" style={{ position: 'relative', height: '310px', aspectRatio: '750 / 1430', alignSelf: 'flex-end', marginBottom: '59px' }}>
                   <div style={{ position: 'absolute', top: '2%', left: '9%', right: '9%', bottom: '2%', borderRadius: '6% / 4%', overflow: 'hidden', zIndex: 1, backgroundColor: '#ffffff' }}>
@@ -799,50 +839,40 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-      {/* Concepts Section */}
-      <div className="concepts-section" style={{ marginTop: '80px', paddingBottom: '64px' }}>
-        {/* Label block — background only wraps this */}
-        <div style={{ backgroundColor: '#f3f4f6', paddingTop: '32px', paddingBottom: '32px', paddingLeft: '64px', paddingRight: '64px', marginLeft: '-64px', marginRight: '-64px', marginBottom: '64px', textAlign: 'center' }}>
-          <div style={{ display: 'inline-flex', flexDirection: 'column', gap: '4px' }}>
-            <h2 className="concepts-title" style={{ fontSize: '20px', lineHeight: '28px', letterSpacing: '-0.03em', fontWeight: '500', color: '#212121' }}>Concepts</h2>
-            <p className="concepts-desc" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.2px', color: 'rgba(10, 10, 10, 0.4)' }}>
-              I designed these projects after noticing gaps in existing products.<br />Wanting to see what a better solution could feel like.
-            </p>
+
+        {/* Concepts — Kalshi + Phia stacked */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          {/* Concepts text — group wraps only title + caption, 0px spacing */}
+          <div className="group" style={{ margin: 0, padding: 0 }}>
+            <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '500', color: 'rgb(33, 33, 33)', margin: 0 }}>Concepts</p>
+            <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '400', color: 'rgba(10,10,10,0.3)', margin: 0, maxWidth: '450px' }}>I designed these projects after noticing gaps in existing products and wanting to see what a better solution could feel like.</p>
           </div>
-        </div>
-        <div className="concepts-inner" style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
-        {/* Stacked cards on the right */}
-        <div className="concepts-cards-col" style={{ display: 'flex', flexDirection: 'column', gap: '40px', width: '100%' }}>
           {/* Kalshi */}
           <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
-            <Link href="/kalshi" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', cursor: 'pointer', width: '34%', margin: '0 auto' }}>
-              <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', borderRadius: '8px' }} />
-              <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-                <div className="flex flex-col gap-0">
-                  <span className="card-year-label" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>2025 | Desktop extension</span>
-                  <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Kalshi</span>
-                </div>
+            <Link href="/kalshi" className="project-card card-pre concepts-inner-card" style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 'unset', height: 'auto' }}>
+              <div className="transition-all duration-500 group-hover:-translate-y-4" style={{ margin: 0, padding: 0, width: '100%' }}>
+                <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} style={{ width: '100%', height: 'auto', maxHeight: '220px', objectFit: 'contain', display: 'block', borderRadius: '6px' }} />
               </div>
             </Link>
+            <div className="card-label-row" style={{ padding: '8px 0 0', display: 'flex', flexDirection: 'column', gap: 0 }}>
+              <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', margin: 0, padding: 0 }}>2025</span>
+              <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Kalshi desktop extension</span>
+            </div>
           </div>
-          {/* Divider */}
-          <hr style={{ width: '34%', margin: '0 auto', border: 'none', borderTop: '1px solid rgba(0,0,0,0.1)' }} />
           {/* Phia */}
-          <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
-            <Link href="/phia" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', cursor: 'pointer', width: '34%', margin: '0 auto' }}>
-              <Image src="/Images/Phia_cover.png" alt="Phia cover" width={1400} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', borderRadius: '8px' }} />
-              <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-                <div className="flex flex-col gap-0">
-                  <span className="card-year-label" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>2025 | Desktop extension</span>
-                  <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Phia</span>
-                </div>
+          <div className="group" style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+            <Link href="/phia" className="project-card card-pre concepts-inner-card" style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 'unset', height: 'auto' }}>
+              <div className="transition-all duration-500 group-hover:-translate-y-4" style={{ margin: 0, padding: 0, width: '100%' }}>
+                <Image src="/Images/Phia_cover.png" alt="Phia" width={1400} height={800} style={{ width: '100%', height: 'auto', maxHeight: '220px', objectFit: 'contain', display: 'block', borderRadius: '6px' }} />
               </div>
             </Link>
+            <div className="card-label-row" style={{ padding: '8px 0 0', display: 'flex', flexDirection: 'column', gap: 0 }}>
+              <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', margin: 0, padding: 0 }}>2025</span>
+              <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Phia desktop extension</span>
+            </div>
           </div>
         </div>
-        </div>
-      </div>
+      </section>
     </main>
 
     </>

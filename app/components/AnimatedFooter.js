@@ -110,10 +110,10 @@ export default function AnimatedFooter() {
   const bg         = dark ? '#121212' : '#fbfbfb'
   const dotBg      = dark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)'
   const shapeCol   = dark ? '#e8e8e8' : '#1a1a1a'
-  const headingCol = dark ? '#ffffff'  : '#212121'
-  const linkCol    = dark ? '#9ca3af'  : '#6b7280'
+  const headingCol = dark ? '#ffffff'  : 'rgb(33, 33, 33)'
+  const linkCol    = dark ? '#9ca3af'  : 'rgba(10, 10, 10, 0.4)'
   const linkHover  = dark ? 'hover:text-white' : 'hover:text-black'
-  const copyCol    = dark ? '#6b7280'  : '#9ca3af'
+  const copyCol    = dark ? '#6b7280'  : 'rgba(10, 10, 10, 0.4)'
   const cursorCol  = dark ? '#d4d4d4'  : '#1a1a1a'
 
   const [clockTime,   setClockTime]   = useState('')
@@ -241,7 +241,16 @@ export default function AnimatedFooter() {
       }
       .footer-canvas, .footer-canvas * { cursor: none !important; }
       @media (max-width: 767px) {
-        .footer-content { padding: 20px !important; flex-direction: column !important; gap: 16px !important; align-items: flex-start !important; }
+        .footer-content { padding: 20px !important; flex-direction: row !important; justify-content: space-between !important; align-items: flex-start !important; }
+        .footer-left { padding: 0 !important; background: transparent !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+        .footer-left p, .footer-left a { font-size: 12px !important; line-height: 14px !important; }
+        .footer-right { display: flex !important; flex-direction: column !important; align-items: flex-end !important; text-align: right !important; gap: 4px !important; }
+        .footer-left { gap: 4px !important; }
+        .footer-right p { font-size: 12px !important; line-height: 14px !important; }
+        .footer-canvas { min-height: 400px !important; background-size: 14px 14px !important; background-position: -7px -7px !important; }
+        .footer-gradient-top { height: 120px !important; }
+        .footer-shapes-layer { transform: scale(0.45) translateY(100px) !important; transform-origin: top left !important; }
+        .footer-pixel-group { transform: none !important; }
       }
       @keyframes cursor-pulse {
         0%, 100% { transform: translate(-50%,-50%) scale(1);   opacity: 0.9; }
@@ -288,13 +297,16 @@ export default function AnimatedFooter() {
       }}>
 
       {/* Gradient fade at top */}
-      <div style={{
+      <div className="footer-gradient-top" style={{
         position: 'absolute', top: 0, left: 0, right: 0,
         height: '300px',
         background: `linear-gradient(to bottom, ${bg} 40%, transparent 100%)`,
         zIndex: topZ + 1,
         pointerEvents: 'none',
       }} />
+
+      {/* Shapes layer — scaled on mobile */}
+      <div className="footer-shapes-layer" style={{ position: 'absolute', inset: 0 }}>
 
       {/* Hitboxes */}
       {GROUP_SHAPES.map(({ g, cx, cy, type }) => {
@@ -326,6 +338,7 @@ export default function AnimatedFooter() {
         return (
           <svg
             key={`gs-${g}-${groupPlayKeys[g]}`}
+            className="footer-pixel-group"
             style={{
               position: 'absolute',
               left: Math.round(cx - cols*STEP/2),
@@ -395,6 +408,8 @@ export default function AnimatedFooter() {
         )
       })}
 
+      </div>{/* end footer-shapes-layer */}
+
       {/* Footer content — pinned to top */}
       <div
         className="footer-content"
@@ -408,11 +423,11 @@ export default function AnimatedFooter() {
           pointerEvents: 'none',
         }}
       >
-        <div style={{
+        <div className="footer-left" style={{
           display: 'flex', flexDirection: 'column', gap: 0, pointerEvents: 'all',
           background: dark ? 'transparent' : 'rgba(252,252,252,0.75)',
           backdropFilter: dark ? 'none' : 'blur(16px)', WebkitBackdropFilter: dark ? 'none' : 'blur(16px)',
-          padding: '0 24px 20px',
+          padding: 0,
         }}>
           <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '400', color: headingCol, margin: 0 }}>
             {['Get', 'in', 'touch!'].map((word, i) => (
@@ -435,7 +450,7 @@ export default function AnimatedFooter() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 0, textAlign: 'right', pointerEvents: 'all', alignSelf: 'flex-start' }}>
+        <div className="footer-right" style={{ display: 'flex', flexDirection: 'column', gap: 0, textAlign: 'right', pointerEvents: 'all', alignSelf: 'flex-start' }}>
           <p style={{ fontSize: '14px', lineHeight: '20px', color: headingCol, margin: 0, opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 300ms both' }) }}>
             © Joann Zhang
           </p>

@@ -77,7 +77,7 @@ export default function NutritionNest() {
         .content-img > div { border-radius: 8px !important; }
         .features-grid > div { border-radius: 8px !important; overflow: hidden; }
         @media (max-width: 767px) {
-          .min-h-screen section { padding-top: 48px !important; padding-bottom: 48px !important; padding-left: 20px !important; padding-right: 20px !important; }
+          .min-h-screen { overflow-x: hidden !important; } .min-h-screen section { padding-top: 48px !important; padding-bottom: 48px !important; padding-left: 20px !important; padding-right: 20px !important; }
           footer { padding: 32px 20px !important; }
           .page-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
           .content-wide > div { gap: 4px !important; }

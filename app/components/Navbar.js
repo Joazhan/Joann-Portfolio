@@ -111,6 +111,7 @@ export default function Navbar() {
           .nav-desktop-links { display: none !important; }
           .nav-hamburger { display: flex !important; }
           .nav-dark.nav-wrapper { background: #121212 !important; }
+          .nav-logo { font-size: 12px !important; line-height: 14px !important; }
         }
         @media (min-width: 768px) {
           .nav-hamburger { display: none !important; }
@@ -200,7 +201,7 @@ export default function Navbar() {
         >
           <div style={{ paddingTop: '8px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
             <button onClick={() => setWorkOpen((v) => !v)}
-              style={{ background: 'none', border: 'none', padding: '12px 8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', fontSize: '16px', color: '#374151', fontFamily: 'inherit' }}>
+              style={{ background: 'none', border: 'none', padding: '12px 8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', fontSize: '12px', lineHeight: '14px', color: '#374151', fontFamily: 'inherit' }}>
               Work
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                 style={{ transform: workOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>
@@ -215,11 +216,11 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-            <Link href="/about" onClick={closeMenu} style={{ fontSize: '16px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>About</Link>
+            <Link href="/about" onClick={closeMenu} style={{ fontSize: '12px', lineHeight: '14px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>About</Link>
             <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" onClick={closeMenu}
-              style={{ fontSize: '16px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>Resume</a>
+              style={{ fontSize: '12px', lineHeight: '14px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>Resume</a>
             <a href="mailto:joannzhang4@gmail.com" target="_blank" rel="noopener noreferrer" onClick={closeMenu}
-              style={{ fontSize: '16px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>Contact</a>
+              style={{ fontSize: '12px', lineHeight: '14px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>Contact</a>
           </div>
         </div>
       </div>

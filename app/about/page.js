@@ -46,11 +46,14 @@ export default function About() {
           border-top: 1px solid #e5e7eb;
         }
         @media (max-width: 767px) {
-          .about-main { padding-left: 20px !important; padding-right: 20px !important; }
-          .about-main h1 { font-size: 24px !important; line-height: 32px !important; }
-          .exp-label { line-height: 20px !important; }
-          .exp-row span { font-size: 14px !important; line-height: 20px !important; }
-          .about-bio { font-size: 14px !important; line-height: 20px !important; }
+          .about-main { padding-left: 20px !important; padding-right: 20px !important; overflow-x: hidden !important; }
+          .about-main h1 { font-size: 16px !important; line-height: 24px !important; }
+          .exp-label { font-size: 10px !important; line-height: 12px !important; }
+          .exp-row span, .exp-row strong { font-size: 12px !important; line-height: 14px !important; }
+          .about-bio { font-size: 12px !important; line-height: 15px !important; }
+          .about-photo-wrap { width: min(280px, 80vw) !important; height: auto !important; aspect-ratio: 320/380 !important; }
+          .about-photo-circle { width: min(220px, 65vw) !important; height: min(220px, 65vw) !important; }
+          .about-main > div { padding-top: 32px !important; padding-bottom: 60px !important; }
         }
       `}</style>
 
@@ -61,9 +64,9 @@ export default function About() {
       <div className="flex flex-col items-center" style={{ paddingTop: '60px', paddingBottom: '120px' }}>
 
         {/* Photo + floating shapes */}
-        <div style={{ position: 'relative', width: '320px', height: '380px', marginBottom: '32px', flexShrink: 0, paddingBottom: '24px' }}>
+        <div className="about-photo-wrap" style={{ position: 'relative', width: '320px', height: '380px', marginBottom: '32px', flexShrink: 0, paddingBottom: '24px' }}>
           {/* Photo circle */}
-          <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '260px', height: '260px', borderRadius: '50%', overflow: 'hidden' }}>
+          <div className="about-photo-circle" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '260px', height: '260px', borderRadius: '50%', overflow: 'hidden' }}>
             <Image
               src="/Images/0ab9379a-605b-4366-9201-5c53c654f369.jpeg"
               alt="Joann Zhang"
