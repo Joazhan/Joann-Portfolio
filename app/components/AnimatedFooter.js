@@ -296,11 +296,11 @@ export default function AnimatedFooter() {
         backgroundPosition: '-11px -11px',
       }}>
 
-      {/* Gradient fade at top */}
+      {/* Gradient fade at top — short fade only to blend content area */}
       <div className="footer-gradient-top" style={{
         position: 'absolute', top: 0, left: 0, right: 0,
-        height: '300px',
-        background: `linear-gradient(to bottom, ${bg} 40%, transparent 100%)`,
+        height: '80px',
+        background: `linear-gradient(to bottom, ${bg} 0%, transparent 100%)`,
         zIndex: topZ + 1,
         pointerEvents: 'none',
       }} />

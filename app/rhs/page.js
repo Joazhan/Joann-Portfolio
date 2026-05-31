@@ -333,7 +333,7 @@ export default function RHS() {
       </section>
 
       {/* Introspective */}
-      <section style={{ backgroundColor: 'rgb(251, 251, 251)', padding: '80px 40px' }}>
+      <section style={{ backgroundColor: 'rgb(251, 251, 251)', padding: '80px 40px 200px' }}>
         <div className="content">
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '32px' }}>
             <p className={`section-label ${syne.className}`}>Introspective</p>

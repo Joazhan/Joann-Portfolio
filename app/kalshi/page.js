@@ -120,7 +120,7 @@ export default function Kalshi() {
       </section>
 
       {/* Extension Pop-up Flow */}
-      <section style={{ padding: '80px 40px 40px' }}>
+      <section style={{ padding: '80px 40px 200px' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
           <Image src="/Kalshi/Browser Container.png" alt="Kalshi extension popup 3-step flow" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px', marginBottom: '12px' }} />
           <div style={{ width: '100%' }}>

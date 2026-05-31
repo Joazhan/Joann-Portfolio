@@ -172,7 +172,7 @@ export default function Home() {
   return (
     <>
     {!introComplete && <RiveIntro onComplete={() => { sessionStorage.setItem('introPlayed', 'true'); setIntroComplete(true) }} />}
-    <main className="min-h-screen portfolio-main" style={{ paddingLeft: '64px', paddingRight: '64px', paddingTop: '80px', paddingBottom: '80px', cursor: 'none', backgroundColor: '#fbfbfb', overflowX: 'hidden' }}>
+    <main className="min-h-screen portfolio-main" style={{ paddingLeft: '64px', paddingRight: '64px', paddingTop: '80px', paddingBottom: '200px', cursor: 'none', backgroundColor: '#fbfbfb', overflowX: 'hidden' }}>
       <style>{`
         @keyframes sparkle-fade {
           0%, 100% { opacity: 0; transform: scale(0.6); }
@@ -841,10 +841,13 @@ export default function Home() {
         </div>
 
         {/* Concepts — Kalshi + Phia stacked */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignSelf: 'flex-start' }}>
           {/* Concepts text — group wraps only title + caption, 0px spacing */}
           <div className="group" style={{ margin: 0, padding: 0 }}>
-            <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '500', color: 'rgb(33, 33, 33)', margin: 0 }}>Concepts</p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '0' }}>
+              <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '500', color: 'rgb(33, 33, 33)', margin: 0, whiteSpace: 'nowrap' }}>Concepts</p>
+              <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(0,0,0,0.1)' }} />
+            </div>
             <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '400', color: 'rgba(10,10,10,0.3)', margin: 0, maxWidth: '450px' }}>I designed these projects after noticing gaps in existing products and wanting to see what a better solution could feel like.</p>
           </div>
           {/* Kalshi */}

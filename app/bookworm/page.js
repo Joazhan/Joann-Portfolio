@@ -393,7 +393,7 @@ export default function Bookworm() {
       </section>
 
       {/* Introspective */}
-      <section className="section-alt" style={{ padding: '80px 40px' }}>
+      <section className="section-alt" style={{ padding: '80px 40px 200px' }}>
         <div className="content">
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '32px' }}>
             <p className={`section-label ${syne.className}`}>Introspective</p>

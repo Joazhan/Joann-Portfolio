@@ -134,7 +134,7 @@ export default function Phia() {
       </section>
 
       {/* Secondhand Price Extension */}
-      <section style={{ padding: '80px 40px' }}>
+      <section style={{ padding: '80px 40px 200px' }}>
         <div className="content-wide" style={{ maxWidth: '1400px' }}>
           <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '48px' }}>
             Secondhand Price Extension
