@@ -124,7 +124,6 @@ export default function Navbar() {
         className={`nav-wrapper${isDark ? ' nav-dark' : ''}${menuOpen ? ' nav-menu-open' : ''}`}
         style={{
           background: isDark ? 'rgba(18,18,18,0.6)' : 'rgba(255,255,255,0.45)',
-          borderBottom: isDark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.06)',
           backdropFilter: 'blur(80px)',
           WebkitBackdropFilter: 'blur(80px)',
         }}
@@ -175,11 +174,11 @@ export default function Navbar() {
             style={{ background: 'none', border: 'none', padding: '4px', cursor: 'pointer', display: 'none', alignItems: 'center', justifyContent: 'center' }}
           >
             {menuOpen ? (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={isDark ? '#fff' : '#374151'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={isDark ? '#fff' : '#374151'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             ) : (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={isDark ? '#fff' : '#374151'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={isDark ? '#fff' : '#374151'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
               </svg>
             )}

@@ -223,9 +223,10 @@ export default function Home() {
         .card-pre { opacity: 0; transform: translateY(30px); }
         .card-in { animation: cardFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
         .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 8px !important; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08) !important; }
-        .main-card { padding-top: 56px !important; padding-bottom: 56px !important; min-height: 550px; height: 100%; justify-content: center; }
+        .main-card { padding-top: 56px !important; padding-bottom: 0 !important; aspect-ratio: 1 / 1; height: auto; justify-content: center; }
         .nn-card { justify-content: center !important; padding: 36px !important; }
-        .card-squircle-wrap { flex: 1; display: flex; flex-direction: column; }
+        .card-squircle-wrap { flex: 1; display: flex; flex-direction: column; padding: 8px 8px 0 8px; }
+        .card-label-row { padding-left: 8px !important; }
         .concept-card { height: auto !important; min-height: unset !important; }
         .concept-card.main-card { justify-content: center !important; padding: 24px 36px !important; min-height: unset !important; height: auto !important; }
         .concepts-cards-col .card-squircle-wrap { flex: none; }
@@ -711,20 +712,20 @@ export default function Home() {
         </div>
       </section>
       {/* Project Cards */}
-      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '24px', rowGap: '100px' }}>
+      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '24px', rowGap: '100px', maxWidth: '1400px', margin: '0 auto' }}>
         {/* NutritionNest */}
         <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/nn" className="flex flex-col overflow-hidden cursor-pointer project-card main-card nn-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb' }}>
               <div ref={nnImagesWrapRef} className="nn-img-wrap" style={{ willChange: 'transform', overflow: 'visible' }}>
-                <div className="card-img-row flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', justifyContent: 'center' }}>
+                <div className="card-img-row flex w-full transition-all duration-500 group-hover:scale-105" style={{ alignItems: 'flex-start', justifyContent: 'center' }}>
                   <div className="nn-desktop-img" style={{ flex: '0 0 44%', overflow: 'hidden', borderRadius: '12px' }}>
                     <Image src="/Images/NN2.png" alt="NutritionNest" width={2730} height={2764} quality={100} style={{ width: '100%', height: 'auto', display: 'block' }} />
                   </div>
-                  <div className="nn-phone" style={{ position: 'relative', flex: '0 0 23%', marginLeft: '-4px', alignSelf: 'flex-start', aspectRatio: '806 / 1586', overflow: 'hidden' }}>
-                    <div style={{ position: 'absolute', top: '3.7%', left: '2.5%', right: '2.5%', bottom: '4%', borderRadius: '14% / 7%', overflow: 'hidden', zIndex: 1, backgroundColor: '#fff' }}>
-                      <video src="/Images/NN-video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                  <div className="nn-phone" style={{ position: 'relative', flex: '0 0 22.7%', marginLeft: '-4px', alignSelf: 'flex-start', aspectRatio: '806 / 1586', overflow: 'hidden' }}>
+                    <div style={{ position: 'absolute', top: '4%', left: '4%', right: '4%', bottom: '4.2%', borderRadius: '12% / 6%', overflow: 'hidden', zIndex: 1, backgroundColor: '#fff' }}>
+                      <video src="/Images/NN-video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '4px' }} />
                     </div>
                     <Image src="/Images/NN-iphone-frame.png" alt="iPhone frame" fill style={{ objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
                   </div>
@@ -746,7 +747,7 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/duetti" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
+              <div className="flex w-full transition-all duration-500 group-hover:scale-105" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
                 <div className="duetti-macbook" style={{ position: 'relative', width: '52%', flexShrink: 0 }}>
                   <div style={{ position: 'absolute', top: '2.2%', left: '1.4%', right: '1.4%', bottom: '24.9%', overflow: 'hidden', zIndex: 1 }}>
                     <video src="/Images/Duetti video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -771,8 +772,8 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/lasertaz" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div className="card-img-row flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-                <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '75%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
+              <div className="card-img-row flex w-full transition-all duration-500 group-hover:scale-105" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+                <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '70%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
               </div>
             </Link>
           </div>
@@ -790,7 +791,7 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/bookworm" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px', justifyContent: 'center' }}>
+              <div className="flex w-full transition-all duration-500 group-hover:scale-105" style={{ alignItems: 'flex-start', minHeight: '144px', justifyContent: 'center' }}>
                 <div className="bw-desktop-img" style={{ flex: '0 0 44%', overflow: 'hidden', borderRadius: '12px' }}>
                   <Image src="/Images/bw_cover1.png" alt="Bookworm" width={678} height={1390} quality={100} style={{ width: '100%', height: 'auto', display: 'block' }} />
                 </div>
@@ -819,9 +820,9 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/rhs" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div className="rhs-img-container flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '0px', height: '400px' }}>
-                <Image src="/Images/rhs_image1.png" alt="Raymond Hair Salon" width={3564} height={3620} quality={100} unoptimized className="object-contain rounded-xl rhs-desktop-img" style={{ height: '340px', width: 'auto', alignSelf: 'flex-end', marginBottom: '38px', marginRight: '-4px' }} />
-                <div className="rhs-phone" style={{ position: 'relative', height: '310px', aspectRatio: '750 / 1430', alignSelf: 'flex-end', marginBottom: '59px' }}>
+              <div className="rhs-img-container flex w-full transition-all duration-500 group-hover:scale-105" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '0px', height: '300px' }}>
+                <Image src="/Images/rhs_image1.png" alt="Raymond Hair Salon" width={3564} height={3620} quality={100} unoptimized className="object-contain rounded-xl rhs-desktop-img" style={{ height: '280px', width: 'auto', alignSelf: 'flex-end', marginBottom: '32px', marginRight: '-4px' }} />
+                <div className="rhs-phone" style={{ position: 'relative', height: '254px', aspectRatio: '750 / 1430', alignSelf: 'flex-end', marginBottom: '50px' }}>
                   <div style={{ position: 'absolute', top: '2%', left: '9%', right: '9%', bottom: '2%', borderRadius: '6% / 4%', overflow: 'hidden', zIndex: 1, backgroundColor: '#ffffff' }}>
                     <video src="/Images/rhs_video1.mp4" autoPlay loop muted playsInline className="rhs-video" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
@@ -841,40 +842,33 @@ export default function Home() {
         </div>
 
         {/* Concepts — Kalshi + Phia stacked */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignSelf: 'flex-start' }}>
-          {/* Concepts text — group wraps only title + caption, 0px spacing */}
-          <div className="group" style={{ margin: 0, padding: 0 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '0' }}>
-              <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '500', color: 'rgb(33, 33, 33)', margin: 0, whiteSpace: 'nowrap' }}>Concepts</p>
-              <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(0,0,0,0.1)' }} />
-            </div>
-            <p style={{ fontSize: '14px', lineHeight: '20px', fontWeight: '400', color: 'rgba(10,10,10,0.3)', margin: 0, maxWidth: '450px' }}>I designed these projects after noticing gaps in existing products and wanting to see what a better solution could feel like.</p>
-          </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingTop: '8px' }}>
           {/* Kalshi */}
-          <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
-            <Link href="/kalshi" className="project-card card-pre concepts-inner-card" style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 'unset', height: 'auto' }}>
-              <div className="transition-all duration-500 group-hover:-translate-y-4" style={{ margin: 0, padding: 0, width: '100%' }}>
-                <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} style={{ width: '100%', height: 'auto', maxHeight: '220px', objectFit: 'contain', display: 'block', borderRadius: '6px' }} />
+          <div className="group" style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+            <Link href="/kalshi" className="project-card card-pre concepts-inner-card" style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 'unset', flex: 1, overflow: 'hidden' }}>
+              <div className="transition-all duration-500 group-hover:scale-105" style={{ margin: 0, padding: 0, width: '100%' }}>
+                <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} style={{ width: '45%', height: 'auto', objectFit: 'contain', display: 'block', borderRadius: '4px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', margin: '0 auto' }} />
               </div>
             </Link>
             <div className="card-label-row" style={{ padding: '8px 0 0', display: 'flex', flexDirection: 'column', gap: 0 }}>
-              <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', margin: 0, padding: 0 }}>2025</span>
-              <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Kalshi desktop extension</span>
+              <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>2025 Kalshi Desktop Extension</span>
+              <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Bringing real-money prediction markets to your browser</span>
             </div>
           </div>
           {/* Phia */}
           <div className="group" style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-            <Link href="/phia" className="project-card card-pre concepts-inner-card" style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 'unset', height: 'auto' }}>
-              <div className="transition-all duration-500 group-hover:-translate-y-4" style={{ margin: 0, padding: 0, width: '100%' }}>
-                <Image src="/Images/Phia_cover.png" alt="Phia" width={1400} height={800} style={{ width: '100%', height: 'auto', maxHeight: '220px', objectFit: 'contain', display: 'block', borderRadius: '6px' }} />
+            <Link href="/phia" className="project-card card-pre concepts-inner-card" style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 'unset', flex: 1, overflow: 'hidden' }}>
+              <div className="transition-all duration-500 group-hover:scale-105" style={{ margin: 0, padding: 0, width: '100%' }}>
+                <Image src="/Images/Phia_cover.png" alt="Phia" width={1400} height={800} style={{ width: '45%', height: 'auto', objectFit: 'contain', display: 'block', borderRadius: '4px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', margin: '0 auto' }} />
               </div>
             </Link>
             <div className="card-label-row" style={{ padding: '8px 0 0', display: 'flex', flexDirection: 'column', gap: 0 }}>
-              <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400', margin: 0, padding: 0 }}>2025</span>
-              <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Phia desktop extension</span>
+              <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>2025 Phia web extension</span>
+              <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>An AI shopping assistant that finds better deals as you browse</span>
             </div>
           </div>
         </div>
+
       </section>
     </main>
 
