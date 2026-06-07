@@ -64,10 +64,15 @@ export default function Phia() {
           p { font-size: 12px !important; line-height: 18px !important; }
           a { font-size: 12px !important; line-height: 18px !important; }
           .section-label { font-size: 10px !important; line-height: 12px !important; margin-bottom: 4px !important; }
-          .img-caption { font-size: 10px !important; line-height: 12px !important; margin-top: 6px !important; padding-left: 0 !important; padding-right: 0 !important; }
+          .img-caption { font-size: 10px !important; line-height: 18px !important; margin-top: 6px !important; padding-left: 0 !important; padding-right: 0 !important; }
+          .phia-ext-img { margin-bottom: -8px !important; margin-left: 0 !important; margin-right: 0 !important; }
           img { border-radius: 4px !important; }
           .three-cards-grid { grid-template-columns: 1fr !important; }
           .phia-ext-img { margin-left: 0 !important; margin-right: 0 !important; }
+          .phia-img-wrap { width: 100% !important; }
+          .phia-ext-img img { width: 100% !important; margin: 0 !important; }
+          .phia-secondhand-img img { width: 100% !important; margin: 0 !important; }
+          .phia-secondhand-img { margin-left: 0 !important; margin-right: 0 !important; }
         }
       `}</style>
 
@@ -110,18 +115,20 @@ export default function Phia() {
       {/* Extension Tab */}
       <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px' }}>
         <div className="content-wide" style={{ maxWidth: '1400px', display: 'flex', flexDirection: 'column', gap: '0' }}>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '12px' }}>
-            A lower price, front and center
-          </h2>
+          <div className="phia-img-wrap" style={{ width: '70%', margin: '0 auto' }}>
+            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '12px' }}>
+              A lower price, front and center
+            </h2>
+          </div>
 
-          <div className="phia-ext-img" style={{ marginBottom: '-48px', marginLeft: '-20px', marginRight: '-20px' }}>
+          <div className="phia-ext-img" style={{ marginBottom: '-40px', marginLeft: '-20px', marginRight: '-20px' }}>
             <Image
               src="/Phia/Extension_container.png"
               alt="Extension tab states"
               width={0}
               height={0}
               sizes="100vw"
-              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '16px' }}
+              style={{ width: '70%', height: 'auto', display: 'block', borderRadius: '16px', margin: '0 auto' }}
             />
           </div>
           <div style={{ width: '100%' }}>
@@ -136,18 +143,20 @@ export default function Phia() {
       {/* Secondhand Price Extension */}
       <section style={{ padding: '80px 40px 200px' }}>
         <div className="content-wide" style={{ maxWidth: '1400px' }}>
-          <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '48px' }}>
-            Secondhand Price Extension
-          </h2>
+          <div className="phia-img-wrap" style={{ width: '70%', margin: '0 auto' }}>
+            <h2 style={{ fontSize: '40px', lineHeight: '48px', fontWeight: '400', letterSpacing: '-0.02em', color: '#212121', marginBottom: '48px' }}>
+              Secondhand Price Extension
+            </h2>
+          </div>
 
-          <div style={{ marginBottom: '32px', marginLeft: '8px', marginRight: '8px' }}>
+          <div className="phia-secondhand-img" style={{ marginBottom: '32px', marginLeft: '8px', marginRight: '8px' }}>
             <Image
               src="/Phia/Browser_container1.png"
               alt="Secondhand price extension"
               width={0}
               height={0}
               sizes="100vw"
-              style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '16px 16px 10px 10px' }}
+              style={{ width: '70%', height: 'auto', display: 'block', borderRadius: '16px 16px 10px 10px', boxShadow: '0 8px 32px rgba(0,0,0,0.12)', margin: '0 auto' }}
             />
           </div>
           <div style={{ width: '100%' }}>

@@ -63,7 +63,7 @@ export default function Lasertaz() {
           p { font-size: 12px !important; line-height: 18px !important; }
           a { font-size: 12px !important; line-height: 18px !important; }
           .section-label { font-size: 10px !important; line-height: 12px !important; margin-bottom: 4px !important; }
-          .img-caption { font-size: 10px !important; line-height: 12px !important; margin-top: 6px !important; padding-left: 0 !important; padding-right: 0 !important; }
+          .img-caption { font-size: 10px !important; line-height: 18px !important; margin-top: 6px !important; padding-left: 0 !important; padding-right: 0 !important; }
           img { border-radius: 4px !important; }
           .img-wide { margin-left: 0 !important; margin-right: 0 !important; }
           .content { overflow: hidden !important; }

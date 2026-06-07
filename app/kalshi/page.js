@@ -60,8 +60,9 @@ export default function Kalshi() {
           p { font-size: 12px !important; line-height: 18px !important; }
           a { font-size: 12px !important; line-height: 18px !important; }
           .section-label { font-size: 10px !important; line-height: 12px !important; margin-bottom: 4px !important; }
-          .img-caption { font-size: 10px !important; line-height: 12px !important; margin-top: 6px !important; padding-left: 0 !important; padding-right: 0 !important; }
+          .img-caption { font-size: 10px !important; line-height: 18px !important; margin-top: 6px !important; padding-left: 0 !important; padding-right: 0 !important; }
           img { border-radius: 4px !important; }
+          .kalshi-img-wrap { width: 100% !important; }
         }
       `}</style>
 
@@ -107,8 +108,8 @@ export default function Kalshi() {
       {/* Desktop Extension Landing Screen */}
       <section style={{ backgroundColor: '#f9fafb', padding: '80px 40px 40px' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-          <Image src="/Kalshi/Browser Container 1.png" alt="Kalshi extension landing screen" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px', marginBottom: '12px' }} />
-          <div style={{ width: '100%' }}>
+          <div className="kalshi-img-wrap" style={{ width: '70%', margin: '0 auto' }}>
+            <Image src="/Kalshi/Browser Container 1.png" alt="Kalshi extension landing screen" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px', marginBottom: '12px' }} />
             <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', marginBottom: '4px' }}>
               Landing screen
             </p>
@@ -122,8 +123,8 @@ export default function Kalshi() {
       {/* Extension Pop-up Flow */}
       <section style={{ padding: '80px 40px 200px' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-          <Image src="/Kalshi/Browser Container.png" alt="Kalshi extension popup 3-step flow" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px', marginBottom: '12px' }} />
-          <div style={{ width: '100%' }}>
+          <div className="kalshi-img-wrap" style={{ width: '70%', margin: '0 auto' }}>
+            <Image src="/Kalshi/Browser Container.png" alt="Kalshi extension popup 3-step flow" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '12px', marginBottom: '12px' }} />
             <p style={{ fontSize: '16px', lineHeight: '24px', fontWeight: '500', fontStyle: 'italic', color: '#333333', textAlign: 'center', marginBottom: '4px' }}>
               Extension pop-up — 3-step flow
             </p>

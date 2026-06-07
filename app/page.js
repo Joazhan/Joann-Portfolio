@@ -256,13 +256,14 @@ export default function Home() {
           .portfolio-main { overflow: hidden !important; }
           .card-bottom-container { margin: 0 -16px -20px -16px !important; padding: 20px 16px !important; }
           .card-label-row { padding: 8px 0 !important; }
-          .card-title { font-size: 12px !important; line-height: 14px !important; letter-spacing: -0.03em !important; }
-          .card-desc { font-size: 12px !important; line-height: 14px !important; color: rgba(10,10,10,0.4) !important; }
+          .card-title { font-size: 12px !important; line-height: 16px !important; letter-spacing: -0.03em !important; }
+          .card-desc { font-size: 12px !important; line-height: 16px !important; color: rgba(10,10,10,0.4) !important; }
           .card-icon { width: 32px !important; height: 32px !important; border-radius: 10px !important; }
           .card-icon-wrap { align-items: flex-start !important; }
           .duetti-macbook { width: 100% !important; }
           .duetti-iphone { display: none !important; }
           .card-img-wrap { overflow: hidden !important; width: 100% !important; }
+          .lasertaz-img { width: 90% !important; }
           .rhs-img-container { height: auto !important; min-height: unset !important; width: 100% !important; display: flex !important; align-items: center !important; justify-content: center !important; }
           .nn-img-wrap { display: flex !important; justify-content: center !important; align-items: center !important; width: 100% !important; overflow: hidden !important; }
           .card-img-row { justify-content: center !important; align-items: center !important; width: 100% !important; }
@@ -275,7 +276,8 @@ export default function Home() {
           .concepts-desc { font-size: 12px !important; line-height: 14px !important; }
           .card-year-label { font-size: 12px !important; line-height: 14px !important; }
           .concept-card-link { width: 100% !important; }
-          .concepts-inner-card { padding: 16px !important; gap: 12px !important; }
+          .concepts-inner-card { padding: 16px !important; gap: 12px !important; height: 460px !important; min-height: unset !important; flex: none !important; }
+          .concepts-inner-card img { width: 85% !important; }
           .concepts-inner-card + .concepts-inner-card { margin-top: 0 !important; }
           .concepts-inner-card:first-of-type ~ div { flex-direction: column !important; }
           .concepts-label-stripe { padding-left: 20px !important; padding-right: 20px !important; margin-left: -20px !important; margin-right: -20px !important; }
@@ -778,7 +780,7 @@ export default function Home() {
             <Link href="/lasertaz" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
               <div className="card-img-row flex w-full transition-all duration-500 group-hover:scale-105" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-                <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '70%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
+                <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} className="lasertaz-img" style={{ width: '70%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
               </div>
             </Link>
           </div>

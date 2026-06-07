@@ -101,7 +101,7 @@ export default function About() {
           .about-main h1 { font-size: 16px !important; line-height: 24px !important; }
           .exp-label { font-size: 10px !important; line-height: 12px !important; }
           .exp-row span, .exp-row strong { font-size: 12px !important; line-height: 14px !important; }
-          .about-bio { font-size: 12px !important; line-height: 15px !important; }
+          .about-bio { font-size: 12px !important; line-height: 16px !important; color: rgba(10,10,10,0.4) !important; }
           .about-photo-wrap { width: min(280px, 80vw) !important; height: auto !important; aspect-ratio: 320/380 !important; }
           .about-photo-circle { width: min(220px, 65vw) !important; height: min(220px, 65vw) !important; }
           .about-main > div { padding-top: 32px !important; padding-bottom: 60px !important; }

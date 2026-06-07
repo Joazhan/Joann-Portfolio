@@ -105,7 +105,7 @@ export default function Navbar() {
         .nav-wrapper.nav-dark .nav-logo, .nav-wrapper.nav-dark .nav-logo:hover { color: #ffffff !important; }
         @media (max-width: 767px) {
           .nav-wrapper {
-            padding: 16px 20px !important;
+            padding: 40px 20px 16px !important;
             background: rgba(255, 255, 255, 0.7) !important;
           }
           .nav-desktop-links { display: none !important; }
