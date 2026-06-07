@@ -236,12 +236,12 @@ export default function Home() {
         .card-icon { width: 48px !important; height: 48px !important; border-radius: 10px !important; }
         @media (max-width: 767px) {
           * { cursor: auto !important; }
-          .portfolio-main { padding-left: 20px !important; padding-right: 20px !important; }
+          .portfolio-main { padding-left: 20px !important; padding-right: 20px !important; overflow-x: hidden !important; }
           .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; overflow: hidden !important; min-height: 60vh !important; }
           .hero-shapes-wrap { display: none !important; }
           .hero-shapes-mobile { display: block !important; }
           .hero-text-p { font-size: 14px !important; line-height: 20px !important; letter-spacing: -0.03em !important; width: 100% !important; max-width: 100% !important; }
-          .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 40px !important; grid-template-columns: 1fr !important; }
+          .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 40px !important; grid-template-columns: 1fr !important; max-width: 100% !important; }
           .nn-desktop-img, .bw-desktop-img, .rhs-desktop-img { display: none !important; }
           .nn-phone, .bw-phone, .rhs-phone { flex: unset !important; margin: 0 auto !important; width: 40% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
           .nn-phone { overflow: hidden !important; border-radius: 14% / 7% !important; }
@@ -276,6 +276,8 @@ export default function Home() {
           .concepts-inner-card + .concepts-inner-card { margin-top: 0 !important; }
           .concepts-inner-card:first-of-type ~ div { flex-direction: column !important; }
           .concepts-label-stripe { padding-left: 20px !important; padding-right: 20px !important; margin-left: -20px !important; margin-right: -20px !important; }
+          .card-squircle-wrap { padding: 0 !important; }
+          .card-label-row { padding-left: 0 !important; }
         }
         @media (min-width: 768px) and (max-width: 1024px) {
           .portfolio-main { padding-left: 32px !important; padding-right: 32px !important; }
