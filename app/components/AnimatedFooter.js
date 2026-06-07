@@ -247,9 +247,9 @@ export default function AnimatedFooter() {
         .footer-right { display: flex !important; flex-direction: column !important; align-items: flex-end !important; text-align: right !important; gap: 4px !important; }
         .footer-left { gap: 4px !important; }
         .footer-right p { font-size: 12px !important; line-height: 14px !important; }
-        .footer-canvas { min-height: 400px !important; background-size: 14px 14px !important; background-position: -7px -7px !important; }
+        .footer-canvas { min-height: 400px !important; background-size: 14px 14px !important; background-position: -7px -7px !important; overflow: hidden !important; width: 100% !important; max-width: 100vw !important; }
         .footer-gradient-top { height: 120px !important; }
-        .footer-shapes-layer { transform: scale(0.45) translateY(100px) !important; transform-origin: top left !important; }
+        .footer-shapes-layer { display: none !important; }
         .footer-pixel-group { transform: none !important; }
       }
       @keyframes cursor-pulse {

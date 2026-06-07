@@ -172,7 +172,7 @@ export default function Home() {
   return (
     <>
     {!introComplete && <RiveIntro onComplete={() => { sessionStorage.setItem('introPlayed', 'true'); setIntroComplete(true) }} />}
-    <main className="min-h-screen portfolio-main" style={{ paddingLeft: '64px', paddingRight: '64px', paddingTop: '80px', paddingBottom: '200px', cursor: 'none', backgroundColor: '#fbfbfb', overflowX: 'hidden' }}>
+    <main className="min-h-screen portfolio-main" style={{ paddingLeft: '64px', paddingRight: '64px', paddingTop: '80px', paddingBottom: '200px', cursor: 'none', backgroundColor: '#fbfbfb', overflowX: 'hidden', position: 'relative' }}>
       <style>{`
         @keyframes sparkle-fade {
           0%, 100% { opacity: 0; transform: scale(0.6); }
@@ -249,8 +249,11 @@ export default function Home() {
           .bw-video { object-fit: contain !important; }
           .rhs-phone { width: 44% !important; height: auto !important; margin: 0 auto !important; align-self: center !important; aspect-ratio: 750/1430 !important; }
           .rhs-video { object-fit: cover !important; }
-          .main-card { height: 460px !important; min-height: unset !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; }
-          .project-card { position: relative !important; padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 20px !important; }
+          .main-card { height: 460px !important; min-height: unset !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; overflow: hidden !important; width: 100% !important; box-sizing: border-box !important; }
+          .project-card { position: relative !important; padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 20px !important; width: 100% !important; box-sizing: border-box !important; overflow: hidden !important; }
+          .cards-section { width: 100% !important; overflow: hidden !important; }
+          .group { width: 100% !important; max-width: 100% !important; overflow: hidden !important; }
+          .portfolio-main { overflow: hidden !important; }
           .card-bottom-container { margin: 0 -16px -20px -16px !important; padding: 20px 16px !important; }
           .card-label-row { padding: 8px 0 !important; }
           .card-title { font-size: 12px !important; line-height: 14px !important; letter-spacing: -0.03em !important; }
@@ -261,7 +264,7 @@ export default function Home() {
           .duetti-iphone { display: none !important; }
           .card-img-wrap { overflow: hidden !important; width: 100% !important; }
           .rhs-img-container { height: auto !important; min-height: unset !important; width: 100% !important; display: flex !important; align-items: center !important; justify-content: center !important; }
-          .nn-img-wrap { display: flex !important; justify-content: center !important; align-items: center !important; width: 100% !important; }
+          .nn-img-wrap { display: flex !important; justify-content: center !important; align-items: center !important; width: 100% !important; overflow: hidden !important; }
           .card-img-row { justify-content: center !important; align-items: center !important; width: 100% !important; }
           .concept-card { height: auto !important; min-height: unset !important; }
           .concepts-section { margin-left: -20px !important; margin-right: -20px !important; padding: 48px 20px !important; margin-top: 48px !important; }
