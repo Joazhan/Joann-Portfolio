@@ -466,11 +466,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Introspective */}
-<<<<<<< HEAD
-      <section style={{ padding: '120px 40px 200px' }}>
-=======
-      <section style={{ padding: '120px 64px' }}>
->>>>>>> 3e8f1a5 (NN fixes)
+      <section style={{ padding: '120px 64px 200px' }}>
         <div className="content">
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <p className={`section-label ${syne.className}`}>Introspective</p>
