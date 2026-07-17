@@ -76,12 +76,17 @@ export default function NutritionNest() {
         img { border-radius: 8px !important; }
         .content-img > div { border-radius: 8px !important; }
         .features-grid > div { border-radius: 8px !important; overflow: hidden; }
-        @media (max-width: 767px) {
+        body { overflow-x: hidden; }
+        .min-h-screen { overflow-x: hidden; }
+        .min-h-screen section { overflow: hidden; padding-left: 64px !important; padding-right: 64px !important; }
+        .img-wide { margin-left: 0 !important; margin-right: 0 !important; }
+        @media (max-width: 480px) {
           .min-h-screen section { padding-top: 48px !important; padding-bottom: 48px !important; padding-left: 20px !important; padding-right: 20px !important; }
           footer { padding: 32px 20px !important; }
           .page-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
-          .content-wide > div { gap: 4px !important; }
+          .content-wide > div { gap: 40px !important; }
           .content-wide > div > div { display: flex !important; flex-direction: column !important; gap: 4px !important; }
+          .content-wide > div.overview-sidebar { gap: 20px !important; }
           .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
           .features-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
           .two-col-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
@@ -91,7 +96,7 @@ export default function NutritionNest() {
           .quote-card { font-size: 12px !important; line-height: 18px !important; }
           .pill { font-size: 12px !important; line-height: 18px !important; }
           .section-label { font-size: 10px !important; line-height: 12px !important; margin-bottom: 4px !important; }
-          .img-caption { font-size: 10px !important; line-height: 12px !important; margin-top: 6px !important; }
+          .img-caption { font-size: 10px !important; line-height: 18px !important; margin-top: 6px !important; }
           .img-wide { margin-bottom: 4px !important; }
           .img-wide + .img-caption { margin-top: 6px !important; }
           a { font-size: 12px !important; line-height: 18px !important; }
@@ -99,6 +104,12 @@ export default function NutritionNest() {
           .img-caption { padding-left: 0 !important; padding-right: 0 !important; }
           img { border-radius: 4px !important; }
           .content-img { overflow: hidden !important; padding-top: 0 !important; padding-bottom: 0 !important; }
+          .stats-coded h3 { font-size: 16px !important; line-height: 24px !important; }
+          .stats-coded { gap: 20px !important; padding-left: 20px !important; padding-right: 20px !important; grid-template-columns: 1fr !important; }
+          .stats-coded > div { gap: 4px !important; }
+          .features-grid > div > p:first-child { font-size: 16px !important; line-height: 24px !important; font-weight: 500 !important; }
+          .features-grid > div { padding: 16px !important; }
+          .content-img { gap: 16px !important; }
         }
       `}</style>
 
@@ -114,7 +125,7 @@ export default function NutritionNest() {
       </div>
 
       {/* Title + Overview + sidebar — all in one grid */}
-      <section style={{ padding: '120px 40px' }}>
+      <section style={{ padding: '120px 64px' }}>
         <div className="content-wide overview-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '80px', alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div>
@@ -133,7 +144,7 @@ export default function NutritionNest() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+          <div className="overview-sidebar" style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
             <div>
               <p className={`section-label ${syne.className}`}>Team</p>
               <p style={{ fontSize: '16px', color: 'rgba(10, 10, 10, 0.4)', lineHeight: '1.8' }}>Founder<br />Product Designer (Me)</p>
@@ -159,7 +170,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Stats */}
-      <section style={{ padding: '80px 40px 60px' }}>
+      <section style={{ padding: '80px 64px 60px' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div className="stats-coded" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', background: '#F9FAFB', border: '1px solid rgba(0,0,0,0.05)', borderRadius: '12px', padding: '40px 48px', marginBottom: '16px', gap: '40px' }}>
             {[
@@ -180,7 +191,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Challenge */}
-      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '120px 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '120px 64px' }}>
         <div className="content">
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <p className={`section-label ${syne.className}`}>Challenge</p>
@@ -197,7 +208,7 @@ export default function NutritionNest() {
       </section>
 
       {/* User Research — includes stats grid (moved from Competitive Analysis) */}
-      <section style={{ padding: '0 40px' }}>
+      <section style={{ padding: '0 64px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -239,7 +250,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Competitive Analysis — stats grid removed, paragraph becomes caption */}
-      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 64px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -272,7 +283,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Goal */}
-      <section style={{ padding: '0 40px' }}>
+      <section style={{ padding: '0 64px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -303,7 +314,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Exploration — new section */}
-      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 64px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -328,7 +339,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Ideation — exploration image removed, second_iteration_image + caption added */}
-      <section style={{ padding: '0 40px' }}>
+      <section style={{ padding: '0 64px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -353,7 +364,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Low Fidelity — updated caption text, centered */}
-      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 64px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -378,7 +389,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Iterations — NED_image moved to Solution, second_iteration moved to Ideation, final_iteration_image1 added */}
-      <section style={{ padding: '0 40px' }}>
+      <section style={{ padding: '0 64px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -403,7 +414,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Solution — NN.png removed, NED_image added, final_iteration_image removed, design system stacked */}
-      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 40px' }}>
+      <section style={{ backgroundColor: 'rgb(242, 244, 246)', padding: '0 64px' }}>
         <div className="content-img">
           <div className="content" style={{ margin: '0 auto' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -440,9 +451,9 @@ export default function NutritionNest() {
             <Image src="/NN/NED_image.avif" alt="NED AI assistant" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '24px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
 
-          <div className="img-wide" style={{ display: 'flex', flexDirection: 'column', gap: '16px', margin: '0 -80px 24px -80px' }}>
-            <Image src="/NN/onboarding_image.png" alt="Onboarding screens" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
-            <Image src="/NN/tab_image.png" alt="Tab navigation" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
+          {/* NED_image — below tab navigation */}
+          <div className="img-wide" style={{ margin: '0 -80px' }}>
+            <Image src="/NN/Final Design V1 (7).png" alt="NED AI assistant" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '24px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
 
           {/* Design system — stacked */}
@@ -455,7 +466,7 @@ export default function NutritionNest() {
       </section>
 
       {/* Introspective */}
-      <section style={{ padding: '120px 40px' }}>
+      <section style={{ padding: '120px 64px 200px' }}>
         <div className="content">
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <p className={`section-label ${syne.className}`}>Introspective</p>

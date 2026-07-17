@@ -172,7 +172,7 @@ export default function Home() {
   return (
     <>
     {!introComplete && <RiveIntro onComplete={() => { sessionStorage.setItem('introPlayed', 'true'); setIntroComplete(true) }} />}
-    <main className="min-h-screen portfolio-main" style={{ paddingLeft: '64px', paddingRight: '64px', cursor: 'none', backgroundColor: '#fbfbfb' }}>
+    <main className="min-h-screen portfolio-main" style={{ paddingLeft: '64px', paddingRight: '64px', paddingTop: '80px', paddingBottom: '200px', cursor: 'none', backgroundColor: '#fbfbfb', overflowX: 'hidden', position: 'relative' }}>
       <style>{`
         @keyframes sparkle-fade {
           0%, 100% { opacity: 0; transform: scale(0.6); }
@@ -223,9 +223,10 @@ export default function Home() {
         .card-pre { opacity: 0; transform: translateY(30px); }
         .card-in { animation: cardFadeUp 3s cubic-bezier(0.16, 1, 0.3, 1) both; }
         .project-card { padding-top: 48px !important; padding-bottom: 32px !important; padding-left: 32px !important; padding-right: 32px !important; border-radius: 8px !important; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08) !important; }
-        .main-card { padding-top: 56px !important; padding-bottom: 56px !important; min-height: 550px; height: 100%; justify-content: center; }
+        .main-card { padding-top: 56px !important; padding-bottom: 0 !important; aspect-ratio: 1 / 1; height: auto; justify-content: center; }
         .nn-card { justify-content: center !important; padding: 36px !important; }
-        .card-squircle-wrap { flex: 1; display: flex; flex-direction: column; }
+        .card-squircle-wrap { flex: 1; display: flex; flex-direction: column; padding: 8px 8px 0 8px; }
+        .card-label-row { padding-left: 8px !important; }
         .concept-card { height: auto !important; min-height: unset !important; }
         .concept-card.main-card { justify-content: center !important; padding: 24px 36px !important; min-height: unset !important; height: auto !important; }
         .concepts-cards-col .card-squircle-wrap { flex: none; }
@@ -235,12 +236,12 @@ export default function Home() {
         .card-icon { width: 48px !important; height: 48px !important; border-radius: 10px !important; }
         @media (max-width: 767px) {
           * { cursor: auto !important; }
-          .portfolio-main { padding-left: 20px !important; padding-right: 20px !important; }
-          .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; overflow: hidden !important; }
+          .portfolio-main { padding-left: 20px !important; padding-right: 20px !important; overflow-x: hidden !important; }
+          .hero-section { margin: 0 -20px !important; padding: 32px 20px 32px !important; overflow: hidden !important; min-height: 60vh !important; }
           .hero-shapes-wrap { display: none !important; }
           .hero-shapes-mobile { display: block !important; }
           .hero-text-p { font-size: 14px !important; line-height: 20px !important; letter-spacing: -0.03em !important; width: 100% !important; max-width: 100% !important; }
-          .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 16px !important; grid-template-columns: 1fr !important; }
+          .cards-section { margin-left: 0 !important; margin-right: 0 !important; gap: 40px !important; grid-template-columns: 1fr !important; max-width: 100% !important; }
           .nn-desktop-img, .bw-desktop-img, .rhs-desktop-img { display: none !important; }
           .nn-phone, .bw-phone, .rhs-phone { flex: unset !important; margin: 0 auto !important; width: 40% !important; aspect-ratio: 9/19 !important; align-self: center !important; position: relative !important; }
           .nn-phone { overflow: hidden !important; border-radius: 14% / 7% !important; }
@@ -248,19 +249,23 @@ export default function Home() {
           .bw-video { object-fit: contain !important; }
           .rhs-phone { width: 44% !important; height: auto !important; margin: 0 auto !important; align-self: center !important; aspect-ratio: 750/1430 !important; }
           .rhs-video { object-fit: cover !important; }
-          .main-card { height: 460px !important; min-height: unset !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; }
-          .project-card { position: relative !important; padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 20px !important; }
+          .main-card { height: 460px !important; min-height: unset !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; overflow: hidden !important; width: 100% !important; box-sizing: border-box !important; }
+          .project-card { position: relative !important; padding-left: 16px !important; padding-right: 16px !important; padding-top: 20px !important; padding-bottom: 20px !important; border-radius: 20px !important; width: 100% !important; box-sizing: border-box !important; overflow: hidden !important; }
+          .cards-section { width: 100% !important; overflow: hidden !important; }
+          .group { width: 100% !important; max-width: 100% !important; overflow: hidden !important; }
+          .portfolio-main { overflow: hidden !important; }
           .card-bottom-container { margin: 0 -16px -20px -16px !important; padding: 20px 16px !important; }
           .card-label-row { padding: 8px 0 !important; }
-          .card-title { font-size: 12px !important; line-height: 14px !important; letter-spacing: -0.03em !important; }
-          .card-desc { font-size: 12px !important; line-height: 14px !important; color: rgba(10,10,10,0.4) !important; }
+          .card-title { font-size: 12px !important; line-height: 16px !important; letter-spacing: -0.03em !important; }
+          .card-desc { font-size: 12px !important; line-height: 16px !important; color: rgba(10,10,10,0.4) !important; }
           .card-icon { width: 32px !important; height: 32px !important; border-radius: 10px !important; }
           .card-icon-wrap { align-items: flex-start !important; }
           .duetti-macbook { width: 100% !important; }
           .duetti-iphone { display: none !important; }
           .card-img-wrap { overflow: hidden !important; width: 100% !important; }
+          .lasertaz-img { width: 90% !important; }
           .rhs-img-container { height: auto !important; min-height: unset !important; width: 100% !important; display: flex !important; align-items: center !important; justify-content: center !important; }
-          .nn-img-wrap { display: flex !important; justify-content: center !important; align-items: center !important; width: 100% !important; }
+          .nn-img-wrap { display: flex !important; justify-content: center !important; align-items: center !important; width: 100% !important; overflow: hidden !important; }
           .card-img-row { justify-content: center !important; align-items: center !important; width: 100% !important; }
           .concept-card { height: auto !important; min-height: unset !important; }
           .concepts-section { margin-left: -20px !important; margin-right: -20px !important; padding: 48px 20px !important; margin-top: 48px !important; }
@@ -270,6 +275,22 @@ export default function Home() {
           .concepts-title { font-size: 14px !important; line-height: 20px !important; }
           .concepts-desc { font-size: 12px !important; line-height: 14px !important; }
           .card-year-label { font-size: 12px !important; line-height: 14px !important; }
+          .concept-card-link { width: 100% !important; }
+          .concepts-inner-card { padding: 16px !important; gap: 12px !important; height: 460px !important; min-height: unset !important; flex: none !important; }
+          .concepts-inner-card img { width: 85% !important; }
+          .concepts-inner-card + .concepts-inner-card { margin-top: 0 !important; }
+          .concepts-inner-card:first-of-type ~ div { flex-direction: column !important; }
+          .concepts-label-stripe { padding-left: 20px !important; padding-right: 20px !important; margin-left: -20px !important; margin-right: -20px !important; }
+          .card-squircle-wrap { padding: 0 !important; }
+          .card-label-row { padding-left: 0 !important; }
+        }
+        @media (min-width: 768px) and (max-width: 1024px) {
+          .portfolio-main { padding-left: 32px !important; padding-right: 32px !important; }
+          .hero-section { margin: 0 -32px !important; padding-left: 36px !important; padding-right: 36px !important; }
+          .cards-section { column-gap: 16px !important; row-gap: 48px !important; }
+          .main-card { min-height: 420px !important; }
+          .concepts-label-stripe { padding-left: 32px !important; padding-right: 32px !important; margin-left: -32px !important; margin-right: -32px !important; }
+          .concepts-grid { column-gap: 16px !important; }
         }
       `}</style>
       {/* Spacer for fixed navbar */}
@@ -659,6 +680,34 @@ export default function Home() {
               <svg width="32" height="9" viewBox="0 0 30 8" style={{ transform: 'rotate(-15deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#F87171"/></svg>
             </div>
           </div>
+          {/* Left-center: blue rounded square */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '28%', left: '3%', animationDelay: '0.8s' }}>
+            <div style={{ transform: 'rotate(-18deg)', animation: 'orbitCCW 6s ease-in-out 0.2s infinite' }}>
+              <svg width="38" height="38" viewBox="0 0 78 78" overflow="visible">
+                <rect x="1" y="1" width="76" height="76" rx="12" fill="#2DA3F8"/>
+              </svg>
+            </div>
+          </div>
+          {/* Right-center: gold dash */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '55%', right: '3%', animationDelay: '1.0s' }}>
+            <div style={{ animation: 'orbitSm 3.5s ease-in-out 0.6s infinite' }}>
+              <svg width="30" height="9" viewBox="0 0 30 8" style={{ transform: 'rotate(15deg)', display: 'block' }}><rect x="0" y="0" width="30" height="8" rx="6" fill="#FCD34D"/></svg>
+            </div>
+          </div>
+          {/* Upper-center: pink small circle */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '18%', left: '50%', animationDelay: '0.65s' }}>
+            <svg width="22" height="22" viewBox="0 0 120 120" overflow="visible" style={{ animation: 'orbitCW 5s ease-in-out 0.9s infinite' }}>
+              <circle cx="60" cy="60" r="59" fill="#f472b6"/>
+            </svg>
+          </div>
+          {/* Left-lower-center: green 4-star */}
+          <div className={introComplete ? 'shape-in' : 'shape-pre'} style={{ position: 'absolute', top: '62%', left: '8%', animationDelay: '0.9s' }}>
+            <div style={{ animation: 'orbitSm 4.8s ease-in-out 0.3s infinite' }}>
+              <svg width="28" height="28" viewBox="0 0 100 100" overflow="visible">
+                <path d="M 54.02 13.83 L 62.04 35.41 Q 62.73 37.27 64.59 37.96 L 86.17 45.98 Q 97 50 86.17 54.02 L 64.59 62.04 Q 62.73 62.73 62.04 64.59 L 54.02 86.17 Q 50 97 45.98 86.17 L 37.96 64.59 Q 37.27 62.73 35.40 62.04 L 13.83 54.02 Q 3 50 13.83 45.98 L 35.41 37.96 Q 37.27 37.27 37.96 35.41 L 45.98 13.83 Q 50 3 54.02 13.83 Z" fill="#22c55e"/>
+              </svg>
+            </div>
+          </div>
         </div>
 
         {/* Hero text */}
@@ -670,20 +719,20 @@ export default function Home() {
         </div>
       </section>
       {/* Project Cards */}
-      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '24px', rowGap: '80px' }}>
+      <section className="cards-section" style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '24px', rowGap: '100px', maxWidth: '1400px', margin: '0 auto' }}>
         {/* NutritionNest */}
         <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/nn" className="flex flex-col overflow-hidden cursor-pointer project-card main-card nn-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb' }}>
               <div ref={nnImagesWrapRef} className="nn-img-wrap" style={{ willChange: 'transform', overflow: 'visible' }}>
-                <div className="card-img-row flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', justifyContent: 'center' }}>
+                <div className="card-img-row flex w-full transition-all duration-500 group-hover:scale-105" style={{ alignItems: 'flex-start', justifyContent: 'center' }}>
                   <div className="nn-desktop-img" style={{ flex: '0 0 44%', overflow: 'hidden', borderRadius: '12px' }}>
                     <Image src="/Images/NN2.png" alt="NutritionNest" width={2730} height={2764} quality={100} style={{ width: '100%', height: 'auto', display: 'block' }} />
                   </div>
-                  <div className="nn-phone" style={{ position: 'relative', flex: '0 0 23%', marginLeft: '-4px', alignSelf: 'flex-start', aspectRatio: '806 / 1586', overflow: 'hidden' }}>
-                    <div style={{ position: 'absolute', top: '3.7%', left: '2.5%', right: '2.5%', bottom: '4%', borderRadius: '14% / 7%', overflow: 'hidden', zIndex: 1, backgroundColor: '#fff' }}>
-                      <video src="/Images/NN-video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                  <div className="nn-phone" style={{ position: 'relative', flex: '0 0 22.7%', marginLeft: '-4px', alignSelf: 'flex-start', aspectRatio: '806 / 1586', overflow: 'hidden' }}>
+                    <div style={{ position: 'absolute', top: '4%', left: '4%', right: '4%', bottom: '4.2%', borderRadius: '12% / 6%', overflow: 'hidden', zIndex: 1, backgroundColor: '#fff' }}>
+                      <video src="/Images/NN-video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '4px' }} />
                     </div>
                     <Image src="/Images/NN-iphone-frame.png" alt="iPhone frame" fill style={{ objectFit: 'fill', zIndex: 10, pointerEvents: 'none' }} />
                   </div>
@@ -705,7 +754,7 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/duetti" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
+              <div className="flex w-full transition-all duration-500 group-hover:scale-105" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '16px' }}>
                 <div className="duetti-macbook" style={{ position: 'relative', width: '52%', flexShrink: 0 }}>
                   <div style={{ position: 'absolute', top: '2.2%', left: '1.4%', right: '1.4%', bottom: '24.9%', overflow: 'hidden', zIndex: 1 }}>
                     <video src="/Images/Duetti video.mp4" autoPlay loop muted playsInline style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -730,8 +779,8 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/lasertaz" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div className="card-img-row flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
-                <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} style={{ width: '75%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
+              <div className="card-img-row flex w-full transition-all duration-500 group-hover:scale-105" style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
+                <Image src="/Images/Lasertaz image.png" alt="Lasertaz" width={1200} height={800} className="lasertaz-img" style={{ width: '70%', height: 'auto', display: 'block', objectFit: 'contain', margin: '0 auto' }} />
               </div>
             </Link>
           </div>
@@ -749,7 +798,7 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/bookworm" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div className="flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-start', minHeight: '144px', justifyContent: 'center' }}>
+              <div className="flex w-full transition-all duration-500 group-hover:scale-105" style={{ alignItems: 'flex-start', minHeight: '144px', justifyContent: 'center' }}>
                 <div className="bw-desktop-img" style={{ flex: '0 0 44%', overflow: 'hidden', borderRadius: '12px' }}>
                   <Image src="/Images/bw_cover1.png" alt="Bookworm" width={678} height={1390} quality={100} style={{ width: '100%', height: 'auto', display: 'block' }} />
                 </div>
@@ -778,10 +827,9 @@ export default function Home() {
           <div className="card-squircle-wrap" style={{ position: 'relative' }}>
             <Link href="/rhs" className="flex flex-col overflow-hidden cursor-pointer project-card main-card card-pre"
               style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', paddingTop: '80px', paddingLeft: '48px', paddingRight: '48px' }}>
-              <div className="rhs-img-container flex w-full transition-all duration-500 group-hover:-translate-y-4" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '0px', height: '400px' }}>
-
-                <Image src="/Images/rhs_image1.png" alt="Raymond Hair Salon" width={3564} height={3620} quality={100} unoptimized className="object-contain rounded-xl rhs-desktop-img" style={{ height: '340px', width: 'auto', alignSelf: 'flex-end', marginBottom: '38px', marginRight: '-4px' }} />
-                <div className="rhs-phone" style={{ position: 'relative', height: '310px', aspectRatio: '750 / 1430', alignSelf: 'flex-end', marginBottom: '59px' }}>
+              <div className="rhs-img-container flex w-full transition-all duration-500 group-hover:scale-105" style={{ alignItems: 'flex-end', justifyContent: 'center', gap: '0px', height: '300px' }}>
+                <Image src="/Images/rhs_image1.png" alt="Raymond Hair Salon" width={3564} height={3620} quality={100} unoptimized className="object-contain rounded-xl rhs-desktop-img" style={{ height: '280px', width: 'auto', alignSelf: 'flex-end', marginBottom: '32px', marginRight: '-4px' }} />
+                <div className="rhs-phone" style={{ position: 'relative', height: '254px', aspectRatio: '750 / 1430', alignSelf: 'flex-end', marginBottom: '50px' }}>
                   <div style={{ position: 'absolute', top: '2%', left: '9%', right: '9%', bottom: '2%', borderRadius: '6% / 4%', overflow: 'hidden', zIndex: 1, backgroundColor: '#ffffff' }}>
                     <video src="/Images/rhs_video1.mp4" autoPlay loop muted playsInline className="rhs-video" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
@@ -799,50 +847,36 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-      {/* Concepts Section */}
-      <div className="concepts-section" style={{ marginTop: '80px', paddingBottom: '64px' }}>
-        {/* Label block — background only wraps this */}
-        <div style={{ backgroundColor: '#f3f4f6', paddingTop: '32px', paddingBottom: '32px', paddingLeft: '64px', paddingRight: '64px', marginLeft: '-64px', marginRight: '-64px', marginBottom: '64px', textAlign: 'center' }}>
-          <div style={{ display: 'inline-flex', flexDirection: 'column', gap: '4px' }}>
-            <h2 className="concepts-title" style={{ fontSize: '20px', lineHeight: '28px', letterSpacing: '-0.03em', fontWeight: '500', color: '#212121' }}>Concepts</h2>
-            <p className="concepts-desc" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.2px', color: 'rgba(10, 10, 10, 0.4)' }}>
-              I designed these projects after noticing gaps in existing products.<br />Wanting to see what a better solution could feel like.
-            </p>
-          </div>
-        </div>
-        <div className="concepts-inner" style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
-        {/* Stacked cards on the right */}
-        <div className="concepts-cards-col" style={{ display: 'flex', flexDirection: 'column', gap: '40px', width: '100%' }}>
+
+        {/* Concepts — Kalshi + Phia stacked */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingTop: '8px' }}>
           {/* Kalshi */}
-          <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
-            <Link href="/kalshi" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', cursor: 'pointer', width: '34%', margin: '0 auto' }}>
-              <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', borderRadius: '8px' }} />
-              <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-                <div className="flex flex-col gap-0">
-                  <span className="card-year-label" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>2025 | Desktop extension</span>
-                  <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Kalshi</span>
-                </div>
+          <div className="group" style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+            <Link href="/kalshi" className="project-card card-pre concepts-inner-card" style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 'unset', flex: 1, overflow: 'hidden' }}>
+              <div className="transition-all duration-500 group-hover:scale-105" style={{ margin: 0, padding: 0, width: '100%' }}>
+                <Image src="/Images/kalshi_bento.png" alt="Kalshi" width={1200} height={800} style={{ width: '45%', height: 'auto', objectFit: 'contain', display: 'block', borderRadius: '4px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', margin: '0 auto' }} />
               </div>
             </Link>
+            <div className="card-label-row" style={{ padding: '8px 0 0', display: 'flex', flexDirection: 'column', gap: 0 }}>
+              <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>2025 Kalshi Desktop Extension</span>
+              <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>Bringing real-money prediction markets to your browser</span>
+            </div>
           </div>
-          {/* Divider */}
-          <hr style={{ width: '34%', margin: '0 auto', border: 'none', borderTop: '1px solid rgba(0,0,0,0.1)' }} />
           {/* Phia */}
-          <div className="group" style={{ display: 'flex', flexDirection: 'column' }}>
-            <Link href="/phia" style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', cursor: 'pointer', width: '34%', margin: '0 auto' }}>
-              <Image src="/Images/Phia_cover.png" alt="Phia cover" width={1400} height={800} className="object-contain" style={{ width: '100%', height: 'auto', display: 'block', boxShadow: '0 4px 24px rgba(0,0,0,0.08)', borderRadius: '8px' }} />
-              <div className="flex items-center justify-between card-label-row" style={{ padding: '8px 0 0' }}>
-                <div className="flex flex-col gap-0">
-                  <span className="card-year-label" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>2025 | Desktop extension</span>
-                  <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>Phia</span>
-                </div>
+          <div className="group" style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+            <Link href="/phia" className="project-card card-pre concepts-inner-card" style={{ textDecoration: 'none', backgroundColor: '#fbfbfb', padding: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 'unset', flex: 1, overflow: 'hidden' }}>
+              <div className="transition-all duration-500 group-hover:scale-105" style={{ margin: 0, padding: 0, width: '100%' }}>
+                <Image src="/Images/Phia_cover.png" alt="Phia" width={1400} height={800} style={{ width: '45%', height: 'auto', objectFit: 'contain', display: 'block', borderRadius: '4px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', margin: '0 auto' }} />
               </div>
             </Link>
+            <div className="card-label-row" style={{ padding: '8px 0 0', display: 'flex', flexDirection: 'column', gap: 0 }}>
+              <span className="card-title" style={{ fontSize: '14px', lineHeight: '20px', letterSpacing: '-0.03em', fontWeight: '400', color: '#212121' }}>2025 Phia web extension</span>
+              <span className="card-desc" style={{ fontSize: '14px', lineHeight: '20px', color: 'rgba(10,10,10,0.4)', fontWeight: '400' }}>An AI shopping assistant that finds better deals as you browse</span>
+            </div>
           </div>
         </div>
-        </div>
-      </div>
+
+      </section>
     </main>
 
     </>

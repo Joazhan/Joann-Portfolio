@@ -67,7 +67,7 @@ export default function RHS() {
         .img-caption { font-size: 14px !important; line-height: 20px !important; max-width: 500px !important; margin-left: auto !important; margin-right: auto !important; }
         img { border-radius: 8px !important; }
         @media (max-width: 767px) {
-          .min-h-screen section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+          .min-h-screen { overflow-x: hidden !important; } .min-h-screen section { padding-left: 20px !important; padding-right: 20px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
           footer { padding: 32px 20px !important; }
           .page-hero { padding-top: 64px !important; padding-left: 20px !important; padding-right: 20px !important; padding-bottom: 40px !important; }
           .overview-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
@@ -78,7 +78,7 @@ export default function RHS() {
           p { font-size: 12px !important; line-height: 18px !important; }
           a { font-size: 12px !important; line-height: 18px !important; }
           .section-label { font-size: 10px !important; line-height: 12px !important; margin-bottom: 4px !important; }
-          .img-caption { font-size: 10px !important; line-height: 12px !important; margin-top: 6px !important; padding-left: 0 !important; padding-right: 0 !important; }
+          .img-caption { font-size: 10px !important; line-height: 18px !important; margin-top: 6px !important; padding-left: 0 !important; padding-right: 0 !important; }
           img { border-radius: 4px !important; }
           .img-wide { margin-left: 0 !important; margin-right: 0 !important; }
           .content { overflow: hidden !important; }
@@ -333,7 +333,7 @@ export default function RHS() {
       </section>
 
       {/* Introspective */}
-      <section style={{ backgroundColor: 'rgb(251, 251, 251)', padding: '80px 40px' }}>
+      <section style={{ backgroundColor: 'rgb(251, 251, 251)', padding: '80px 40px 200px' }}>
         <div className="content">
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '32px' }}>
             <p className={`section-label ${syne.className}`}>Introspective</p>

@@ -13,10 +13,16 @@ export const metadata = {
   description: "Product Designer Portfolio",
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={geist.className} style={{ overflowX: 'hidden' }} suppressHydrationWarning>
+    <html lang="en" style={{ overflowX: 'hidden', maxWidth: '100%' }}>
+      <body className={geist.className} style={{ overflowX: 'hidden', maxWidth: '100%' }} suppressHydrationWarning>
         <CustomCursor />
         <Navbar />
         {children}

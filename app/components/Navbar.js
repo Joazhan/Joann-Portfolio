@@ -105,12 +105,13 @@ export default function Navbar() {
         .nav-wrapper.nav-dark .nav-logo, .nav-wrapper.nav-dark .nav-logo:hover { color: #ffffff !important; }
         @media (max-width: 767px) {
           .nav-wrapper {
-            padding: 16px 20px !important;
+            padding: 40px 20px 16px !important;
             background: rgba(255, 255, 255, 0.7) !important;
           }
           .nav-desktop-links { display: none !important; }
           .nav-hamburger { display: flex !important; }
           .nav-dark.nav-wrapper { background: #121212 !important; }
+          .nav-logo { font-size: 12px !important; line-height: 14px !important; }
         }
         @media (min-width: 768px) {
           .nav-hamburger { display: none !important; }
@@ -123,7 +124,6 @@ export default function Navbar() {
         className={`nav-wrapper${isDark ? ' nav-dark' : ''}${menuOpen ? ' nav-menu-open' : ''}`}
         style={{
           background: isDark ? 'rgba(18,18,18,0.6)' : 'rgba(255,255,255,0.45)',
-          borderBottom: isDark ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(0,0,0,0.06)',
           backdropFilter: 'blur(80px)',
           WebkitBackdropFilter: 'blur(80px)',
         }}
@@ -174,11 +174,11 @@ export default function Navbar() {
             style={{ background: 'none', border: 'none', padding: '4px', cursor: 'pointer', display: 'none', alignItems: 'center', justifyContent: 'center' }}
           >
             {menuOpen ? (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={isDark ? '#fff' : '#374151'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={isDark ? '#fff' : '#374151'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             ) : (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={isDark ? '#fff' : '#374151'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={isDark ? '#fff' : '#374151'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
               </svg>
             )}
@@ -200,7 +200,7 @@ export default function Navbar() {
         >
           <div style={{ paddingTop: '8px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
             <button onClick={() => setWorkOpen((v) => !v)}
-              style={{ background: 'none', border: 'none', padding: '12px 8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', fontSize: '16px', color: '#374151', fontFamily: 'inherit' }}>
+              style={{ background: 'none', border: 'none', padding: '12px 8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', fontSize: '12px', lineHeight: '14px', color: '#374151', fontFamily: 'inherit' }}>
               Work
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#374151" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                 style={{ transform: workOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.25s ease' }}>
@@ -215,11 +215,11 @@ export default function Navbar() {
                 </Link>
               ))}
             </div>
-            <Link href="/about" onClick={closeMenu} style={{ fontSize: '16px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>About</Link>
+            <Link href="/about" onClick={closeMenu} style={{ fontSize: '12px', lineHeight: '14px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>About</Link>
             <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing" target="_blank" rel="noopener noreferrer" onClick={closeMenu}
-              style={{ fontSize: '16px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>Resume</a>
+              style={{ fontSize: '12px', lineHeight: '14px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>Resume</a>
             <a href="mailto:joannzhang4@gmail.com" target="_blank" rel="noopener noreferrer" onClick={closeMenu}
-              style={{ fontSize: '16px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>Contact</a>
+              style={{ fontSize: '12px', lineHeight: '14px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>Contact</a>
           </div>
         </div>
       </div>

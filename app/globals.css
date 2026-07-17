@@ -19,11 +19,40 @@
   }
 }
 
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  max-width: 100%;
+  position: relative;
+}
+
+/* Prevent all images from overflowing on any screen */
+img, video {
+  max-width: 100%;
+}
+
+/* Ensure all elements use border-box sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Extra small phones (SE, older Androids) */
+@media (max-width: 375px) {
+  .portfolio-main {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .about-main {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
 }
 
 /* cursor: none applied via JS in CustomCursor.js for Mac only */
