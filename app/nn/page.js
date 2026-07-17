@@ -136,7 +136,7 @@ export default function NutritionNest() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
             <div>
               <p className={`section-label ${syne.className}`}>Team</p>
-              <p style={{ fontSize: '16px', color: 'rgba(10, 10, 10, 0.4)', lineHeight: '1.8' }}>Founder<br />Product Designer (Me)<br />Software Engineer<br />Social Media Lead</p>
+              <p style={{ fontSize: '16px', color: 'rgba(10, 10, 10, 0.4)', lineHeight: '1.8' }}>Founder<br />Product Designer (Me)</p>
             </div>
             <div>
               <p className={`section-label ${syne.className}`}>Project Timeline</p>
@@ -368,7 +368,7 @@ export default function NutritionNest() {
               </div>
             </div>
           </div>
-          <div className="img-wide" style={{ margin: '0 -200px' }}>
+          <div className="img-wide" style={{ margin: '0 -80px' }}>
             <Image src="/NN/second_iteration_image.png" alt="Low fidelity wireframes" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
           <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
@@ -393,7 +393,7 @@ export default function NutritionNest() {
               </div>
             </div>
           </div>
-          <div className="img-wide" style={{ margin: '0 -200px' }}>
+          <div className="img-wide" style={{ margin: '0 -80px' }}>
             <Image src="/NN/final_iteration_image1.webp" alt="Final iteration detail" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '16px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
           <p className="img-caption" style={{ fontSize: '16px', lineHeight: '24px', color: '#9ca3af', fontStyle: 'italic', textAlign: 'center' }}>
@@ -436,7 +436,7 @@ export default function NutritionNest() {
           </div>
 
           {/* NED_image moved here from Iterations */}
-          <div className="img-wide" style={{ margin: '0 -80px' }}>
+          <div className="img-wide" style={{ margin: '0' }}>
             <Image src="/NN/NED_image.avif" alt="NED AI assistant" width={0} height={0} sizes="100vw" style={{ width: '100%', height: 'auto', borderRadius: '16px', marginBottom: '24px', display: 'block', border: '1px solid rgba(0,0,0,0.1)' }} />
           </div>
 
