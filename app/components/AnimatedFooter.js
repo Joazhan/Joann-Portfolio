@@ -443,10 +443,6 @@ export default function AnimatedFooter() {
             <a href="mailto:joannzhang4@gmail.com"
               style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none', opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 400ms both' }) }}
               className={linkHover}>Email ↗</a>
-            <a href="https://drive.google.com/file/d/10qr8SW-5Bl4sMWUW6xxBK6LH0Zkw3B1w/view?usp=sharing"
-              target="_blank" rel="noopener noreferrer"
-              style={{ fontSize: '14px', lineHeight: '20px', color: linkCol, textDecoration: 'none', opacity: 0, ...(revealed && { animation: 'fadeUp 500ms ease-out 500ms both' }) }}
-              className={linkHover}>Resume ↗</a>
           </div>
         </div>
 
