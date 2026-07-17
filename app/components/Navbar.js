@@ -156,10 +156,6 @@ export default function Navbar() {
             <Link href="/about" style={{ fontSize: '14px', lineHeight: '20px', color: isActive('/about') ? (isDark ? '#ffffff' : '#212121') : (isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)'), textDecoration: 'none' }}>
               About
             </Link>
-            <a href="mailto:joannzhang4@gmail.com" target="_blank" rel="noopener noreferrer"
-              style={{ fontSize: '14px', lineHeight: '20px', color: isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.4)', textDecoration: 'none' }}>
-              Contact
-            </a>
           </div>
 
           {/* Hamburger */}
@@ -212,8 +208,6 @@ export default function Navbar() {
               ))}
             </div>
             <Link href="/about" onClick={closeMenu} style={{ fontSize: '12px', lineHeight: '14px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>About</Link>
-            <a href="mailto:joannzhang4@gmail.com" target="_blank" rel="noopener noreferrer" onClick={closeMenu}
-              style={{ fontSize: '12px', lineHeight: '14px', color: '#374151', textDecoration: 'none', padding: '10px 8px', display: 'block' }}>Contact</a>
           </div>
         </div>
       </div>
