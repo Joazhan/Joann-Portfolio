@@ -114,8 +114,8 @@ export default function About() {
       {/* Main content */}
       <div className="flex flex-col items-center" style={{ paddingTop: '60px', paddingBottom: '120px' }}>
 
-        {/* Photo + floating shapes (hidden for now, remove display to bring back) */}
-        <div style={{ display: 'none', position: 'relative', width: '320px', height: '380px', marginBottom: '32px', flexShrink: 0, paddingBottom: '24px' }}>
+        {/* Photo + floating shapes (hidden for now, remove display: 'none' to bring back) */}
+        <div ref={photoWrapRef} className="about-photo-wrap" style={{ display: 'none', position: 'relative', width: '320px', height: '380px', marginBottom: '32px', flexShrink: 0, paddingBottom: '24px' }}>
           {/* Photo circle */}
           <div className="about-photo-circle" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '260px', height: '260px', borderRadius: '50%', overflow: 'hidden' }}>
             <Image
